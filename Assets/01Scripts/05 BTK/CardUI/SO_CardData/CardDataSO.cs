@@ -40,4 +40,5 @@ public class CardDataSO : ScriptableObject
 {
     public CardType cardType; //스킬카드냐, 일반 카드냐
     public CardInfo cardInfo;
+    public KeywordListSO keywordList;
 }
