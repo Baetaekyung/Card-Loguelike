@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d41d69ea8d4dd649abc68e7de5d1d9d, type: 3}
-  m_Name: Keyword_Burn
+  m_Name: Keyword_BLIND
   m_EditorClassIdentifier: 
-  keywords:
-  - Burned
-  - burned
-  - BURNED
-  textColor: {r: 1, g: 0, b: 0, a: 0}
-  description: burned will do dot damage to enemy
+  keyword: BLIND
+  textColor: {r: 0.9164405, g: 1, b: 0, a: 0}
+  description: BLIND make enemy's attack gonna be miss

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f05ec7dbefbe4ab183bb5ab4b57bd, type: 3}
   m_Name: KeywordList
   m_EditorClassIdentifier: 
-  keywordList:
+  keywordSOList:
   - {fileID: 11400000, guid: 07022274d726406498d8df8e3394da9e, type: 2}
+  - {fileID: 11400000, guid: b89600a16a300ea40ab527b294b5c983, type: 2}
+  - {fileID: 11400000, guid: bb7be58e7ccfadc4bb347a1442973a6f, type: 2}
