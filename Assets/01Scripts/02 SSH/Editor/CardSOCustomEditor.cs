@@ -9,6 +9,8 @@ public class CardSOCustomEditor : EditorWindow
     public CardType cardType;
     public CardInfo cardInfo;
 
+    public GameObject _prefab;
+
     [MenuItem("Tools/Utility")]
     public static void ShowWindow()
     {
@@ -38,6 +40,40 @@ public class CardSOCustomEditor : EditorWindow
         {
             CreateScriptableObject();
         }
+        if (GUILayout.Button("Create Prefab"))
+        {
+            CreatePrefab();
+        }
+    }
+
+    private void CreatePrefab()
+    {
+        var asset = CreateInstance<CardDataSO>();
+        asset.cardInfo = cardInfo;
+        asset.cardType = cardType;
+
+        // 파일 경로 생성
+        string path = AssetDatabase.GenerateUniqueAssetPath($"Assets/00SODatas/02 SSH/Created/{cardInfo.cardName}.asset");
+
+        // ScriptableObject 저장
+        AssetDatabase.CreateAsset(asset, path);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        
+        path = AssetDatabase.GenerateUniqueAssetPath($"Assets/03Prefabs/02 SSH/Created/{cardInfo.cardName}prefab.prefab");
+
+        GameObject g = PrefabUtility.SaveAsPrefabAssetAndConnect(
+            _prefab,
+            path,
+            InteractionMode.AutomatedAction
+        );
+        //g.GetComponent<SkillCard>() 이거 넣어줘야함
+        
+        // 새로 생성된 ScriptableObject를 선택하고 포커스
+        Selection.activeObject = asset;
+        EditorUtility.FocusProjectWindow();
+
+        Debug.Log($"Created ScriptableObject at: {path}");
     }
 
     private void CreateScriptableObject()

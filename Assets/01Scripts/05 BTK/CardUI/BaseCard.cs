@@ -22,21 +22,21 @@ public abstract class BaseCard : MonoBehaviour,
     [SerializeField] protected CardDataSO _cardData;
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
-    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //Ä«µåÈ¿°ú ¼³¸í
-    [SerializeField] protected TextMeshProUGUI _cardDescription; //Ä«µå ¼³¸í
+    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //ì¹´ë“œíš¨ê³¼ ì„¤ëª…
+    [SerializeField] protected TextMeshProUGUI _cardDescription; //ì¹´ë“œ ì„¤ëª…
     [SerializeField] protected Image _cardImage;
     [SerializeField] protected RectTransform _cardUseArea;
     protected float _cardUseHeight;
-
+    
     #endregion
 
     #region Hover datas
 
     [Header("Hover datas")]
     [SerializeField] protected float _cardHoverSize;
-    [SerializeField] protected float _hoverHeight; //¸¶¿ì½º °®´Ù´ë¸é À§·Î »ìÂ¦ ¿Ã¶ó¿À°Ô
-    [SerializeField] protected float _hoverAnimationTime = 2f; //¾Ö´Ï¸ŞÀÌ¼Ç »ìÂ¦ ÁÖ±â
-    protected Vector3 _originPosition; //Ã³À½ Ä«µå°¡ À§Ä¡ÇÑ Æ÷Áö¼Ç
+    [SerializeField] protected float _hoverHeight; //ë§ˆìš°ìŠ¤ ê°–ë‹¤ëŒ€ë©´ ìœ„ë¡œ ì‚´ì§ ì˜¬ë¼ì˜¤ê²Œ
+    [SerializeField] protected float _hoverAnimationTime = 2f; //ì• ë‹ˆë©”ì´ì…˜ ì‚´ì§ ì£¼ê¸°
+    protected Vector3 _originPosition; //ì²˜ìŒ ì¹´ë“œê°€ ìœ„ì¹˜í•œ í¬ì§€ì…˜
 
     #endregion
 
@@ -50,7 +50,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     #endregion
 
-    //ÀÌ°Å ÀÎÅÍÆäÀÌ½º ¿À¹ö¶óÀÌµù ¸øÇØ¼­ ¿©±â¿¡ µî·ÏÇØ¼­ »ç¿ë
+    //ì´ê±° ì¸í„°í˜ì´ìŠ¤ ì˜¤ë²„ë¼ì´ë”© ëª»í•´ì„œ ì—¬ê¸°ì— ë“±ë¡í•´ì„œ ì‚¬ìš©
     #region Events
 
     public event Action OnPointerEnterEvent;
@@ -66,7 +66,7 @@ public abstract class BaseCard : MonoBehaviour,
         _card = GetComponent<RectTransform>();
         _cardInfo = _cardData.cardInfo;
         _cardUseHeight = _cardUseArea.rect.height;
-        _originPosition = _card.localPosition; //Ã³À½ À§Ä¡
+        _originPosition = _card.localPosition; //ì²˜ìŒ ìœ„ì¹˜
         Debug.Log(_cardUseHeight);
         InitializeCard();
     }
@@ -149,7 +149,7 @@ public abstract class BaseCard : MonoBehaviour,
 
         if (_card.position.y > _cardUseHeight)
         {
-            Debug.Log("Card »ç¿ë");
+            Debug.Log("Card ì‚¬ìš©");
             OnCardUseEvent?.Invoke();
         }
     }
