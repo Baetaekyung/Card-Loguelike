@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,22 +23,24 @@ public abstract class BaseCard : MonoBehaviour,
     [SerializeField] protected CardDataSO _cardData;
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
-    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //ì¹´ë“œíš¨ê³¼ ì„¤ëª…
-    [SerializeField] protected TextMeshProUGUI _cardDescription; //ì¹´ë“œ ì„¤ëª…
+    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //Ä«µåÈ¿°ú ¼³¸í
+    [SerializeField] protected TextMeshProUGUI _cardDescription; //Ä«µå ¼³¸í
     [SerializeField] protected Image _cardImage;
-    [SerializeField] protected RectTransform _cardUseArea;
-    protected float _cardUseHeight;
-    
+
+    [SerializeField] public RectTransform _cardUseArea;
+    private float _cardUseHeight;
+
     #endregion
 
     #region Hover datas
 
     [Header("Hover datas")]
     [SerializeField] protected float _cardHoverSize;
-    [SerializeField] protected float _hoverHeight; //ë§ˆìš°ìŠ¤ ê°–ë‹¤ëŒ€ë©´ ìœ„ë¡œ ì‚´ì§ ì˜¬ë¼ì˜¤ê²Œ
-    [SerializeField] protected float _hoverAnimationTime = 2f; //ì• ë‹ˆë©”ì´ì…˜ ì‚´ì§ ì£¼ê¸°
-    protected Vector3 _originPosition; //ì²˜ìŒ ì¹´ë“œê°€ ìœ„ì¹˜í•œ í¬ì§€ì…˜
+    [SerializeField] protected float _hoverHeight; //¸¶¿ì½º °®´Ù´ë¸é À§·Î »ìÂ¦ ¿Ã¶ó¿À°Ô
+    [SerializeField] protected float _hoverAnimationTime = 2f; //¾Ö´Ï¸ŞÀÌ¼Ç »ìÂ¦ ÁÖ±â
+    protected Vector3 _originPosition; //Ã³À½ Ä«µå°¡ À§Ä¡ÇÑ Æ÷Áö¼Ç
 
+    private Vector3 _originPosOffset;
     #endregion
 
     protected CardInfo _cardInfo;
@@ -47,10 +50,11 @@ public abstract class BaseCard : MonoBehaviour,
     [Header("Boolean valiables")]
     protected bool _isHovering;
     protected bool _isDragging;
+    protected bool _isUsed;
 
     #endregion
 
-    //ì´ê±° ì¸í„°í˜ì´ìŠ¤ ì˜¤ë²„ë¼ì´ë”© ëª»í•´ì„œ ì—¬ê¸°ì— ë“±ë¡í•´ì„œ ì‚¬ìš©
+    //ÀÌ°Å ÀÎÅÍÆäÀÌ½º ¿À¹ö¶óÀÌµù ¸øÇØ¼­ ¿©±â¿¡ µî·ÏÇØ¼­ »ç¿ë
     #region Events
 
     public event Action OnPointerEnterEvent;
@@ -61,14 +65,21 @@ public abstract class BaseCard : MonoBehaviour,
 
     #endregion
 
+    private bool _isGoaled;
+
     protected virtual void Awake()
     {
         _card = GetComponent<RectTransform>();
         _cardInfo = _cardData.cardInfo;
-        _cardUseHeight = _cardUseArea.rect.height;
-        _originPosition = _card.localPosition; //ì²˜ìŒ ìœ„ì¹˜
-        Debug.Log(_cardUseHeight);
+
+        //_originPosition = _card.localPosition; //Ã³À½ À§Ä¡ //¹«´ÉÇÑ ³ª¸¦ ¿ë¼­ÇÏ½Ã¿À
+        _originPosition = _card.localPosition;
         InitializeCard();
+    }
+
+    private void Start()
+    {
+        _cardUseHeight = _cardUseArea.rect.height; //º»ÀÎÀÌ ¸ğÀÚ¶ó¼­ ¹Ù²Û À§Ä¡ Awake => Start
     }
 
     protected virtual void InitializeCard()
@@ -82,6 +93,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     protected virtual void Update()
     {
+        if (_isUsed) return;
         UpdatePosition();
         UpdateSize();
     }
@@ -121,7 +133,7 @@ public abstract class BaseCard : MonoBehaviour,
             return;
         }
 
-        _card.localPosition = Vector3.Lerp(
+        _card.localPosition =       Vector3.Lerp(
                                     _card.localPosition,
                                     _originPosition,
                                     Time.deltaTime * _hoverAnimationTime);
@@ -129,6 +141,8 @@ public abstract class BaseCard : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (_isUsed) return; //ÀÌ¹Ì ¹ö·ÁÁ³À¸¸é ½ÇÇà ¾ÈµÇ°Ô
+
         if (_isHovering)
         {
             _isDragging = true;
@@ -140,6 +154,8 @@ public abstract class BaseCard : MonoBehaviour,
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (_isUsed) return; //ÀÌ°Å ¹ö·ÁÁö¸é ¸®½ºÆ®¿¡ º» Ä«µå ³Ö¾î¾ß µÇ´Âµ¥ °è¼Ó ´­·ÁÁ®¼­ ¾ö¸¶ µÚÁü
+
         if (_isDragging)
         {
             _isDragging = false;
@@ -149,10 +165,74 @@ public abstract class BaseCard : MonoBehaviour,
 
         if (_card.position.y > _cardUseHeight)
         {
-            Debug.Log("Card ì‚¬ìš©");
+            //Ä«µå»ç¿ë
+            _isUsed = true;
             OnCardUseEvent?.Invoke();
+
+            if(_isUsed) CardManager.Instance.SetCard(this);
         }
     }
+
+    public void UsedVisualizing(Vector2 offsetPos, int offset)
+    {
+        var item = GetComponent<RectTransform>();
+        Vector2 pos = CardManager.Instance.usedCardSortingPosition + (offsetPos * offset);
+
+        if(_isGoaled == false) MoveToGabage(item, pos);
+
+        item.localScale = Vector3.one;
+        //Áö´Â Ä«µå¸¦ ½èÀ¸¸é ¾´°Í Ã³·³ º¸ÀÌ°Ô ÇÔ¼ö¶û²²¿ë
+
+        
+    }
+
+    private void MoveToGabage(RectTransform rectTrm, Vector2 target)
+    {
+        StartCoroutine(MoveCoroutine(rectTrm, target));
+    }
+
+    private IEnumerator MoveCoroutine(RectTransform rectTrm, Vector2 target)
+    {
+        _isGoaled = true;
+
+        Vector2 rectDir;
+        rectDir = rectTrm.anchoredPosition;
+
+        float tc = 0;
+        while(tc < 0.99f)
+        {
+            tc += Time.deltaTime * 2;
+            rectTrm.anchoredPosition = Vector2.Lerp(rectDir, target, tc);
+            rectTrm.eulerAngles = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, 360), tc);
+            yield return new WaitForSeconds(Time.deltaTime * 2);
+        }
+        rectTrm.anchoredPosition = target;
+        rectTrm.eulerAngles = new Vector3(0, 0, 0);
+
+    }
+
+    public int GetSibana()
+    {
+        var item = GetComponent<RectTransform>();
+        return item.GetSiblingIndex();
+    }
+
+    public void SetSibana(int idx)
+    {
+        var item = GetComponent<RectTransform>();
+        item.SetSiblingIndex(idx);
+    }
+
+    public RectTransform GetRect()
+    {
+        var item = GetComponent<RectTransform>();
+        return item;
+    }
+    public void SetOrginePosition(Vector3 target)
+    {
+        _originPosOffset = target;
+    }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
