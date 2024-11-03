@@ -23,12 +23,18 @@ public abstract class BaseCard : MonoBehaviour,
     [SerializeField] protected CardDataSO _cardData;
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
-    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //Ä«µåÈ¿°ú ¼³¸í
-    [SerializeField] protected TextMeshProUGUI _cardDescription; //Ä«µå ¼³¸í
+    [SerializeField] protected TextMeshProUGUI _cardEffectDescription; //ì¹´ë“œíš¨ê³¼ ì„¤ëª…
+    [SerializeField] protected TextMeshProUGUI _cardDescription; //ì¹´ë“œ ì„¤ëª…
     [SerializeField] protected Image _cardImage;
 
     [SerializeField] public RectTransform _cardUseArea;
     private float _cardUseHeight;
+
+    public CardDataSO CardData
+    {
+        get => _cardData;
+        set => _cardData = value;
+    }
 
     #endregion
 
@@ -36,9 +42,9 @@ public abstract class BaseCard : MonoBehaviour,
 
     [Header("Hover datas")]
     [SerializeField] protected float _cardHoverSize;
-    [SerializeField] protected float _hoverHeight; //¸¶¿ì½º °®´Ù´ë¸é À§·Î »ìÂ¦ ¿Ã¶ó¿À°Ô
-    [SerializeField] protected float _hoverAnimationTime = 2f; //¾Ö´Ï¸ŞÀÌ¼Ç »ìÂ¦ ÁÖ±â
-    protected Vector3 _originPosition; //Ã³À½ Ä«µå°¡ À§Ä¡ÇÑ Æ÷Áö¼Ç
+    [SerializeField] protected float _hoverHeight; //ë§ˆìš°ìŠ¤ ê°–ë‹¤ëŒ€ë©´ ìœ„ë¡œ ì‚´ì§ ì˜¬ë¼ì˜¤ê²Œ
+    [SerializeField] protected float _hoverAnimationTime = 2f; //ì• ë‹ˆë©”ì´ì…˜ ì‚´ì§ ì£¼ê¸°
+    protected Vector3 _originPosition; //ì²˜ìŒ ì¹´ë“œê°€ ìœ„ì¹˜í•œ í¬ì§€ì…˜
 
     private Vector3 _originPosOffset;
     #endregion
@@ -54,7 +60,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     #endregion
 
-    //ÀÌ°Å ÀÎÅÍÆäÀÌ½º ¿À¹ö¶óÀÌµù ¸øÇØ¼­ ¿©±â¿¡ µî·ÏÇØ¼­ »ç¿ë
+    //ì´ê±° ì¸í„°í˜ì´ìŠ¤ ì˜¤ë²„ë¼ì´ë”© ëª»í•´ì„œ ì—¬ê¸°ì— ë“±ë¡í•´ì„œ ì‚¬ìš©
     #region Events
 
     public event Action OnPointerEnterEvent;
@@ -72,14 +78,14 @@ public abstract class BaseCard : MonoBehaviour,
         _card = GetComponent<RectTransform>();
         _cardInfo = _cardData.cardInfo;
 
-        //_originPosition = _card.localPosition; //Ã³À½ À§Ä¡ //¹«´ÉÇÑ ³ª¸¦ ¿ë¼­ÇÏ½Ã¿À
+        //_originPosition = _card.localPosition; //ì²˜ìŒ ìœ„ì¹˜ //ë¬´ëŠ¥í•œ ë‚˜ë¥¼ ìš©ì„œí•˜ì‹œì˜¤
         _originPosition = _card.localPosition;
         InitializeCard();
     }
 
     private void Start()
     {
-        _cardUseHeight = _cardUseArea.rect.height; //º»ÀÎÀÌ ¸ğÀÚ¶ó¼­ ¹Ù²Û À§Ä¡ Awake => Start
+        _cardUseHeight = _cardUseArea.rect.height; //ë³¸ì¸ì´ ëª¨ìë¼ì„œ ë°”ê¾¼ ìœ„ì¹˜ Awake => Start
     }
 
     protected virtual void InitializeCard()
@@ -141,7 +147,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (_isUsed) return; //ÀÌ¹Ì ¹ö·ÁÁ³À¸¸é ½ÇÇà ¾ÈµÇ°Ô
+        if (_isUsed) return; //ì´ë¯¸ ë²„ë ¤ì¡Œìœ¼ë©´ ì‹¤í–‰ ì•ˆë˜ê²Œ
 
         if (_isHovering)
         {
@@ -154,7 +160,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (_isUsed) return; //ÀÌ°Å ¹ö·ÁÁö¸é ¸®½ºÆ®¿¡ º» Ä«µå ³Ö¾î¾ß µÇ´Âµ¥ °è¼Ó ´­·ÁÁ®¼­ ¾ö¸¶ µÚÁü
+        if (_isUsed) return; //ì´ê±° ë²„ë ¤ì§€ë©´ ë¦¬ìŠ¤íŠ¸ì— ë³¸ ì¹´ë“œ ë„£ì–´ì•¼ ë˜ëŠ”ë° ê³„ì† ëˆŒë ¤ì ¸ì„œ ì—„ë§ˆ ë’¤ì§
 
         if (_isDragging)
         {
@@ -165,7 +171,7 @@ public abstract class BaseCard : MonoBehaviour,
 
         if (_card.position.y > _cardUseHeight)
         {
-            //Ä«µå»ç¿ë
+            //ì¹´ë“œì‚¬ìš©
             _isUsed = true;
             OnCardUseEvent?.Invoke();
 
@@ -181,7 +187,7 @@ public abstract class BaseCard : MonoBehaviour,
         if(_isGoaled == false) MoveToGabage(item, pos);
 
         item.localScale = Vector3.one;
-        //Áö´Â Ä«µå¸¦ ½èÀ¸¸é ¾´°Í Ã³·³ º¸ÀÌ°Ô ÇÔ¼ö¶û²²¿ë
+        //ì§€ëŠ” ì¹´ë“œë¥¼ ì¼ìœ¼ë©´ ì“´ê²ƒ ì²˜ëŸ¼ ë³´ì´ê²Œ í•¨ìˆ˜ë‘ê»˜ìš©
 
         
     }

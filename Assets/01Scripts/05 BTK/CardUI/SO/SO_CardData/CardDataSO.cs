@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public enum CardType
 {
     /// <enum name="CardType">
-    /// ÀÓ½Ã °ª ÃßÈÄ ±âÈ¹À» ÅëÇÏ¿© º¯°æ
+    /// ì„ì‹œ ê°’ ì¶”í›„ ê¸°íšì„ í†µí•˜ì—¬ ë³€ê²½
     /// </enum>
     Passive,
     Skill,
@@ -29,7 +29,7 @@ public struct CardInfo
     public string cardDescription;
     public string cardEffectDescription;
     public Sprite cardSprite;
-    public int cost; //Çàµ¿·Â
+    public int cost; //í–‰ë™ë ¥
     public CardRarity cardRarity;
 }
 
@@ -38,7 +38,6 @@ public struct CardInfo
 [CreateAssetMenu(fileName = "CardData_", menuName = "SO/CardDataSO/CardData")]
 public class CardDataSO : ScriptableObject
 {
-    public CardType cardType; //½ºÅ³Ä«µå³Ä, ÀÏ¹İ Ä«µå³Ä
+    public CardType cardType; //ìŠ¤í‚¬ì¹´ë“œëƒ, ì¼ë°˜ ì¹´ë“œëƒ
     public CardInfo cardInfo;
-    public KeywordListSO keywordList;
 }
