@@ -11,7 +11,7 @@ public class KeywordPanel : MonoBehaviour
     [SerializeField] private BaseCard _card;
 
     private CanvasGroup _canvasGroup;
-    public string _description; //BaseCard에서 data가져와서 description쓰기 현재는 Test용으로 public
+    private string _description;
     private string _completeDescription = "";
 
     private List<string> _keywords = new List<string>();
@@ -23,6 +23,7 @@ public class KeywordPanel : MonoBehaviour
         _completeDescription = "";
         _canvasGroup = GetComponent<CanvasGroup>();
         _keywordList.Initialize();
+        _description = _card.GetCardData().cardInfo.cardDescription;
     }
 
     //설명 초기화
