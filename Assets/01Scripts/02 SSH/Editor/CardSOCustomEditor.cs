@@ -40,7 +40,7 @@ public class CardSOCustomEditor : EditorWindow
         {
             CreateScriptableObject();
         }
-        if (GUILayout.Button("Create Prefab"))
+        if (GUILayout.Button("Create Prefab and SO"))
         {
             CreatePrefab();
         }
@@ -48,33 +48,47 @@ public class CardSOCustomEditor : EditorWindow
 
     private void CreatePrefab()
     {
+        if (_prefab == null)
+        {
+            Debug.LogError("Prefab reference is null. Please assign a prefab.");
+            return;
+        }
+
         var asset = CreateInstance<CardDataSO>();
         asset.cardInfo = cardInfo;
         asset.cardType = cardType;
 
-        // 파일 경로 생성
         string path = AssetDatabase.GenerateUniqueAssetPath($"Assets/00SODatas/02 SSH/Created/{cardInfo.cardName}.asset");
 
-        // ScriptableObject 저장
         AssetDatabase.CreateAsset(asset, path);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        
+
         path = AssetDatabase.GenerateUniqueAssetPath($"Assets/03Prefabs/02 SSH/Created/{cardInfo.cardName}prefab.prefab");
 
-        GameObject g = PrefabUtility.SaveAsPrefabAssetAndConnect(
-            _prefab,
-            path,
-            InteractionMode.AutomatedAction
-        );
-        //g.GetComponent<SkillCard>() 이거 넣어줘야함
-        
-        // 새로 생성된 ScriptableObject를 선택하고 포커스
+        // Instantiate a new prefab instance
+        GameObject g = PrefabUtility.InstantiatePrefab(_prefab) as GameObject;
+        if (g != null)
+        {
+            g.GetComponent<SkillCard>().CardData = asset;
+            PrefabUtility.SaveAsPrefabAssetAndConnect(
+                g,
+                path,
+                InteractionMode.AutomatedAction
+            );
+            DestroyImmediate(g); // Instantiate된 프리팹은 에디터에서 제거
+        }
+        else
+        {
+            Debug.LogError("Failed to instantiate prefab.");
+        }
+
         Selection.activeObject = asset;
         EditorUtility.FocusProjectWindow();
 
         Debug.Log($"Created ScriptableObject at: {path}");
     }
+
 
     private void CreateScriptableObject()
     {

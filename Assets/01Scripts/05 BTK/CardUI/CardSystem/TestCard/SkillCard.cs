@@ -11,7 +11,7 @@ public class SkillCard : BaseCard
 
     protected virtual void SkillExcute()
     {
-        Debug.Log("½ºÅ³ »ç¿ë");
+        Debug.Log("ìŠ¤í‚¬ ì‚¬ìš©");
         _skillTypeEffect.Play();
     }
 

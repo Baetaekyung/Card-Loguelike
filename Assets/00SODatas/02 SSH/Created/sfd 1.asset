@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fed976dd6dc3a240ad0758843525808, type: 3}
-  m_Name: WAT
+  m_Name: sfd 1
   m_EditorClassIdentifier: 
   cardType: 0
   cardInfo:
-    cardName: WAT
-    cardDescription: RAW
+    cardName: sfd
+    cardDescription: sdf
     cardEffectDescription: 
-    cardSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    cardSprite: {fileID: 0}
     cost: 2
     cardRarity: 0
-  keywordList: {fileID: 0}
