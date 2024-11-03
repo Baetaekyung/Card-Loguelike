@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class SkillCard : BaseCard
 {
-    [SerializeField] private ParticleSystem _skillTypeEffect;
-
     protected virtual void OnEnable()
     {
         OnCardUseEvent += SkillExcute;
@@ -11,8 +9,7 @@ public class SkillCard : BaseCard
 
     protected virtual void SkillExcute()
     {
-        Debug.Log("ìŠ¤í‚¬ ì‚¬ìš©");
-        _skillTypeEffect.Play();
+        Debug.Log("½ºÅ³ »ç¿ë");
     }
 
     protected virtual void OnDestroy()

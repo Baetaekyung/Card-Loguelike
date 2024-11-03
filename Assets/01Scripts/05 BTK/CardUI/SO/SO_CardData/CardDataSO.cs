@@ -27,7 +27,6 @@ public struct CardInfo
 {
     public string cardName;
     public string cardDescription;
-    public string cardEffectDescription;
     public Sprite cardSprite;
     public int cost; //행동력
     public CardRarity cardRarity;
