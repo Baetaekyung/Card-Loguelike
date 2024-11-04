@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CardManager : MonoBehaviour
 {
     public static CardManager Instance;
 
-    private List<BaseCard> _cardList = new();
-    private List<BaseCard> _usedCardList = new();
-    private List<BaseCard> _haveCardList = new();
-    private Dictionary<CardType, BaseCard> _card;
+    public CardDrawer cardDrawer;
 
-    [SerializeField] private float _verticalSpacing;
+    public List<CardSO> haveCards = new();          //player have cards
+    public List<BaseCard> deckCardList = new();     //chosen deck
+    public List<CardObject> fieldCardList = new();  //card to alignment
+    private List<CardObject> _usedCardList = new(); //used card
+    public Dictionary<string, CardSO> nameByDictionary = new();
+
+    [SerializeField] private float _verticalSpacing; //Card vertical space
     [SerializeField] private float _minVerticalSpacing = 40f;
-    [SerializeField] private Vector2 _usedCardSortingPosition;
-    [SerializeField] private Vector2 _usedCardOffset;
+    [SerializeField] private Vector2 _usedCardSortingPosition; //used card on this position
+    [SerializeField] private Vector2 _usedCardOffset; //used card need to offset for pile effect
 
     private void Awake()
     {
@@ -21,8 +25,28 @@ public class CardManager : MonoBehaviour
         else Destroy(Instance.gameObject);
     }
 
+    private void Start()
+    {
+        haveCards = CardSaveLoad.Instance.LoadHavingCard();
+
+        for (int i = 0; i < haveCards.Count; i++)
+        {
+            if(!nameByDictionary.ContainsKey(haveCards[i].cardUI.CardInfo.cardName))
+                nameByDictionary.Add(haveCards[i].cardUI.CardInfo.cardName, haveCards[i]);
+        }
+    }
+
     private void Update()
     {
+        //Debug
+        if(Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            deckCardList = CardSaveLoad.Instance.LoadCurrentDeck();
+
+            cardDrawer.InitializeDeck(deckCardList);
+            return;
+        }
+
         AlignmentCards();
         SortingUsedCards();
     }
@@ -36,7 +60,7 @@ public class CardManager : MonoBehaviour
         {
             offset++;
             item.UsedVisualizing(_usedCardOffset, offset);
-            //이거 왜 두번 함?
+            //why it do twice?
             item.SetSiblingIndex(0);
             item.SetSiblingIndex(offset - 1);
         }
@@ -44,24 +68,34 @@ public class CardManager : MonoBehaviour
 
     public void AlignmentCards()
     {
-        if (_haveCardList.Count == 0) return;
+        if (fieldCardList.Count == 0) return;
 
-        //카드가 많아짐에 따라서 점점 간격이 감소하도록
-        float offsetX = _verticalSpacing - _haveCardList.Count * 2f;
+        //if card increase spacing will be decrease
+        float offsetX = _verticalSpacing - fieldCardList.Count * 2f;
 
-        //최소한의 간격을 지녀야 구별이 가능함
+        //to separate what card
         offsetX = Mathf.Clamp(offsetX, _minVerticalSpacing, offsetX);
 
-        for (int i = 0; i < _haveCardList.Count; i++)
+        for(int i = 0; i < fieldCardList.Count; i++)
         {
-            float positionX = (i - (_haveCardList.Count - 1) / 2f) * offsetX;
-            _haveCardList[i].SetAlignmentPosition(new Vector3(positionX, 0, 0));
+            if (fieldCardList[i].IsUsed)
+            {
+                fieldCardList.RemoveAt(i);
+                return;
+            }
+            float positionX = (i - (fieldCardList.Count - 1) / 2f) * offsetX;
+            fieldCardList[i].SetAlignmentPosition(new Vector3(positionX, 0, 0));
+            fieldCardList[i].SetHirachyIndex(i);
         }
     }
 
-    public void AddedToHaveCard(BaseCard addedCard) => _haveCardList.Add(addedCard);
+    public void AddToHaveCard(CardSO cardToAdd) => haveCards.Add(cardToAdd);
 
-    public void SetUsedCard(BaseCard card) => _usedCardList.Add(card);
+    public void AddToFieldCard(BaseCard cardToAdd) => fieldCardList.Add(cardToAdd as CardObject);
+
+    public void AddToDeckCard(BaseCard cardToAdd) => deckCardList.Add(cardToAdd);
+
+    public void SetUsedCard(BaseCard card) => _usedCardList.Add(card as CardObject);
 
     public Vector2 GetUsedCardPosition() => _usedCardSortingPosition;
 }

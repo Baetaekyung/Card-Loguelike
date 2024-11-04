@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkillCard : BaseCard
+public class SkillCard : CardObject
 {
     protected virtual void OnEnable()
     {
