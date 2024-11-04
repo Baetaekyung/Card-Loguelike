@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public struct CardSaveData
+public class CardSaveData
 {
-    public List<CardSO> cardSODatas;
-    public List<BaseCard> resentDeck;
+    public CardSO[] cardSODatas;
+    public BaseCard[] resentDeck;
 }
 
 public class CardSaveLoad : MonoBehaviour
@@ -16,6 +17,8 @@ public class CardSaveLoad : MonoBehaviour
 
     public List<CardSO> starterCardPack = new();
     public List<BaseCard> starterDeck = new();
+
+    private CardSaveData _data = new CardSaveData();
 
     private void Awake()
     {
@@ -26,11 +29,10 @@ public class CardSaveLoad : MonoBehaviour
     public void SaveHavingCard(List<CardSO> haveCards)
     {
         string path = Path.Combine(Application.persistentDataPath, "haveCards.json");
-        CardSaveData data = new CardSaveData();
 
-        data.cardSODatas = haveCards;
+        _data.cardSODatas = haveCards.ToArray();
 
-        string json = JsonUtility.ToJson(data, true);
+        string json = JsonUtility.ToJson(_data, true);
 
         File.WriteAllText(path, json);
     }
@@ -39,30 +41,35 @@ public class CardSaveLoad : MonoBehaviour
     {
         string path = Path.Combine(Application.persistentDataPath, "haveCards.json");
 
-        CardSaveData data = new CardSaveData();
         if (File.Exists(path))
         {
             string jsonData = File.ReadAllText(path);
-            data = JsonUtility.FromJson<CardSaveData>(jsonData);
+            _data = JsonUtility.FromJson<CardSaveData>(jsonData);
+
+            foreach(var data in _data.cardSODatas)
+            {
+                
+            }
         }
         else
         {
-            data.cardSODatas = starterCardPack;
+            Debug.Log("Generated new haveCard data");
+            _data.cardSODatas = starterCardPack.ToArray();
             SaveHavingCard(starterCardPack);
         }
 
-        return data.cardSODatas;
+        return _data.cardSODatas.ToList();
     }
 
     public void SaveCurrentDeck(List<BaseCard> choicedDeck)
     {
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
-        CardSaveData data = new CardSaveData();
-        data.resentDeck = choicedDeck;
+        _data.resentDeck = choicedDeck.ToArray();
 
-        string json = JsonUtility.ToJson(data, true);
+        string json = JsonUtility.ToJson(_data, true);
 
+        Debug.Log($"Save current Deck at {path}");
         File.WriteAllText(path, json);
     }
 
@@ -70,18 +77,17 @@ public class CardSaveLoad : MonoBehaviour
     {
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
-        CardSaveData data = new CardSaveData();
         if(File.Exists(path))
         {
             string jsonData = File.ReadAllText(path);
-            data = JsonUtility.FromJson<CardSaveData>(jsonData);
+            _data = JsonUtility.FromJson<CardSaveData>(jsonData);
         }
         else
         {
-            data.resentDeck = starterDeck;
+            _data.resentDeck = starterDeck.ToArray();
             SaveCurrentDeck(starterDeck);
         }
 
-        return data.resentDeck;
+        return _data.resentDeck.ToList();
     }
 }

@@ -47,6 +47,12 @@ public class CardManager : MonoBehaviour
             return;
         }
 
+        if(Keyboard.current.uKey.wasPressedThisFrame)
+        {
+            CardSaveLoad.Instance.SaveCurrentDeck(deckCardList);
+            return;
+        }
+
         AlignmentCards();
         SortingUsedCards();
     }
