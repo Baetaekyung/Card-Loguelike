@@ -11,12 +11,12 @@ public class Agent : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     private Animator animator;
     
-    private Vector3 _attackDestination;
     private Vector3 _startPosition;
     private Vector3 _LastPosition;
     private Vector3 _nextPathPoint;
 
     private BehaviorGraphAgent _behaviorGraphAgent;
+    private State enemyState;
     
     private void Start()
     {
@@ -25,6 +25,7 @@ public class Agent : MonoBehaviour
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         
         _LastPosition = transform.position;
+        _behaviorGraphAgent.GetVariable("State" , out BlackboardVariable<State> enemyState);
     }
 
     private void Update()
@@ -36,7 +37,6 @@ public class Agent : MonoBehaviour
         if (isManualRotate)
         {
             Vector3 moveDelta = transform.forward * MAX_ATK_DISTANCE;
-            _attackDestination = _startPosition + moveDelta;
             FaceToTarget(target.transform.position);
         }
         
@@ -57,25 +57,28 @@ public class Agent : MonoBehaviour
         float speed = velocity.magnitude;
         if (speed > 0.5f)
         {
-            animator.SetFloat("Speed", speed);
+            animator.SetFloat("Speed", speed,0.1f , Time.deltaTime);
         }
         else
         {
-            animator.SetFloat("Speed", 0);
+            animator.SetFloat("Speed", 0,0.1f , Time.deltaTime);
         }
     }
     
 
-    public void FaceToTarget(Vector3 target)
+    public void FaceToTarget(Vector3 _lookDir)
     {
-        Vector3 direction = target - transform.position;
-    
-        if (direction != Vector3.zero)
+        bool enterBattleMode = enemyState == State.Attack || enemyState == State.Chase;
+        Vector3 targetPos = enterBattleMode ?
+            target.position - transform.position : _lookDir - transform.position;
+        targetPos.Normalize();
+                
+        if (targetPos != Vector3.zero)
         {
-            Quaternion targetRot = Quaternion.LookRotation(direction);
+            Quaternion targetRot = Quaternion.LookRotation(targetPos);
             Vector3 currentEulerAngle = transform.rotation.eulerAngles;
 
-            float yRotation = Mathf.LerpAngle(currentEulerAngle.y, targetRot.eulerAngles.y, 10 * Time.deltaTime);
+            float yRotation = Mathf.LerpAngle(currentEulerAngle.y, targetRot.eulerAngles.y, 5 * Time.deltaTime);
 
             transform.rotation = Quaternion.Euler(currentEulerAngle.x, yRotation, currentEulerAngle.z);
         }
