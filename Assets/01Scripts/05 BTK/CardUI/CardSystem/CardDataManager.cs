@@ -8,15 +8,15 @@ using UnityEngine;
 public class CardSaveData
 {
     public CardSO[] cardSODatas;
-    public BaseCard[] resentDeck;
+    public CardSO[] resentDeck;
 }
 
-public class CardSaveLoad : MonoBehaviour
+public class CardDataManager : MonoBehaviour
 {
-    public static CardSaveLoad Instance;
+    public static CardDataManager Instance;
 
     public List<CardSO> starterCardPack = new();
-    public List<BaseCard> starterDeck = new();
+    public List<CardSO> starterDeck = new();
 
     private CardSaveData _data = new CardSaveData();
 
@@ -61,7 +61,7 @@ public class CardSaveLoad : MonoBehaviour
         return _data.cardSODatas.ToList();
     }
 
-    public void SaveCurrentDeck(List<BaseCard> choicedDeck)
+    public void SaveCurrentDeck(List<CardSO> choicedDeck)
     {
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
@@ -73,7 +73,7 @@ public class CardSaveLoad : MonoBehaviour
         File.WriteAllText(path, json);
     }
 
-    public List<BaseCard> LoadCurrentDeck()
+    public List<CardSO> LoadCurrentDeck()
     {
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
