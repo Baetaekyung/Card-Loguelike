@@ -4,21 +4,46 @@ using UnityEngine;
 public class CardHorizontalViewer : MonoBehaviour
 {
     [SerializeField] private RectTransform _spawnTrm;
-    [SerializeField] private float _verticalSpacing;
-    private List<CardUI> _selectableCards = new();
+    [SerializeField] private DeckHorizontalViewer _deckHorizontalViewer;
 
-    private void Start()
+    private CardManager cardManager => CardManager.Instance;
+
+    private List<CardUI> _cardUIs = new List<CardUI>();
+
+    private int _onDeckCardCnt = 0;
+
+    private void Update()
     {
-        SetCardToViewer();
+        if(cardManager.deckCnt != _onDeckCardCnt)
+        {
+            SetCardToViewer();
+        }
     }
 
     private void SetCardToViewer()
     {
-        for (int i = 0; i < CardManager.Instance.haveCards.Count; i++)
+        if(_cardUIs.Count != 0)
         {
-            CardUI cardUI = Instantiate(CardManager.Instance.haveCards[i].cardUI, _spawnTrm, false);
-            cardUI.InitializeCard();
-            _selectableCards.Add(cardUI);
+            for(int i = 0; i < _cardUIs.Count; i++)
+            {
+                Destroy(_cardUIs[i].gameObject);
+            }
+        }
+
+        _cardUIs.Clear();
+
+        for(int i = 0; i < cardManager.haveCards.Count; i++)
+        {
+            if (!cardManager.haveCards[i].cardUI.isOnDeck)
+            {
+                CardUI cardUI = Instantiate(cardManager.haveCards[i].cardUI, _spawnTrm);
+                cardUI.InitializeCard();
+                _cardUIs.Add(cardUI);
+            }
+            else
+            {
+                _onDeckCardCnt++;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 521225246194064784}
   - component: {fileID: 5624961091500055230}
-  - component: {fileID: 3440531195566670046}
+  - component: {fileID: 3043744946144762626}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -45,15 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50207ee8d229d064f991cbed0ae4af3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDeck: {fileID: 0}
-  haveCardList: []
+  cardDrawer: {fileID: 0}
+  haveCards: []
   deckCardList: []
   fieldCardList: []
   _verticalSpacing: 80
   _minVerticalSpacing: 30
   _usedCardSortingPosition: {x: 780, y: 0}
   _usedCardOffset: {x: 0, y: 3}
---- !u!114 &3440531195566670046
+--- !u!114 &3043744946144762626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,14 +62,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5936428249149029669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047f4721dd3ed8247aefd9e1d14220e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 53823621c4cb0d846be5db900ac22fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   starterCardPack:
-  - {fileID: 3218535560560868212, guid: a7d265f0727647f43aee86b128ade2dd, type: 3}
-  - {fileID: 3218535560560868212, guid: a7d265f0727647f43aee86b128ade2dd, type: 3}
+  - {fileID: 11400000, guid: 1fb7e1445a7d5744b85a479e18d242e6, type: 2}
   starterDeck:
-  - {fileID: 6349669213844082325, guid: 28ad95ad77bbfad42a6857ea96e43db8, type: 3}
-  - {fileID: 6349669213844082325, guid: 28ad95ad77bbfad42a6857ea96e43db8, type: 3}
-  - {fileID: 6349669213844082325, guid: 28ad95ad77bbfad42a6857ea96e43db8, type: 3}
-  - {fileID: 6349669213844082325, guid: 28ad95ad77bbfad42a6857ea96e43db8, type: 3}
+  - {fileID: 11400000, guid: 1fb7e1445a7d5744b85a479e18d242e6, type: 2}

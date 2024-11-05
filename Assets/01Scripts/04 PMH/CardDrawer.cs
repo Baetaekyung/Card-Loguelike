@@ -4,11 +4,11 @@ using UnityEngine.EventSystems;
 
 public class CardDrawer : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] private List<BaseCard> _deck = new();
+    [SerializeField] private List<CardSO> _deck = new();
     [SerializeField] private RectTransform spawnTrm;
     [SerializeField] private RectTransform cardUseArea;
 
-    public void InitializeDeck(List<BaseCard> deck)
+    public void InitializeDeck(List<CardSO> deck)
     {
         _deck = deck;
         ShuffleDeck();
@@ -21,7 +21,7 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         for(int i = 0; i < _deck.Count; i++)
         {
             int temp = Random.Range(0, _deck.Count);
-            BaseCard tempCard = _deck[temp];
+            CardSO tempCard = _deck[temp];
             _deck[temp] = _deck[i];
             _deck[i] = tempCard;
         }
@@ -29,12 +29,12 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        BaseCard randomCard = GetCardFromDeck();
+        CardSO randomCard = GetCardFromDeck();
 
         if (randomCard == null) return;
 
         CardObject cardObj = Instantiate(
-            randomCard, spawnTrm.localPosition, Quaternion.identity) as CardObject;
+            randomCard.cardObject, spawnTrm.localPosition, Quaternion.identity) as CardObject;
         cardObj.transform.SetParent(spawnTrm);
 
         cardObj.SetCardUseArea(cardUseArea);
@@ -42,11 +42,11 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         CardManager.Instance.AddToFieldCard(cardObj);
     }
 
-    private BaseCard GetCardFromDeck()
+    private CardSO GetCardFromDeck()
     {
         if (_deck.Count == 0) return null;
 
-        BaseCard card = _deck[0];
+        CardSO card = _deck[0];
         _deck.RemoveAt(0);
         _deck.Add(card);
 

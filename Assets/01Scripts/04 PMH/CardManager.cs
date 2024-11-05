@@ -9,7 +9,8 @@ public class CardManager : MonoBehaviour
     public CardDrawer cardDrawer;
 
     public List<CardSO> haveCards = new();          //player have cards
-    public List<BaseCard> deckCardList = new();     //chosen deck
+    public List<CardSO> deckCardList = new();     //chosen deck
+    public int deckCnt = 0;
     public List<CardObject> fieldCardList = new();  //card to alignment
     private List<CardObject> _usedCardList = new(); //used card
     public Dictionary<string, CardSO> nameByDictionary = new();
@@ -27,7 +28,10 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        haveCards = CardSaveLoad.Instance.LoadHavingCard();
+        haveCards = CardDataManager.Instance.LoadHavingCard();
+        deckCardList = CardDataManager.Instance.LoadCurrentDeck();
+
+        deckCnt = deckCardList.Count;
 
         for (int i = 0; i < haveCards.Count; i++)
         {
@@ -39,17 +43,9 @@ public class CardManager : MonoBehaviour
     private void Update()
     {
         //Debug
-        if(Keyboard.current.gKey.wasPressedThisFrame)
+        if (Keyboard.current.uKey.wasPressedThisFrame)
         {
-            deckCardList = CardSaveLoad.Instance.LoadCurrentDeck();
-
-            cardDrawer.InitializeDeck(deckCardList);
-            return;
-        }
-
-        if(Keyboard.current.uKey.wasPressedThisFrame)
-        {
-            CardSaveLoad.Instance.SaveCurrentDeck(deckCardList);
+            CardDataManager.Instance.SaveCurrentDeck(deckCardList);
             return;
         }
 
@@ -99,7 +95,7 @@ public class CardManager : MonoBehaviour
 
     public void AddToFieldCard(BaseCard cardToAdd) => fieldCardList.Add(cardToAdd as CardObject);
 
-    public void AddToDeckCard(BaseCard cardToAdd) => deckCardList.Add(cardToAdd);
+    public void AddToDeckCard(CardSO cardToAdd) => deckCardList.Add(cardToAdd);
 
     public void SetUsedCard(BaseCard card) => _usedCardList.Add(card as CardObject);
 

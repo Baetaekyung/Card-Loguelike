@@ -1,17 +1,23 @@
 public class CardUI : BaseCard
 {
+    public bool isOnDeck = false;
+
     private void OnEnable()
     {
         OnPointerDownEvent += OnPointerDownHandler;
+        isOnDeck = false;
     }
 
     private void OnPointerDownHandler()
     {
         CardManager cardManager = CardManager.Instance;
 
-        cardManager.deckCardList.Add(cardManager.nameByDictionary[CardInfo.cardName].cardObject);
-        
-        Destroy(gameObject);
+        isOnDeck = !isOnDeck;
+
+        if(isOnDeck)
+            cardManager.deckCnt++;
+        else
+            cardManager.deckCnt--;
     }
 
     protected override void UpdatePosition()
