@@ -60,8 +60,25 @@ MonoBehaviour:
   _cardHoverSize: 1.05
   _hoverHeight: 20
   _hoverAnimationTime: 8
-  _cardUseArea: {fileID: 0}
+  _cardUseArea: {fileID: 3295227866271163175}
   _usedCardAnimationSpeed: 3
+  _keywordPanel: {fileID: 6889149074163023885}
+  _keywordEffectList: {fileID: 11400000, guid: ffb75517124005c4195783151c2a0e79, type: 2}
+  _skillEffects:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 4012f0d4bed1bac468e29f5c54659723, type: 2}
+        m_TargetAssemblyTypeName: GetSkillEffect, Assembly-CSharp
+        m_MethodName: ExcuteEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &311120583815576147
 GameObject:
   m_ObjectHideFlags: 0

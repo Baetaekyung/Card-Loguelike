@@ -15,8 +15,8 @@ MonoBehaviour:
   cardType: 1
   cardInfo:
     cardName: SkillTest
-    cardDescription: This card have BURNED
+    cardDescription: This card HEAL my hp 10%
     cardSprite: {fileID: 0}
     cost: 3
     cardRarity: 0
-  keywordList: {fileID: 0}
+  keywordList: {fileID: 11400000, guid: 2421ff369a232c844a7611aaf72c8770, type: 2}

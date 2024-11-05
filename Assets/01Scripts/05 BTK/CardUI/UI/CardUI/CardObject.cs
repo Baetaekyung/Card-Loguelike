@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,12 +13,15 @@ public class CardObject : BaseCard
 
     [SerializeField] private float _usedCardAnimationSpeed = 3f; //speed of go to used deck
 
+    protected List<string> _keywords =new List<string>();
+    [SerializeField] private KeywordPanel _keywordPanel;
+
     protected bool _isDragging;
     protected bool _isUsed;
     protected bool _isGoaled;
     public bool IsUsed => _isUsed;
 
-    private void Start()
+    protected void Start()
     {
         _cardUseHeight = _cardUseArea.rect.height;
 
@@ -31,6 +35,8 @@ public class CardObject : BaseCard
     protected override void Update()
     {
         if (IsUsed) return;
+
+        _keywords = _keywordPanel.Keywords;
         UpdatePosition();
         UpdateSize();
     }
