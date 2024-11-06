@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Data.Common;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -19,5 +21,18 @@ public class Bullet : MonoBehaviour
         
         _rigidbody.linearVelocity = velocity * power;
         _rigidbody.rotation = Quaternion.LookRotation(velocity);
+        
+        StartCoroutine(IDestroy());
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator IDestroy()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }

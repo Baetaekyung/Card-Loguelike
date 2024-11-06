@@ -6,21 +6,22 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Agent Moveto Circle", story: "[Agent] MoveTo [Target] Circle Radius is [attackRadius]", category: "Action", id: "f3abb3e9c41ecafe5b0ff5fce0c3ba14")]
+[NodeDescription(name: "Agent Moveto Circle", story: "[Agent] MoveTo [Target] In Circle and stopOffset is [AttackRadius]", category: "Action", id: "f3abb3e9c41ecafe5b0ff5fce0c3ba14")]
 public partial class AgentMovetoCircleAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<Transform> Target;
     [SerializeReference] public BlackboardVariable<float> AttackRadius;
+    
     private NavMeshAgent _navMeshAgent;
     private Agent _agent;
     
     AIManager aiManager; 
-    private float radius = -1;
-    
-    
+        
     protected override Status OnStart()
     {
+        #region Initialize
+       
         if (aiManager == null)
         {
             aiManager = AIManager.Instance;
@@ -36,10 +37,7 @@ public partial class AgentMovetoCircleAction : Action
             _agent = Agent.Value.GetComponent<Agent>();
         }
 
-        if (radius < 0)
-        {
-            radius = AIManager.Instance.Radius;
-        }
+        #endregion
         
         return Status.Running;
     }
@@ -55,15 +53,17 @@ public partial class AgentMovetoCircleAction : Action
       
         int agentCount = aiManager.GetAgentCount();
         int agentIndex = aiManager.GetAgentIndex(_agent);
+        //Find Enemy Position in Circle
+        
+        int layer = agentIndex; 
 
         Vector3 origin = Target.Value.transform.position;
         Vector3 newPosition = new Vector3
         (
-            origin.x + radius * Mathf.Cos(2 * Mathf.PI * agentIndex / agentCount),
+            origin.x + AttackRadius.Value * Mathf.Cos(2 * Mathf.PI * (agentIndex ) / agentCount),
             origin.y,
-            origin.z + radius * Mathf.Sin(2 * Mathf.PI * agentIndex / agentCount)
+            origin.z + AttackRadius.Value * Mathf.Sin(2 * Mathf.PI * (agentIndex) / agentCount)
         );
-        
         _navMeshAgent.SetDestination(newPosition);
         return Status.Running;
     }

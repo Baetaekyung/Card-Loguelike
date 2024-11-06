@@ -1,14 +1,26 @@
 using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UIElements;
+
+
+
 
 public class AIManager : MonoSingleton<AIManager>
 {
-    [SerializeField] private Agent[] agents;
-    [SerializeField] private float radius;
-    public float Radius => radius;
-    public int GetAgentCount() => agents.Length;
-    public int GetAgentIndex(Agent agent) => Array.IndexOf(agents, agent);
+    [SerializeField] private List<Agent> agents; 
+    public int GetAgentCount() => agents.Count;
+    public int GetAgentIndex(Agent agent) => Array.IndexOf(agents.ToArray(), agent);
 
+    protected override void Awake()
+    {
+        base.Awake();
 
+        int index = transform.childCount;
+        for (int i = 0; i < index; i++)
+        {
+            agents.Add(transform.GetChild(i).GetComponent<Agent>());
+        }
+        
+    }
 }

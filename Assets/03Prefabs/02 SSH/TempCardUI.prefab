@@ -130,13 +130,13 @@ MonoBehaviour:
   _cardData: {fileID: 11400000, guid: 309f4db60296be14bbf642a72c6fd6f9, type: 2}
   _costText: {fileID: 6153965228071088397}
   _cardNameText: {fileID: 3662836502938645621}
-  _cardEffectDescription: {fileID: 1694797979672260083}
   _cardDescription: {fileID: 1230131817175777053}
   _cardImage: {fileID: 1224556021366095611}
   _cardUseArea: {fileID: 0}
   _cardHoverSize: 1.05
   _hoverHeight: 60
   _hoverAnimationTime: 8
+  _usedCardAimationSpeed: 3
 --- !u!1 &1829186440318206234
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +385,6 @@ MonoBehaviour:
   _keywordList: {fileID: 11400000, guid: 2421ff369a232c844a7611aaf72c8770, type: 2}
   _descriptionText: {fileID: 1230131817175777053}
   _card: {fileID: 7730312793535711541}
-  _description: BURNED and ICED and BLIND
 --- !u!225 &4639314430279707185
 CanvasGroup:
   m_ObjectHideFlags: 0
