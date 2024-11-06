@@ -32,6 +32,7 @@ public class CardManager : MonoBehaviour
         deckCardList = CardDataManager.Instance.LoadCurrentDeck();
 
         deckCnt = deckCardList.Count;
+        cardDrawer.InitializeDeck(deckCardList);
 
         for (int i = 0; i < haveCards.Count; i++)
         {

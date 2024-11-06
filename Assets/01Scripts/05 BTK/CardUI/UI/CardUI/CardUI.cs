@@ -14,15 +14,15 @@ public class CardUI : BaseCard
 
         isOnDeck = !isOnDeck;
 
-        if(isOnDeck)
-            cardManager.deckCnt++;
-        else
-            cardManager.deckCnt--;
+        //if(isOnDeck)
+            //cardManager.deckCnt++;
+        //else
+            //cardManager.deckCnt--;
     }
 
     protected override void UpdatePosition()
     {
-        //dont update position
+        base.UpdatePosition();
     }
 
     private void OnDestroy()
