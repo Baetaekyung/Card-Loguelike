@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d41d69ea8d4dd649abc68e7de5d1d9d, type: 3}
-  m_Name: Keyword_BURNED
+  m_Script: {fileID: 11500000, guid: 24abb4d98ab1fd54fb5e06da6da78cf4, type: 3}
+  m_Name: Effect_Keyword_HEAL
   m_EditorClassIdentifier: 
-  keyword: BURNED
-  textColor: {r: 1, g: 0, b: 0, a: 0}
-  description: BURNED will do dot damage to enemy
+  keyword: "\uD68C\uBCF5"
+  effectEvent:
+    m_PersistentCalls:
+      m_Calls: []

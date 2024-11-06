@@ -34,7 +34,7 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         if (randomCard == null) return;
 
         CardObject cardObj = Instantiate(
-            randomCard.cardObject, spawnTrm.localPosition, Quaternion.identity) as CardObject;
+            randomCard.cardObject, spawnTrm.localPosition, Quaternion.identity);
         cardObj.transform.SetParent(spawnTrm);
 
         cardObj.SetCardUseArea(cardUseArea);
