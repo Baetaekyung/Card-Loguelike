@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "Keyword_Effect_", menuName = "SO/CardDataSO/Effect/Keyword_Effect")]
+[CreateAssetMenu(fileName = "KeywordEffect_", menuName = "SO/CardEffect/Keyword_Effect")]
 public class KeywordEffectSO : ScriptableObject
 {
     public string keyword;

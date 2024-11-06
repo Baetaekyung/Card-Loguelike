@@ -9,7 +9,6 @@ using UnityEngine.Events;
 /// </summary>
 public class SkillCard : CardObject
 {
-    [SerializeField] private KeywordEffectSOList _keywordEffectList;
     [SerializeField] private UnityEvent _skillEffects;
 
     protected virtual void OnEnable()
@@ -35,8 +34,7 @@ public class SkillCard : CardObject
     {
         for (int i = 0; i < _keywords.Count; i++)
         {
-
-            foreach (var effect in _keywordEffectList.keywordEffects)
+            foreach (var effect in KeywordEffects.Instance.effectList.keywordEffects)
             {
                 if (effect.keyword == _keywords[i])
                 {

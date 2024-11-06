@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d41d69ea8d4dd649abc68e7de5d1d9d, type: 3}
   m_Name: Keyword_HEAL
   m_EditorClassIdentifier: 
-  keyword: HEAL
+  keyword: "\uD68C\uBCF5"
   textColor: {r: 0.47539377, g: 1, b: 0, a: 0}
-  description: HEAL will heal my hp
+  description: "\uD68C\uBCF5 \uD6A8\uACFC\uB294 \uD50C\uB808\uC774\uC5B4\uC758 \uCCB4\uB825\uC744
+    \uC99D\uAC00\uC2DC\uD0A8\uB2E4."

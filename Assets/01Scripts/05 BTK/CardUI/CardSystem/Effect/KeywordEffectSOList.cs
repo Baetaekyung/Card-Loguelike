@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Keyword_Effect_List", menuName = "SO/CardDataSO/Effect/EffectList")]
+[CreateAssetMenu(fileName = "KeywordEffect_List", menuName = "SO/CardEffect/KeywordEffectList")]
 public class KeywordEffectSOList : ScriptableObject
 {
     public List<KeywordEffectSO> keywordEffects = new();
