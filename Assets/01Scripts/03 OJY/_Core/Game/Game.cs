@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace CardGame
 {
+    //unfinished
     public static partial class Game
     {
-        private readonly static Queue<Event> eventQueue = new();
-        private readonly static Dictionary<Type, Stack<Event>> eventPools = new();
+        private readonly static Queue<BaseEvent> eventQueue = new();
+        private readonly static Dictionary<Type, Stack<BaseEvent>> eventPools = new();
 
-        public static T New<T>() where T : Event, new()
+        public static T New<T>() where T : BaseEvent, new()
         {
-            if (!eventPools.TryGetValue(typeof(T), out Stack<Event> pool))
+            if (!eventPools.TryGetValue(typeof(T), out Stack<BaseEvent> pool))
             {
-                pool = new Stack<Event>(4);
+                pool = new Stack<BaseEvent>(4);
                 pool.Push(new T());
                 eventPools[typeof(T)] = pool;
             }
@@ -27,7 +28,7 @@ namespace CardGame
         {
             eventQueue.Clear();
         }
-        public static T Schedule<T>(float tick = 0) where T : Event, new()
+        public static T Schedule<T>(float tick = 0) where T : BaseEvent, new()
         {
             var ev = New<T>();
             ev.delay = Time.time + tick;

@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace CardGame
 {
+    //unfinished
     public class GameEvent
     {
         public static class Events

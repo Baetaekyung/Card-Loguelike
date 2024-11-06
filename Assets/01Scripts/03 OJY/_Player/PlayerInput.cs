@@ -14,9 +14,10 @@ namespace CardGame.Players
         #region Getter/Setter
         public Vector3 InputMovementDirection { get; private set; }
         public Vector3 GetCameraRelativeInput => GetCameraRotation * InputMovementDirection.normalized;
-        private Quaternion GetCameraRotation => playerCamera.GetCameraRotationOnlyY;
+        public bool IsPressingAnyDirectionKey => InputMovementDirection.sqrMagnitude > 0;
         #endregion
 
+        private Quaternion GetCameraRotation => playerCamera.GetCameraRotationOnlyY;
         public Vector3 GetCameraRelativeDirection(Vector3 vector) => GetCameraRotation * vector;
 
         public event Action EventPlayerRoll;

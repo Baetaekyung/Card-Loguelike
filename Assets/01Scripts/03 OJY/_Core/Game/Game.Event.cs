@@ -1,12 +1,13 @@
 namespace CardGame
 {
+    //unfinished
     public static partial class Game
     {
-        public abstract class Event : System.IComparable<Event>
+        public abstract class BaseEvent : System.IComparable<BaseEvent>
         {
             public float delay;
 
-            public int CompareTo(Event other)
+            public int CompareTo(BaseEvent other)
             {
                 return delay.CompareTo(other.delay);
             }
@@ -16,7 +17,7 @@ namespace CardGame
             {
             }
         }
-        public abstract class Event<T> : Event where T : Event<T>
+        public abstract class Event<T> : BaseEvent where T : Event<T>
         {
             public static System.Action<T> OnExecute;
 
