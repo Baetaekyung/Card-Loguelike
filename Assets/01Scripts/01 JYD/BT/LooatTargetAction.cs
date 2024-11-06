@@ -30,7 +30,7 @@ public partial class LooatTargetAction : Action
 
         Debug.Log(Quaternion.Angle(Agent.Value.transform.rotation, lookRotation));
         
-        if (Quaternion.Angle(Agent.Value.transform.rotation, lookRotation) < 1.0f)
+        if (Quaternion.Angle(Agent.Value.transform.rotation, lookRotation) < 10f)
         {
             return Status.Success;
         }

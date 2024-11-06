@@ -1014,7 +1014,6 @@ MonoBehaviour:
   - rid: 2285473592494784940
   - rid: 2285473592494784941
   - rid: 2285473592494784964
-  - rid: 2285473601381467088
   references:
     version: 2
     RefIds:
@@ -1086,14 +1085,6 @@ MonoBehaviour:
           m_Value1: 8967027832070969405
         Name: WaitTime
         m_Value: 1.4
-    - rid: 2285473601381467088
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 10789982021522817778
-          m_Value1: 8946858794239234649
-        Name: RotateSpeed
-        m_Value: 5
 --- !u!114 &211207466394034012
 MonoBehaviour:
   m_ObjectHideFlags: 0

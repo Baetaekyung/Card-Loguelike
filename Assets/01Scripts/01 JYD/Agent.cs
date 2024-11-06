@@ -14,9 +14,8 @@ public class Agent : MonoBehaviour
     private Vector3 _startPosition;
     private Vector3 _LastPosition;
     private Vector3 _nextPathPoint;
-
+    
     private BehaviorGraphAgent _behaviorGraphAgent;
-    private State enemyState;
     
     private void Start()
     {
@@ -25,15 +24,12 @@ public class Agent : MonoBehaviour
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         
         _LastPosition = transform.position;
-        _behaviorGraphAgent.GetVariable("State" , out BlackboardVariable<State> enemyState);
     }
 
     private void Update()
     {
         FaceToTarget(GetNextPathPoint());
-
-        _behaviorGraphAgent.GetVariable<bool>("ManualRotate", out BlackboardVariable<bool> isManualRotate);
-        
+        _behaviorGraphAgent.GetVariable("ManualRotate", out BlackboardVariable<bool> isManualRotate);
         if (isManualRotate)
         {
             FaceToTarget(target.transform.position);
@@ -54,6 +50,7 @@ public class Agent : MonoBehaviour
         
         velocity.y = 0;
         float speed = velocity.magnitude;
+        
         if (speed > 0.5f)
         {
             animator.SetFloat("Speed", speed,0.1f , Time.deltaTime);
@@ -62,12 +59,15 @@ public class Agent : MonoBehaviour
         {
             animator.SetFloat("Speed", 0,0.1f , Time.deltaTime);
         }
+                
     }
     
 
-    public void FaceToTarget(Vector3 _lookDir)
+    private void FaceToTarget(Vector3 _lookDir)
     {
+        _behaviorGraphAgent.GetVariable("State" , out BlackboardVariable<State> enemyState);
         bool enterBattleMode = enemyState == State.Attack || enemyState == State.Chase;
+        
         Vector3 targetPos = enterBattleMode ?
             target.position - transform.position : _lookDir - transform.position;
         targetPos.Normalize();
@@ -78,13 +78,12 @@ public class Agent : MonoBehaviour
             Vector3 currentEulerAngle = transform.rotation.eulerAngles;
 
             float yRotation = Mathf.LerpAngle(currentEulerAngle.y, targetRot.eulerAngles.y, 5 * Time.deltaTime);
-
             transform.rotation = Quaternion.Euler(currentEulerAngle.x, yRotation, currentEulerAngle.z);
         }
     }
 
     
-    public Vector3 GetNextPathPoint()
+    private Vector3 GetNextPathPoint()
     {
         NavMeshPath path = _navMeshAgent.path;
 

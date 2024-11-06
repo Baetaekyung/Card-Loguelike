@@ -127,6 +127,37 @@ Transform:
   - {fileID: 5946105474944444940}
   m_Father: {fileID: 1706680200242087606}
   m_LocalEulerAnglesHint: {x: -0.0000015484255, y: -0.0000002614623, z: -10.227545}
+--- !u!1 &1487223645589722124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6299392956694408349}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6299392956694408349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487223645589722124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.23, z: -0.107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5578280909563845601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777139360988840306
 GameObject:
   m_ObjectHideFlags: 0
@@ -10380,6 +10411,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6299392956694408349}
   - {fileID: 475680977131460991}
   - {fileID: 6728071213817886051}
   m_Father: {fileID: 0}
@@ -10425,6 +10457,9 @@ MonoBehaviour:
   - rid: 2285473601928823584
   - rid: 2285473602025292158
   - rid: 2285473602025292503
+  - rid: 2285473603354100136
+  - rid: 2285473603354100137
+  - rid: 2285473606275695242
   references:
     version: 2
     RefIds:
@@ -10468,6 +10503,30 @@ MonoBehaviour:
           m_Value1: 8262533503710811538
         Name: BombState
         m_Value: 0
+    - rid: 2285473603354100136
+      type: {class: 'BlackboardVariable`1[[UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1490025715710971940
+          m_Value1: 14385712566335670497
+        Name: Excalm
+        m_Value: {fileID: 4984131055034601355, guid: 1d45b7694cea9f0418f162d4c5e87d94, type: 3}
+    - rid: 2285473603354100137
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16148470586781490314
+          m_Value1: 12732002920222144991
+        Name: Head
+        m_Value: {fileID: 6299392956694408349}
+    - rid: 2285473606275695242
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15450658846397602756
+          m_Value1: 16149905308313853706
+        Name: MoveSpeed
+        m_Value: 4
 --- !u!195 &2087879342136471477
 NavMeshAgent:
   m_ObjectHideFlags: 0
