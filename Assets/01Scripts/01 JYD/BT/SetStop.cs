@@ -6,7 +6,7 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "SetStop", story: "Set [Agent] Stop [active]", category: "Action", id: "ea4680d42f6fd995ce8b7ddafddc1c17")]
+[NodeDescription(name: "SetStop", story: "Set [AgentObj] Stop [active]", category: "Action", id: "ea4680d42f6fd995ce8b7ddafddc1c17")]
 public partial class SetStopAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;

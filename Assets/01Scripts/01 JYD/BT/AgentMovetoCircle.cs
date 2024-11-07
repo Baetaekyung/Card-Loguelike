@@ -6,7 +6,7 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Agent Moveto Circle", story: "[Agent] MoveTo [Target] In Circle and stopOffset is [AttackRadius]", category: "Action", id: "f3abb3e9c41ecafe5b0ff5fce0c3ba14")]
+[NodeDescription(name: "AgentObj Moveto Circle", story: "[AgentObj] MoveTo [Target] In Circle and stopOffset is [AttackRadius]", category: "Action", id: "f3abb3e9c41ecafe5b0ff5fce0c3ba14")]
 public partial class AgentMovetoCircleAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
@@ -68,7 +68,7 @@ public partial class AgentMovetoCircleAction : Action
 
     protected override void OnEnd()
     {
-        // 필요한 경우 종료 처리
+        
     }
 }
 
