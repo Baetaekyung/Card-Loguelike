@@ -1,3 +1,4 @@
+using CardGame.Weapons;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace CardGame.Players
         //{
         //    listCard.Add(instance);
         //}
+        private BaseWeapon weapon;
+        public BaseWeapon GetCurrentWeapon => weapon;
         public void SetInventory()
         {
 

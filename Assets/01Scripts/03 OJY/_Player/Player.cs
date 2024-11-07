@@ -11,12 +11,16 @@ namespace CardGame.Players
     public class Player : MonoBehaviour
     {
         private readonly Dictionary<Type, IPlayerComponent> componentDictionary = new();
-        private PlayerMovement GetPlayerMovement => GetPlayerComponent<PlayerMovement>();
-        private PlayerRenderer GetPlayerRenderer => GetPlayerComponent<PlayerRenderer>();
-        public PlayerInput GetInput => GetPlayerComponent<PlayerInput>();
-        public PlayerAnimator GetAnimator => GetPlayerComponent<PlayerAnimator>();
         public FiniteStateMachine<PlayerStateEnum.Movement, Player> PlayerFSM_Movement { get; private set; }
         public FiniteStateMachine<PlayerStateEnum.Combat,   Player> PlayerFSM_Combat { get; private set; }
+
+        #region GetPlayerComponent
+        public PlayerMovement GetPlayerMovement => GetPlayerComponent<PlayerMovement>();
+        public PlayerRenderer GetPlayerRenderer => GetPlayerComponent<PlayerRenderer>();
+        public PlayerInput GetInput => GetPlayerComponent<PlayerInput>();
+        public PlayerAnimator GetAnimator => GetPlayerComponent<PlayerAnimator>();
+        public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
+        #endregion
         private void Awake()
         {
             void Initialize()
@@ -59,13 +63,14 @@ namespace CardGame.Players
             {
                 var inp = GetPlayerComponent<PlayerInput>();
                 inp.EventPlayerRoll += HandleOnRoll;
+                inp.EventPlayerAttack += HandleOnPlayerAttack;
             }
             void SetUpInventory()
             {
 
                 //int n = 2;//capacitiy of inventory
                 //int cnt = 0;
-                var inv = GetPlayerComponent<PlayerInventory>();
+                //var inv = GetPlayerComponent<PlayerInventory>();
                 //foreach (var item in cardSO)
                 //{
                 //    if (cnt >= n) break;
@@ -76,6 +81,9 @@ namespace CardGame.Players
             SetUpEvent();
             SetUpInventory();
         }
+
+
+
         private void OnDestroy()
         {
             void UnSubscribeEvent()
@@ -90,6 +98,10 @@ namespace CardGame.Players
             }
             UnSubscribeEvent();
             OnDispose();
+        }
+        private void HandleOnPlayerAttack()
+        {
+            GetInventory.GetCurrentWeapon.TryAttack();
         }
         private void HandleOnRoll()
         {
@@ -109,7 +121,6 @@ namespace CardGame.Players
                     {
                         //PlayerFSM_Combat.ChangeState();
                     }
-
                 }
                 void PlayerMovement()
                 {
