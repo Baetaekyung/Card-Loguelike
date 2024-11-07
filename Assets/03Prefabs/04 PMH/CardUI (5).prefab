@@ -346,16 +346,13 @@ MonoBehaviour:
   _cardData: {fileID: 11400000, guid: 309f4db60296be14bbf642a72c6fd6f9, type: 2}
   _costText: {fileID: 9147765644154508978}
   _cardNameText: {fileID: 3361497658151658358}
-  _cardEffectDescription: {fileID: 9196567759590511281}
   _cardDescription: {fileID: 9196567759590511281}
   _cardImage: {fileID: 1811118315233425358}
   _cardUseArea: {fileID: 0}
   _cardHoverSize: 1.05
   _hoverHeight: 60
   _hoverAnimationTime: 8
-  _originPosition: {x: 0, y: 0, z: 0}
-  alignmentPosition: {x: 0, y: 0, z: 0}
-  _skillTypeEffect: {fileID: 0}
+  _usedCardAimationSpeed: 3
 --- !u!1 &4877119083991033657
 GameObject:
   m_ObjectHideFlags: 0
