@@ -1,3 +1,4 @@
+using System;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
@@ -66,7 +67,7 @@ public class Agent : MonoBehaviour
     private void FaceToTarget(Vector3 _lookDir)
     {
         _behaviorGraphAgent.GetVariable("State" , out BlackboardVariable<State> enemyState);
-        bool enterBattleMode = enemyState == State.Attack || enemyState == State.Chase;
+        bool enterBattleMode = enemyState == State.Attack;// || enemyState == State.Chase;
         
         Vector3 targetPos = enterBattleMode ?
             target.position - transform.position : _lookDir - transform.position;
@@ -114,6 +115,17 @@ public class Agent : MonoBehaviour
     {
         isManualRotate = _rotate;
     }*/
-    
-    
+
+    private void OnDrawGizmos()
+    {
+        if(Application.isPlaying == false)return;
+        
+        _behaviorGraphAgent.GetVariable("AttackRadius" , out BlackboardVariable<float> radius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position , radius);
+        
+        _behaviorGraphAgent.GetVariable("ChaseRadius" , out BlackboardVariable<float> chaseRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position , chaseRadius);
+    }
 }

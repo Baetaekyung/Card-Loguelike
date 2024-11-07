@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 230497018120798215, guid: 2a65f12ffdf2cfa45a321bb332007e20, type: 2}
+  m_Graph: {fileID: 230497018120798215, guid: e92f4ece9c1026e498bbe72ec9b2cee3, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 3494369580566970613
   - rid: 3494369580566970614
@@ -1332,7 +1332,7 @@ MonoBehaviour:
         GUID:
           m_Value0: 10789982021522817778
           m_Value1: 8946858794239234649
-        Name: RotateSpeed
+        Name: RotateTime
         m_Value: 0.6
     - rid: 3494369580566970613
       type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
