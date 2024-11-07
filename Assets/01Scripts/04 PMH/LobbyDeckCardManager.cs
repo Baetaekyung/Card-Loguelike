@@ -151,7 +151,8 @@ namespace CardGame
         public bool IsExceedMaxCost(CardSO newCard)
         {
             int nowCost = 0;
-            int newCostModifire = newCard.cardObject.GetCardData().cardInfo.cost;
+//i changed Getter (function) to getter property. blame viet tae gyong
+            int newCostModifire = newCard.cardObject.CardData.cardInfo.cost;
             foreach(var item in visualDeckCard)
             {
                 //nowCost += item.cardObject.GetCardData().cardInfo.cost;
