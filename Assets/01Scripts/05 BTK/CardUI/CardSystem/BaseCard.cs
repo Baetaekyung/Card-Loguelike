@@ -14,6 +14,7 @@ public abstract class BaseCard : MonoBehaviour,
 
     [Header("UI datas")]
     [SerializeField] protected CardDataSO _cardData;
+    public CardDataSO CardData { get => _cardData; set => _cardData = value; }
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
     [SerializeField] protected TextMeshProUGUI _cardDescription; //ī�� ����
@@ -90,8 +91,6 @@ public abstract class BaseCard : MonoBehaviour,
     }
 
     public int GetSiblingIndex() => _cardTrm.GetSiblingIndex();
-
-    public CardDataSO GetCardData() => _cardData;
 
     public void SetSiblingIndex(int idx) => _cardTrm.SetSiblingIndex(idx);
 

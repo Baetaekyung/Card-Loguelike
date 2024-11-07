@@ -24,7 +24,7 @@ public class KeywordPanel : MonoBehaviour
         _completeDescription = "";
         _canvasGroup = GetComponent<CanvasGroup>();
         _keywordList.Initialize();
-        _description = _card.GetCardData().cardInfo.cardDescription;
+        _description = _card.CardData.cardInfo.cardDescription;
     }
 
     //설명 초기화
