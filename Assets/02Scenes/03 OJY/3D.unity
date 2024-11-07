@@ -555,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 2.7500005, y: 11.363961, z: -3.0000002}
+  m_LocalPosition: {x: 3.0000005, y: 11.717515, z: -3.2500002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -696,47 +696,47 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 5.489221
-      outSlope: 5.489221
+      inSlope: 2.9136684
+      outSlope: 2.9136684
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.11362063
+      outWeight: 0.20004216
     - serializedVersion: 3
-      time: 0.19196634
-      value: 0.7686889
-      inSlope: 2.6561923
-      outSlope: 2.6561923
+      time: 0.2380451
+      value: 0.6879681
+      inSlope: 1.5185846
+      outSlope: 1.5185846
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 1
+      outWeight: 0.9369256
     - serializedVersion: 3
-      time: 0.23975872
-      value: 0.8694557
-      inSlope: 1.3598619
-      outSlope: 1.3598619
+      time: 0.3116872
+      value: 0.78274775
+      inSlope: 0.86557335
+      outSlope: 0.86557335
       tangentMode: 0
       weightedMode: 0
       inWeight: 1
-      outWeight: 1
+      outWeight: 0.8525192
     - serializedVersion: 3
-      time: 0.30011222
-      value: 0.92127115
-      inSlope: 0.35606214
-      outSlope: 0.35606214
+      time: 0.3996777
+      value: 0.8336404
+      inSlope: 0.43979913
+      outSlope: 0.43979913
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.88337916
-      outWeight: 0.12733345
+      outWeight: 0.15527098
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.049320217
-      outSlope: 0.049320217
+      inSlope: 0.48413056
+      outSlope: 0.48413056
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.15286273
+      inWeight: 0.15100464
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -818,7 +818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cbe3bb8060df941b35425672d4c479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1 &363562612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2462,7 @@ Transform:
   m_GameObject: {fileID: 1368801272}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 2.7500005, y: 11.363961, z: -3.0000002}
+  m_LocalPosition: {x: 3.0000005, y: 11.717515, z: -3.2500002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2524,7 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistance: 9
+  CameraDistance: 9.5
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: 0, y: 0}
@@ -2537,7 +2536,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  Damping: {x: 0.35, y: 0.35, z: 0.35}
   Lookahead:
     Enabled: 0
     Time: 0
