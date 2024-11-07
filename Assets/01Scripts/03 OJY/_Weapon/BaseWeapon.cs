@@ -5,11 +5,16 @@ namespace CardGame.Weapons
     public abstract class BaseWeapon
     {
         [SerializeField] private float delay;
-
+        public bool CanAttack
+        {
+            get
+            {
+                return default;
+            }
+        }
         public virtual void TryAttack()
         {
-            bool canAttack = default;
-            if(canAttack)
+            if(CanAttack)
                 Attack();
         }
         protected abstract void Attack();

@@ -17,13 +17,13 @@ public abstract class BaseCard : MonoBehaviour,
     public CardDataSO CardData { get => _cardData; set => _cardData = value; }
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
-    [SerializeField] protected TextMeshProUGUI _cardDescription; //ī�� ����
+    [SerializeField] protected TextMeshProUGUI _cardDescription;
     [SerializeField] protected Image _cardImage;
 
     [Header("Hover datas")]
     [SerializeField] protected float _cardHoverSize;
-    [SerializeField] protected float _hoverHeight; //���콺 ���ٴ�� ���� ��¦ �ö����
-    [SerializeField] protected float _hoverAnimationTime = 2f; //�ִϸ��̼� ��¦ �ֱ�
+    [SerializeField] protected float _hoverHeight;
+    [SerializeField] protected float _hoverAnimationTime = 2f;
 
     public CardInfo CardInfo => _cardData.cardInfo;
 
