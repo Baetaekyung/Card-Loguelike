@@ -25,8 +25,6 @@ namespace CardGame
         {
             // x 좌표 차이를 이용해 왼쪽인지 오른쪽인지 판별
             float direction = currentPos.x - _clickPos.x;
-
-            Debug.Log(direction);
             if (direction > 0)
             {
                 Debug.Log("오른쪽으로 이동 중");

@@ -44,7 +44,12 @@ namespace CardGame
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 centerPos = centerTrm.anchoredPosition;
+                foreach(var item in visualDeckCard)
+                {
+                    item.transform.SetParent(centerTrm, true);
+                }
                 ArrangeCards();
+                AddCardAndRemoveCard();
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -56,19 +61,38 @@ namespace CardGame
                 card.GetRectTransform().anchoredPosition = Vector2.zero; // 피봇 기준 위치를 원점으로 설정
                 visualDeckCard.Add(card);
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
 
+            }
             SetCardsAngle();
         }
 
         private void AddCardAndRemoveCard()
         {
+            if (visualDeckCard == null || visualDeckCard.Count == 0) return;
+
             int cc = visualDeckCard.Count;
             if(cc < visualDeckCardsAmount)
             {
                 //만약 보여지고 내려갔으면 (두개의 값이 트루)
-                visualDeckCard.Remove(visualDeckCard[0]);
-                visualDeckCard.Add(deckCard[0]);
-                SortingCardList();
+                if(visualDeckCard[0].throwGround && visualDeckCard[0].throwUnder)
+                {
+                    visualDeckCard[0].transform.position = centerTrm.position;
+
+                    visualDeckCard[0].throwGround = false;
+                    visualDeckCard[0].throwUnder = false;
+
+                    deckCard.Add(visualDeckCard[0]);
+                    visualDeckCard.Add(deckCard[0]);
+
+                    visualDeckCard[0].gameObject.SetActive(true);
+
+                    deckCard.Remove(deckCard[0]);
+                    visualDeckCard.Remove(visualDeckCard[0]);
+
+                    SortingCardList();
+                }
             }
         }
 
