@@ -1,4 +1,4 @@
-using System;
+    using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,7 +70,7 @@ public class CardSOCustomEditor : EditorWindow
         GameObject g = PrefabUtility.InstantiatePrefab(_prefab) as GameObject;
         if (g != null)
         {
-            g.GetComponent<SkillCard>().CardData = asset;
+            g.GetComponent<SkillCard>()._cardData = asset;
             PrefabUtility.SaveAsPrefabAssetAndConnect(
                 g,
                 path,
