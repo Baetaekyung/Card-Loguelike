@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deck: []
-  spawnTrm: {fileID: 651445421}
+  spawnTrm: {fileID: 379642179}
   cardUseArea: {fileID: 377045514}
 --- !u!1001 &5765394823568099615
 PrefabInstance:
@@ -1344,7 +1344,7 @@ PrefabInstance:
     - target: {fileID: 5624961091500055230, guid: 9350aaf5795bdd64d942a672723f6278, type: 3}
       propertyPath: cardDeck
       value: 
-      objectReference: {fileID: 2115384973}
+      objectReference: {fileID: 0}
     - target: {fileID: 5624961091500055230, guid: 9350aaf5795bdd64d942a672723f6278, type: 3}
       propertyPath: cardDrawer
       value: 

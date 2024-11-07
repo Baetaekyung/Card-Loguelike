@@ -100,7 +100,7 @@ public class CardObject : BaseCard
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        if (_isUsed) return; //ÀÌ¹Ì ¹ö·ÁÁ³À¸¸é ½ÇÇà ¾ÈµÇ°Ô
+        if (_isUsed) return; //ì´ë¯¸ ë²„ë ¤ì¡Œìœ¼ë©´ ì‹¤í–‰ ì•ˆë˜ê²Œ
 
         if (_isHovering)
         {
@@ -123,7 +123,7 @@ public class CardObject : BaseCard
 
         if (_cardTrm.position.y > _cardUseHeight)
         {
-            //Ä«µå»ç¿ë
+            //ì¹´ë“œì‚¬ìš©
             _isUsed = true;
             OnCardUseEvent?.Invoke();
 
