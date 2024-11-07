@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-namespace CardGame.Events
+//unfinished
+namespace CardGame.MyEvents
 {
     public static class EventManager
     {

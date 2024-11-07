@@ -1,6 +1,7 @@
 using System;
 
-namespace CardGame.Events
+//unfinished
+namespace CardGame.MyEvents
 {
     public abstract class BaseEvent
     {

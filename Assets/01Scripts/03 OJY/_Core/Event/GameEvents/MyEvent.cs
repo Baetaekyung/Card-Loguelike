@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardGame.MyEvents
+namespace CardGame.Events
 {
     public static class MyEventManager
     {
