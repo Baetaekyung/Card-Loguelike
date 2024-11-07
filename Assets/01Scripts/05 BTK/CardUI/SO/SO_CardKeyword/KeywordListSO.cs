@@ -35,7 +35,7 @@ public class KeywordListSO : ScriptableObject
     }
 
     /// <summary>
-    /// Å°¿öµå¿¡ ¸Â´Â ¼³¸íÀ» ¹İÈ¯ÇØÁØ´Ù.
+    /// í‚¤ì›Œë“œì— ë§ëŠ” ì„¤ëª…ì„ ë°˜í™˜í•´ì¤€ë‹¤.
     /// </summary>
     public string GetKeywordDescription(string keyword)
     {
@@ -48,7 +48,7 @@ public class KeywordListSO : ScriptableObject
     }
 
     ///<summary>
-    ///¼³¸íÀ» ³ÖÀ¸¸é Å°¿öµå°¡ Á¸ÀçÇÏ´ÂÁö ¾Ë·ÁÁÖ°í, Á¸ÀçÇÏ´Â Å°¿öµåµéÀ» ¸®½ºÆ®·Î ¹İÈ¯ÇØÁÜ
+    ///ì„¤ëª…ì„ ë„£ìœ¼ë©´ í‚¤ì›Œë“œê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì•Œë ¤ì£¼ê³ , ì¡´ì¬í•˜ëŠ” í‚¤ì›Œë“œë“¤ì„ ë¦¬ìŠ¤íŠ¸ë¡œ ë°˜í™˜í•´ì¤Œ
     ///</summary>
     public bool ExistKeyword(string description)
     {
@@ -62,7 +62,7 @@ public class KeywordListSO : ScriptableObject
     }
 
     /// <summary>
-    /// descriptionÀ» ³ÖÀ¸¸é ±× description¾È¿¡ keywordµéÀ» ¸®ÅÏÇØÁØ´Ù
+    /// descriptionì„ ë„£ìœ¼ë©´ ê·¸ descriptionì•ˆì— keywordë“¤ì„ ë¦¬í„´í•´ì¤€ë‹¤
     /// </summary>
     public List<string> GetKeywords(string description)
     {
