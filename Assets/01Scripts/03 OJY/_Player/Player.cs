@@ -90,6 +90,7 @@ namespace CardGame.Players
             {
                 var inp = GetPlayerComponent<PlayerInput>();
                 inp.EventPlayerRoll -= HandleOnRoll;
+                inp.EventPlayerAttack -= HandleOnPlayerAttack;
             }
             void OnDispose()
             {
@@ -117,7 +118,7 @@ namespace CardGame.Players
             {
                 void DebugInput()
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
                         //PlayerFSM_Combat.ChangeState();
                     }

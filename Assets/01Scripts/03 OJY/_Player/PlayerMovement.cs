@@ -14,7 +14,7 @@ namespace CardGame.Players
         [SerializeField] private float gravitiyMultiplier = 1;
 
         [Header("Roll Settings")]
-        [SerializeField] private AnimationCurve rollCurve;
+        [SerializeField] private AnimationCurve rollCurve; // curve length should be 1.
         private Vector3 velocitiy;
         //[Header("GroundDetection")]
         //private readonly Vector3 v = new(0, -0.5f, 0);
@@ -44,7 +44,6 @@ namespace CardGame.Players
         public void StartInit(Player _player)
         {
             playerAnimator = _player.GetPlayerComponent<PlayerAnimator>();
-            print("dddd");
         }
         public void Dispose(Player _player)
         {
@@ -100,7 +99,6 @@ namespace CardGame.Players
         {
             StopAllCoroutines();
             StartCoroutine(CO_DoABarrelRoll());
-
             IEnumerator CO_DoABarrelRoll()
             {
                 float GetDistance()
@@ -128,17 +126,17 @@ namespace CardGame.Players
 
                 float endTime = resultDistance / originalDistance * dashMultiplier;
 
-                InventoryUI.Instance.GetList[3].text = endTime.ToString();
-
                 float timer = 0;
-                while (timer <= endTime)
+                Vector3 targetVector = Vector3.zero;
+                while (timer < endTime)
                 {
                     float curveValue = timer / endTime;
                     float val = rollCurve.Evaluate(curveValue);
-                    RollForce = Vector3.Lerp(startVelocitiy, Vector3.zero, val);
+                    RollForce = Vector3.Lerp(startVelocitiy, targetVector, val);
                     timer += Time.deltaTime;
                     yield return null;
                 }
+                RollForce = targetVector;
             }
         }
         private void OnDrawGizmos()

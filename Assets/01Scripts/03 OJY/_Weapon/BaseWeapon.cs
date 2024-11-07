@@ -2,20 +2,19 @@ using UnityEngine;
 
 namespace CardGame.Weapons
 {
-    public abstract class BaseWeapon
+    public abstract class BaseWeapon : MonoBehaviour
     {
-        [SerializeField] private float delay;
-        public bool CanAttack
-        {
-            get
-            {
-                return default;
-            }
-        }
-        public virtual void TryAttack()
+        [SerializeField] protected BaseWeaponSO baseWeaponSO;
+        private float currentDelayTime;
+        protected virtual bool CanAttack => currentDelayTime < Time.time;
+        public void TryAttack()
         {
             if(CanAttack)
+            {
+                baseWeaponSO.OnEvent();
+                currentDelayTime += baseWeaponSO.GetDelay + Time.time;
                 Attack();
+            }
         }
         protected abstract void Attack();
     }

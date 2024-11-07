@@ -1,6 +1,7 @@
 using CardGame.Weapons;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CardGame.Players
@@ -13,16 +14,14 @@ namespace CardGame.Players
         //{
         //    listCard.Add(instance);
         //}
-        private BaseWeapon weapon;
-        public BaseWeapon GetCurrentWeapon => weapon;
-        public void SetInventory()
-        {
 
-        }
+        private int currentWeaponIndex;
+        [SerializeField] private List<BaseWeapon> weapons;
+        public BaseWeapon GetCurrentWeapon => weapons[currentWeaponIndex];
 
         public void Init(Player _player)
         {
-
+            weapons = GetComponentsInChildren<BaseWeapon>(true).ToList();
         }
 
         public void Dispose(Player _player)

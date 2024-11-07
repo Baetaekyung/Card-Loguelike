@@ -40,6 +40,7 @@ namespace CardGame.Players
             {
                 InputMovementDirection = new Vector3(Input.GetAxisRaw("Horizontal"),0, Input.GetAxisRaw("Vertical"));
                 if (Input.GetKeyUp(KeyCode.Space)) EventPlayerRoll?.Invoke();
+                if (Input.GetKeyDown(KeyCode.Mouse0)) EventPlayerAttack?.Invoke();
             }
             LegacyInput();
         }
