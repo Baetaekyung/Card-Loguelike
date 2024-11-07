@@ -14,15 +14,16 @@ public abstract class BaseCard : MonoBehaviour,
 
     [Header("UI datas")]
     [SerializeField] protected CardDataSO _cardData;
+    public CardDataSO CardData { get => _cardData; set => _cardData = value; }
     [SerializeField] protected TextMeshProUGUI _costText;
     [SerializeField] protected TextMeshProUGUI _cardNameText;
-    [SerializeField] protected TextMeshProUGUI _cardDescription; //Ä«µå ¼³¸í
+    [SerializeField] protected TextMeshProUGUI _cardDescription; //Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField] protected Image _cardImage;
 
     [Header("Hover datas")]
     [SerializeField] protected float _cardHoverSize;
-    [SerializeField] protected float _hoverHeight; //¸¶¿ì½º °®´Ù´ë¸é À§·Î »ìÂ¦ ¿Ã¶ó¿À°Ô
-    [SerializeField] protected float _hoverAnimationTime = 2f; //¾Ö´Ï¸ÞÀÌ¼Ç »ìÂ¦ ÁÖ±â
+    [SerializeField] protected float _hoverHeight; //ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] protected float _hoverAnimationTime = 2f; //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½Â¦ ï¿½Ö±ï¿½
 
     public CardInfo CardInfo => _cardData.cardInfo;
 
@@ -90,8 +91,6 @@ public abstract class BaseCard : MonoBehaviour,
     }
 
     public int GetSiblingIndex() => _cardTrm.GetSiblingIndex();
-
-    public CardDataSO GetCardData() => _cardData;
 
     public void SetSiblingIndex(int idx) => _cardTrm.SetSiblingIndex(idx);
 
