@@ -1,8 +1,10 @@
 using System;
+using CardGame;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyHealth))]
 public class Agent : MonoBehaviour
 {
     private const float MAX_ATK_DISTANCE = 50f;
@@ -17,6 +19,8 @@ public class Agent : MonoBehaviour
     private Vector3 _nextPathPoint;
     
     private BehaviorGraphAgent _behaviorGraphAgent;
+
+    private bool canManualRotate;
     
     private void Start()
     {
@@ -29,19 +33,8 @@ public class Agent : MonoBehaviour
 
     private void Update()
     {
-        FaceToTarget(GetNextPathPoint());
-        _behaviorGraphAgent.GetVariable("ManualRotate", out BlackboardVariable<bool> isManualRotate);
-        if (isManualRotate)
-        {
-            FaceToTarget(target.transform.position);
-        }
-        
-        /*
-        if (isManualMove)
-        {
-            transform.position = Vector3.MoveTowards(transform.position , _attackDestination , 
-                15 * Time.deltaTime);
-        }*/
+        Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
+        FaceToTarget(lookDir);
     }
     
     private void LateUpdate()
@@ -62,28 +55,22 @@ public class Agent : MonoBehaviour
         }
                 
     }
-    
 
     private void FaceToTarget(Vector3 _lookDir)
     {
-        _behaviorGraphAgent.GetVariable("State" , out BlackboardVariable<State> enemyState);
-        bool enterBattleMode = enemyState == State.Attack;// || enemyState == State.Chase;
-        
-        Vector3 targetPos = enterBattleMode ?
-            target.position - transform.position : _lookDir - transform.position;
+        Vector3 targetPos = _lookDir - transform.position;
         targetPos.Normalize();
-                
+        
         if (targetPos != Vector3.zero)
         {
             Quaternion targetRot = Quaternion.LookRotation(targetPos);
             Vector3 currentEulerAngle = transform.rotation.eulerAngles;
 
-            float yRotation = Mathf.LerpAngle(currentEulerAngle.y, targetRot.eulerAngles.y, 5 * Time.deltaTime);
+            float yRotation = Mathf.LerpAngle(currentEulerAngle.y, targetRot.eulerAngles.y, 15 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(currentEulerAngle.x, yRotation, currentEulerAngle.z);
         }
     }
 
-    
     private Vector3 GetNextPathPoint()
     {
         NavMeshPath path = _navMeshAgent.path;
@@ -106,19 +93,19 @@ public class Agent : MonoBehaviour
 
         return _nextPathPoint;
     }
-    
-    /*public void SetManualMove(bool _isManualMove)
-    {
-        isManualMove = _isManualMove;
-    }
-    public void SetManualRotate(bool _rotate)
-    {
-        isManualRotate = _rotate;
-    }*/
 
+    private void SetManualRotate()
+    {
+        canManualRotate = true;
+    }
+    
+    private void StopManualRotate()
+    {
+        canManualRotate = false;
+    }
     private void OnDrawGizmos()
     {
-        if(Application.isPlaying == false)return;
+        /*if(Application.isPlaying == false)return;
         
         _behaviorGraphAgent.GetVariable("AttackRadius" , out BlackboardVariable<float> radius);
         Gizmos.color = Color.green;
@@ -126,6 +113,6 @@ public class Agent : MonoBehaviour
         
         _behaviorGraphAgent.GetVariable("ChaseRadius" , out BlackboardVariable<float> chaseRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position , chaseRadius);
+        Gizmos.DrawWireSphere(transform.position , chaseRadius);*/
     }
 }

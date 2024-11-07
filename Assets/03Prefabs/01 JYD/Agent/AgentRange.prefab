@@ -903,6 +903,7 @@ GameObject:
   - component: {fileID: 4200132689078426679}
   - component: {fileID: 9153637049304108573}
   - component: {fileID: 211207466394034012}
+  - component: {fileID: 5693037785803268997}
   m_Layer: 0
   m_Name: AgentRange
   m_TagString: Untagged
@@ -1014,6 +1015,7 @@ MonoBehaviour:
   - rid: 2285473592494784940
   - rid: 2285473592494784941
   - rid: 2285473592494784964
+  - rid: 2285473618669863909
   references:
     version: 2
     RefIds:
@@ -1083,8 +1085,16 @@ MonoBehaviour:
         GUID:
           m_Value0: 7963286479824940750
           m_Value1: 8967027832070969405
-        Name: WaitTime
-        m_Value: 1.4
+        Name: AttackWaitTime
+        m_Value: 1.2
+    - rid: 2285473618669863909
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13406704783390741570
+          m_Value1: 2615480703659678095
+        Name: ChaseWaitTime
+        m_Value: 0.8
 --- !u!114 &211207466394034012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,6 +1111,21 @@ MonoBehaviour:
   _muzzleEffect: {fileID: 319372152299532199}
   _bullet: {fileID: -4648219983985405441, guid: e362f0b2f6514c147b7da9735c18c768, type: 3}
   firePos: {fileID: 7862020702937556896}
+--- !u!114 &5693037785803268997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755767289223807568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  isAlive: 0
 --- !u!1 &4027657803432251546
 GameObject:
   m_ObjectHideFlags: 0

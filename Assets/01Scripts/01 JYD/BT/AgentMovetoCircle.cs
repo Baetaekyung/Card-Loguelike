@@ -1,6 +1,5 @@
 using System;
 using Unity.Behavior;
-using Unity.Cinemachine;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
@@ -31,7 +30,6 @@ public partial class AgentMovetoCircleAction : Action
         if (_navMeshAgent == null)
         {
             _navMeshAgent = Agent.Value.GetComponent<NavMeshAgent>();
-            
         }
 
         if (_agent == null)
@@ -47,11 +45,8 @@ public partial class AgentMovetoCircleAction : Action
     protected override Status OnUpdate()
     {
         Vector3 origin = Target.Value.transform.position;
-        
-        //Debug.Log(origin);
-        
         float distanceToTarget = Vector3.Distance(_navMeshAgent.destination, origin);
-    
+        
         if (distanceToTarget <= AttackRadius)
         {
             return Status.Success;

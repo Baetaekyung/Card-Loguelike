@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 6371894694642556685}
   - component: {fileID: 7430965951688135458}
   - component: {fileID: 3755634188038698268}
+  - component: {fileID: 7417001057172833639}
   m_Layer: 0
   m_Name: AgentMelee
   m_TagString: Untagged
@@ -723,13 +724,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 230497018120798215, guid: b38ef910afdd316478a77c0d9cd59d4c, type: 2}
+  m_Graph: {fileID: 230497018120798215, guid: 2a65f12ffdf2cfa45a321bb332007e20, type: 2}
   m_BlackboardVariableOverridesList:
-  - rid: 2285473592220320393
+  - rid: 2285473615052800113
+  - rid: 2285473615052800114
+  - rid: 2285473615052800115
+  - rid: 2285473615052800116
+  - rid: 2285473615052800117
+  - rid: 2285473615052800118
+  - rid: 2285473615052800141
+  - rid: 2285473615052800327
+  - rid: 2285473615052800589
   references:
     version: 2
     RefIds:
-    - rid: 2285473592220320393
+    - rid: 2285473615052800113
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -737,6 +746,89 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1940792584767829459}
+    - rid: 2285473615052800114
+      type: {class: 'BlackboardVariable`1[[State, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18152787512321689670
+          m_Value1: 983495221352976131
+        Name: State
+        m_Value: 0
+    - rid: 2285473615052800115
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17318396526855482329
+          m_Value1: 2206823783302343715
+        Name: Target
+        m_Value: {fileID: 0}
+    - rid: 2285473615052800116
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8511004958989235880
+          m_Value1: 13804683939307581226
+        Name: AgentAnimator
+        m_Value: {fileID: 6371894694642556685}
+    - rid: 2285473615052800117
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5513194394281948341
+          m_Value1: 16643009058973780617
+        Name: AttackRadius
+        m_Value: 4
+    - rid: 2285473615052800118
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6990766725502651373
+          m_Value1: 12879986023808695657
+        Name: PatrolList
+        m_Value:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+    - rid: 2285473615052800141
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10789982021522817778
+          m_Value1: 8946858794239234649
+        Name: RotateTime
+        m_Value: 1.5
+    - rid: 2285473615052800327
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6913836224369089000
+          m_Value1: 7521962314327256998
+        Name: ChaseRadius
+        m_Value: 10
+    - rid: 2285473615052800589
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7963286479824940750
+          m_Value1: 8967027832070969405
+        Name: WaitTime
+        m_Value: 1.1
+--- !u!114 &7417001057172833639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940792584767829459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  isAlive: 0
 --- !u!1 &2139687735560999354
 GameObject:
   m_ObjectHideFlags: 0
