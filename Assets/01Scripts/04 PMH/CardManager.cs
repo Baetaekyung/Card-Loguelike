@@ -34,6 +34,7 @@ public class CardManager : MonoBehaviour
         cardDrawer.InitializeDeck(deckCardList);
 
         deckCnt = deckCardList.Count;
+        cardDrawer.InitializeDeck(deckCardList);
 
         for (int i = 0; i < haveCards.Count; i++)
         {

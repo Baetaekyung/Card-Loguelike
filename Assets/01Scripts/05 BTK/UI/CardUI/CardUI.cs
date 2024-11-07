@@ -1,6 +1,13 @@
+
+using System.Linq.Expressions;
+using UnityEngine;
+
 public class CardUI : BaseCard
 {
     public bool isOnDeck = false;
+
+    public bool throwUnder = false;
+    public bool throwGround = false;
 
     private void OnEnable()
     {
@@ -14,15 +21,36 @@ public class CardUI : BaseCard
 
         isOnDeck = !isOnDeck;
 
-        if(isOnDeck)
-            cardManager.deckCnt++;
-        else
-            cardManager.deckCnt--;
+        //if(isOnDeck)
+            //cardManager.deckCnt++;
+        //else
+            //cardManager.deckCnt--;
     }
 
     protected override void UpdatePosition()
     {
-        //dont update position
+        base.UpdatePosition();
+        CheckYPos();
+    }
+
+    private void CheckYPos()
+    {
+        if(transform.position.y < -230f)
+        {
+            if(throwGround)
+            {
+                throwUnder = true;
+            }
+        }
+        else if(transform.position.y > -230f)
+        {
+            throwGround = true;
+        }
+
+        if(throwGround && throwUnder)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
