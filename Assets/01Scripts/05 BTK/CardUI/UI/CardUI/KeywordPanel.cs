@@ -1,7 +1,7 @@
+using CustomUtils;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using CustomUtils;
 
 public class KeywordPanel : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class KeywordPanel : MonoBehaviour
     private string _completeDescription = "";
 
     private List<string> _keywords = new List<string>();
+    public List<string> Keywords => _keywords;
 
     private bool _hasKeyword = false;
 
