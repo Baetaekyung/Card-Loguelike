@@ -8,7 +8,7 @@ using Unity.Properties;
 [CreateAssetMenu(menuName = "Behavior/Event Channels/ChangeState")]
 #endif
 [Serializable, GeneratePropertyBag]
-[EventChannelDescription(name: "ChangeState", message: "Agent Change [State]", category: "Events", id: "2a9e0f248dd709d7978499ebd1f015c0")]
+[EventChannelDescription(name: "ChangeState", message: "AgentObj Change [State]", category: "Events", id: "2a9e0f248dd709d7978499ebd1f015c0")]
 public partial class ChangeState : EventChannelBase
 {
     public delegate void ChangeStateEventHandler(State State);

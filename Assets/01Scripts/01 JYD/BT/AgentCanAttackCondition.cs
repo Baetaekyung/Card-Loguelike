@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [Serializable, Unity.Properties.GeneratePropertyBag]
-[Condition(name: "Agent Can Attack ", story: "[Agent] Close To [Target] Destination [AttackRadius] [Inverter]", category: "Conditions", id: "9c6499257f47a8a809ec3b9e8d87d321")]
+[Condition(name: "AgentObj Can Attack ", story: "[AgentObj] Close To [Target] Destination [AttackRadius] [Inverter]", category: "Conditions", id: "9c6499257f47a8a809ec3b9e8d87d321")]
 public partial class AgentCanAttackCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
@@ -22,7 +22,7 @@ public partial class AgentCanAttackCondition : Condition
         bool checkCloseToDestination = navMeshAgent.remainingDistance < stopOffset;
         bool checkCloseToTarget = Mathf.Round(Vector3.Distance(Agent.Value.transform.position , Target.Value.transform.position)) <= AttackRadius.Value ;
         
-        //Debug.Log( Mathf.Round(Vector3.Distance(Agent.Value.transform.position , Target.Value.transform.position)) );
+        //Debug.Log( Mathf.Round(Vector3.Distance(AgentObj.Value.transform.position , Target.Value.transform.position)) );
 
         return (checkCloseToDestination && checkCloseToTarget);
     }

@@ -10391,6 +10391,7 @@ GameObject:
   - component: {fileID: 2352939649947676547}
   - component: {fileID: 2087879342136471477}
   - component: {fileID: 236404720280251147}
+  - component: {fileID: 3983043691098231280}
   m_Layer: 0
   m_Name: BombAgent
   m_TagString: Untagged
@@ -10563,6 +10564,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   bombParticle: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+--- !u!114 &3983043691098231280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132263506888124006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  isAlive: 0
 --- !u!1 &6386218620281849677
 GameObject:
   m_ObjectHideFlags: 0

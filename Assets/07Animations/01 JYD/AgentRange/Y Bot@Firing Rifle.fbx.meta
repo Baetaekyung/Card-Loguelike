@@ -55,8 +55,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.30961436
-        functionName: PlayMuzzleEffect
+      - time: 0.050664153
+        functionName: SetManualRotate
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -64,6 +64,20 @@ ModelImporter:
         messageOptions: 0
       - time: 0.26396272
         functionName: Fire
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.30961436
+        functionName: PlayMuzzleEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.607899
+        functionName: StopManualRotate
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
