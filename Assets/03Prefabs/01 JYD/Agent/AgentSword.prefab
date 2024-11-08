@@ -1303,6 +1303,9 @@ MonoBehaviour:
   - rid: 2285473624099128157
   - rid: 2285473592494784822
   - rid: 2285473623884431563
+  - rid: 2285473624833655373
+  - rid: 2285473638358451052
+  - rid: 2285473645439484700
   references:
     version: 2
     RefIds:
@@ -1313,7 +1316,7 @@ MonoBehaviour:
           m_Value0: 6913836224369089000
           m_Value1: 7521962314327256998
         Name: ChaseRadius
-        m_Value: 10
+        m_Value: 20
     - rid: 2285473561634144474
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1337,7 +1340,7 @@ MonoBehaviour:
           m_Value0: 5513194394281948341
           m_Value1: 16643009058973780617
         Name: AttackRadius
-        m_Value: 5
+        m_Value: 12
     - rid: 2285473623884431563
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1345,7 +1348,7 @@ MonoBehaviour:
           m_Value0: 13406704783390741570
           m_Value1: 2615480703659678095
         Name: ChaseWaitTime
-        m_Value: 1.2
+        m_Value: 0.7
     - rid: 2285473624099128157
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1353,7 +1356,31 @@ MonoBehaviour:
           m_Value0: 9674045886192384449
           m_Value1: 14881210655543703192
         Name: AttackWaitTime
-        m_Value: 1.6
+        m_Value: 0.4
+    - rid: 2285473624833655373
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17884241066848193948
+          m_Value1: 5224840623600193964
+        Name: TurnDuration
+        m_Value: 6
+    - rid: 2285473638358451052
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4704078422675594743
+          m_Value1: 7421017737654794014
+        Name: MiddleAttackRadius
+        m_Value: 6
+    - rid: 2285473645439484700
+      type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10090387643009778374
+          m_Value1: 6492602441300819067
+        Name: AnimationEnd
+        m_Value: 0
     - rid: 3494369580566970613
       type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1434,6 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  animationEnd: 0
   earthShatter: {fileID: 198345217066185332, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
   earthShatterTrm: {fileID: 8908782971870144190}
 --- !u!1 &4268868302938827823

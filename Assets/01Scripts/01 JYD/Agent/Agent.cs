@@ -4,9 +4,39 @@ using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public class AgentStat
+{
+    public float MoveSpeed;
+    public float MaxHealth;
+    public float Defense;
+    public float DamageAmount;
+    public float AttackSpeed;
+
+    private BehaviorGraphAgent BehaviorGraphAgent;
+
+    public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
+    {
+        BehaviorGraphAgent = behaviorGraphAgent;
+        MoveSpeed = moveSpeed;
+        MaxHealth = maxHealth;
+        DamageAmount = damageAmount;
+        AttackSpeed = attackSpeed;
+        Defense = defense;
+
+        BehaviorGraphAgent.SetVariableValue("MoveSpeed",MoveSpeed);
+        BehaviorGraphAgent.SetVariableValue("MaxHealth",MaxHealth);
+        BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
+        BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
+        BehaviorGraphAgent.SetVariableValue("Defense",Defense);
+    }
+}
+
 [RequireComponent(typeof(EnemyHealth))]
 public class Agent : MonoBehaviour
 {
+    //public AgentStat Stat;
+    
     private const float MAX_ATK_DISTANCE = 50f;
 
     public Transform target;
@@ -98,6 +128,7 @@ public class Agent : MonoBehaviour
         return _nextPathPoint;
     }
 
+    #region AnimationEvents
     private void SetManualRotate()
     {
         canManualRotate = true;
@@ -119,6 +150,16 @@ public class Agent : MonoBehaviour
     }
 
     
+    public void SetMove()
+    {
+        _navMeshAgent.isStopped = false;
+    }
+    
+    public void StopMove()
+    {
+        _navMeshAgent.isStopped = true;
+    }
+    #endregion
     
     private void OnDrawGizmos()
     {

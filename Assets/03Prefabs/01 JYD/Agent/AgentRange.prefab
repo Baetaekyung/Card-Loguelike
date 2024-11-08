@@ -910,7 +910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7373635238161344254
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  animationEnd: 0
   _muzzleEffect: {fileID: 319372152299532199}
   _bullet: {fileID: -4648219983985405441, guid: e362f0b2f6514c147b7da9735c18c768, type: 3}
   firePos: {fileID: 7862020702937556896}
