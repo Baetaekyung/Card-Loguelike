@@ -760,15 +760,36 @@ PrefabInstance:
         mscorlib]]'
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: 'managedReferences[2285473638358451052]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[System.Single,
+        mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: managedReferences[2285473624833655373].Name
       value: TurnDuration
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473638358451052].Name
+      value: MiddleAttackRadius
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 13
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473561634144473].m_Value
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473592494784822].m_Value
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: managedReferences[2285473624833655373].m_Value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473638358451052].m_Value
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
@@ -780,12 +801,24 @@ PrefabInstance:
       value: 2285473624833655373
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[13]'
+      value: 2285473638358451052
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: managedReferences[2285473624833655373].GUID.m_Value0
       value: 17884241066848193948
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: managedReferences[2285473624833655373].GUID.m_Value1
       value: 5224840623600193964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473638358451052].GUID.m_Value0
+      value: 4704078422675594743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
+      propertyPath: managedReferences[2285473638358451052].GUID.m_Value1
+      value: 7421017737654794014
       objectReference: {fileID: 0}
     - target: {fileID: 4727506242976020959, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}
       propertyPath: 'managedReferences[3494369580566970613].m_Value.Array.data[0]'

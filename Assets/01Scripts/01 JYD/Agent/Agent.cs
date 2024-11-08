@@ -23,7 +23,7 @@ public class Agent : MonoBehaviour
     private bool canManualRotate;
 
     public bool AnimationEnd => animationEnd;
-    private bool animationEnd;
+    [SerializeField] private bool animationEnd;
 
    
     private void Start()
