@@ -6,7 +6,11 @@ namespace CardGame.Weapons
 {
     public abstract class BaseMelee : BaseWeapon
     {
-        [SerializeField] protected List<Transform> collisionTransforms;
+        [SerializeField] protected DamageCaster damageCaster;
+        private void Awake()
+        {
+            damageCaster = GetComponentInChildren<DamageCaster>();
+        }
 
     }
 }

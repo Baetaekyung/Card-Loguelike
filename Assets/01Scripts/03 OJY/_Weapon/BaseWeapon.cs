@@ -12,9 +12,13 @@ namespace CardGame.Weapons
             if(CanAttack)
             {
                 baseWeaponSO.OnEvent();
-                currentDelayTime += baseWeaponSO.GetDelay + Time.time;
+                currentDelayTime = baseWeaponSO.GetDelay + Time.time;
                 Attack();
             }
+        }
+        private void Update()
+        {
+            InventoryUI.Instance.GetList[3].text = currentDelayTime + ", " + Time.time;
         }
         protected abstract void Attack();
     }

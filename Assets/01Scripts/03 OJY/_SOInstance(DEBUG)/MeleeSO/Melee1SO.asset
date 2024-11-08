@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee5764e41001104abfee88113062aa4, type: 3}
   m_Name: Melee1SO
   m_EditorClassIdentifier: 
-  delay: 5
+  delay: 1
   prefab: {fileID: 2799166916762076301, guid: fc0ab557496bd72409ee6235df3e5d3a, type: 3}
   kk: 111
