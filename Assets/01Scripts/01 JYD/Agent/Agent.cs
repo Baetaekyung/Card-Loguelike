@@ -54,7 +54,9 @@ public class Agent : MonoBehaviour
 
     public bool AnimationEnd => animationEnd;
     [SerializeField] private bool animationEnd;
-
+    
+    [Header("SlashEffect")]
+    [SerializeField] private ParticleSystem[] slashEffect;
    
     private void Start()
     {
@@ -141,11 +143,13 @@ public class Agent : MonoBehaviour
 
     public void SetAnimationEnd()
     {
+        _behaviorGraphAgent.SetVariableValue("AnimationEnd",true);
         animationEnd = true;
     }
     
     public void StopAnimationEnd()
     {
+        _behaviorGraphAgent.SetVariableValue("AnimationEnd",false);
         animationEnd = false;
     }
 
@@ -159,6 +163,16 @@ public class Agent : MonoBehaviour
     {
         _navMeshAgent.isStopped = true;
     }
+    
+    private void PlaySlashEffect(int idx)
+    {
+        if (slashEffect[idx].isPlaying == false)
+        {
+            slashEffect[idx].Simulate(0);
+            slashEffect[idx].Play();
+        }
+    }
+    
     #endregion
     
     private void OnDrawGizmos()

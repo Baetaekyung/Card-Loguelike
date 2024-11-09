@@ -8,7 +8,7 @@ namespace CardGame
         [SerializeField] private ParticleSystem earthShatter;
         [SerializeField] private Transform earthShatterTrm;
 
-        [SerializeField] private ParticleSystem[] slashEffect;
+        
         
         private void PlayEarthShatter()
         {
@@ -25,13 +25,6 @@ namespace CardGame
            
         }
 
-        private void PlaySlashEffect(int idx)
-        {
-            if (slashEffect[idx].isPlaying == false)
-            {
-                slashEffect[idx].Simulate(0);
-                slashEffect[idx].Play();
-            }
-        }
+        
     }
 }
