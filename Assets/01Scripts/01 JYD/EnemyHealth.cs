@@ -5,6 +5,8 @@ namespace CardGame
 {
     public class EnemyHealth : MonoBehaviour ,IDamageable
     {
+        public ActionData ActionData;
+        
         public float MaxHealth => maxHealth;
         public float CurrentHealth => currentHealth;
         public bool IsAlive => isAlive;
@@ -13,18 +15,31 @@ namespace CardGame
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
 
+        private Agent owner;
+
+        private void Awake()
+        {
+            owner = GetComponent<Agent>();
+        }
+
         private void Start()
         {
             currentHealth = maxHealth;
         }
 
-        public void TakeDamage(float amount)
+        public void TakeDamage(ActionData actionData)
         {
-            currentHealth -= amount;
+            ActionData.knockBackPower = actionData.knockBackPower;
+            ActionData.damageAmount = actionData.damageAmount;
+            ActionData.hitNormal = actionData.hitNormal;
+            ActionData.hitPoint = actionData.hitPoint;
+            
             if (currentHealth <= 0)
             {
                 OnDead();
             }
+
+            owner.GetKnockBack(-owner.transform.forward * ActionData.knockBackPower);
         }
 
         public void Heal(float amount)

@@ -44,6 +44,8 @@ public partial class AgentMovetoCircleAction : Action
 
     protected override Status OnUpdate()
     {
+        if (_navMeshAgent.enabled == false) return Status.Running;
+        
         Vector3 origin = Target.Value.transform.position;
         float distanceToTarget = Vector3.Distance(_navMeshAgent.destination, origin);
         

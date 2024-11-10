@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using CardGame;
 using Unity.Behavior;
 using UnityEngine;
@@ -42,27 +43,37 @@ public class Agent : MonoBehaviour
     public Transform target;
     
     private NavMeshAgent _navMeshAgent;
+    private Rigidbody _rigidbody;
     private Animator animator;
+    private BehaviorGraphAgent _behaviorGraphAgent;
+    private EnemyHealth enemyHealth;
     
-    private Vector3 _startPosition;
+    public bool AnimationEnd => animationEnd;
     private Vector3 _LastPosition;
     private Vector3 _nextPathPoint;
+    private Vector3 _startPosition;
     
-    private BehaviorGraphAgent _behaviorGraphAgent;
     
     private bool canManualRotate;
-
-    public bool AnimationEnd => animationEnd;
-    [SerializeField] private bool animationEnd;
+    private bool animationEnd;
     
     [Header("SlashEffect")]
     [SerializeField] private ParticleSystem[] slashEffect;
-   
+    
+    [Header("Knockback Info")]
+    [SerializeField] private float _knockBackThreshold;
+    [SerializeField] private float _maxKnockBackTime;
+    
+    private float _knockBackTime;
+    private bool _isKnockBack;
+    
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        _rigidbody = GetComponent<Rigidbody>();
         
         _LastPosition = transform.position;
     }
@@ -71,10 +82,17 @@ public class Agent : MonoBehaviour
     {
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GetKnockBack(-transform.forward * 5 + transform.up * 3f);
+        }
     }
-    
+        
     private void LateUpdate()
     {
+        if(_isKnockBack)return;
+        
         Vector3 velocity = (transform.position - _LastPosition) / Time.deltaTime;
         _LastPosition = transform.position;
         
@@ -89,9 +107,9 @@ public class Agent : MonoBehaviour
         {
             animator.SetFloat("Speed", 0,0.1f , Time.deltaTime);
         }
-                
+        
     }
-
+    
     private void FaceToTarget(Vector3 _lookDir)
     {
         Vector3 targetPos = _lookDir - transform.position;
@@ -130,6 +148,59 @@ public class Agent : MonoBehaviour
         return _nextPathPoint;
     }
 
+    #region KnockbackInfo
+
+    public void GetKnockBack(Vector3 force)
+    {
+        StartCoroutine(ApplyKnockBack(force));
+    }
+    
+    private IEnumerator ApplyKnockBack(Vector3 force)
+    {
+        Vector3 originDestination = _navMeshAgent.destination;
+        
+        
+        _navMeshAgent.enabled = false;
+        _rigidbody.useGravity = true;
+        _rigidbody.isKinematic = false;
+        _rigidbody.AddForce(force, ForceMode.Impulse);
+        _knockBackTime = Time.time;
+        
+        if (_isKnockBack)
+        {
+            yield break;
+        }
+
+        _isKnockBack = true;
+        yield return new WaitForFixedUpdate(); 
+
+        yield return new WaitUntil(CheckKnockBackEnd);
+        DisableRigidbody();
+
+        //_navMeshAgent.Warp(transform.position);
+        _isKnockBack = false;
+
+        if(enemyHealth.IsAlive)
+        {
+            _navMeshAgent.enabled = true;
+            _navMeshAgent.SetDestination(originDestination);
+        }
+    }
+    
+    private bool CheckKnockBackEnd()
+    {
+        return _rigidbody.linearVelocity.magnitude < _knockBackThreshold || Time.time > _knockBackTime + _maxKnockBackTime;
+    }
+    
+    private void DisableRigidbody()
+    {
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.useGravity = false;
+        _rigidbody.isKinematic = true;
+    }
+    #endregion
+    
     #region AnimationEvents
     private void SetManualRotate()
     {

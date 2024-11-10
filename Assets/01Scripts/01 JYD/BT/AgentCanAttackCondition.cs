@@ -17,8 +17,8 @@ public partial class AgentCanAttackCondition : Condition
     
     public override bool IsTrue()
     {
-        if (navMeshAgent == null || Agent.Value == null) return false;
-
+        if (navMeshAgent == null  || navMeshAgent.enabled == false || Agent.Value == null) return false;
+                
         bool checkCloseToDestination = navMeshAgent.remainingDistance < stopOffset;
         bool checkCloseToTarget = Mathf.Round(Vector3.Distance(Agent.Value.transform.position , Target.Value.transform.position)) <= AttackRadius.Value;
 

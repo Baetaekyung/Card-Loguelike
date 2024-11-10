@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Data.Common;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
+    [SerializeField] private LayerMask whatIsTarget;
+    
     private Rigidbody _rigidbody;
-
+    
+    
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
-
     public void Shot(Vector3 velocity,float power)
     {
         if (_rigidbody == null)
@@ -21,13 +21,14 @@ public class Bullet : MonoBehaviour
         
         _rigidbody.linearVelocity = velocity * power;
         _rigidbody.rotation = Quaternion.LookRotation(velocity);
-        
+                
         StartCoroutine(IDestroy());
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if((whatIsTarget & (1 << other.gameObject.layer)) != 0)
+            Destroy(gameObject);
     }
 
     IEnumerator IDestroy()

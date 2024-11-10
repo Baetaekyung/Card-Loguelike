@@ -8,7 +8,7 @@ namespace CardGame
         float CurrentHealth { get; }
         bool IsAlive { get; }
         
-        public void TakeDamage(float amount);
+        public void TakeDamage(ActionData actiondata);
         public void Heal(float amount);
         public void OnDead();
     }

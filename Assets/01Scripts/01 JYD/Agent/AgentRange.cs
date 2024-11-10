@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AgentRange : Agent
 {
     [SerializeField] private ParticleSystem _muzzleEffect;
-    [SerializeField] private Bullet _bullet;
+    [FormerlySerializedAs("_bullet")] [SerializeField] private Projectile projectile;
     [SerializeField] private Transform firePos;
     
     
@@ -15,7 +16,7 @@ public class AgentRange : Agent
 
     public void Fire()
     {
-        Bullet b = Instantiate(_bullet,firePos.position , Quaternion.identity);
+        Projectile b = Instantiate(projectile,firePos.position , Quaternion.identity);
         b.Shot(-firePos.right , 20);
     }
     
