@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace CardGame
@@ -6,12 +7,24 @@ namespace CardGame
     {
         [SerializeField] private ParticleSystem earthShatter;
         [SerializeField] private Transform earthShatterTrm;
+
+        
         
         private void PlayEarthShatter()
         {
-            ParticleSystem p = Instantiate(earthShatter , earthShatterTrm.transform.position , Quaternion.LookRotation(earthShatterTrm.forward));
-            p.Play();
+            int rand = Random.Range(1, 4);
+            float angleStep = rand == 2 ? 60 : (rand == 3 ? 30 : 0);
+
+            for (int i = 0; i < rand; i++)
+            {
+                float angle = i * angleStep; 
+                Quaternion rotation = Quaternion.LookRotation(earthShatterTrm.forward) * Quaternion.Euler(0, angle, 0); 
+                ParticleSystem p = Instantiate(earthShatter, earthShatterTrm.transform.position, rotation);
+                p.Play();
+            }
+           
         }
+
         
     }
 }

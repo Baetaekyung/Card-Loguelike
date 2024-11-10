@@ -11,7 +11,7 @@ public partial class SetStopAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<bool> Active;
-
+    
     private NavMeshAgent _navMeshAgent;
     
     protected override Status OnStart()
