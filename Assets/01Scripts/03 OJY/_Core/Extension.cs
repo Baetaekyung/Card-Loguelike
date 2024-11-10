@@ -6,10 +6,6 @@ namespace CardGame
 {
     public static class Extension
     {
-        public static void AutoDelegate(this MonoBehaviour monoBehaviour, Delegate targetDelegate, Delegate subscribeDelegate)
-        {
-
-        }
         public static T GetOrAddComponent<T>(this MonoBehaviour monoBehaviour) where T : Component
         {
             T result = monoBehaviour.gameObject.GetComponent<T>();
