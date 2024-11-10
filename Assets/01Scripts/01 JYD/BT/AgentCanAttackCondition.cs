@@ -20,10 +20,10 @@ public partial class AgentCanAttackCondition : Condition
         if (navMeshAgent == null || Agent.Value == null) return false;
 
         bool checkCloseToDestination = navMeshAgent.remainingDistance < stopOffset;
-        bool checkCloseToTarget = Mathf.Round(Vector3.Distance(Agent.Value.transform.position , Target.Value.transform.position)) <= AttackRadius.Value ;
-        
-        //Debug.Log( Mathf.Round(Vector3.Distance(AgentObj.Value.transform.position , Target.Value.transform.position)) );
+        bool checkCloseToTarget = Mathf.Round(Vector3.Distance(Agent.Value.transform.position , Target.Value.transform.position)) <= AttackRadius.Value;
 
+        
+        
         return (checkCloseToDestination && checkCloseToTarget);
     }
 

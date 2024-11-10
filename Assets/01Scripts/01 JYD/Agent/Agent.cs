@@ -177,7 +177,7 @@ public class Agent : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        /*if(Application.isPlaying == false)return;
+        if(Application.isPlaying == false)return;
         
         _behaviorGraphAgent.GetVariable("AttackRadius" , out BlackboardVariable<float> radius);
         Gizmos.color = Color.green;
@@ -185,6 +185,6 @@ public class Agent : MonoBehaviour
         
         _behaviorGraphAgent.GetVariable("ChaseRadius" , out BlackboardVariable<float> chaseRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position , chaseRadius);*/
+        Gizmos.DrawWireSphere(transform.position , chaseRadius);
     }
 }
