@@ -7,6 +7,6 @@ public class DeckSaveBtn : BaseButton
 
     protected override void OnClick()
     {
-        CardDataManager.Instance.SaveCurrentDeck(CardManager.Instance.deckCardList);
+        //CardDataManager.Instance.SaveCurrentDeck(CardManager.Instance.deckCardList);
     }
 }

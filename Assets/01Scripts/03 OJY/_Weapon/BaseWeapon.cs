@@ -18,7 +18,7 @@ namespace CardGame.Weapons
         }
         private void Update()
         {
-            InventoryUI.Instance.GetList[3].text = currentDelayTime + ", " + Time.time;
+            //InventoryUI.Instance.GetList[3].text = currentDelayTime + ", " + Time.time;
         }
         protected abstract void Attack();
     }

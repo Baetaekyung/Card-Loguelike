@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CardGame.Players
 {
-    public class Player : MonoBehaviour
+    public class Player : Entity
     {
         private readonly Dictionary<Type, IPlayerComponent> componentDictionary = new();
         public FiniteStateMachine<PlayerStateEnum.Movement, Player> PlayerFSM_Movement { get; private set; }
@@ -81,9 +81,6 @@ namespace CardGame.Players
             SetUpEvent();
             SetUpInventory();
         }
-
-
-
         private void OnDestroy()
         {
             void UnSubscribeEvent()
@@ -106,9 +103,9 @@ namespace CardGame.Players
         }
         private void HandleOnRoll()
         {
-            bool isMoving = GetPlayerMovement.IsMoving;
+            bool isMoving = GetInput.KeyNotPressedTime < 0.2f;//0.25~ 0.3 is safe. if legnth of dir > 0
             if (isMoving)
-                GetPlayerMovement.DoABarrelRoll(GetPlayerMovement.GetVelocitiy.normalized, 4);
+                GetPlayerMovement.TryDoABarrelRoll(GetInput.GetCameraRelativeInput, 6);
             //playerRenderer.SetMaterial(playerRenderer.GetMatOnRoll);
         }
 
@@ -125,7 +122,7 @@ namespace CardGame.Players
                 }
                 void PlayerMovement()
                 {
-                    Vector3 result = GetInput.GetCameraRelativeInput;
+                    Vector3 result = GetInput.GetCameraRelativeInputRaw;
                     GetPlayerComponent<PlayerMovement>().InputDirection = result;
                     if (Input.GetKeyDown(KeyCode.O))
                     {
