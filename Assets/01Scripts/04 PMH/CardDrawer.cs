@@ -1,16 +1,20 @@
+using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CardDrawer : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private List<CardSO> _deck = new();
     [SerializeField] private RectTransform spawnTrm;
     [SerializeField] private RectTransform cardUseArea;
+    private RectTransform _drawer;
 
     public void InitializeDeck(List<CardSO> deck)
     {
         _deck = deck;
+        _drawer = GetComponent<RectTransform>();
         ShuffleDeck();
     }
 
@@ -34,9 +38,8 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         if (randomCard == null) return;
 
         CardObject cardObj = Instantiate(
-            randomCard.cardObject, spawnTrm.localPosition, Quaternion.identity);
-        cardObj.transform.SetParent(spawnTrm);
-
+            randomCard.cardObject, spawnTrm);
+        cardObj.transform.SetLocalPositionAndRotation(_drawer.localPosition, Quaternion.identity);
         cardObj.SetCardUseArea(cardUseArea);
 
         CardManager.Instance.AddToFieldCard(cardObj);

@@ -1,4 +1,6 @@
+using CardGame;
 using CustomUtils;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,14 +10,14 @@ public class KeywordPanel : MonoBehaviour
     [Header("Serialize variables")]
     [SerializeField] private KeywordListSO _keywordList;
     [SerializeField] private TextMeshProUGUI _descriptionText;
-    [SerializeField] private BaseCard _card;
+    [SerializeField] private UseableCard _card;
 
     private CanvasGroup _canvasGroup;
     private string _description;
     private string _completeDescription = "";
 
-    private List<string> _keywords = new List<string>();
-    public List<string> Keywords => _keywords;
+    private List<KeywordEnum> _keywords = new List<KeywordEnum>();
+    public List<KeywordEnum> Keywords => _keywords;
 
     private bool _hasKeyword = false;
 
@@ -34,7 +36,7 @@ public class KeywordPanel : MonoBehaviour
 
         if (!_hasKeyword) return;
 
-        _keywords = _keywordList.GetKeywords(_description);
+        _keywords = _card.keywords;
 
         for (int i = 0; i < _keywords.Count; i++)
         {
@@ -44,7 +46,7 @@ public class KeywordPanel : MonoBehaviour
                 .TryGetValue(_keywords[i], out Color keywordColor);
 
             description = TextUtility.GivePointColor(
-                            _keywords[i],
+                            Enum.GetName(typeof(KeywordEnum), (int)_keywords[i]),
                             description,
                             keywordColor != null ? keywordColor : Color.white);
 

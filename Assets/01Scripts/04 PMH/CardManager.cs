@@ -15,6 +15,8 @@ public class CardManager : MonoBehaviour
     private List<CardObject> _usedCardList = new(); //used card
     public Dictionary<string, CardSO> nameByDictionary = new();
 
+    private List<string> _cardNameList = new(); //For data Save
+
     [SerializeField] private float _verticalSpacing; //Card vertical space
     [SerializeField] private float _minVerticalSpacing = 40f;
     [SerializeField] private Vector2 _usedCardSortingPosition; //used card on this position
@@ -28,18 +30,22 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        haveCards = CardDataManager.Instance.LoadHavingCard();
-        deckCardList = CardDataManager.Instance.LoadCurrentDeck();
-
-        cardDrawer.InitializeDeck(deckCardList);
-
-        deckCnt = deckCardList.Count;
+        CardDataManager.Instance.LoadHavingCard();
 
         for (int i = 0; i < haveCards.Count; i++)
         {
             if(!nameByDictionary.ContainsKey(haveCards[i].cardUI.CardInfo.cardName))
                 nameByDictionary.Add(haveCards[i].cardUI.CardInfo.cardName, haveCards[i]);
+
+            _cardNameList.Add(haveCards[i].cardUI.CardInfo.cardName);
         }
+
+        //After Init nameByDictionary
+        CardDataManager.Instance.LoadCurrentDeck();
+
+        cardDrawer.InitializeDeck(deckCardList);
+
+        deckCnt = deckCardList.Count;
     }
 
     private void Update()
@@ -47,7 +53,7 @@ public class CardManager : MonoBehaviour
         //Debug
         if (Keyboard.current.uKey.wasPressedThisFrame)
         {
-            CardDataManager.Instance.SaveCurrentDeck(deckCardList);
+            CardDataManager.Instance.SaveCurrentDeck(_cardNameList);
             return;
         }
 

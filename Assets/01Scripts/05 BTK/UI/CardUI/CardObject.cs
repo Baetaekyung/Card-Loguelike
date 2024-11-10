@@ -1,3 +1,4 @@
+using CardGame;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,6 @@ public class CardObject : BaseCard
 
     [SerializeField] private float _usedCardAnimationSpeed = 3f; //speed of go to used deck
 
-    protected List<string> _keywords =new List<string>();
     [SerializeField] private KeywordPanel _keywordPanel;
 
     protected bool _isDragging;
@@ -36,7 +36,6 @@ public class CardObject : BaseCard
     {
         if (IsUsed) return;
 
-        _keywords = _keywordPanel.Keywords;
         UpdatePosition();
         UpdateSize();
     }
