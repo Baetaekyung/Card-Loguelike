@@ -58,23 +58,19 @@ public class CardSOCustomEditor : EditorWindow
         asset.cardInfo = cardInfo;
         asset.cardType = cardType;
 
-//todo : use const variable to read directory => ex. const str identifier = "literal";
         string path = AssetDatabase.GenerateUniqueAssetPath($"Assets/00SODatas/02 SSH/Created/{cardInfo.cardName}.asset");
 
         AssetDatabase.CreateAsset(asset, path);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
-//todo : use const variable to read directory => ex. const str identifier = "literal";
         path = AssetDatabase.GenerateUniqueAssetPath($"Assets/03Prefabs/02 SSH/Created/{cardInfo.cardName}prefab.prefab");
 
         // Instantiate a new prefab instance
         GameObject g = PrefabUtility.InstantiatePrefab(_prefab) as GameObject;
         if (g != null)
         {
-
-//conflict. changed CardData to protected.
-//g.GetComponent<SkillCard>().CardData = asset;
+            g.GetComponent<UseableCard>().CardData = asset;
             PrefabUtility.SaveAsPrefabAssetAndConnect(
                 g,
                 path,
@@ -102,7 +98,6 @@ public class CardSOCustomEditor : EditorWindow
         asset.cardType = cardType;
 
         // 파일 경로 생성
-//todo : use const variable to read directory => ex. const str identifier = "literal";
         string path = AssetDatabase.GenerateUniqueAssetPath($"Assets/00SODatas/02 SSH/Created/{cardInfo.cardName}.asset");
 
         // ScriptableObject 저장
