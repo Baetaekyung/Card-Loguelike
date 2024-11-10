@@ -5291,8 +5291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   slashEffect: []
-  _knockBackThreshold: 0.2
-  _maxKnockBackTime: 0.3
+  _knockBackThreshold: 0.7
+  _maxKnockBackTime: 0.5
   firePos: {fileID: 2054278832826617358}
   firePower: 20
   arrow: {fileID: 3846083657428706976, guid: 45804eb2722b83845adbcf2d72da12dd, type: 3}

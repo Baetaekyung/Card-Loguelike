@@ -16,7 +16,16 @@ namespace CardGame
                 {
                     print("Damage");
                     int damage = 1;
-                    compo.TakeDamage(damage);
+
+                    ActionData actionData = new ActionData();
+                    
+                    actionData.hitPoint = hit.point;    
+                    actionData.hitPoint = hit.normal;   
+                    actionData.damageAmount = damage;       
+                    actionData.knockBackPower = damage;     
+                    
+                    
+                    compo.TakeDamage(actionData);
                 }
             }
             return result;
