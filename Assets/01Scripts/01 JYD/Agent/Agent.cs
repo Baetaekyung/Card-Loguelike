@@ -1,48 +1,103 @@
 using System;
+using System.Collections;
 using CardGame;
 using Unity.Behavior;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+
+[System.Serializable]
+public class AgentStat
+{
+    public float MoveSpeed;
+    public float MaxHealth;
+    public float Defense;
+    public float DamageAmount;
+    public float AttackSpeed;
+
+    private BehaviorGraphAgent BehaviorGraphAgent;
+
+    public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
+    {
+        BehaviorGraphAgent = behaviorGraphAgent;
+        MoveSpeed = moveSpeed;
+        MaxHealth = maxHealth;
+        DamageAmount = damageAmount;
+        AttackSpeed = attackSpeed;
+        Defense = defense;
+
+        BehaviorGraphAgent.SetVariableValue("MoveSpeed",MoveSpeed);
+        BehaviorGraphAgent.SetVariableValue("MaxHealth",MaxHealth);
+        BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
+        BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
+        BehaviorGraphAgent.SetVariableValue("Defense",Defense);
+    }
+}
 
 [RequireComponent(typeof(EnemyHealth))]
 public class Agent : MonoBehaviour
 {
+    //public AgentStat Stat;
+    
     private const float MAX_ATK_DISTANCE = 50f;
 
     public Transform target;
     
     private NavMeshAgent _navMeshAgent;
+    private Rigidbody _rigidbody;
     private Animator animator;
+    private BehaviorGraphAgent _behaviorGraphAgent;
+    private EnemyHealth enemyHealth;
     
-    private Vector3 _startPosition;
+    public bool AnimationEnd => animationEnd;
     private Vector3 _LastPosition;
     private Vector3 _nextPathPoint;
+    private Vector3 _startPosition;
     
-    private BehaviorGraphAgent _behaviorGraphAgent;
     
     private bool canManualRotate;
-
-    public bool AnimationEnd => animationEnd;
     private bool animationEnd;
-
-   
+    
+    [Header("SlashEffect")]
+    [SerializeField] private ParticleSystem[] slashEffect;
+    
+    [Header("Knockback Info")]
+    [SerializeField] private float _knockBackThreshold;
+    [SerializeField] private float _maxKnockBackTime;
+    
+    private float _knockBackTime;
+    private bool _isKnockBack;
+    
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        _rigidbody = GetComponent<Rigidbody>();
         
         _LastPosition = transform.position;
+
+
+        enemyHealth.OnDeadEvent += Dead;
+    }
+
+    private void OnDestroy()
+    {
+        enemyHealth.OnDeadEvent -= Dead;
     }
 
     private void Update()
     {
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
+
     }
-    
+        
     private void LateUpdate()
     {
+        if(_isKnockBack)return;
+        
         Vector3 velocity = (transform.position - _LastPosition) / Time.deltaTime;
         _LastPosition = transform.position;
         
@@ -57,9 +112,18 @@ public class Agent : MonoBehaviour
         {
             animator.SetFloat("Speed", 0,0.1f , Time.deltaTime);
         }
-                
+        
     }
 
+    private void Dead()
+    {
+        /*_behaviorGraphAgent.SetVariableValue("AgentState",State.Dead);
+        _behaviorGraphAgent.Restart();
+        
+        _behaviorGraphAgent.GetVariable("AgentState",out BlackboardVariable<State> state);
+        print($"{gameObject.name} {state.Value}이 사망 하였습니다.이이이이이이이이익");*/
+    }
+    
     private void FaceToTarget(Vector3 _lookDir)
     {
         Vector3 targetPos = _lookDir - transform.position;
@@ -98,6 +162,60 @@ public class Agent : MonoBehaviour
         return _nextPathPoint;
     }
 
+    #region KnockbackInfo
+
+    public void GetKnockBack(Vector3 force)
+    {
+        StartCoroutine(ApplyKnockBack(force));
+    }
+    
+    private IEnumerator ApplyKnockBack(Vector3 force)
+    {
+        Vector3 originDestination = _navMeshAgent.destination;
+        
+        
+        _navMeshAgent.enabled = false;
+        _rigidbody.useGravity = true;
+        _rigidbody.isKinematic = false;
+        _rigidbody.AddForce(force, ForceMode.Impulse);
+        _knockBackTime = Time.time;
+        
+        if (_isKnockBack)
+        {
+            yield break;
+        }
+
+        _isKnockBack = true;
+        yield return new WaitForFixedUpdate(); 
+
+        yield return new WaitUntil(CheckKnockBackEnd);
+        DisableRigidbody();
+
+        //_navMeshAgent.Warp(transform.position);
+        _isKnockBack = false;
+
+        if(enemyHealth.IsAlive)
+        {
+            _navMeshAgent.enabled = true;
+            _navMeshAgent.SetDestination(originDestination);
+        }
+    }
+    
+    private bool CheckKnockBackEnd()
+    {
+        return _rigidbody.linearVelocity.magnitude < _knockBackThreshold || Time.time > _knockBackTime + _maxKnockBackTime;
+    }
+    
+    private void DisableRigidbody()
+    {
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.useGravity = false;
+        _rigidbody.isKinematic = true;
+    }
+    #endregion
+    
+    #region AnimationEvents
     private void SetManualRotate()
     {
         canManualRotate = true;
@@ -110,19 +228,41 @@ public class Agent : MonoBehaviour
 
     public void SetAnimationEnd()
     {
+        _behaviorGraphAgent.SetVariableValue("AnimationEnd",true);
         animationEnd = true;
     }
     
     public void StopAnimationEnd()
     {
+        _behaviorGraphAgent.SetVariableValue("AnimationEnd",false);
         animationEnd = false;
     }
 
     
-    
-    private void OnDrawGizmos()
+    public void SetMove()
     {
-        /*if(Application.isPlaying == false)return;
+        _navMeshAgent.isStopped = false;
+    }
+    
+    public void StopMove()
+    {
+        _navMeshAgent.isStopped = true;
+    }
+    
+    private void PlaySlashEffect(int idx)
+    {
+        if (slashEffect[idx].isPlaying == false)
+        {
+            slashEffect[idx].Simulate(0);
+            slashEffect[idx].Play();
+        }
+    }
+    
+    #endregion
+    
+    /*private void OnDrawGizmos()
+    {
+        if(Application.isPlaying == false)return;
         
         _behaviorGraphAgent.GetVariable("AttackRadius" , out BlackboardVariable<float> radius);
         Gizmos.color = Color.green;
@@ -130,6 +270,6 @@ public class Agent : MonoBehaviour
         
         _behaviorGraphAgent.GetVariable("ChaseRadius" , out BlackboardVariable<float> chaseRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position , chaseRadius);*/
-    }
+        Gizmos.DrawWireSphere(transform.position , chaseRadius);
+    }*/
 }

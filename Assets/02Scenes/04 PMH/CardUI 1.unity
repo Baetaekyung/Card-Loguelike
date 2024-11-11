@@ -1115,6 +1115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50207ee8d229d064f991cbed0ae4af3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardDrawer: {fileID: 0}
+  haveCards: []
+  deckCardList: []
+  deckCnt: 0
+  fieldCardList: []
   _verticalSpacing: 0
   _minVerticalSpacing: 40
   _usedCardSortingPosition: {x: 0, y: 0}
@@ -1326,7 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25714973dfe0146957b729ed76f491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefabs: []
+  _deck: []
   spawnTrm: {fileID: 379642179}
   cardUseArea: {fileID: 377045514}
 --- !u!1660057539 &9223372036854775807

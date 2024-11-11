@@ -11,7 +11,7 @@ public partial class SetStopAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<bool> Active;
-
+    
     private NavMeshAgent _navMeshAgent;
     
     protected override Status OnStart()
@@ -25,6 +25,8 @@ public partial class SetStopAction : Action
 
     protected override Status OnUpdate()
     {
+        if(_navMeshAgent.enabled == false) return Status.Running;
+        
         _navMeshAgent.isStopped = Active.Value;
         return Status.Success;
     }

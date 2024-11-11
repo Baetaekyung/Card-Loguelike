@@ -105,7 +105,6 @@ namespace CardGame.Players
             bool isMoving = GetInput.KeyNotPressedTime < 0.2f;//0.25~ 0.3 is safe. if legnth of dir > 0
             if (isMoving)
                 GetPlayerMovement.TryDoABarrelRoll(GetInput.GetCameraRelativeInput, 6);
-            //playerRenderer.SetMaterial(playerRenderer.GetMatOnRoll);
         }
 
         private void Update()
