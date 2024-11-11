@@ -1222,6 +1222,7 @@ GameObject:
   - component: {fileID: 4727506242976020959}
   - component: {fileID: 282896778284083967}
   - component: {fileID: 4699600103333664836}
+  - component: {fileID: 5543865627313137571}
   m_Layer: 0
   m_Name: AgentSword
   m_TagString: Untagged
@@ -1342,6 +1343,7 @@ MonoBehaviour:
   - rid: 2285473624833655373
   - rid: 2285473638358451052
   - rid: 2285473645439484700
+  - rid: 2285473708735988385
   references:
     version: 2
     RefIds:
@@ -1409,6 +1411,14 @@ MonoBehaviour:
           m_Value1: 6492602441300819067
         Name: AnimationEnd
         m_Value: 0
+    - rid: 2285473708735988385
+      type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2327727918251664362
+          m_Value1: 1549107438798367884
+        Name: ChangeState
+        m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
     - rid: 3494369580566970613
       type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1476,6 +1486,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isAlive: 0
+  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &4699600103333664836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,15 +1500,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  animationEnd: 0
-  earthShatter: {fileID: 198345217066185332, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
-  earthShatterTrm: {fileID: 8908782971870144190}
   slashEffect:
   - {fileID: 590714411237785425}
   - {fileID: 1422605613287192219}
   - {fileID: 5642860019786185913}
   - {fileID: 3417072984000262122}
   - {fileID: 8716888546057805228}
+  _knockBackThreshold: 0
+  _maxKnockBackTime: 0
+  earthShatter: {fileID: 198345217066185332, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
+  earthShatterTrm: {fileID: 8908782971870144190}
+--- !u!114 &5543865627313137571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130958997755988637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de88416471e93e34c907d1b936fb4224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  defaultDistance: 4.84
+  _casterInterpolation: 2.25
+  radius: 4.33
 --- !u!1 &4268868302938827823
 GameObject:
   m_ObjectHideFlags: 0

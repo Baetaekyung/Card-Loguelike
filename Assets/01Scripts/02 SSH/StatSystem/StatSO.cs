@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CardGame
 {
-    [CreateAssetMenu(fileName = "StatSO", menuName = "SO//Stat/StatSO")]
+    [CreateAssetMenu(fileName = "StatSO", menuName = "SO/Stat/StatSO")]
     public class StatSO : ScriptableObject
     {
         public Action<float> OnValueChanged; // 이 스탯이 변경되었을 때 재적용해줘야 하는 내용을 알려주기 위한 이벤트

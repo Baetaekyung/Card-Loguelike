@@ -7,8 +7,6 @@ namespace CardGame
     {
         [SerializeField] private ParticleSystem earthShatter;
         [SerializeField] private Transform earthShatterTrm;
-
-        
         
         private void PlayEarthShatter()
         {

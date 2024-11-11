@@ -11,6 +11,5 @@ namespace CardGame.Weapons
         {
             damageCaster = GetComponentInChildren<DamageCaster>();
         }
-
     }
 }

@@ -354,6 +354,12 @@ MonoBehaviour:
   _hoverAnimationTime: 8
   _cardUseArea: {fileID: 0}
   _usedCardAnimationSpeed: 3
+  _keywordPanel: {fileID: 0}
+  keywords: 
+  _keywordCount: 3
+  _skillEffects:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4877119083991033657
 GameObject:
   m_ObjectHideFlags: 0

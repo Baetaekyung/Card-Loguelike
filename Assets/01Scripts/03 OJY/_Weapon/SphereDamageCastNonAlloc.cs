@@ -4,6 +4,7 @@ namespace CardGame
 {
     public class SphereDamageCastNonAlloc : DamageCaster
     {
+        [Header("Settings")]
         [SerializeField] private float radius;
         [SerializeField] private int maxAlloc;
         public override bool Cast(float distance = 0)
@@ -22,7 +23,14 @@ namespace CardGame
                     if (trm.TryGetComponent(out IDamageable damageable))
                     {
                         print("Damage");
-                        damageable.TakeDamage(damage);
+
+                        ActionData actionData = new ActionData();
+                        actionData.hitPoint = hits[0].point;
+                        actionData.hitPoint = hits[0].normal;
+                        actionData.damageAmount = damage;
+                        actionData.knockBackPower = damage;
+                        
+                        damageable.TakeDamage(actionData);
                     }
                 }
             }

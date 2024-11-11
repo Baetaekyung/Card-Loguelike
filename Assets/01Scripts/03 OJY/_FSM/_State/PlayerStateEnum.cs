@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardGame
+namespace CardGame.FSM
 {
     public class PlayerStateEnum
     {

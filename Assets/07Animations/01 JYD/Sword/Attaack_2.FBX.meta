@@ -539,6 +539,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.15729178
+        functionName: Cast
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.1573349
         functionName: PlaySlashEffect
         data: 
@@ -546,14 +553,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9543879
+      - time: 0.9440786
         functionName: SetAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9870649
+      - time: 0.94501716
         functionName: SetMove
         data: 
         objectReferenceParameter: {instanceID: 0}

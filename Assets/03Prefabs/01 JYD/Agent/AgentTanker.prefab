@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 97872662469081444}
   - component: {fileID: 5543190214566746644}
   - component: {fileID: 5881142480532777827}
+  - component: {fileID: 6190852180234304269}
   m_Layer: 0
   m_Name: AgentTanker
   m_TagString: Untagged
@@ -352,6 +353,7 @@ MonoBehaviour:
   - rid: 2285473669219877647
   - rid: 2285473669286724340
   - rid: 2285473669590287127
+  - rid: 2285473713827086553
   references:
     version: 2
     RefIds:
@@ -386,7 +388,7 @@ MonoBehaviour:
           m_Value0: 5513194394281948341
           m_Value1: 16643009058973780617
         Name: AttackRadius
-        m_Value: 4.65
+        m_Value: 3.2
     - rid: 2285473669194973801
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -402,7 +404,7 @@ MonoBehaviour:
           m_Value0: 7963286479824940750
           m_Value1: 8967027832070969405
         Name: AttackWaitTime
-        m_Value: 3
+        m_Value: 2.19
     - rid: 2285473669219877647
       type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -422,7 +424,7 @@ MonoBehaviour:
           m_Value0: 11239627919779463691
           m_Value1: 17536922204555419164
         Name: Speed
-        m_Value: 1.5
+        m_Value: 1.01
     - rid: 2285473669590287127
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -431,6 +433,14 @@ MonoBehaviour:
           m_Value1: 16105461657352372589
         Name: GuardTime
         m_Value: 5
+    - rid: 2285473713827086553
+      type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2327727918251664362
+          m_Value1: 1549107438798367884
+        Name: ChangeState
+        m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &5543190214566746644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,9 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 300
   currentHealth: 0
   isAlive: 0
+  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &5881142480532777827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,10 +470,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  animationEnd: 0
   slashEffect:
   - {fileID: 4977276575851160711}
   - {fileID: 2625068457612825006}
+  _knockBackThreshold: 0
+  _maxKnockBackTime: 0
+--- !u!114 &6190852180234304269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111969818722777065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de88416471e93e34c907d1b936fb4224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  defaultDistance: 2.63
+  _casterInterpolation: 1.22
+  radius: 2.67
 --- !u!1 &1261999665381652755
 GameObject:
   m_ObjectHideFlags: 0

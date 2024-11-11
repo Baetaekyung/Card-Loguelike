@@ -25,6 +25,8 @@ public partial class SetStopAction : Action
 
     protected override Status OnUpdate()
     {
+        if(_navMeshAgent.enabled == false) return Status.Running;
+        
         _navMeshAgent.isStopped = Active.Value;
         return Status.Success;
     }
