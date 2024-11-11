@@ -3077,6 +3077,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   defaultDistance: 1
+  _casterInterpolation: 0
   radius: 0
 --- !u!1 &1088166728
 GameObject:
@@ -3391,6 +3392,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   isAlive: 0
+  ChangeState: {fileID: 0}
 --- !u!1 &1154247140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,6 +3757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
 --- !u!114 &1302486796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6046,6 +6049,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   defaultDistance: 1
+  _casterInterpolation: 0
   radius: 0
 --- !u!1 &1794278674
 GameObject:
