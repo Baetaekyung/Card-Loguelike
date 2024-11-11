@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace CardGame
@@ -16,6 +17,11 @@ namespace CardGame
         {
             for (int i = 0; i < SkillManager.Instance.registerSkills.Count; i++)
             {
+                print(SkillManager.Instance.registerSkills[i].SkillImage == null);
+                print(_skillImages[i].sprite == null);
+                Assert.IsNull(SkillManager.Instance.registerSkills[i].SkillImage);
+                Assert.IsNull(_skillImages[i].sprite);
+                print("Asdf");
                 _skillImages[i].sprite = SkillManager.Instance.registerSkills[i].SkillImage;
             }
         }
