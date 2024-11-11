@@ -18,7 +18,7 @@ namespace CardGame.Players
         public PlayerMovement GetPlayerMovement => GetPlayerComponent<PlayerMovement>();
         public PlayerRenderer GetPlayerRenderer => GetPlayerComponent<PlayerRenderer>();
         public PlayerInput GetInput => GetPlayerComponent<PlayerInput>();
-        public PlayerAnimator GetAnimator => GetPlayerComponent<PlayerAnimator>();
+        public PlayerAnimator GetPlayerAnimator => GetPlayerComponent<PlayerAnimator>();
         public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
         #endregion
         private void Awake()
@@ -67,7 +67,6 @@ namespace CardGame.Players
             }
             void SetUpInventory()
             {
-
                 //int n = 2;//capacitiy of inventory
                 //int cnt = 0;
                 //var inv = GetPlayerComponent<PlayerInventory>();
@@ -115,9 +114,9 @@ namespace CardGame.Players
             {
                 void DebugInput()
                 {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.F1))
                     {
-                        //PlayerFSM_Combat.ChangeState();
+                        WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
                     }
                 }
                 void PlayerMovement()

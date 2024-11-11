@@ -6,6 +6,8 @@ namespace CardGame.Players
 {
     public class PlayerRenderer : MonoBehaviour, IPlayerComponent
     {
+        [SerializeField] private Transform playerVisual;
+        public Transform GetPlayerVisualTransform => playerVisual;
         private MeshRenderer meshRenderer;
         [SerializeField] private Material matOnNormal;
         [SerializeField] private Material matOnRoll;

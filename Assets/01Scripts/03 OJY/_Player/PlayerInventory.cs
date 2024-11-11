@@ -21,7 +21,8 @@ namespace CardGame.Players
 
         public void Init(Player _player)
         {
-            weapons = GetComponentsInChildren<BaseWeapon>(true).ToList();
+            if(weapons.Count == 0)
+                weapons = GetComponentsInChildren<BaseWeapon>(true).ToList();
         }
 
         public void Dispose(Player _player)

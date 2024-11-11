@@ -16,6 +16,28 @@ namespace CardGame
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
+        protected override void Awake()
+        {
+            base.Awake();
+            OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+        }
+
+        private void HandleOnSceneEnter(SceneEnum obj)
+        {
+            switch (obj)
+            {
+                case SceneEnum.SceneDeckSelect:
+                    registerSkills.Clear();
+                    break;
+                case SceneEnum.Scene3D:
+                    break;
+            }
+        }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+        }
 
         private void Update()
         {
