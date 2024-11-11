@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using CardGame;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
@@ -27,8 +29,19 @@ public class Projectile : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if((whatIsTarget & (1 << other.gameObject.layer)) != 0)
+        if ((whatIsTarget & (1 << other.gameObject.layer)) != 0)
+        {
+            if (other.TryGetComponent(out IDamageable compo))
+            {
+                ActionData actionData = new ActionData();
+                actionData.damageAmount = 10;
+                
+                compo.TakeDamage(actionData);
+            }
+            
+            
             Destroy(gameObject);
+        }
     }
 
     IEnumerator IDestroy()

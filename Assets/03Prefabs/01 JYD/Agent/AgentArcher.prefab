@@ -5045,9 +5045,9 @@ GameObject:
   - component: {fileID: 7329157511974880318}
   - component: {fileID: 7137344981600818752}
   - component: {fileID: 6770119557122597802}
+  - component: {fileID: 3801554727559510429}
   - component: {fileID: 2140413374983871167}
   - component: {fileID: 4016527895122107769}
-  - component: {fileID: 3801554727559510429}
   - component: {fileID: 3174018756846136162}
   - component: {fileID: 8884949611792100381}
   m_Layer: 0
@@ -5120,6 +5120,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &3801554727559510429
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523928735957830823}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!195 &2140413374983871167
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5164,6 +5191,7 @@ MonoBehaviour:
   - rid: 2285473672413315418
   - rid: 2285473672413315419
   - rid: 2285473675213800019
+  - rid: 2285473719756522383
   references:
     version: 2
     RefIds:
@@ -5235,33 +5263,14 @@ MonoBehaviour:
           m_Value1: 8967027832070969405
         Name: AttackWaitTime
         m_Value: 2.4
---- !u!54 &3801554727559510429
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6523928735957830823}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+    - rid: 2285473719756522383
+      type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2327727918251664362
+          m_Value1: 1549107438798367884
+        Name: ChangeState
+        m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &3174018756846136162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5277,6 +5286,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isAlive: 1
+  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &8884949611792100381
 MonoBehaviour:
   m_ObjectHideFlags: 0

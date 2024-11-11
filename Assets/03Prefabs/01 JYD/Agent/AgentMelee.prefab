@@ -3196,6 +3196,7 @@ GameObject:
   - component: {fileID: 2390685771772198606}
   - component: {fileID: 4856524359464760005}
   - component: {fileID: 4821907039836485114}
+  - component: {fileID: 7211924803783901780}
   m_Layer: 0
   m_Name: AgentMelee
   m_TagString: Untagged
@@ -3387,6 +3388,7 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   isAlive: 0
+  ChangeState: {fileID: 0}
 --- !u!114 &4821907039836485114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,10 +3402,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  animationEnd: 0
   slashEffect:
   - {fileID: 7291987545411511763}
   - {fileID: 2484106182970852579}
+  _knockBackThreshold: 0
+  _maxKnockBackTime: 0
+--- !u!114 &7211924803783901780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640368068457094760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de88416471e93e34c907d1b936fb4224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  defaultDistance: 2.13
+  _casterInterpolation: 0.81
+  radius: 1.9
 --- !u!1 &4754603098802619782
 GameObject:
   m_ObjectHideFlags: 0
