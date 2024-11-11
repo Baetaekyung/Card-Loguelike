@@ -16,7 +16,7 @@ namespace CardGame.Players
 
         [Header("Roll Settings")]
         [SerializeField] private AnimationCurve rollCurve; // curve length should be 1.
-        [SerializeField] private float db_stmod;
+[SerializeField] private float db_stmod;
         private const float rollcost = 1f;
         private const float initialRollStamina = 3f;
         private float GetMaxStamina => initialRollStamina + db_stmod;
@@ -107,7 +107,6 @@ namespace CardGame.Players
             velocitiy += vector * force;
         }
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="dashDirection">this should be normal vector</param>
         /// <param name="force">distance</param>
@@ -167,11 +166,6 @@ namespace CardGame.Players
                     OnEnd();
                 }
             }
-        }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            //Gizmos.DrawRay(transform.position, InputDirection * 5);
         }
     }
 }

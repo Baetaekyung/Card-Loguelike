@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardGame
+namespace CardGame.Weapons
 {
     public abstract class BaseWeaponSO : ScriptableObject
     {

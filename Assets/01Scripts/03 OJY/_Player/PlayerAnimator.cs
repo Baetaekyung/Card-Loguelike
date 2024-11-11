@@ -10,16 +10,11 @@ namespace CardGame.Players
         {
             animator = GetComponent<Animator>();
         }
-        public void SetParam(AnimationParameterSO param, bool value)
-            => animator.SetBool(param.GetHashValue, value);
-        public void SetParam(AnimationParameterSO param, float value)
-            => animator.SetFloat(param.GetHashValue, value);
-        public void SetParam(AnimationParameterSO param, float value, float damp, float deltaTime)
-            => animator.SetFloat(param.GetHashValue, value, damp, deltaTime);
-        public void SetParam(AnimationParameterSO param, int value)
-             => animator.SetInteger(param.GetHashValue, value);
-        public void SetParam(AnimationParameterSO param)
-            => animator.SetTrigger(param.GetHashValue);
+        public void SetParam(AnimationParameterSO param, bool value) => animator.SetBool(param.GetHashValue, value);
+        public void SetParam(AnimationParameterSO param, float value) => animator.SetFloat(param.GetHashValue, value);
+        public void SetParam(AnimationParameterSO param, float value, float damp, float deltaTime) => animator.SetFloat(param.GetHashValue, value, damp, deltaTime);
+        public void SetParam(AnimationParameterSO param, int value) => animator.SetInteger(param.GetHashValue, value);
+        public void SetParam(AnimationParameterSO param) => animator.SetTrigger(param.GetHashValue);
         public void Dispose(Player _player)
         {
 

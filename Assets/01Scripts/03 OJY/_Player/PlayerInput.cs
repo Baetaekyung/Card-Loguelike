@@ -7,10 +7,6 @@ namespace CardGame.Players
 {
     public class PlayerInput : MonoBehaviour, IPlayerComponent
     {
-        [Header("Debug")]
-        [SerializeField] private float d;
-        [SerializeField] private float maxMag;
-
         #region Getter/Setter
         public Vector3 InputMovementRaw { get; private set; }
         public Vector3 InputMovement { get; private set; }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardGame
+namespace CardGame.Weapons
 {
     [CreateAssetMenu(menuName = "OJYSO/MeleeSO", order = int.MinValue)]
     public class MeleeSO : BaseMeleeSO

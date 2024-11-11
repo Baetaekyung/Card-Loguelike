@@ -9,6 +9,7 @@ namespace CardGame
     {
         [SerializeField] private List<TextMeshProUGUI> list = new();
         public List<TextMeshProUGUI> GetList => list;
+        
     }
 
 }

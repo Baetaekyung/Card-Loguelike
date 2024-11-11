@@ -8,6 +8,7 @@ namespace CardGame.Players
     public class PlayerCamera : MonoBehaviour, IPlayerComponent
     {
         private Camera playerCamera;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
         #region Getter/Setter
         public Transform GetCameraTransform => playerCamera.transform;
         public Quaternion GetCameraRotationOnlyY
@@ -26,6 +27,16 @@ namespace CardGame.Players
         public void Init(Player _player)
         {
             playerCamera = GetComponentInChildren<Camera>();
+            impulseSource = GetComponentInChildren<CinemachineImpulseSource>();
+        }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+                CameraShake(5);
+        }
+        public void CameraShake(float impulse)
+        {
+            impulseSource.GenerateImpulseWithForce(impulse);
         }
         public void Dispose(Player _player)
         {

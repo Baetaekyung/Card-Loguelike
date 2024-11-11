@@ -4,6 +4,7 @@ namespace CardGame
 {
     public class SphereDamageCastNonAlloc : DamageCaster
     {
+        [Header("Settings")]
         [SerializeField] private float radius;
         [SerializeField] private int maxAlloc;
         public override bool Cast(float distance = 0)
