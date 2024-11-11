@@ -9640,6 +9640,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _speed: 500
+  _data:
+    knockBackPower: 5
+    damageAmount: 5
+    hitNormal: {x: 0, y: 0, z: 0}
+    hitPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &7223978538168835837
 Rigidbody:
   m_ObjectHideFlags: 0

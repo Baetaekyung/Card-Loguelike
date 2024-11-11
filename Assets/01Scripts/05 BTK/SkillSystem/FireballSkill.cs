@@ -9,8 +9,9 @@ namespace CardGame
     {
         Collider[] c = new Collider[99];
         private Vector3 target;
-       [SerializeField] private int _damage;
        [SerializeField] private float _speed;
+
+       [SerializeField]private ActionData _data;
         private void Start()
         {
             Destroy(gameObject, 15f);
@@ -37,14 +38,14 @@ namespace CardGame
         private Rigidbody _rigid;
         private void Update()
         {
-            _rigid.AddForce((target - transform.position).normalized * _speed * Time.deltaTime);
+            _rigid.AddForce((target - transform.position).normalized * (_speed * Time.deltaTime));
         }
 
         private void OnCollisionEnter(Collision other)
         {
             if (TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(_damage);
+                damageable.TakeDamage(_data);
             }
 
             Destroy(gameObject);
