@@ -127,16 +127,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dfca8e5c1623441bdb699c5c488473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardTrm: {fileID: 0}
   _cardData: {fileID: 11400000, guid: 309f4db60296be14bbf642a72c6fd6f9, type: 2}
   _costText: {fileID: 6153965228071088397}
   _cardNameText: {fileID: 3662836502938645621}
   _cardDescription: {fileID: 1230131817175777053}
   _cardImage: {fileID: 1224556021366095611}
-  _cardUseArea: {fileID: 0}
   _cardHoverSize: 1.05
   _hoverHeight: 60
   _hoverAnimationTime: 8
-  _usedCardAimationSpeed: 3
+  _cardUseArea: {fileID: 0}
+  _usedCardAnimationSpeed: 3
+  _keywordPanel: {fileID: 0}
+  keywords: 
+  _keywordCount: 3
+  _skillEffects:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1829186440318206234
 GameObject:
   m_ObjectHideFlags: 0
