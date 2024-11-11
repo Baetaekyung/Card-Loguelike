@@ -28,6 +28,7 @@ namespace CardGame
             switch (obj)
             {
                 case SceneEnum.SceneDeckSelect:
+                    print("Cleared");
                     registerSkills.Clear();
                     break;
             }

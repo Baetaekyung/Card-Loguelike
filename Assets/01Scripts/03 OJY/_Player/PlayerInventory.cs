@@ -15,13 +15,13 @@ namespace CardGame.Players
 
         [Header("Skills")]
         [SerializeField] private List<BaseSkill> skills;
-        public IList GetSkills => skills;
+        public IList<BaseSkill> GetSkills => skills;
 
         public void Init(Player _player)
         {
             if(weapons.Count == 0)
                 weapons = GetComponentsInChildren<BaseWeapon>(true).ToList();
-            skills = SkillManager.Instance.GetSkills.ToList();
+            
         }
 
         public void Dispose(Player _player)

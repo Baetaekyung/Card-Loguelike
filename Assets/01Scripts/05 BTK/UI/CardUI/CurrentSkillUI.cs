@@ -6,16 +6,28 @@ namespace CardGame
     public class CurrentSkillUI : MonoBehaviour
     {
         [SerializeField] private Image[] _skillImages;
+        [SerializeField] private Sprite defaultSpirte;
 
         private void OnEnable()
         {
             SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
         }
+        private void Start()
+        {
+            RegistSkillImage();
+        }
 
         private void RegistSkillImage()
         {
+            //print(_skillImages.Length);
+            foreach (var item in _skillImages)
+            {
+                item.sprite = defaultSpirte;
+            }
+            print(SkillManager.Instance.registerSkills.Count);
             for (int i = 0; i < SkillManager.Instance.registerSkills.Count; i++)
             {
+                print(SkillManager.Instance.registerSkills[i].SkillImage);
                 _skillImages[i].sprite = SkillManager.Instance.registerSkills[i].SkillImage;
             }
         }
@@ -27,7 +39,7 @@ namespace CardGame
 
         private void OnDestroy()
         {
-            SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+            //SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
         }
     }
 }

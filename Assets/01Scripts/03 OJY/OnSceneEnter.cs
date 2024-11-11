@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CardGame
 {
-    [DefaultExecutionOrder(200)]
+    [DefaultExecutionOrder(-100)]
     public class OnSceneEnter : MonoBehaviour
     {
         [SerializeField] private SceneEnum currentScene;

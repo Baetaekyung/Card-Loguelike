@@ -736,6 +736,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151352950}
     m_Modifications:
+    - target: {fileID: 392032661144649678, guid: 2985d1b3c536a584e970aa1ff4600703, type: 3}
+      propertyPath: defaultSpirte
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c97a054073f87f43b9fafc699a248bc, type: 3}
     - target: {fileID: 1578839831863292856, guid: 2985d1b3c536a584e970aa1ff4600703, type: 3}
       propertyPath: m_Name
       value: CardCirculationPanel
