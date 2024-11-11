@@ -95,6 +95,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 4
         messageOptions: 0
+      - time: 0.13980435
+        functionName: Cast
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.2732059
+        functionName: Cast
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using CardGame;
 using Unity.Behavior;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -76,6 +77,14 @@ public class Agent : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         
         _LastPosition = transform.position;
+
+
+        enemyHealth.OnDeadEvent += Dead;
+    }
+
+    private void OnDestroy()
+    {
+        enemyHealth.OnDeadEvent -= Dead;
     }
 
     private void Update()
@@ -83,10 +92,6 @@ public class Agent : MonoBehaviour
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GetKnockBack(-transform.forward * 5 + transform.up * 3f);
-        }
     }
         
     private void LateUpdate()
@@ -108,6 +113,15 @@ public class Agent : MonoBehaviour
             animator.SetFloat("Speed", 0,0.1f , Time.deltaTime);
         }
         
+    }
+
+    private void Dead()
+    {
+        /*_behaviorGraphAgent.SetVariableValue("AgentState",State.Dead);
+        _behaviorGraphAgent.Restart();
+        
+        _behaviorGraphAgent.GetVariable("AgentState",out BlackboardVariable<State> state);
+        print($"{gameObject.name} {state.Value}이 사망 하였습니다.이이이이이이이이익");*/
     }
     
     private void FaceToTarget(Vector3 _lookDir)
@@ -246,7 +260,7 @@ public class Agent : MonoBehaviour
     
     #endregion
     
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if(Application.isPlaying == false)return;
         
@@ -257,5 +271,5 @@ public class Agent : MonoBehaviour
         _behaviorGraphAgent.GetVariable("ChaseRadius" , out BlackboardVariable<float> chaseRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position , chaseRadius);
-    }
+    }*/
 }

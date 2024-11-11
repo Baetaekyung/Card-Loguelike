@@ -10563,6 +10563,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  slashEffect: []
+  _knockBackThreshold: 0
+  _maxKnockBackTime: 0
   bombParticle: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!114 &3983043691098231280
 MonoBehaviour:
@@ -10576,9 +10579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 60
   currentHealth: 0
   isAlive: 0
+  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!1 &6386218620281849677
 GameObject:
   m_ObjectHideFlags: 0

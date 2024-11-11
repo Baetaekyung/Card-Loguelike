@@ -9,12 +9,12 @@ namespace CardGame
         public override bool Cast(float distance = 0)
         {
             if (distance == 0) distance = defaultDistance;
-            bool result = Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, distance, includeLayers);
+            
+            bool result = Physics.SphereCast(GetStartPosition() , radius, transform.forward * distance, out RaycastHit hit, distance, includeLayers);
             if (result)
             {
                 if (hit.transform.TryGetComponent(out IDamageable compo))
                 {
-                    print("Damage");
                     int damage = 1;
 
                     ActionData actionData = new ActionData();
@@ -33,8 +33,9 @@ namespace CardGame
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, radius);
-            Gizmos.DrawWireSphere(transform.position + transform.forward * defaultDistance, radius);
+            Gizmos.DrawWireSphere(GetStartPosition() , radius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(GetStartPosition() + transform.forward * defaultDistance, radius);
         }
     }
 }
