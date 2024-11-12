@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using CardGame;
+using CardGame.Players;
 using Unity.Behavior;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class AgentStat
@@ -67,9 +69,20 @@ public class Agent : MonoBehaviour
     
     private float _knockBackTime;
     private bool _isKnockBack;
+
+    //[SerializeField] private PlayerSingletonSO playerManagerSo;
     
+    private void Awake()
+    {
+       
+        
+    }
+
     private void Start()
     {
+        //target = playerManagerSo.Instance.transform;
+       // _behaviorGraphAgent.SetVariableValue("Target",target);
+        
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();

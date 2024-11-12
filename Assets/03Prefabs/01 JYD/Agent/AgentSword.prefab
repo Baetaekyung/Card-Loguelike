@@ -1508,6 +1508,7 @@ MonoBehaviour:
   - {fileID: 8716888546057805228}
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
+  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   earthShatter: {fileID: 198345217066185332, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
   earthShatterTrm: {fileID: 8908782971870144190}
 --- !u!114 &5543865627313137571

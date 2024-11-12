@@ -553,15 +553,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.7845646
+      - time: 0.9151488
         functionName: SetAnimationEnd
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.8350515
-        functionName: SetMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
