@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27aa3d2ea5e4bf94f8e7262151363a61, type: 3}
   m_Name: GetSkill_WaterBall
   m_EditorClassIdentifier: 
-  _skillName: WaterBall
+  _skill: {fileID: 9214251802895773159, guid: 403c369468cf645489e65c18b82fa294, type: 3}

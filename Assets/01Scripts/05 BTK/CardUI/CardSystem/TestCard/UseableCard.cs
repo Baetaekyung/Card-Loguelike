@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 /// <summary>
 /// <class name ="SkillCard">
-/// ½ºÅ³Ä«µå´Â ²ø¾î¼­ »ç¿ë°¡´ÉÇÑ Ä«µå
+/// ìŠ¤í‚¬ì¹´ë“œëŠ” ëŒì–´ì„œ ì‚¬ìš©ê°€ëŠ¥í•œ ì¹´ë“œ
 /// </class> 
 /// </summary>
 public class UseableCard : CardObject
@@ -28,8 +28,8 @@ public class UseableCard : CardObject
 
     /// <summary>
     /// <function name="KeywordEffectExcute"> 
-    /// Å°¿öµåÀÌÆåÆ® ¸Å´ÏÀú°¡ °¡Áö°í ÀÖ´Â ¸ğµç Å°¿öµåÀÇ ÀÌº¥Æ®¿Í ÇÏ³ª¾¿ ºñ±³ÇÏ¸é¼­
-    /// ¸¸¾à Å°¿öµå°¡ Á¸ÀçÇÑ´Ù¸é ±× Å°¿öµåÀÇ È¿°ú¸¦ ½ÇÇàÇØÁØ´Ù.
+    /// í‚¤ì›Œë“œì´í™íŠ¸ ë§¤ë‹ˆì €ê°€ ê°€ì§€ê³  ìˆëŠ” ëª¨ë“  í‚¤ì›Œë“œì˜ ì´ë²¤íŠ¸ì™€ í•˜ë‚˜ì”© ë¹„êµí•˜ë©´ì„œ
+    /// ë§Œì•½ í‚¤ì›Œë“œê°€ ì¡´ì¬í•œë‹¤ë©´ ê·¸ í‚¤ì›Œë“œì˜ íš¨ê³¼ë¥¼ ì‹¤í–‰í•´ì¤€ë‹¤.
     /// </function>
     /// </summary>
     protected virtual void KeywordEffectExcute()
@@ -47,7 +47,7 @@ public class UseableCard : CardObject
                     else if(keywordEffectM.keywordCountDictionary.ContainsKey(keywords[i]))
                         keywordEffectM.keywordCountDictionary[keywords[i]] += _keywordCount;
 
-                    Debug.Log($"{effect.keyword} Å°¿öµå ½ÇÇà");
+                    Debug.Log($"{effect.keyword} í‚¤ì›Œë“œ ì‹¤í–‰");
                     effect.ExcuteEffect(keywordEffectM.keywordCountDictionary[keywords[i]]);
                 }
             }
