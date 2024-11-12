@@ -16,7 +16,7 @@ namespace CardGame.Weapons
             if(CanAttack)
             {
 
-                baseWeaponSO.OnEvent();
+                baseWeaponSO.OnEvent(this);
                 currentDelayTime = baseWeaponSO.GetDelay + Time.time;
                 Attack();
             }

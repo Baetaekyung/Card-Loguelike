@@ -1344,6 +1344,7 @@ MonoBehaviour:
   - rid: 2285473638358451052
   - rid: 2285473645439484700
   - rid: 2285473708735988385
+  - rid: 8590440640491028586
   references:
     version: 2
     RefIds:
@@ -1354,7 +1355,7 @@ MonoBehaviour:
           m_Value0: 6913836224369089000
           m_Value1: 7521962314327256998
         Name: ChaseRadius
-        m_Value: 20
+        m_Value: 156.4
     - rid: 2285473561634144474
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1471,6 +1472,14 @@ MonoBehaviour:
           m_Value1: 1745378482787888959
         Name: Head
         m_Value: {fileID: 6440994510525628176}
+    - rid: 8590440640491028586
+      type: {class: 'BlackboardVariable`1[[State, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11911500929989171175
+          m_Value1: 668450113741759021
+        Name: AgentState
+        m_Value: 1
 --- !u!114 &282896778284083967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,6 +1517,7 @@ MonoBehaviour:
   - {fileID: 8716888546057805228}
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
+  playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   earthShatter: {fileID: 198345217066185332, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
   earthShatterTrm: {fileID: 8908782971870144190}
 --- !u!114 &5543865627313137571

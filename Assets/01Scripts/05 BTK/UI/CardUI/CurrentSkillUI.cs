@@ -8,12 +8,12 @@ namespace CardGame
         [SerializeField] private Image[] _skillImages;
         [SerializeField] private Sprite defaultSpirte;
 
-        private void OnEnable()
-        {
-            SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
-        }
+        //private void OnEnable()
+        //{
+        //}
         private void Start()
         {
+            SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
             RegistSkillImage();
         }
 
@@ -37,9 +37,9 @@ namespace CardGame
             SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
         }
 
-        private void OnDestroy()
-        {
-            //SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
-        }
+        //private void OnDestroy()
+        //{
+        //    //SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+        //}
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using CardGame;
+using CardGame.Players;
 using Unity.Behavior;
 using UnityEditorInternal;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class AgentStat
 
     private BehaviorGraphAgent BehaviorGraphAgent;
 
+  
+
+
     public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
     {
         BehaviorGraphAgent = behaviorGraphAgent;
@@ -31,6 +35,10 @@ public class AgentStat
         BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
         BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
         BehaviorGraphAgent.SetVariableValue("Defense",Defense);
+
+
+       
+
     }
 }
 
@@ -67,7 +75,9 @@ public class Agent : MonoBehaviour
     
     private float _knockBackTime;
     private bool _isKnockBack;
-    
+
+    [SerializeField] private PlayerSingletonSO playerSingletonSO;
+
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -78,6 +88,8 @@ public class Agent : MonoBehaviour
         
         _LastPosition = transform.position;
 
+        target = playerSingletonSO.PlayerTransform;
+        _behaviorGraphAgent.SetVariableValue("Target", target);
 
         enemyHealth.OnDeadEvent += Dead;
     }

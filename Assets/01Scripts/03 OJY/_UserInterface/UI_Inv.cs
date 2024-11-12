@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CardGame
 {
+    [MonoSingletonUsage(MonoSingletonFlags.DontRuntimeInitialize)]
     public class UI_Inv : MonoSingleton<UI_Inv>
     {
         [SerializeField] private List<TextMeshProUGUI> list = new();

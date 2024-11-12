@@ -25,7 +25,6 @@ namespace CardGame.Players
         {
             void Initialize()
             {
-                playerSingletonSO.SetPlayer(this);
 
                 var componentList =
                 GetComponentsInChildren<IPlayerComponent>(true).
@@ -56,13 +55,18 @@ namespace CardGame.Players
 
                 PlayerFSM_Combat.SetCurrentState(PlayerStateEnum.Combat.None);
             }
+            void SetUpEventAwake()
+            {
+                //OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+            }
+            SetUpEventAwake();
             Initialize();
+            playerSingletonSO.SetPlayer(this, GetPlayerMovement.transform);
         }
         private void Start()
         {
             void SetUpEvent()
             {
-                OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
 
                 var inp = GetPlayerComponent<PlayerInput>();
                 inp.EventPlayerRoll += HandleOnRoll;
@@ -100,7 +104,7 @@ namespace CardGame.Players
         {
             void UnSubscribeEvent()
             {
-                OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+                //OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
 
                 var inp = GetPlayerComponent<PlayerInput>();
                 inp.EventPlayerRoll -= HandleOnRoll;
@@ -134,6 +138,11 @@ namespace CardGame.Players
                     if (Input.GetKeyDown(KeyCode.F1))
                     {
                         WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
+                    }
+                    if(Input.GetKeyDown(KeyCode.Q))
+                    {
+                        var l = GetInventory.GetSkills;
+                        l[0].UseSkill(this);
                     }
                 }
                 void PlayerMovement()
