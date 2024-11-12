@@ -13,9 +13,9 @@ public class LobbyManager : MonoBehaviour
         {
             if(LobbyDeckCardManager.Instance.IsArentExceedCost())
             {
-                Debug.Log("게임 스타트 : 아파트아파트 아파트아파트 아파트아파트 어 어허어허");
                 CardDataManager.Instance.SaveCurrentDeck(LobbyDeckCardManager.Instance.GetCurrentDeckCardsToCardSO());
-                CardDataManager.Instance.SaveHavingCard(LobbyDeckCardManager.Instance.GetHavingCardsToCardSO());
+                //CardDataManager.Instance.SaveHavingCard(LobbyDeckCardManager.Instance.GetHavingCardsToCardSO());
+                //모든 카드를 가지고 시작하기 때문에 저장할 필요가 없음!
             }
             else
             {
@@ -30,7 +30,14 @@ public class LobbyManager : MonoBehaviour
 
     public void LoadCardsFromJson()
     {
-        List<CardSO> loadedCard = CardDataManager.Instance.LoadCurrentDeck();
+        List<CardSO> loadedCard = new();
+
+        CardDataManager.Instance.LoadCurrentDeck();
+
+        for(int i = 0; i < CardManager.Instance.deckCardList.Count; i++)
+        {
+            loadedCard.Add(CardManager.Instance.deckCardList[i]);
+        }
         LobbyDeckCardManager.Instance.SetCurrentDeckCardsFromCardSO(loadedCard);
         Debug.Log("로드카드덱하하하하" + loadedCard.Count);
     }

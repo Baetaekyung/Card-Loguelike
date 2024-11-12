@@ -24,7 +24,7 @@ namespace CardGame
 
         public List<CardUI> visualDeckCard;
 
-        public List<CardSO> visualDeckCard_CardSO;
+        public List<string> visualDeckCard_CardSO;
 
         public List<CardUI> haveCard;
 
@@ -101,13 +101,13 @@ namespace CardGame
             }
         }
 
-        public List<CardSO> GetCurrentDeckCardsToCardSO()
+        public List<string> GetCurrentDeckCardsToCardSO()
         {
             visualDeckCard_CardSO.Clear();
 
             foreach (var item in visualDeckCard)
             {
-                visualDeckCard_CardSO.Add(prefabHaveCards_CardSO[item.cardCnt]);
+                visualDeckCard_CardSO.Add(item.CardInfo.cardName);
             }
 
             return visualDeckCard_CardSO;
@@ -290,7 +290,7 @@ namespace CardGame
         public bool IsExceedMaxCost(CardSO newCard)
         {
             int nowCost = 0;
-            int newCostModifire = newCard.cardObject.GetCardData().cardInfo.cost;
+            int newCostModifire = newCard.cardObject.CardData.cardInfo.cost;
             foreach(var item in visualDeckCard)
             {
                 //nowCost += item.cardObject.GetCardData().cardInfo.cost;
