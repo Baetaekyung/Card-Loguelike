@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,6 +9,8 @@ namespace CardGame
 {
     public class LobbyDeckCardManager : MonoBehaviour, IPointerDownHandler
     {
+        public static LobbyDeckCardManager Instance; //미안하다...
+
         //한번 쓰면 정렬 잘됨 한번도 안썼을시 정렬이 안됨
 
         //원이 아니고 호를 만들어서 하는데 카드를 어케 넘길지 걍 여기서 뇌정지가 와서 할수가 없음...
@@ -16,19 +20,39 @@ namespace CardGame
         [SerializeField] private int deckCardMaxCost;
         [SerializeField] private CardUI testAddCard;
 
+        [SerializeField] private TMP_Text costAmountText;
+
         public List<CardUI> visualDeckCard;
+
+        public List<CardSO> visualDeckCard_CardSO;
+
         public List<CardUI> haveCard;
-        public List<CardUI> deckCard;
+
+        public List<CardSO> haveCard_CardSO;
+
+        //public List<CardUI> deckCard;
+
+        public List<CardUI> prefabHaveCards_CardUI;
+        public List<CardSO> prefabHaveCards_CardSO;
 
         public Vector2 centerPos;
         public RectTransform centerTrm;
         public int visualDeckCardsAmount = 8;
 
         public float radius = 5f;
+        private const int MAX_COST = 20;
+        private const int MIN_CARD = 8;
 
-        public TMP_Text deckCardCostText;
-        void Start()
+        private Color originalColor;      // 원래 색상 저장
+        private Vector3 originalScale;    // 원래 크기 저장
+
+        void Awake()
         {
+            if (Instance == null) Instance = this;
+            else Destroy(Instance);
+
+            originalColor = costAmountText.color; // 원래 색상 초기화
+            originalScale = costAmountText.transform.localScale; // 원래 크기 초기화
             //ming.Remove(ming[1]);
             //널체크
             //cnt값인 리스트원소 지우기
@@ -37,100 +61,215 @@ namespace CardGame
             //빈곳 생겼으니 뒤에거앞으로 떙기는 정렬
             //
             //haveCard = CardDataManager.Instance.LoadHavingCard();
+
+            //prefabHaveCards_CardSO = CardDataManager.Instance.LoadHavingCard(); //원래 이거 해야되는데 버그남 제이슨버그 안나는사람은 이코드의 주석을 푸십시오
+
+            prefabHaveCards_CardUI.Clear();
+
+            foreach(CardSO item in  prefabHaveCards_CardSO)
+            {
+                CardUI insCard = item.cardUI;
+                prefabHaveCards_CardUI.Add(insCard);
+            }
+
+            IntantiateHaveCards();
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                centerPos = centerTrm.anchoredPosition;
-                foreach(var item in visualDeckCard)
-                {
-                    item.transform.SetParent(centerTrm, true);
-                }
-                ArrangeCards();
-                AddCardAndRemoveCard();
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                centerPos = centerTrm.anchoredPosition;
-
-                // 카드 생성 후 피봇 기준으로 위치 설정
-                CardUI card = Instantiate(testAddCard, transform.position, Quaternion.identity);
-                card.transform.SetParent(centerTrm, true);
-                card.GetRectTransform().anchoredPosition = Vector2.zero; // 피봇 기준 위치를 원점으로 설정
-                visualDeckCard.Add(card);
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-
-            }
+            //if (Input.GetKeyDown(KeyCode.W))
+            //{
+            //    centerPos = centerTrm.anchoredPosition;
+            //
+            //    // 카드 생성 후 피봇 기준으로 위치 설정
+            //    CardUI card = Instantiate(testAddCard, transform.position, Quaternion.identity);
+            //    card.transform.SetParent(centerTrm, true);
+            //    card.GetRectTransform().anchoredPosition = Vector2.zero; // 피봇 기준 위치를 원점으로 설정
+            //    visualDeckCard.Add(card);
+            //}
             SetCardsAngle();
         }
-
-        private void AddCardAndRemoveCard()
+        //덱카드리스트에 있는거대로 SO리스트 정렬하고 갯수만큼 가져가기
+        private void IntantiateHaveCards()
         {
-            if (visualDeckCard == null || visualDeckCard.Count == 0) return;
-
-            int cc = visualDeckCard.Count;
-            if(cc < visualDeckCardsAmount)
+            int n = 0;
+            foreach(var card in prefabHaveCards_CardUI)
             {
-                //만약 보여지고 내려갔으면 (두개의 값이 트루)
-                if(visualDeckCard[0].throwGround && visualDeckCard[0].throwUnder)
-                {
-                    visualDeckCard[0].transform.position = centerTrm.position;
-
-                    visualDeckCard[0].throwGround = false;
-                    visualDeckCard[0].throwUnder = false;
-
-                    deckCard.Add(visualDeckCard[0]);
-                    visualDeckCard.Add(deckCard[0]);
-
-                    visualDeckCard[0].gameObject.SetActive(true);
-
-                    deckCard.Remove(deckCard[0]);
-                    visualDeckCard.Remove(visualDeckCard[0]);
-
-                    SortingCardList();
-                }
+                CardUI added = Instantiate(card, centerTrm.position, Quaternion.identity);
+                added.cardCnt = n++;
+                haveCard.Add(added);
             }
         }
 
-        private void SortingCardList()
+        public List<CardSO> GetCurrentDeckCardsToCardSO()
         {
-            // visualDeckCard 리스트 정렬
-            for (int i = 0; i < visualDeckCard.Count - 1; i++)
+            visualDeckCard_CardSO.Clear();
+
+            foreach (var item in visualDeckCard)
             {
-                if (visualDeckCard[i] == null)
+                visualDeckCard_CardSO.Add(prefabHaveCards_CardSO[item.cardCnt]);
+            }
+
+            return visualDeckCard_CardSO;
+        }
+        public List<CardSO> GetHavingCardsToCardSO()
+        {
+            haveCard_CardSO.Clear();
+
+            foreach(var item in haveCard)
+            {
+                haveCard_CardSO.Add(prefabHaveCards_CardSO[item.cardCnt]);
+            }
+            return haveCard_CardSO;
+        }
+        public void SetCurrentDeckCardsFromCardSO(List<CardSO> cards) //카드 Json에서 불러오는거임 불러오기전에 함 비워줌 장비우듯이 ㅇㅇ
+        {
+            /*for (int i = 0; i < cards.Count; i++)
+            {
+                string setCard = haveCard[i].name;
+                string getCard = cards[i].cardUI.name;
+
+                string[] setCardArr = setCard.Split('(');
+                setCard = setCardArr[0];
+
+                string[] getCardArr = getCard.Split('(');
+                getCard = getCardArr[0];
+
+                if(setCard == getCard)
                 {
-                    // 빈 자리를 후순위 요소로 채움
-                    visualDeckCard[i] = visualDeckCard[i + 1];
-                    visualDeckCard[i + 1] = null;
+                    foreach(var item in haveCard)
+                    {
+                        if(item.name == setCard)
+                        {
+                            RemoveCardOfDeckCardList(item);
+                        }
+                    }
+                }
+            }*/
+
+            if (visualDeckCard.Count > 0) return;
+
+            visualDeckCard.Clear();
+
+            for (int i = 0; i < cards.Count; i++)
+            {
+                CardUI cardUI = Instantiate(cards[i].cardUI, transform.position, transform.rotation);
+
+                AddCardToDeckCardList(cardUI);
+                cardUI.IsInDeckCards = true;
+            }
+
+            for (int i = 0; i < visualDeckCard.Count; i++)
+            {
+                for (int j = 0; j < haveCard.Count; j++)
+                {
+                    if (visualDeckCard[i].ToString() == haveCard[j].ToString())
+                    {
+                        haveCard.RemoveAt(j);
+                        j--; // 리스트 크기 변화에 따른 인덱스 조정
+                    }
                 }
             }
 
-            // 마지막 요소가 비어있을 수 있으므로 제거
-            if (visualDeckCard[visualDeckCard.Count - 1] == null)
+        }
+        public List<CardUI> GetHaveCardList()
+        {
+            return haveCard;
+        }
+        private void SettingCleanningArrangeCard()
+        {
+            centerPos = centerTrm.anchoredPosition;
+            foreach (var item in visualDeckCard)
             {
-                visualDeckCard.RemoveAt(visualDeckCard.Count - 1);
+                item.transform.SetParent(centerTrm, true);
             }
+            ArrangeCards();
+            //AddCardAndRemoveCard();
+            SetCostAmountText();
+        }
+        public void AddCardToDeckCardList(CardUI card)
+        {
+            // 유효성 검사: 카드가 null인 경우 함수 종료
+            if (card == null) return;
 
-            // deckCard 리스트 정렬
-            for (int i = 0; i < deckCard.Count - 1; i++)
+            // 카드 추가 및 리스트 업데이트
+            AddCardToDeck(card);
+            HaveCardInventoryManager.Instance.ArrangeHaveCards(); // 인벤토리 정렬
+            SettingCleanningArrangeCard(); // 기타 추가 작업
+        }
+        public bool IsArentExceed(CardUI card)
+        {
+            // 비용 제한 검사
+            int currentCost = GetCostAmount();
+            if (currentCost + card.CardInfo.cost > MAX_COST)
             {
-                if (deckCard[i] == null)
-                {
-                    // 빈 자리를 후순위 요소로 채움
-                    deckCard[i] = deckCard[i + 1];
-                    deckCard[i + 1] = null;
-                }
+                AttentionText(); // 비용 초과 시 시각적 효과 표시
+                return false;
             }
+            else
+            {
+                return true;
+            }
+        }
 
-            // 마지막 요소가 비어있을 수 있으므로 제거
-            if (deckCard[deckCard.Count - 1] == null)
+        public bool IsDeckCardExceed8()
+        {
+            if(visualDeckCard.Count >= 8)
             {
-                deckCard.RemoveAt(deckCard.Count - 1);
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
+        public bool IsArentExceedCost()
+        {
+            bool ming = GetCostAmount() <= MAX_COST;
+
+            return ming;
+        }
+        private void AddCardToDeck(CardUI card)
+        {
+            // 카드 복제 및 부모 설정
+            card.transform.SetParent(centerTrm, true);
+
+            // 카드 리스트 업데이트
+            haveCard.Remove(card);
+            visualDeckCard.Add(card);
+
+            Debug.Log("카드가 추가되었습니다.");
+        }
+
+        public void RemoveCardOfDeckCardList(CardUI card)
+        {
+            card.transform.SetParent(HaveCardInventoryManager.Instance.leftInv.transform, true);
+            visualDeckCard.Remove(card);
+
+            haveCard.Add(card);
+
+            HaveCardInventoryManager.Instance.ArrangeHaveCards();
+            SettingCleanningArrangeCard();
+        }
+
+        private void AttentionText()
+        {
+            StartCoroutine(FlashAndEnlarge());
+        }
+        private IEnumerator FlashAndEnlarge()
+        {
+            // 텍스트를 빨간색으로 변경
+            costAmountText.color = Color.red;
+
+            // 크기를 1.5배로 확대
+            costAmountText.transform.localScale = originalScale * 1.5f;
+
+            // 1초 동안 유지
+            yield return new WaitForSeconds(1f);
+
+            // 원래 색상과 크기로 복원
+            costAmountText.color = originalColor;
+            costAmountText.transform.localScale = originalScale;
         }
 
         private void SetCardsAngle()
@@ -205,6 +344,26 @@ namespace CardGame
                 // 카드의 바닥면이 중심을 향하도록 설정 (z축 회전만 적용)
                 visualDeckCard[i].GetRectTransform().eulerAngles = new Vector3(0, 0, angleToCenter + 90); // 180도 보정하여 바닥면이 중심을 향하도록
             }
+
+
+        }
+
+        private void SetCostAmountText()
+        {
+            int cost = GetCostAmount();
+            costAmountText.text = $"{cost} / {MAX_COST}";
+        }
+
+        private int GetCostAmount()
+        {
+            int idx = 0;
+
+            foreach (var item in visualDeckCard)
+            {
+                idx += item.CardInfo.cost;
+            }
+
+            return idx;
         }
     }
 }

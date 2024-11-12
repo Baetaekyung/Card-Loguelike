@@ -75,7 +75,6 @@ public abstract class BaseCard : MonoBehaviour,
                 Time.deltaTime * _hoverAnimationTime);
         }
     }
-
     protected virtual void UpdatePosition()
     {
         if (_isHovering)
@@ -98,7 +97,6 @@ public abstract class BaseCard : MonoBehaviour,
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("온포인터다운");
         if (_isHovering)
         {
             OnPointerDownEvent?.Invoke();
@@ -108,7 +106,6 @@ public abstract class BaseCard : MonoBehaviour,
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("온포인터업");
         if (_isHovering)
         {
             _isHovering = false;
@@ -118,7 +115,6 @@ public abstract class BaseCard : MonoBehaviour,
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("온포인터엔터");
         if (!_isHovering)
         {
             _isHovering = true;
@@ -128,7 +124,6 @@ public abstract class BaseCard : MonoBehaviour,
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("온포인터엑시트");
         if (_isHovering)
         {
             _isHovering = false;
