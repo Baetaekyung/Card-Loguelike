@@ -75,7 +75,6 @@ public abstract class BaseCard : MonoBehaviour,
                 Time.deltaTime * _hoverAnimationTime);
         }
     }
-
     protected virtual void UpdatePosition()
     {
         if (_isHovering)
