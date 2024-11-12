@@ -17,9 +17,14 @@ namespace CardGame
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
+
+        private GameObject game;
         protected override void Awake()
         {
             base.Awake();
+             
+            if(GameObject.Find("Player")!= null)
+                player = GameObject.Find("Player").GetComponent<Player>();
             OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
         }
 
@@ -42,7 +47,7 @@ namespace CardGame
         private void Update()
         {
             if (registerSkills.Count == 0) return;
-
+            if(Input.GetKey(KeyCode.A)) UseSkill();
             ChangeCurrentSkill();
         }
 
