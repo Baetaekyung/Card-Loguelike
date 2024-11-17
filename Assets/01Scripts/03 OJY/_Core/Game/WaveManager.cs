@@ -22,6 +22,11 @@ namespace CardGame
             OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
         }
 
+        private void Start()
+        {
+            
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -33,9 +38,10 @@ namespace CardGame
             void OnScene3D()
             {
                 CurrentWave++;
-                UI_Wave.Instance.GetList[0].text = "CurrentWave : " + CurrentWave;
-                UI_Wave.Instance.GetList[1].text = "S           : " + SkillManager.Instance.registerSkills.Count;
+                //UI_Wave.Instance.GetList[0].text = "CurrentWave : " + CurrentWave;
+                //UI_Wave.Instance.GetList[1].text = "S           : " + SkillManager.Instance.registerSkills.Count;
                 EnemySpawnManager.Instance.SpawnEnemy(CurrentWave);
+                print(EnemySpawnManager.Instance);
             }
             switch (obj)
             {
@@ -75,7 +81,7 @@ namespace CardGame
         }
         private void LoadScene(string name)
         {
-            SceneManager.LoadScene(name);
+            //SceneManager.LoadScene(name);
         }
     }
 }

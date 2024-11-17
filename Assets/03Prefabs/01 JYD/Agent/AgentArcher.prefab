@@ -5192,6 +5192,7 @@ MonoBehaviour:
   - rid: 2285473672413315419
   - rid: 2285473675213800019
   - rid: 2285473719756522383
+  - rid: 2285473856036274312
   references:
     version: 2
     RefIds:
@@ -5271,6 +5272,14 @@ MonoBehaviour:
           m_Value1: 1549107438798367884
         Name: ChangeState
         m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
+    - rid: 2285473856036274312
+      type: {class: 'BlackboardVariable`1[[State, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18152787512321689670
+          m_Value1: 983495221352976131
+        Name: State
+        m_Value: 1
 --- !u!114 &3174018756846136162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5301,9 +5310,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   slashEffect: []
+  cameraShaker: {fileID: 0}
+  shakePower: 0
   _knockBackThreshold: 0.7
   _maxKnockBackTime: 0.5
-  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   firePos: {fileID: 2054278832826617358}
   firePower: 20
   arrow: {fileID: 3846083657428706976, guid: 45804eb2722b83845adbcf2d72da12dd, type: 3}

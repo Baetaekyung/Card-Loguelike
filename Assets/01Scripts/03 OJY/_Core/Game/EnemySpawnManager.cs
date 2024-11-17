@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace CardGame
 {
@@ -44,6 +46,8 @@ namespace CardGame
         {
             print("normal Enemy");
         }
+
+        private int test;
         private void SpawnEnemyByIndex(int index)
         {
             var ls = listOfEnemySpawn[index];

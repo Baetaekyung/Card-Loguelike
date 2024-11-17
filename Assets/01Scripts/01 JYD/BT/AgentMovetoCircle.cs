@@ -63,7 +63,7 @@ public partial class AgentMovetoCircleAction : Action
             origin.y,
             origin.z + AttackRadius.Value /2 * Mathf.Sin(2 * Mathf.PI * agentIndex / agentCount)
         );
-
+        
         _navMeshAgent.SetDestination(newPosition);
         return Status.Running;
     }

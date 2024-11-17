@@ -15,11 +15,17 @@ public class AIManager : MonoSingleton<AIManager>
     {
         base.Awake();
 
-        int index = transform.childCount;
-        for (int i = 0; i < index; i++)
-        {
-            agents.Add(transform.GetChild(i).GetComponent<Agent>());
-        }
         
+        
+    }
+
+    private void Start()
+    {
+        Agent[] currentAgents = FindObjectsByType<Agent>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+                    
+        for (int i = 0; i < currentAgents.Length; i++)
+        {
+            agents.Add(currentAgents[i]);
+        }
     }
 }

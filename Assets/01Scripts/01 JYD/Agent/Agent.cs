@@ -3,6 +3,7 @@ using CardGame;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
+using CardGame.Players;
 
 [System.Serializable]
 public class AgentStat
@@ -72,15 +73,11 @@ public class Agent : MonoBehaviour
     
     private void Awake()
     {
-       
-        
+           
     }
 
     private void Start()
     {
-        //target = playerManagerSo.Instance.transform;
-       // _behaviorGraphAgent.SetVariableValue("Target",target);
-        
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
@@ -89,6 +86,17 @@ public class Agent : MonoBehaviour
         cameraShaker = GetComponent<CameraShaker>();
         
         _LastPosition = transform.position;
+        
+        if (target == null)
+        {
+            GameObject findTarget = GameObject.Find("Player");
+            target = findTarget.transform;
+            
+            print(target);
+            
+            _behaviorGraphAgent.SetVariableValue("Target",findTarget.transform);
+        } 
+        
     }
 
     private void Update()
@@ -167,8 +175,7 @@ public class Agent : MonoBehaviour
     private IEnumerator ApplyKnockBack(Vector3 force)
     {
         Vector3 originDestination = _navMeshAgent.destination;
-        
-        
+                
         _navMeshAgent.enabled = false;
         _rigidbody.useGravity = true;
         _rigidbody.isKinematic = false;
