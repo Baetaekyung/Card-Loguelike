@@ -9,7 +9,8 @@ namespace CardGame
     [MonoSingletonUsage(MonoSingletonFlags.DontDestroyOnLoad)]
     public class SkillManager : MonoSingleton<SkillManager>
     {
-        public PlayerSingletonSO playerSingletonSO;
+        public static SkillManager Instance;
+        public PlayerSingletonSO player;
         public List<BaseSkill> registerSkills = new();
         public IList<BaseSkill> GetSkills => registerSkills;
         private BaseSkill _currentSkill;
@@ -17,52 +18,46 @@ namespace CardGame
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
-
-        private GameObject game;
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-             
-            //if(GameObject.Find("Player")!= null)
-            //    player = GameObject.Find("Player").GetComponent<Player>();
-            //OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-            //print("Cleared");
-            //registerSkills.Clear();
+            //base.Awake();
+             DontDestroyOnLoad(this);
+             Instance = this;
+            OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
         }
+
 
         private void HandleOnSceneEnter(SceneEnum obj)
         {
             switch (obj)
             {
                 case SceneEnum.SceneDeckSelect:
-                    print("Cleared");
                     registerSkills.Clear();
                     break;
             }
         }
-        protected override void OnDestroy()
+        protected void OnDestroy()
         {
-            base.OnDestroy();
-            //OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+            //base.OnDestroy();
+            OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
         }
 
         private void Update()
         {
             if (registerSkills.Count == 0) return;
-            //if(Input.GetKey(KeyCode.A)) UseSkill();
+            if(Input.GetKey(KeyCode.E)) UseSkill();
             ChangeCurrentSkill();
         }
 
         public void RegistSkill(BaseSkill skill)
         {
-            print("register skill");
             if (registerSkills.Count == 6)
             {
                 Debug.Log("Skill is full");
                 return;
             }
 
-            registerSkills.Add(skill);
+            registerSkills.Add(skill);  
 
             OnSkillRegisted?.Invoke();
         }
@@ -74,7 +69,8 @@ namespace CardGame
 
         public void UseSkill()
         {
-            _currentSkill.UseSkill(playerSingletonSO.Instance);
+            //player = GameObject.Find("PlayerCategory").GetComponent<Player>();
+            _currentSkill.UseSkill(player.Instance);
         }
 
         private void ChangeCurrentSkill()

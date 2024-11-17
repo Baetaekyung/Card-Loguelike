@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CardGame
 {
+    [Serializable]
     public struct ActionData
     {
         public float knockBackPower;

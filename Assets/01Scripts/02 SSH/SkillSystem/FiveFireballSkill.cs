@@ -10,25 +10,16 @@ namespace CardGame.SSH
         private int damage;
         [SerializeField] private GameObject Fireball;
         private Player _owner;
+        private float _lastUsedTime =0f;
+        private float _cooltime = 1f;
 
-        private bool isCooltime = false;
         public override void UseSkill(Player owner)
         {
-            print(isCooltime);
-            if (isCooltime)return;
-            isCooltime = true;
+            print("asdf");
             _owner = owner;
-            
-            SpawnFireballs();
-            Invoke("SpawnFireballs", 0.5f);
-            Invoke("SpawnFireballs", 1f);
-            Invoke("SpawnFireballs", 1.5f);
-            Invoke("SpawnFireballs", 2f);
-        }
-
-        private void SpawnFireballs()
-        {
-            print("FB2");
+            if (_lastUsedTime + _cooltime > Time.time) return;
+            _lastUsedTime = Time.time;
+            print("used skill" + _owner.name);
             Instantiate(Fireball, _owner.transform.GetChild(0).transform.position + Vector3.up * 5, Quaternion.identity);
         }
     }
