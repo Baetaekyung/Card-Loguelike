@@ -239,6 +239,8 @@ GameObject:
   - component: {fileID: 5543190214566746644}
   - component: {fileID: 5881142480532777827}
   - component: {fileID: 6190852180234304269}
+  - component: {fileID: 7948727440756818428}
+  - component: {fileID: 9028884733536489052}
   m_Layer: 0
   m_Name: AgentTanker
   m_TagString: Untagged
@@ -354,6 +356,9 @@ MonoBehaviour:
   - rid: 2285473669286724340
   - rid: 2285473669590287127
   - rid: 2285473713827086553
+  - rid: 2285473752042176850
+  - rid: 2285473752042176851
+  - rid: 2285473752042176852
   references:
     version: 2
     RefIds:
@@ -441,6 +446,30 @@ MonoBehaviour:
           m_Value1: 1549107438798367884
         Name: ChangeState
         m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
+    - rid: 2285473752042176850
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4536293008267613211
+          m_Value1: 2567633627969079318
+        Name: JumpRadius
+        m_Value: 12.63
+    - rid: 2285473752042176851
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14369951245783743594
+          m_Value1: 16567134408592053101
+        Name: JumpSpeed
+        m_Value: 26.87
+    - rid: 2285473752042176852
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6913836224369089000
+          m_Value1: 7521962314327256998
+        Name: ChaseRadius
+        m_Value: 26.2
 --- !u!114 &5543190214566746644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +502,8 @@ MonoBehaviour:
   slashEffect:
   - {fileID: 4977276575851160711}
   - {fileID: 2625068457612825006}
+  cameraShaker: {fileID: 0}
+  shakePower: 0
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
 --- !u!114 &6190852180234304269
@@ -493,6 +524,72 @@ MonoBehaviour:
   defaultDistance: 2.63
   _casterInterpolation: 1.22
   radius: 2.67
+--- !u!114 &7948727440756818428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111969818722777065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09e14dcc81d29049b5bae6fb04674b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseSource: {fileID: 9028884733536489052}
+--- !u!114 &9028884733536489052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111969818722777065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &1261999665381652755
 GameObject:
   m_ObjectHideFlags: 0

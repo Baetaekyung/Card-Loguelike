@@ -6579,6 +6579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  skills: []
 --- !u!1 &2121766961
 GameObject:
   m_ObjectHideFlags: 0
