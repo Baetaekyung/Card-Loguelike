@@ -39,12 +39,12 @@ namespace CardGame
 
         private void BossSpawn()
         {
-            print("boss Enemy");
+            //print("boss Enemy");
         }
 
         private void EnemySpawn()
         {
-            print("normal Enemy");
+            //print("normal Enemy");
         }
 
         private int test;
@@ -56,7 +56,7 @@ namespace CardGame
             {
                 foreach (var item2 in item.spawnPos)
                 {
-                    Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, null);
+                    Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, AIManager.Instance.transform);
                 }
             }
         }

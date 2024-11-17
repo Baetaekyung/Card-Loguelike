@@ -1,5 +1,6 @@
 using System.Collections;
 using CardGame;
+using CardGame.Players;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +17,9 @@ public class AgentStat
 
     private BehaviorGraphAgent BehaviorGraphAgent;
 
+  
+
+
     public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
     {
         BehaviorGraphAgent = behaviorGraphAgent;
@@ -30,6 +34,10 @@ public class AgentStat
         BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
         BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
         BehaviorGraphAgent.SetVariableValue("Defense",Defense);
+
+
+       
+
     }
 }
 

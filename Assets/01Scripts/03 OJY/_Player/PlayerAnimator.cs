@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 namespace CardGame.Players
 {
     public class PlayerAnimator : MonoBehaviour, IPlayerComponent
     {
+        [Header("ToDisable")]
+        [SerializeField] private RigTransform rigTransform;
+
         private Animator animator;
         public Animator GetAnimator => animator;
         public void Init(Player _player)
@@ -17,7 +21,7 @@ namespace CardGame.Players
         public void SetParam(AnimationParameterSO param) => animator.SetTrigger(param.GetHashValue);
         public void Dispose(Player _player)
         {
-
+            Destroy(rigTransform);
         }
     }
 }

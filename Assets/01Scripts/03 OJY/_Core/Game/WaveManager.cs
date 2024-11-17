@@ -19,7 +19,13 @@ namespace CardGame
         {
             base.Awake();
             OnWaveChanged += HandleOnWaveChanged;
-            OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+            //OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+        }
+
+        private void Start()
+        {
+            EnemySpawnManager.Instance.SpawnEnemy(CurrentWave);
+
         }
 
         private void Start()
@@ -31,17 +37,15 @@ namespace CardGame
         {
             base.OnDestroy();
             OnWaveChanged -= HandleOnWaveChanged;
-            OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+            //OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
         }
         private void HandleOnSceneEnter(SceneEnum obj)
         {
             void OnScene3D()
             {
                 CurrentWave++;
-                //UI_Wave.Instance.GetList[0].text = "CurrentWave : " + CurrentWave;
-                //UI_Wave.Instance.GetList[1].text = "S           : " + SkillManager.Instance.registerSkills.Count;
-                EnemySpawnManager.Instance.SpawnEnemy(CurrentWave);
-                print(EnemySpawnManager.Instance);
+                UI_Wave.Instance.GetList[0].text = "CurrentWave : " + CurrentWave;
+                UI_Wave.Instance.GetList[1].text = "S           : " + SkillManager.Instance.registerSkills.Count;
             }
             switch (obj)
             {

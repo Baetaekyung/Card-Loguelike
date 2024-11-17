@@ -11,7 +11,7 @@ public class AIManager : MonoSingleton<AIManager>
     public int GetAgentCount() => agents.Count;
     public int GetAgentIndex(Agent agent) => Array.IndexOf(agents.ToArray(), agent);
 
-    protected override void Awake()
+    private void Start()
     {
         base.Awake();
 

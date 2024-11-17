@@ -14,6 +14,7 @@ namespace CardGame.SSH
         private bool isCooltime = false;
         public override void UseSkill(Player owner)
         {
+            print(isCooltime);
             if (isCooltime)return;
             isCooltime = true;
             _owner = owner;
@@ -27,6 +28,7 @@ namespace CardGame.SSH
 
         private void SpawnFireballs()
         {
+            print("FB2");
             Instantiate(Fireball, _owner.transform.GetChild(0).transform.position + Vector3.up * 5, Quaternion.identity);
         }
     }
