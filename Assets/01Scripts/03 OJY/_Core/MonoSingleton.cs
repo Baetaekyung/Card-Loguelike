@@ -1,10 +1,22 @@
 using UnityEngine;
 using System.Reflection;
+using System;
+
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
+    /// <summary>
+    /// unfinished
+    /// </summary>
+    private static class SingletonPresetManager 
+    {
+        private static T preset = null;
+        public static T GetPreset => preset;
+    }
+
     private static MonoSingletonFlags singletonFlag;
-    protected static bool IsShuttingDown { get; private set; }
+    private static bool IsShuttingDown { get; set; }
     private static T _instance = null;
+
     /// <summary>
     /// do not reference Instance in "Awake" or "OnEnable" 
     /// please.
@@ -16,18 +28,22 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             if (_instance is null)
             {
                 if (IsShuttingDown) return null;
-                if (singletonFlag.HasFlag(MonoSingletonFlags.DontRuntimeInitialize))
-                {
-                    if(!singletonFlag.HasFlag(MonoSingletonFlags.DontWarn))
-                        Debug.LogWarning("Singleton is runtime initializing and singleton have dontRuntimeInitialize flag");
-                    return null;
-                }
-                _instance = Initialize();
+                if (singletonFlag.HasFlag(MonoSingletonFlags.SingletonPreset)) _instance = GetPresetSingleton();
+                else _instance = RuntimeInitialize();
             }
             return _instance;
         }
     }
-    private static T Initialize()
+
+    /// <summary>
+    /// unfinished
+    /// </summary>
+    private static T GetPresetSingleton()
+    {
+        return null;
+    }
+
+    private static T RuntimeInitialize()
     {
         //CreateInstance
         GameObject gameObject = new(name:"Runtime_Singleton_" + typeof(T).Name);
@@ -48,15 +64,14 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             Destroy(gameObject);
             return;
         }
+
         print("-AwakeInit-" + typeof(T).Name);
-        _instance = this as T;
+        if (singletonFlag.HasFlag(MonoSingletonFlags.SingletonPreset)) _instance = this as T;//GetPresetSingleton();
+        else _instance = this as T;
     }
     protected virtual void OnDestroy()
     {
-        if(_instance == this)
-        {
-            _instance = null;
-        }
+        if(_instance == this) _instance = null;
     }
     protected virtual void OnApplicationQuit()
     {

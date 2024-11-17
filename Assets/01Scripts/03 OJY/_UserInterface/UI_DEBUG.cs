@@ -5,11 +5,15 @@ using UnityEngine;
 
 namespace CardGame
 {
-    [MonoSingletonUsage(MonoSingletonFlags.DontRuntimeInitialize)]
+    [MonoSingletonUsage(MonoSingletonFlags.SingletonPreset)]
     public class UI_DEBUG : MonoSingleton<UI_DEBUG>
     {
         [SerializeField] private List<TextMeshProUGUI> list = new();
         public List<TextMeshProUGUI> GetList => list;
+        private void Start()
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 }

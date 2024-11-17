@@ -15,8 +15,8 @@ namespace CardGame
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
 
-        public event Action OnDeadEvent;
-        public event Action OnHitEvent;
+        public static event Action OnDeadEvent;
+        public static event Action OnHitEvent;
 
         private void Start()
         {

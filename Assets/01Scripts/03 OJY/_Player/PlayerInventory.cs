@@ -1,4 +1,5 @@
 using CardGame.Weapons;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace CardGame.Players
 {
-    public class PlayerInventory : MonoBehaviour, IPlayerComponent
+    public class PlayerInventory : MonoBehaviour, IPlayerComponent, IPlayerComponentStartInit
     {
         [Header("Weapons")]
         [Tooltip("Dont Edit this on inspector")]
@@ -23,13 +24,24 @@ namespace CardGame.Players
         {
             if(weapons.Count == 0)
                 weapons = GetComponentsInChildren<BaseWeapon>(true).ToList();
+        }
+        public void StartInit(Player _player)
+        {
             skills = SkillManager.Instance.GetSkills.ToList();
+            AnimationEventTrigger.OnAttackEventTrigger += HandleOnAttackTrigger;
+        }
+
+        private void HandleOnAttackTrigger()
+        {
+            GetCurrentWeapon.OnAnimatoinEventTrigger();
         }
 
         public void Dispose(Player _player)
         {
-
+            AnimationEventTrigger.OnAttackEventTrigger -= HandleOnAttackTrigger;
         }
+
+
     }
 
 }

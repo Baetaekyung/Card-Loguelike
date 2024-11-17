@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5c705a347a0a4c41a473af6b7c4ef5d, type: 3}
-  m_Name: attackParam
+  m_Name: specialAttackParam
   m_EditorClassIdentifier: 
-  parameterName: attack
-  hashValue: 1203776827
+  parameterName: SpecialAttack
+  hashValue: -720101083

@@ -5,10 +5,12 @@ namespace CardGame.FSM
     public abstract class State
     {
         public Action Current { get; private set; }
-        
-        public State()
+        public AnimationParameterSO GetAnimationParam { get; private set; }
+
+        public State(AnimationParameterSO animParam)
         {
             Current = Enter;
+            GetAnimationParam = animParam;
         }
         public virtual void Enter()
         {

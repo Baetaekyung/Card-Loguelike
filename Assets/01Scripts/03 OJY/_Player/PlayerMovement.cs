@@ -1,3 +1,4 @@
+using CardGame.GameEvent;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,8 +20,9 @@ namespace CardGame.Players
 [SerializeField] private float db_stmod;
         private const float rollcost = 1f;
         private const float initialRollStamina = 3f;
-        private float GetMaxStamina => initialRollStamina + db_stmod;
+        public float GetMaxStamina => initialRollStamina + db_stmod;
         private float rollStamina = initialRollStamina;
+        public float GetCurrentStamina => rollStamina;
 
         //[Header("GroundDetection")]
         //private readonly Vector3 v = new(0, -0.5f, 0);
@@ -30,8 +32,6 @@ namespace CardGame.Players
         [SerializeField] private AnimationParameterSO movementXParam;
         [SerializeField] private AnimationParameterSO movementYParam;
         [SerializeField] private AnimationParameterSO fallParam;
-        [SerializeField] private AnimationParameterSO attackParam;
-
 
         private CharacterController characterController;
         private PlayerAnimator playerAnimator;
@@ -80,8 +80,8 @@ namespace CardGame.Players
             ApplyAnimator();
 
             //uidebug
-            UI_DEBUG.Instance.GetList[2].text = IsMoving.ToString();
-            UI_DEBUG.Instance.GetList[3].text = rollStamina.ToString();
+            UI_DEBUG.Instance.GetList[2].text = nameof(IsMoving) + IsMoving.ToString();
+            UI_DEBUG.Instance.GetList[3].text = nameof(rollStamina) + rollStamina.ToString();
         }
         private void FixedUpdate()
         {
@@ -167,5 +167,6 @@ namespace CardGame.Players
                 }
             }
         }
+
     }
 }
