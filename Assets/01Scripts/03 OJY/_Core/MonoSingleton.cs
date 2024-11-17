@@ -21,6 +21,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
         //CreateInstance
         GameObject gameObject = new(name:"Runtime_Singleton_" + typeof(T).Name);
         T result = gameObject.AddComponent<T>();
+        print("Runtime_Singleton_" + typeof(T).Name);
         return result;
     }
     protected virtual void Awake()

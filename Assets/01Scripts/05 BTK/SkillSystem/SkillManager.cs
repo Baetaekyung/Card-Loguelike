@@ -11,16 +11,42 @@ namespace CardGame
     {
         public Player player;
         public List<BaseSkill> registerSkills = new();
+        public IList<BaseSkill> GetSkills => registerSkills;
         private BaseSkill _currentSkill;
 
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
 
+        private GameObject game;
+        protected override void Awake()
+        {
+            base.Awake();
+             
+            if(GameObject.Find("Player")!= null)
+                player = GameObject.Find("Player").GetComponent<Player>();
+            OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+        }
+
+        private void HandleOnSceneEnter(SceneEnum obj)
+        {
+            switch (obj)
+            {
+                case SceneEnum.SceneDeckSelect:
+                    registerSkills.Clear();
+                    break;
+            }
+        }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+        }
+
         private void Update()
         {
             if (registerSkills.Count == 0) return;
-
+            if(Input.GetKey(KeyCode.A)) UseSkill();
             ChangeCurrentSkill();
         }
 

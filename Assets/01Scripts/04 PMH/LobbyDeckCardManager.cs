@@ -9,14 +9,14 @@ namespace CardGame
 {
     public class LobbyDeckCardManager : MonoBehaviour, IPointerDownHandler
     {
-        public static LobbyDeckCardManager Instance; //¹Ì¾ÈÇÏ´Ù...
+        public static LobbyDeckCardManager Instance; //ï¿½Ì¾ï¿½ï¿½Ï´ï¿½...
 
-        //ÇÑ¹ø ¾²¸é Á¤·Ä ÀßµÊ ÇÑ¹øµµ ¾È½èÀ»½Ã Á¤·ÄÀÌ ¾ÈµÊ
+        //ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½
 
-        //¿øÀÌ ¾Æ´Ï°í È£¸¦ ¸¸µé¾î¼­ ÇÏ´Âµ¥ Ä«µå¸¦ ¾îÄÉ ³Ñ±æÁö °Á ¿©±â¼­ ³úÁ¤Áö°¡ ¿Í¼­ ÇÒ¼ö°¡ ¾øÀ½...
-        //ºñÁÖ¾ó¸®½ºÆ®¿Í µ¦ ¸®½ºÆ®
-        //ºñÁÖ¾ó ¸®½ºÆ®¿¡ ´Â ÃÖ´ëÄ¡°¡ Á¤ÇØÁ® ÀÖÀ½.
-        //ºñÁÖ¾ó ¸®½ºÆ®¿¡¼­´Â Áö±Ý Ã³·³ ¿øÀ¸·Î µº
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½Ï´Âµï¿½ Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½...
+        //ï¿½ï¿½ï¿½Ö¾ó¸®½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+        //ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+        //ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         [SerializeField] private int deckCardMaxCost;
         [SerializeField] private CardUI testAddCard;
 
@@ -43,26 +43,26 @@ namespace CardGame
         private const int MAX_COST = 20;
         private const int MIN_CARD = 8;
 
-        private Color originalColor;      // ¿ø·¡ »ö»ó ÀúÀå
-        private Vector3 originalScale;    // ¿ø·¡ Å©±â ÀúÀå
+        private Color originalColor;      // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        private Vector3 originalScale;    // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(Instance);
 
-            originalColor = costAmountText.color; // ¿ø·¡ »ö»ó ÃÊ±âÈ­
-            originalScale = costAmountText.transform.localScale; // ¿ø·¡ Å©±â ÃÊ±âÈ­
+            originalColor = costAmountText.color; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+            originalScale = costAmountText.transform.localScale; // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½Ê±ï¿½È­
             //ming.Remove(ming[1]);
-            //³ÎÃ¼Å©
-            //cnt°ªÀÎ ¸®½ºÆ®¿ø¼Ò Áö¿ì±â
-            //Áö¿î°Å ´ë±âÁßÀÎ Ä«µå ¸®½ºÆ®¿¡ ³Ö±â
-            //´ë±âÁßÀÎ Ä«µå ¸®½ºÆ®¿¡¼­ ¸Ç¾Õ¿¡°Å ºñÁÖ¾ó ¸®½ºÆ®¿¡ ³Ö±â
-            //ºó°÷ »ý°åÀ¸´Ï µÚ¿¡°Å¾ÕÀ¸·Î ‹¯±â´Â Á¤·Ä
+            //ï¿½ï¿½Ã¼Å©
+            //cntï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö±ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾Õ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö±ï¿½
+            //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½Å¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             //
             //haveCard = CardDataManager.Instance.LoadHavingCard();
 
-            //prefabHaveCards_CardSO = CardDataManager.Instance.LoadHavingCard(); //¿ø·¡ ÀÌ°Å ÇØ¾ßµÇ´Âµ¥ ¹ö±×³² Á¦ÀÌ½¼¹ö±× ¾È³ª´Â»ç¶÷Àº ÀÌÄÚµåÀÇ ÁÖ¼®À» Çª½Ê½Ã¿À
+            //prefabHaveCards_CardSO = CardDataManager.Instance.LoadHavingCard(); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ ï¿½Ø¾ßµÇ´Âµï¿½ ï¿½ï¿½ï¿½×³ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½ Çªï¿½Ê½Ã¿ï¿½
 
             prefabHaveCards_CardUI.Clear();
 
@@ -81,15 +81,15 @@ namespace CardGame
             //{
             //    centerPos = centerTrm.anchoredPosition;
             //
-            //    // Ä«µå »ý¼º ÈÄ ÇÇº¿ ±âÁØÀ¸·Î À§Ä¡ ¼³Á¤
+            //    // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Çºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
             //    CardUI card = Instantiate(testAddCard, transform.position, Quaternion.identity);
             //    card.transform.SetParent(centerTrm, true);
-            //    card.GetRectTransform().anchoredPosition = Vector2.zero; // ÇÇº¿ ±âÁØ À§Ä¡¸¦ ¿øÁ¡À¸·Î ¼³Á¤
+            //    card.GetRectTransform().anchoredPosition = Vector2.zero; // ï¿½Çºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             //    visualDeckCard.Add(card);
             //}
             SetCardsAngle();
         }
-        //µ¦Ä«µå¸®½ºÆ®¿¡ ÀÖ´Â°Å´ë·Î SO¸®½ºÆ® Á¤·ÄÇÏ°í °¹¼ö¸¸Å­ °¡Á®°¡±â
+        //ï¿½ï¿½Ä«ï¿½å¸®ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´Â°Å´ï¿½ï¿½ SOï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void IntantiateHaveCards()
         {
             int n = 0;
@@ -122,7 +122,7 @@ namespace CardGame
             }
             return haveCard_CardSO;
         }
-        public void SetCurrentDeckCardsFromCardSO(List<CardSO> cards) //Ä«µå Json¿¡¼­ ºÒ·¯¿À´Â°ÅÀÓ ºÒ·¯¿À±âÀü¿¡ ÇÔ ºñ¿öÁÜ Àåºñ¿ìµíÀÌ ¤·¤·
+        public void SetCurrentDeckCardsFromCardSO(List<CardSO> cards) //Ä«ï¿½ï¿½ Jsonï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½Â°ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             /*for (int i = 0; i < cards.Count; i++)
             {
@@ -166,7 +166,7 @@ namespace CardGame
                     if (visualDeckCard[i].ToString() == haveCard[j].ToString())
                     {
                         haveCard.RemoveAt(j);
-                        j--; // ¸®½ºÆ® Å©±â º¯È­¿¡ µû¸¥ ÀÎµ¦½º Á¶Á¤
+                        j--; // ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     }
                 }
             }
@@ -189,21 +189,21 @@ namespace CardGame
         }
         public void AddCardToDeckCardList(CardUI card)
         {
-            // À¯È¿¼º °Ë»ç: Ä«µå°¡ nullÀÎ °æ¿ì ÇÔ¼ö Á¾·á
+            // ï¿½ï¿½È¿ï¿½ï¿½ ï¿½Ë»ï¿½: Ä«ï¿½å°¡ nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (card == null) return;
 
-            // Ä«µå Ãß°¡ ¹× ¸®½ºÆ® ¾÷µ¥ÀÌÆ®
+            // Ä«ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
             AddCardToDeck(card);
-            HaveCardInventoryManager.Instance.ArrangeHaveCards(); // ÀÎº¥Åä¸® Á¤·Ä
-            SettingCleanningArrangeCard(); // ±âÅ¸ Ãß°¡ ÀÛ¾÷
+            HaveCardInventoryManager.Instance.ArrangeHaveCards(); // ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½
+            SettingCleanningArrangeCard(); // ï¿½ï¿½Å¸ ï¿½ß°ï¿½ ï¿½Û¾ï¿½
         }
         public bool IsArentExceed(CardUI card)
         {
-            // ºñ¿ë Á¦ÇÑ °Ë»ç
+            // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
             int currentCost = GetCostAmount();
             if (currentCost + card.CardInfo.cost > MAX_COST)
             {
-                AttentionText(); // ºñ¿ë ÃÊ°ú ½Ã ½Ã°¢Àû È¿°ú Ç¥½Ã
+                AttentionText(); // ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ Ç¥ï¿½ï¿½
                 return false;
             }
             else
@@ -231,14 +231,14 @@ namespace CardGame
         }
         private void AddCardToDeck(CardUI card)
         {
-            // Ä«µå º¹Á¦ ¹× ºÎ¸ð ¼³Á¤
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             card.transform.SetParent(centerTrm, true);
 
-            // Ä«µå ¸®½ºÆ® ¾÷µ¥ÀÌÆ®
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
             haveCard.Remove(card);
             visualDeckCard.Add(card);
 
-            Debug.Log("Ä«µå°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+            Debug.Log("Ä«ï¿½å°¡ ï¿½ß°ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         }
 
         public void RemoveCardOfDeckCardList(CardUI card)
@@ -258,16 +258,16 @@ namespace CardGame
         }
         private IEnumerator FlashAndEnlarge()
         {
-            // ÅØ½ºÆ®¸¦ »¡°£»öÀ¸·Î º¯°æ
+            // ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             costAmountText.color = Color.red;
 
-            // Å©±â¸¦ 1.5¹è·Î È®´ë
+            // Å©ï¿½â¸¦ 1.5ï¿½ï¿½ï¿½ È®ï¿½ï¿½
             costAmountText.transform.localScale = originalScale * 1.5f;
 
-            // 1ÃÊ µ¿¾È À¯Áö
+            // 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(1f);
 
-            // ¿ø·¡ »ö»ó°ú Å©±â·Î º¹¿ø
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             costAmountText.color = originalColor;
             costAmountText.transform.localScale = originalScale;
         }
@@ -280,16 +280,17 @@ namespace CardGame
 
             for (int i = 0; i < cardCount; i++)
             {
-                Vector2 direction = (centerTrm.anchoredPosition).normalized; // Áß½ÉÀ» ¹Ù¶óº¸´Â ¹æÇâ °è»ê
-                float angleToCenter = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // °¢µµ °è»ê
+                Vector2 direction = (centerTrm.anchoredPosition).normalized; // ï¿½ß½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+                float angleToCenter = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-                // Ä«µåÀÇ ¹Ù´Ú¸éÀÌ Áß½ÉÀ» ÇâÇÏµµ·Ï ¼³Á¤ (zÃà È¸Àü¸¸ Àû¿ë)
-                visualDeckCard[i].GetRectTransform().eulerAngles = new Vector3(0, 0, angleToCenter + 90); // 180µµ º¸Á¤ÇÏ¿© ¹Ù´Ú¸éÀÌ Áß½ÉÀ» ÇâÇÏµµ·Ï
+                // Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´Ú¸ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (zï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+                visualDeckCard[i].GetRectTransform().eulerAngles = new Vector3(0, 0, angleToCenter + 90); // 180ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ù´Ú¸ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½
             }
         }
         public bool IsExceedMaxCost(CardSO newCard)
         {
             int nowCost = 0;
+//i changed Getter (function) to getter property. blame viet tae gyong
             int newCostModifire = newCard.cardObject.CardData.cardInfo.cost;
             foreach(var item in visualDeckCard)
             {
@@ -319,30 +320,30 @@ namespace CardGame
             //    //SetCenterTrmPosition(-(angModi * 100));
             //}
 
-            // °¢ Ä«µå °£ÀÇ °¢µµ °£°ÝÀ» Ä«µå °³¼ö¿¡ µû¶ó µ¿ÀûÀ¸·Î °è»ê
+            // ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             float angleIncrement = 360f / cardCount;
 
             for (int i = 0; i < cardCount; i++)
             {
-                // °¢ Ä«µåÀÇ À§Ä¡¿¡ µû¶ó °¢µµ °è»ê
+                // ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 float angle = angleIncrement * i;
                 float radian = angle * Mathf.Deg2Rad;
 
-                // Ä«µåÀÇ À§Ä¡ °è»ê (ÇÇº¿ ±âÁØ ¹èÄ¡)
+                // Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ (ï¿½Çºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡)
                 Vector2 cardPos = new Vector2(
                     radius * Mathf.Cos(radian),
                     radius * Mathf.Sin(radian)
                 );
 
-                // ÇÇº¿À» ±âÁØÀ¸·Î Ä«µå ¹èÄ¡
+                // ï¿½Çºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½Ä¡
                 visualDeckCard[i].GetRectTransform().anchoredPosition = cardPos; //cardPos * (angModi * 0.7f)
 
-                // °¢µµ¸¦ 2D °ø°£¿¡¼­ Áß½ÉÀ» ¹Ù¶óº¸µµ·Ï Á¶Á¤
-                Vector2 direction = (centerTrm.anchoredPosition).normalized; // Áß½ÉÀ» ¹Ù¶óº¸´Â ¹æÇâ °è»ê
-                float angleToCenter = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // °¢µµ °è»ê
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸µï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                Vector2 direction = (centerTrm.anchoredPosition).normalized; // ï¿½ß½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+                float angleToCenter = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-                // Ä«µåÀÇ ¹Ù´Ú¸éÀÌ Áß½ÉÀ» ÇâÇÏµµ·Ï ¼³Á¤ (zÃà È¸Àü¸¸ Àû¿ë)
-                visualDeckCard[i].GetRectTransform().eulerAngles = new Vector3(0, 0, angleToCenter + 90); // 180µµ º¸Á¤ÇÏ¿© ¹Ù´Ú¸éÀÌ Áß½ÉÀ» ÇâÇÏµµ·Ï
+                // Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´Ú¸ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (zï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+                visualDeckCard[i].GetRectTransform().eulerAngles = new Vector3(0, 0, angleToCenter + 90); // 180ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ù´Ú¸ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½
             }
 
 

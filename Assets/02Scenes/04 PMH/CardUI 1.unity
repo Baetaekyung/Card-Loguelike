@@ -1115,11 +1115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50207ee8d229d064f991cbed0ae4af3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardList: []
-  useCardList: []
-  haveCardList: []
-  usedCardSortingPosition: {x: 680, y: 180}
-  usedCardOffset: {x: 15, y: 15}
+  cardDrawer: {fileID: 0}
+  haveCards: []
+  deckCardList: []
+  deckCnt: 0
+  fieldCardList: []
+  _verticalSpacing: 0
+  _minVerticalSpacing: 40
+  _usedCardSortingPosition: {x: 0, y: 0}
+  _usedCardOffset: {x: 0, y: 0}
 --- !u!4 &1548067935
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,7 +1202,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1326,10 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25714973dfe0146957b729ed76f491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 243528101429222443, guid: 2b6d5184355608743a2668901bf7e202, type: 3}
-  - {fileID: 5102008944102505184, guid: ca1325d001ae1ed44a2379dc8d506d1a, type: 3}
-  - {fileID: 6773373337521640300, guid: b51bef08b34ce104692709e7eee8ef3f, type: 3}
+  _deck: []
   spawnTrm: {fileID: 379642179}
   cardUseArea: {fileID: 377045514}
 --- !u!1660057539 &9223372036854775807
