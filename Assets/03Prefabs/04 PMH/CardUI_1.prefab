@@ -797,9 +797,76 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6054395532982535823}
-  - component: {fileID: 6128485298445836385}
-  - component: {fileID: 5884512717691707175}
+  - component: {fileID: 5404341363718697472}
+  - component: {fileID: 243528101429222443}
+  m_Layer: 5
+  m_Name: CardUI (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5404341363718697472
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425777446728990875}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6895685207724578864}
+  - {fileID: 1074219478782510076}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 5, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &243528101429222443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425777446728990875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97dfca8e5c1623441bdb699c5c488473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardTrm: {fileID: 0}
+  _cardData: {fileID: 11400000, guid: 309f4db60296be14bbf642a72c6fd6f9, type: 2}
+  _costText: {fileID: 1021662169934784821}
+  _cardNameText: {fileID: 8432945277903004992}
+  _cardDescription: {fileID: 1766356801983817118}
+  _cardImage: {fileID: 3464914377265166264}
+  _cardHoverSize: 1.05
+  _hoverHeight: 60
+  _hoverAnimationTime: 8
+  _cardUseArea: {fileID: 0}
+  _usedCardAnimationSpeed: 3
+  _keywordPanel: {fileID: 0}
+  keywords: 
+  _keywordCount: 3
+  _skillEffects:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6977062304045306530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334075859482553078}
+  - component: {fileID: 8594953452339925608}
+  - component: {fileID: 8432945277903004992}
   m_Layer: 5
   m_Name: CardName
   m_TagString: Untagged
