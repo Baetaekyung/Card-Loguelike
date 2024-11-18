@@ -28,11 +28,6 @@ namespace CardGame
 
         }
 
-        private void Start()
-        {
-            
-        }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();

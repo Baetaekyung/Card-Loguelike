@@ -24,6 +24,7 @@ namespace CardGame
         public void SpawnEnemy(int currentWave)
         {
             int index = currentWave - 1;
+            index = Mathf.Max(index , 0);
             if (currentWave % 5 == 0)
             {
                 BossSpawn();
@@ -47,7 +48,6 @@ namespace CardGame
             //print("normal Enemy");
         }
 
-        private int test;
         private void SpawnEnemyByIndex(int index)
         {
             var ls = listOfEnemySpawn[index];

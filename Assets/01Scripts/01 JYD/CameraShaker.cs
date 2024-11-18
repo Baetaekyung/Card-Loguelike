@@ -10,13 +10,20 @@ namespace CardGame
     public class CameraShaker : MonoBehaviour
     {
         [SerializeField] private CinemachineImpulseSource impulseSource;
-        
+        [SerializeField] private PlayerHealth playerHealth;
         private void Start()
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
+            
+            playerHealth.OnHitEvent += CameraShake;
         }
-        
-        public void CameraShake(float impulse)
+
+        private void OnDestroy()
+        {
+            playerHealth.OnHitEvent -= CameraShake;
+        }
+
+        private void CameraShake(float impulse)
         {
             impulseSource.GenerateImpulseWithForce(impulse);
         }

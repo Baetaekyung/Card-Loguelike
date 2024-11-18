@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CardGame
@@ -6,7 +7,6 @@ namespace CardGame
     public class PlayerHealth : MonoBehaviour,IDamageable
     {
         public ActionData ActionData;
-        
         public float MaxHealth => maxHealth;
         public float CurrentHealth => currentHealth;
         public bool IsAlive => isAlive;
@@ -14,13 +14,16 @@ namespace CardGame
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
-
+        [SerializeField] private float camShakePower;
+        
         public event Action OnDeadEvent;
-        public event Action OnHitEvent;
+        public event Action<float> OnHitEvent;
 
         private void Start()
         {
             currentHealth = maxHealth;
+
+            OnHitEvent += HitStop;
         }
 
         public void TakeDamage(ActionData actiondata)
@@ -30,7 +33,7 @@ namespace CardGame
             ActionData.hitNormal = actiondata.hitNormal;
             ActionData.hitPoint = actiondata.hitPoint;
             
-            OnHitEvent?.Invoke();
+            OnHitEvent?.Invoke(camShakePower);
             
             //before stat system
             currentHealth -= ActionData.damageAmount;
@@ -52,6 +55,18 @@ namespace CardGame
         {
             isAlive = false;
             OnDeadEvent?.Invoke();
+        }
+
+        private void HitStop(float empty)
+        {
+            StartCoroutine(HitStopRoutine());
+        }
+
+        private IEnumerator HitStopRoutine()
+        {
+            Time.timeScale = 0.24f;
+            yield return new WaitForSecondsRealtime(0.15f);
+            Time.timeScale = 1;
         }
     }
 }

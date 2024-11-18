@@ -100,8 +100,6 @@ public class Agent : MonoBehaviour
             GameObject findTarget = GameObject.Find("Player");
             target = findTarget.transform;
             
-            print(target);
-            
             _behaviorGraphAgent.SetVariableValue("Target",findTarget.transform);
         } 
         
@@ -226,10 +224,15 @@ public class Agent : MonoBehaviour
     #endregion
     
     #region AnimationEvents
-
-    private void CamShake()
+    
+    private void SetManualStop()
     {
-        cameraShaker.CameraShake(shakePower);
+        _navMeshAgent.isStopped = true;
+    }
+    
+    private void SetManualMove()
+    {
+        _navMeshAgent.isStopped = false;
     }
     
     private void SetManualRotate()
