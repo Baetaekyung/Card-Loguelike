@@ -19,7 +19,7 @@ namespace CardGame
 
                     ActionData actionData = new ActionData();
                     
-                    actionData.hitPoint = hit.point;    
+                    actionData.hitPoint = hit.transform.position;    
                     actionData.hitPoint = hit.normal;   
                     actionData.damageAmount = damage;       
                     actionData.knockBackPower = damage;     

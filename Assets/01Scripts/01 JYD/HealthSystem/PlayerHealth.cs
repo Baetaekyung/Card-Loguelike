@@ -17,7 +17,7 @@ namespace CardGame
         [SerializeField] private float camShakePower;
         
         public event Action OnDeadEvent;
-        public event Action<float> OnHitEvent;
+        public event Action<ActionData> OnHitEvent;
 
         private void Start()
         {
@@ -33,7 +33,7 @@ namespace CardGame
             ActionData.hitNormal = actiondata.hitNormal;
             ActionData.hitPoint = actiondata.hitPoint;
             
-            OnHitEvent?.Invoke(camShakePower);
+            OnHitEvent?.Invoke(actiondata);
             
             //before stat system
             currentHealth -= ActionData.damageAmount;
@@ -57,7 +57,7 @@ namespace CardGame
             OnDeadEvent?.Invoke();
         }
 
-        private void HitStop(float empty)
+        private void HitStop(ActionData empty)
         {
             StartCoroutine(HitStopRoutine());
         }

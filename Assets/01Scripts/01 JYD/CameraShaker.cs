@@ -23,9 +23,9 @@ namespace CardGame
             playerHealth.OnHitEvent -= CameraShake;
         }
 
-        private void CameraShake(float impulse)
+        private void CameraShake(ActionData impulse)
         {
-            impulseSource.GenerateImpulseWithForce(impulse);
+            impulseSource.GenerateImpulseWithForce(impulse.damageAmount);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace CardGame
         }
 
 
-        public void BloodScreenStart(float empty)
+        public void BloodScreenStart(ActionData empty)
         {
             if (!isEffectRunning)
                 StartCoroutine(BloodScreenCoroutine());
