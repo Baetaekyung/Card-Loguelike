@@ -32,6 +32,7 @@ public class CardDataManager : MonoBehaviour
 
     public void SaveCurrentDeck(List<string> choicedDeck)
     {
+        Debug.Log("세이브커런트덱");
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
         _deckData.resentDeck = choicedDeck.ToArray();
@@ -41,6 +42,7 @@ public class CardDataManager : MonoBehaviour
 
     public void LoadCurrentDeck()
     {
+        Debug.Log("로드커런트덱");
         string path = Path.Combine(Application.persistentDataPath, "deckCards.json");
 
         if (File.Exists(path))
