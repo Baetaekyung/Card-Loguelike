@@ -247,6 +247,7 @@ public class Agent : MonoBehaviour
     {
         _behaviorGraphAgent.SetVariableValue("AnimationEnd",true);
         animationEnd = true;
+        //print(animationEnd);
     }
     
     public void StopAnimationEnd()
