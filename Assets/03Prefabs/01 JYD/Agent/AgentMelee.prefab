@@ -3310,6 +3310,7 @@ MonoBehaviour:
   - rid: 2285473672413315417
   - rid: 2285473672413315418
   - rid: 2285473672413315419
+  - rid: 2285473886719705222
   references:
     version: 2
     RefIds:
@@ -3373,6 +3374,14 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
+    - rid: 2285473886719705222
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11239627919779463691
+          m_Value1: 17536922204555419164
+        Name: Speed
+        m_Value: 2.19
 --- !u!114 &4856524359464760005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3405,9 +3414,10 @@ MonoBehaviour:
   slashEffect:
   - {fileID: 7291987545411511763}
   - {fileID: 2484106182970852579}
+  cameraShaker: {fileID: 0}
+  shakePower: 0
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
-  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
 --- !u!114 &7211924803783901780
 MonoBehaviour:
   m_ObjectHideFlags: 0
