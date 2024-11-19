@@ -21,9 +21,15 @@ namespace CardGame.Players
         {
 
         }
+        public void SetVisualDirection(Vector3 dir)
+        {
+            playerVisual.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        }
         public void SetMaterial(Material _material)
         {
             meshRenderer.material = _material;
         }
+
+
     }
 }

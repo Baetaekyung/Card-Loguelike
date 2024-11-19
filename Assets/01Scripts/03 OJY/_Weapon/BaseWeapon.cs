@@ -5,22 +5,37 @@ namespace CardGame.Weapons
     public abstract class BaseWeapon : MonoBehaviour
     {
         [SerializeField] protected BaseWeaponSO baseWeaponSO;
+        [SerializeField] private Transform transformEffect;
+        public Transform GetTransformEffect => transformEffect;
+
         private float currentDelayTime;
         protected virtual bool CanAttack => currentDelayTime < Time.time;
+
         private void Awake()
         {
             transform.position = Vector3.zero;
         }
-        public void TryAttack()
+        public bool TryAttack()
         {
-            if(CanAttack)
+            bool result = CanAttack;
+            if(result)
             {
-
                 baseWeaponSO.OnEvent(this);
                 currentDelayTime = baseWeaponSO.GetDelay + Time.time;
-                Attack();
+                BaseAttackEvent();
             }
+            return result;
         }
-        protected abstract void Attack();
+        /// <summary>
+        /// for child class
+        /// </summary>
+        protected virtual void BaseAttackEvent()
+        {
+            //Debug.LogWarning("dont call me");
+        }
+        /// <summary>
+        /// for child child class
+        /// </summary>
+        public abstract void OnAnimatoinEventTrigger();
     }
 }

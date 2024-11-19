@@ -15,12 +15,12 @@ namespace CardGame
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
             
-            playerHealth.OnHitEvent += CameraShake;
+            PlayerHealth.OnHitEvent += CameraShake;
         }
 
         private void OnDestroy()
         {
-            playerHealth.OnHitEvent -= CameraShake;
+            PlayerHealth.OnHitEvent -= CameraShake;
         }
 
         private void CameraShake(ActionData impulse)

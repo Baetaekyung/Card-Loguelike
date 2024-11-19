@@ -1,3 +1,4 @@
+using CardGame.GameEvent;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
@@ -28,18 +29,16 @@ namespace CardGame.Players
         {
             playerCamera = GetComponentInChildren<Camera>();
             impulseSource = GetComponentInChildren<CinemachineImpulseSource>();
+            EventManager.AddListener<EventCameraShake>(CameraShake);
         }
-        private void Update()
+        private void CameraShake(EventCameraShake eventCameraShake)
         {
-            if (Input.GetKeyDown(KeyCode.X))
-                CameraShake(5);
-        }
-        public void CameraShake(float impulse)
-        {
-            impulseSource.GenerateImpulseWithForce(impulse);
+            float value = eventCameraShake.impulse;
+            impulseSource.GenerateImpulseWithForce(value);
         }
         public void Dispose(Player _player)
         {
+            EventManager.RemoveListener<EventCameraShake>(CameraShake);
         }
     }
 }

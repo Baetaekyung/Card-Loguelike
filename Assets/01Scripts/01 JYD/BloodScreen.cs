@@ -17,12 +17,12 @@ namespace CardGame
 
         private void Start()
         {
-            playerHealth.OnHitEvent += BloodScreenStart;
+            PlayerHealth.OnHitEvent += BloodScreenStart;
         }
         
         private void OnDestroy()
         {
-            playerHealth.OnHitEvent -= BloodScreenStart;
+            PlayerHealth.OnHitEvent -= BloodScreenStart;
         }
 
 

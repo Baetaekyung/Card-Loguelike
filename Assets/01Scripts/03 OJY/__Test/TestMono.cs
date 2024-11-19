@@ -1,4 +1,4 @@
-using CardGame.Events;
+using CardGame.GameEvent;
 using CardGame.FSM;
 using System;
 using UnityEngine;

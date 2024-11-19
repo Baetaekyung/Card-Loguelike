@@ -3394,10 +3394,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   currentHealth: 0
-  isAlive: 0
-  ChangeState: {fileID: 0}
+  isAlive: 1
+  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &4821907039836485114
 MonoBehaviour:
   m_ObjectHideFlags: 0

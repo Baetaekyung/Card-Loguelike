@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.2
   prefab: {fileID: 2799166916762076301, guid: fc0ab557496bd72409ee6235df3e5d3a, type: 3}
-  kk: 111

@@ -4,6 +4,10 @@ namespace CardGame.FSM.States
 {
     public class PS_NormalAttack : State
     {
+        public PS_NormalAttack(AnimationParameterSO animParam) : base(animParam)
+        {
+        }
+
         public override void Enter()
         {
             base.Enter();

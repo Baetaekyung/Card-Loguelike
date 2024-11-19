@@ -13,7 +13,7 @@ namespace CardGame
         {
             playerHealth = GetComponent<PlayerHealth>();
 
-            playerHealth.OnHitEvent += PlayHitImpact;
+            PlayerHealth.OnHitEvent += PlayHitImpact;
         }
 
         private void PlayHitImpact(ActionData actionData)
@@ -27,7 +27,7 @@ namespace CardGame
 
         private void OnDestroy()
         {
-            playerHealth.OnHitEvent -= PlayHitImpact;
+            PlayerHealth.OnHitEvent -= PlayHitImpact;
         }
     }
 }

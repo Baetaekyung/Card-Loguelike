@@ -14,10 +14,12 @@ namespace CardGame
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
+
+        public static event Action OnDeadEvent;
+        public static event Action<ActionData> OnHitEvent;
         [SerializeField] private float camShakePower;
         
-        public event Action OnDeadEvent;
-        public event Action<ActionData> OnHitEvent;
+
 
         private void Start()
         {
