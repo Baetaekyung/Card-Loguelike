@@ -7,14 +7,16 @@ namespace CardGame
     public class DeckSettingImage : MonoBehaviour
         , IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
-        [SerializeField] protected float _hoverSize;
-        [SerializeField] protected float _hoverAnimationSpeed;
-       
-        protected bool _isHovering = false;
+        [SerializeField] private float _hoverSize;
+        [SerializeField] private float _hoverAnimationSpeed;
+        [SerializeField] private FadePanel _fadePanel;
+        [SerializeField] private string _nextSceneName;
+
+        private bool _isHovering = false;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("Go to deck setting Scene!!");
+            _fadePanel.FadeIn(_nextSceneName);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
