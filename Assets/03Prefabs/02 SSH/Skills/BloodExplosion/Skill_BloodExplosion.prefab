@@ -47,4 +47,4 @@ MonoBehaviour:
   _skillEffect: {fileID: 272037486834534077, guid: 86ce56ef31a098243b0eeea5ed1de350, type: 3}
   _skillImage: {fileID: 21300000, guid: 0faa3fe3d9369cd4885e4c7e079eeb7a, type: 3}
   SkillObject: {fileID: 272037486834534077, guid: 86ce56ef31a098243b0eeea5ed1de350, type: 3}
-  _cooltime: 7
+  _cooltime: 2

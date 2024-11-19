@@ -71,7 +71,7 @@ namespace CardGame
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
             if(!doMove) return;
             if (other.transform.name.Equals("Fireball")) return;//레이어 설정 해주고 다 바꿔주기
@@ -80,7 +80,6 @@ namespace CardGame
                 damageable.TakeDamage(_data);
                 Destroy(gameObject);
             }
-
         }
     }
 }
