@@ -12,9 +12,10 @@ namespace CardGame
         private float _lastUsedTime;
 
 
-        public override void ResetSkill(Player owner)
+        public override void ResetSkill()
         {
             _lastUsedTime = 0f;
+            Debug.Log("lastusedtime reseted");
         }
 
         public override void UseSkill(Player owner)

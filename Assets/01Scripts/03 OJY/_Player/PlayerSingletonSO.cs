@@ -9,7 +9,6 @@ namespace CardGame.Players
         public Transform PlayerTransform { get; private set; }
         public void SetPlayer(Player player, Transform pTransform)
         {
-            Debug.Log("playerSetted");
             Instance = player;
             PlayerTransform = pTransform;
         }

@@ -26,12 +26,8 @@ namespace CardGame
              DontDestroyOnLoad(this);
              Instance = this;
             OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-            registerSkills.ForEach((skill) =>
-            {
-                skill.ResetSkill(player.Instance);
-            });
-        }
-
+            }
+        
 
         private void HandleOnSceneEnter(SceneEnum obj)
         {
@@ -41,6 +37,11 @@ namespace CardGame
                     registerSkills.Clear();
                     break;
             }
+            registerSkills.ForEach((skill) =>
+            {
+                skill.ResetSkill();
+                print("reseting");
+            });
         }
         protected void OnDestroy()
         {
@@ -52,13 +53,13 @@ namespace CardGame
         {
             if (registerSkills.Count == 0)
             {
-                foreach(var item in inGameUIs)
-                {
-                    item.cG.alpha = 0;
-                }
+                // foreach(var item in inGameUIs)
+                // {
+                //     item.cG.alpha = 0;
+                // }
                 return;
             }
-            if(Input.GetKey(KeyCode.A)) UseSkill();
+            if(Input.GetKey(KeyCode.E)) UseSkill();
             ChangeCurrentSkill();
         }
 
@@ -78,36 +79,39 @@ namespace CardGame
         private void RegisterCurrentSkill()
         {
             _currentSkill = registerSkills[_idx];
+            Debug.Log(_currentSkill);
         }
 
         public void UseSkill()
         {
-            //player = GameObject.Find("PlayerCategory").GetComponent<Player>();
+            //player = GameObject.Find("PlayerCategory").GetComponent<Player>();{
+            Debug.Log(player.Instance);
             _currentSkill.UseSkill(player.Instance);
         }
 
         private void ChangeCurrentSkill()
         {
+            RegisterCurrentSkill();
             int temp = 0;
-            for(int i = 0; i < registerSkills.Count; i++)
-            {
-                if (i == _idx)
-                {
-                    inGameUIs[i].cG.alpha = 1f;
-                }
-                else
-                {
-                    inGameUIs[i].cG.alpha = 0.5f;
-                }
-                inGameUIs[i].SetSkillImage(registerSkills[i].SkillImage);
-                
-                temp++;
-            }
-
-            for(int j = temp; j < inGameUIs.Length; j++)
-            {
-                inGameUIs[j].cG.alpha = 0f;
-            }
+            // for(int i = 0; i < registerSkills.Count; i++)
+            // {
+            //     if (i == _idx)
+            //     {
+            //         inGameUIs[i].cG.alpha = 1f;
+            //     }
+            //     else
+            //     {
+            //         inGameUIs[i].cG.alpha = 0.5f;
+            //     }
+            //     inGameUIs[i].SetSkillImage(registerSkills[i].SkillImage);
+            //     
+            //     temp++;
+            // }
+            //
+            // for(int j = temp; j < inGameUIs.Length; j++)
+            // {
+            //     inGameUIs[j].cG.alpha = 0f;
+            // }
 
             float wheelInput = Mouse.current.scroll.y.ReadValue();
 
@@ -117,7 +121,6 @@ namespace CardGame
                 _idx = (_idx + 1) > registerSkills.Count - 1 ? 0 : _idx + 1;
 
 
-            RegisterCurrentSkill();
         }
     }
 }

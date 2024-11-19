@@ -13,7 +13,7 @@ namespace CardGame.SSH
         private float _lastUsedTime =0f;
         private float _cooltime = 1f;
 
-        public override void ResetSkill(Player owner)
+        public override void ResetSkill()
         {
             Debug.Log($"lastusedtime resetted as {_lastUsedTime}");
             _lastUsedTime =0f;
