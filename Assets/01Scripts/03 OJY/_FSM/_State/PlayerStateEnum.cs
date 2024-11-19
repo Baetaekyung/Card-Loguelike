@@ -7,7 +7,8 @@ namespace CardGame.FSM
         public enum Movement
         {
             Idle,
-            Dash
+            Running,
+            Roll
         }
         public enum Combat
         {

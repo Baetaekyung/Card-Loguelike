@@ -17,13 +17,14 @@ namespace CardGame.Weapons
         }
         public bool TryAttack()
         {
-            if(CanAttack)
+            bool result = CanAttack;
+            if(result)
             {
                 baseWeaponSO.OnEvent(this);
                 currentDelayTime = baseWeaponSO.GetDelay + Time.time;
                 BaseAttackEvent();
             }
-            return CanAttack;
+            return result;
         }
         /// <summary>
         /// for child class

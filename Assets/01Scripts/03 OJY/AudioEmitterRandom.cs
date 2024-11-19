@@ -10,6 +10,7 @@ namespace CardGame
         [SerializeField] private AudioSource audioSource;
         public void PlayAudio()
         {
+            print("audio");
             int randomIndx = Random.Range(0, audioClips.Count);
             AudioClip randomClip = audioClips[randomIndx];
             audioSource.PlayOneShot(randomClip);

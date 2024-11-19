@@ -64,5 +64,9 @@ namespace CardGame.FSM
         {
             CurrentState.Current?.Invoke();
         }
+        public void FixedUpdateState()
+        {
+            CurrentState.FixedUpdate();
+        }
     }
 }

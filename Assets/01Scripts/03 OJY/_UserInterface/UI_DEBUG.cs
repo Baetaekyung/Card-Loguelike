@@ -9,10 +9,11 @@ namespace CardGame
     public class UI_DEBUG : MonoSingleton<UI_DEBUG>
     {
         [SerializeField] private List<TextMeshProUGUI> list = new();
+        public bool val;
         public List<TextMeshProUGUI> GetList => list;
         private void Start()
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(val);
         }
     }
 
