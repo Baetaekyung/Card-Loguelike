@@ -9,6 +9,7 @@ namespace CardGame
         [SerializeField] protected Sprite _skillImage;
         public Sprite SkillImage => _skillImage;
 
+        public abstract void ResetSkill(Player owner);
         public abstract void UseSkill(Player owner);
     }
 }

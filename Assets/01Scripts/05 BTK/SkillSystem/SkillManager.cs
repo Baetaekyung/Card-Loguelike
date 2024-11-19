@@ -24,6 +24,10 @@ namespace CardGame
              DontDestroyOnLoad(this);
              Instance = this;
             OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+            registerSkills.ForEach((skill) =>
+            {
+                skill.ResetSkill(player.Instance);
+            });
         }
 
 

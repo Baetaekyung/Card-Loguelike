@@ -74,12 +74,12 @@ namespace CardGame
         private void OnCollisionEnter(Collision other)
         {
             if(!doMove) return;
-            if (other.transform.name.Equals("Fireball")) return;//레이어 설정 해주고 다 바꿔주기
             if (TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(_data);
                 Destroy(gameObject);
             }
+            if (other.transform.name.Equals("Fireball")) return;//레이어 설정 해주고 다 바꿔주기
         }
     }
 }

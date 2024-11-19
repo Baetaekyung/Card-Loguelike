@@ -1,3 +1,4 @@
+using System;
 using CardGame.Players;
 using UnityEngine;
 
@@ -8,14 +9,21 @@ namespace CardGame
         [SerializeField] private GameObject SkillObject;
         
         [SerializeField] private float _cooltime;
-        private float _lastUsedTime =0f;
+        private float _lastUsedTime;
 
+
+        public override void ResetSkill(Player owner)
+        {
+            _lastUsedTime = 0f;
+        }
 
         public override void UseSkill(Player owner)
         {
-            if (_lastUsedTime + _cooltime > Time.time) return;
-            _lastUsedTime = Time.time;
-            Instantiate(SkillObject, owner.transform.GetChild(0).transform.position, Quaternion.identity);
+            if (_lastUsedTime + _cooltime < Time.time)
+            {
+                _lastUsedTime = Time.time;
+                Instantiate(SkillObject, owner.transform.GetChild(0).transform.position, Quaternion.identity);
+            }
         }
     }
 }

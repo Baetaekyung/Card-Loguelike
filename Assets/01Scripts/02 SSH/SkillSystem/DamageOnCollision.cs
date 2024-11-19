@@ -29,7 +29,7 @@ namespace CardGame
             }
         }
 
-        public void OnHit(IDamageable agent, Collider other)
+        public virtual void OnHit(IDamageable agent, Collider other)
         {
             _data.damageAmount = _damage;
             _data.knockBackPower = _pushback;
@@ -37,16 +37,6 @@ namespace CardGame
             //_data.hitNormal = other.GetContact(0).normal;
 
             agent.TakeDamage(_data);
-            NavMeshAgent navMesh = other.GetComponent<NavMeshAgent>();
-            float speed = navMesh.speed;
-            navMesh.speed = 0;
-            StartCoroutine(ReturnSpeed(speed, navMesh));
-        }
-
-        public IEnumerator ReturnSpeed(float beforeSpeed, NavMeshAgent navmesh)
-        {
-            yield return new WaitForSeconds(1f);
-            navmesh.speed = beforeSpeed;
         }
     }
 }
