@@ -1,10 +1,14 @@
+using CardGame;
 using UnityEngine;
 
 public class StartGameBtn : BaseButton
 {
+    [SerializeField] private FadePanel _fadePanel;
+    [SerializeField] private string _nextSceneName;
+
     protected override void OnClick()
     {
         base.OnClick();
-        Debug.Log("Game Start!!");
+        _fadePanel.FadeIn(_nextSceneName);
     }
 }

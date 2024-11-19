@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using CardGame;
-using CardGame.Players;
 using Unity.Behavior;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,9 +14,6 @@ public class AgentStat
     public float AttackSpeed;
 
     private BehaviorGraphAgent BehaviorGraphAgent;
-
-  
-
 
     public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
     {
@@ -35,10 +29,6 @@ public class AgentStat
         BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
         BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
         BehaviorGraphAgent.SetVariableValue("Defense",Defense);
-
-
-       
-
     }
 }
 
@@ -66,37 +56,39 @@ public class Agent : MonoBehaviour
     private bool canManualRotate;
     private bool animationEnd;
     
-    [Header("SlashEffect")]
+    [Header("Hit info")]
     [SerializeField] private ParticleSystem[] slashEffect;
+    [SerializeField] private CameraShaker cameraShaker;
+    [SerializeField] private float shakePower;
     
+    [Space]
     [Header("Knockback Info")]
     [SerializeField] private float _knockBackThreshold;
     [SerializeField] private float _maxKnockBackTime;
     
     private float _knockBackTime;
     private bool _isKnockBack;
-
-    [SerializeField] private PlayerSingletonSO playerSingletonSO;
+   
+    
+    private void Awake()
+    {
+       
+        
+    }
 
     private void Start()
     {
+        //target = playerManagerSo.Instance.transform;
+       // _behaviorGraphAgent.SetVariableValue("Target",target);
+        
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         _rigidbody = GetComponent<Rigidbody>();
+        cameraShaker = GetComponent<CameraShaker>();
         
         _LastPosition = transform.position;
-
-        target = playerSingletonSO.PlayerTransform;
-        _behaviorGraphAgent.SetVariableValue("Target", target);
-
-        enemyHealth.OnDeadEvent += Dead;
-    }
-
-    private void OnDestroy()
-    {
-        enemyHealth.OnDeadEvent -= Dead;
     }
 
     private void Update()
@@ -126,16 +118,7 @@ public class Agent : MonoBehaviour
         }
         
     }
-
-    private void Dead()
-    {
-        /*_behaviorGraphAgent.SetVariableValue("AgentState",State.Dead);
-        _behaviorGraphAgent.Restart();
         
-        _behaviorGraphAgent.GetVariable("AgentState",out BlackboardVariable<State> state);
-        print($"{gameObject.name} {state.Value}이 사망 하였습니다.이이이이이이이이익");*/
-    }
-    
     private void FaceToTarget(Vector3 _lookDir)
     {
         Vector3 targetPos = _lookDir - transform.position;
@@ -228,6 +211,12 @@ public class Agent : MonoBehaviour
     #endregion
     
     #region AnimationEvents
+
+    private void CamShake()
+    {
+        cameraShaker.CameraShake(shakePower);
+    }
+    
     private void SetManualRotate()
     {
         canManualRotate = true;
@@ -248,17 +237,6 @@ public class Agent : MonoBehaviour
     {
         _behaviorGraphAgent.SetVariableValue("AnimationEnd",false);
         animationEnd = false;
-    }
-
-    
-    public void SetMove()
-    {
-        _navMeshAgent.isStopped = false;
-    }
-    
-    public void StopMove()
-    {
-        _navMeshAgent.isStopped = true;
     }
     
     private void PlaySlashEffect(int idx)
