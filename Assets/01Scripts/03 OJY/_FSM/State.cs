@@ -6,6 +6,7 @@ namespace CardGame.FSM
     {
         public Action Current { get; private set; }
         public AnimationParameterSO GetAnimationParam { get; }
+        public bool AnimationEndTrigger { get; set; } = false;
 
         public State(AnimationParameterSO animParam)
         {
@@ -15,6 +16,7 @@ namespace CardGame.FSM
         public virtual void Enter()
         {
             Current = Update;
+            AnimationEndTrigger = false;
         }
         public virtual void Update()
         {
@@ -24,6 +26,7 @@ namespace CardGame.FSM
         }
         public virtual void Exit()
         {
+            AnimationEndTrigger = true;
         }
     }
 }

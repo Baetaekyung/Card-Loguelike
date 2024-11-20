@@ -20,6 +20,7 @@ namespace CardGame.Weapons
             bool result = CanAttack;
             if(result)
             {
+                //print("attk");
                 baseWeaponSO.OnEvent(this);
                 currentDelayTime = baseWeaponSO.GetDelay + Time.time;
                 BaseAttackEvent();
@@ -37,5 +38,6 @@ namespace CardGame.Weapons
         /// for child child class
         /// </summary>
         public abstract void OnAnimatoinEventTrigger();
+        
     }
 }
