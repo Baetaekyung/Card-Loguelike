@@ -25,7 +25,7 @@ namespace CardGame
 
         private void CameraShake(ActionData impulse)
         {
-            impulseSource.GenerateImpulseWithForce(impulse.damageAmount);
+            impulseSource.GenerateImpulseWithForce(impulse.damageAmount / 10);
         }
     }
 }

@@ -35,16 +35,20 @@ namespace CardGame
             ActionData.hitNormal = actiondata.hitNormal;
             ActionData.hitPoint = actiondata.hitPoint;
             
-            OnHitEvent?.Invoke(actiondata);
-            
             //before stat system
             currentHealth -= ActionData.damageAmount;
             
+            OnHitEvent?.Invoke(actiondata);
             
             if (currentHealth <= 0)
             {
                 OnDead();
             }
+        }
+
+        public float GetPercent()
+        {
+            return currentHealth / maxHealth;
         }
 
         public void Heal(float amount)

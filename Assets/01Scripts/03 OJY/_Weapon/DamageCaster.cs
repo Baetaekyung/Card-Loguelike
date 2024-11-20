@@ -7,6 +7,8 @@ namespace CardGame
         [SerializeField] protected LayerMask includeLayers = Physics.AllLayers;
         [SerializeField] protected float defaultDistance = 1f;
         [SerializeField] protected float _casterInterpolation;
+        [SerializeField] protected float damageAmount;
+        
         public abstract bool Cast(float distance = 0);
         
         public Vector3 GetStartPosition()

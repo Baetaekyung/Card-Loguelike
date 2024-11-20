@@ -3435,6 +3435,7 @@ MonoBehaviour:
     m_Bits: 16
   defaultDistance: 2.13
   _casterInterpolation: 0.81
+  damageAmount: 30.7
   radius: 1.9
 --- !u!1 &4754603098802619782
 GameObject:
