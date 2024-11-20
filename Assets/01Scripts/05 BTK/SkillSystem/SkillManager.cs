@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace CardGame
 {
@@ -11,15 +12,21 @@ namespace CardGame
     {
         public Player player;
         public List<BaseSkill> registerSkills = new();
+        public SkillSlot[] inGameUIs;
         public IList<BaseSkill> GetSkills => registerSkills;
         private BaseSkill _currentSkill;
 
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
+
+        private GameObject game;
         protected override void Awake()
         {
             base.Awake();
+             
+            if(GameObject.Find("Player")!= null)
+                player = GameObject.Find("Player").GetComponent<Player>();
             OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
         }
 
@@ -40,8 +47,15 @@ namespace CardGame
 
         private void Update()
         {
-            if (registerSkills.Count == 0) return;
-
+            if (registerSkills.Count == 0)
+            {
+                foreach(var item in inGameUIs)
+                {
+                    item.cG.alpha = 0;
+                }
+                return;
+            }
+            if(Input.GetKey(KeyCode.A)) UseSkill();
             ChangeCurrentSkill();
         }
 
@@ -70,6 +84,27 @@ namespace CardGame
 
         private void ChangeCurrentSkill()
         {
+            int temp = 0;
+            for(int i = 0; i < registerSkills.Count; i++)
+            {
+                if (i == _idx)
+                {
+                    inGameUIs[i].cG.alpha = 1f;
+                }
+                else
+                {
+                    inGameUIs[i].cG.alpha = 0.5f;
+                }
+                inGameUIs[i].SetSkillImage(registerSkills[i].SkillImage);
+                
+                temp++;
+            }
+
+            for(int j = temp; j < inGameUIs.Length; j++)
+            {
+                inGameUIs[j].cG.alpha = 0f;
+            }
+
             float wheelInput = Mouse.current.scroll.y.ReadValue();
 
             if (wheelInput < 0)
