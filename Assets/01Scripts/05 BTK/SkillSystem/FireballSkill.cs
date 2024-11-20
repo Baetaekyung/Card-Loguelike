@@ -7,12 +7,11 @@ namespace CardGame
 {
     public class FireballSkill : BaseSkill
     {
-        
+        [SerializeField]private ActionData _data;
 
-       [SerializeField]private ActionData _data;
-
-       private void Start()
+       public override void ResetSkill()
        {
+           
        }
 
        public override void UseSkill(Player owner)
