@@ -22,6 +22,7 @@ namespace CardGame.Players
         [Space(10)]
         [SerializeField] private AnimationParameterSO idleAnimationParam;
         [SerializeField] private AnimationParameterSO runningAnimationParam;
+        [SerializeField] private AnimationParameterSO dashAnimationParam;
 
         private readonly Dictionary<Type, IPlayerComponent> componentDictionary = new();
         public FiniteStateMachine<PlayerStateEnum.Movement, Player> PlayerFSM_Movement { get; private set; }

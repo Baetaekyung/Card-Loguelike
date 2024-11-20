@@ -2344,9 +2344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e7042fc37f7bc4eb78f841a41cc038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
+  player: {fileID: 0}
   registerSkills:
-  - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
+  - {fileID: 7335025266080446598, guid: 5dbc743adba3f9d44a32b7aa5bd0ad7f, type: 3}
+  inGameUIs: []
 --- !u!4 &485506878
 Transform:
   m_ObjectHideFlags: 0
