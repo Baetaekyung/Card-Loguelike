@@ -56,24 +56,25 @@ namespace CardGame.Players
                 PS_Base<PlayerStateEnum.Movement, Player>.StateMachine = PlayerFSM_Movement;
                 PS_Base<PlayerStateEnum.Movement, Player>.BaseOwner = this;
 
-                PlayerFSM_Combat = new(this, GetPlayerAnimator);
-                PS_Base<PlayerStateEnum.Combat, Player>.StateMachine = PlayerFSM_Combat;
-                PS_Base<PlayerStateEnum.Combat, Player>.BaseOwner = this;
+                //PlayerFSM_Combat = new(this, GetPlayerAnimator);
+                //PS_Base<PlayerStateEnum.Combat, Player>.StateMachine = PlayerFSM_Combat;
+                //PS_Base<PlayerStateEnum.Combat, Player>.BaseOwner = this;
 
                 //states
                 //fsmmovement
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Idle, new PS_Idle(idleAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Running, new PS_Running(runningAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(null));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Attack, new PS_NormalAttack(normalAttackParam));
 
                 PlayerFSM_Movement.SetCurrentState(PlayerStateEnum.Movement.Idle);
 
                 //fsmcombat
-                PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.None, new PS_None(null));
-                PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.NormalAttack, new PS_NormalAttack(normalAttackParam));
-                PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.SpecialAttack, new PS_SpecialAttack(specialAttackParam));
-
-                PlayerFSM_Combat.SetCurrentState(PlayerStateEnum.Combat.None);
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.None, new PS_None(null));
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.NormalAttack, new PS_NormalAttack(normalAttackParam));
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.SpecialAttack, new PS_SpecialAttack(specialAttackParam));
+                //
+                //PlayerFSM_Combat.SetCurrentState(PlayerStateEnum.Combat.None);
             }
             Initialize();
             playerSingletonSO.SetPlayer(this, GetPlayerMovement.transform);
@@ -130,6 +131,7 @@ namespace CardGame.Players
             bool result = GetInventory.GetCurrentWeapon.TryAttack();
             if (result)
             {
+                PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Attack);
                 audioEmitterSwing.PlayAudio();
             }
         }
@@ -149,7 +151,7 @@ namespace CardGame.Players
                         var l = GetInventory.GetSkills;
                         l[0].UseSkill(this);
                     }
-                    UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
+                    //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
                     UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;
                 }
                 void PlayerUI()
@@ -166,13 +168,17 @@ namespace CardGame.Players
                 PlayerUI();
             }
             PlayerComponentUpdate();
-            PlayerFSM_Combat.UpdateState();
+            //PlayerFSM_Combat.UpdateState();
             PlayerFSM_Movement.UpdateState();
         }
         private void FixedUpdate()
         {
-            PlayerFSM_Combat.FixedUpdateState();
+            //PlayerFSM_Combat.FixedUpdateState();
             PlayerFSM_Movement.FixedUpdateState();
+        }
+        public void AnimationEndWeaponTrigger()
+        {
+            PlayerFSM_Movement.CurrentState.AnimationEndTrigger = true;
         }
         private IPlayerComponent InitializePlayerComponent(IPlayerComponent component = null)
         {

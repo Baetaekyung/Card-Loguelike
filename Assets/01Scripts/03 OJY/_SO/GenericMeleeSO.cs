@@ -12,7 +12,7 @@ namespace CardGame.Weapons
             Transform parent = owner.GetTransformEffect; 
             Vector3 position = parent.position;
             Instantiate(prefab, position, rotation, parent);
-            Debug.Log("melee onEvent");
+            //Debug.Log("melee onEvent");
         }
     }
 }

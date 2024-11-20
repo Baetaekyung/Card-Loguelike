@@ -53,12 +53,20 @@ namespace CardGame.FSM
         public void ChangeState(StateEnum type)
         {
             if(CurrentState.GetAnimationParam != null)
+            {
+                Debug.Log(CurrentState.GetAnimationParam);
                 playerAnimator.SetParam(CurrentState.GetAnimationParam, false);
+            }
             CurrentState.Exit();
             CurrentState = StateDictionary[type];
             CurrentState.Enter();
             if (CurrentState.GetAnimationParam != null)
+            {
                 playerAnimator.SetParam(CurrentState.GetAnimationParam, true);
+            Debug.Log(CurrentState.GetAnimationParam);
+
+            }
+
         }
         public void UpdateState()
         {

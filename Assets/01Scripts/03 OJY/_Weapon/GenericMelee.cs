@@ -10,6 +10,7 @@ namespace CardGame.Weapons
         {
             //put some generic stuff here
             bool result = damageCaster.Cast();
+            print("cast");
             if (result)
             {
                 var evtCamera = Events<EventCameraShake>.Instance;
@@ -18,5 +19,6 @@ namespace CardGame.Weapons
                 EventManager.Invoke(Events<EventOnEnemyHit>.Instance);
             }
         }
+        
     }
 }
