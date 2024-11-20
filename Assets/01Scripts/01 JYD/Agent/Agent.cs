@@ -14,10 +14,7 @@ public class AgentStat
     public float AttackSpeed;
 
     private BehaviorGraphAgent BehaviorGraphAgent;
-
-  
-
-
+    
     public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
     {
         BehaviorGraphAgent = behaviorGraphAgent;
@@ -32,10 +29,6 @@ public class AgentStat
         BehaviorGraphAgent.SetVariableValue("DamageAmount",DamageAmount);
         BehaviorGraphAgent.SetVariableValue("AttackSpeed",AttackSpeed);
         BehaviorGraphAgent.SetVariableValue("Defense",Defense);
-
-
-       
-
     }
 }
 
@@ -65,9 +58,7 @@ public class Agent : MonoBehaviour
     
     [Header("Hit info")]
     [SerializeField] private ParticleSystem[] slashEffect;
-    [SerializeField] private CameraShaker cameraShaker;
-    [SerializeField] private float shakePower;
-    
+        
     [Space]
     [Header("Knockback Info")]
     [SerializeField] private float _knockBackThreshold;
@@ -89,7 +80,6 @@ public class Agent : MonoBehaviour
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         _rigidbody = GetComponent<Rigidbody>();
-        cameraShaker = GetComponent<CameraShaker>();
         
         _LastPosition = transform.position;
         
