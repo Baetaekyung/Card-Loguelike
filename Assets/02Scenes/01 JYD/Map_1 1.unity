@@ -7145,7 +7145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   registerSkills:
-  - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
+  - {fileID: -7492951310616957314, guid: 10cdb66ecf869f646b60f9e4a082fd88, type: 3}
   inGameUIs:
   - {fileID: 2141745478}
   - {fileID: 2141745476}
@@ -25326,6 +25326,7 @@ MonoBehaviour:
   specialAttackParam: {fileID: 11400000, guid: 61b5870f9fd055b46b724bb22fb469f3, type: 2}
   idleAnimationParam: {fileID: 11400000, guid: 90b7a24a9fd863c4a9692041e347cecc, type: 2}
   runningAnimationParam: {fileID: 11400000, guid: d6f994f0119a4c0469b4435c39c404ff, type: 2}
+  dashAnimationParam: {fileID: 0}
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
 --- !u!4 &1913369333
 Transform:

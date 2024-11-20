@@ -15,6 +15,11 @@ namespace CardGame
        {
        }
 
+       public override void ResetSkill()
+       {
+           
+       }
+
        public override void UseSkill(Player owner)
         {
             
