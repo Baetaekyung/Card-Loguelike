@@ -7146,7 +7146,13 @@ MonoBehaviour:
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   registerSkills:
   - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
-  inGameUIs: []
+  inGameUIs:
+  - {fileID: 2141745478}
+  - {fileID: 2141745476}
+  - {fileID: 1567301231}
+  - {fileID: 1115929005}
+  - {fileID: 1280916586}
+  - {fileID: 57249642}
 --- !u!4 &602351541
 Transform:
   m_ObjectHideFlags: 0
@@ -8679,60 +8685,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f6ae354b60bdd6d49b1310138fbe6996, type: 2}
   m_BuildHeightMesh: 0
---- !u!1 &721502163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 721502165}
-  - component: {fileID: 721502164}
-  m_Layer: 0
-  m_Name: SkillManager_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &721502164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721502163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e7042fc37f7bc4eb78f841a41cc038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
-  registerSkills:
-  - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
-  inGameUIs:
-  - {fileID: 2141745478}
-  - {fileID: 2141745476}
-  - {fileID: 1567301231}
-  - {fileID: 1115929005}
-  - {fileID: 1280916586}
-  - {fileID: 57249642}
---- !u!4 &721502165
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721502163}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &731862045
 GameObject:
   m_ObjectHideFlags: 1
@@ -25365,7 +25317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540e8960a0be9c144b7d5e55b3fd0ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 0}
+  stat: {fileID: 1771047202}
   audioEmitterOnHurt: {fileID: 199759480}
   audioEmitterOnMeleeHit: {fileID: 420883184}
   audioEmitterSwing: {fileID: 1795605099}
@@ -25384,7 +25336,7 @@ Transform:
   m_GameObject: {fileID: 1913369327}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30027,5 +29979,4 @@ SceneRoots:
   - {fileID: 1491909123}
   - {fileID: 1828876135}
   - {fileID: 1816546342920249617}
-  - {fileID: 721502165}
   - {fileID: 573739014}

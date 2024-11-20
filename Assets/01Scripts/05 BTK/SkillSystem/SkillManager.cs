@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace CardGame
 {
@@ -31,7 +30,7 @@ namespace CardGame
             //print("Cleared");
             //registerSkills.Clear();
         }
-
+        
         private void HandleOnSceneEnter(SceneEnum obj)
         {
             switch (obj)
@@ -58,7 +57,11 @@ namespace CardGame
                 }
                 return;
             }
-            if(Input.GetKey(KeyCode.A)) UseSkill();
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                UseSkill();
+            }
             ChangeCurrentSkill();
         }
 
@@ -115,7 +118,7 @@ namespace CardGame
                 _idx = (_idx - 1) < 0 ? registerSkills.Count - 1 : _idx - 1;
             else if (wheelInput > 0)
                 _idx = (_idx + 1) > registerSkills.Count - 1 ? 0 : _idx + 1;
-
+            
 
             RegisterCurrentSkill();
         }
