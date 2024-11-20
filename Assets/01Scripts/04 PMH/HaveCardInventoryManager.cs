@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +12,18 @@ namespace CardGame
         public bool isOpenInventory = false;
         private bool isOpenning = false;
 
-        [SerializeField] private Image leftInv, rightInv;
+        [SerializeField] public Image leftInv;
+        [SerializeField] private ScrollRect leftInvScrollRect;
+
         [SerializeField] private Vector2 beforePos;
         [SerializeField] private Vector2 afterPos;
         [SerializeField] private float duration = 1f;
+
+        private float listYPosModi = 450;
+
+        //public ScrollRect scrollRect;  // ScrollRect 컴포넌트 참조
+        private float minScrollY = 0f;       // 스크롤 가능한 최소 Y 위치 (하단)
+        private float maxScrollY = 1f;       // 스크롤 가능한 최대 Y 위치 (상단)
 
         private void Awake()
         {
@@ -26,10 +35,12 @@ namespace CardGame
             {
                 Destroy(gameObject);
             }
+
+            leftInvScrollRect = leftInv.GetComponent<ScrollRect>();
         }
         void Start()
         {
-        
+            ArrangeHaveCards();
         }
 
         // Update is called once per frame
@@ -41,6 +52,40 @@ namespace CardGame
                 isOpenInventory = !isOpenInventory;
                 OpenInventory();
             }
+
+            RectHahahaha();
+        }
+
+        private void RectHahahaha()
+        {
+            //leftInv.rectTransform.anchoredPosition
+        }
+        public void ArrangeHaveCards()
+        {
+            int idx = 1;
+            List<CardUI> haveCards = LobbyDeckCardManager.Instance.GetHaveCardList();
+            foreach (var item in haveCards)
+            {
+                //ただ　たくて　泣かないで 프리팹을 조정해서 안됩니다
+                //Debug.Log(item.name);
+                item.transform.SetParent(leftInv.transform, false);
+                SetPosition(item, idx);
+                idx++;
+            }
+            SetInventorySize(idx);
+        }
+        private void SetPosition(CardUI card, int idx)
+        {
+            card.transform.localPosition = Vector3.zero;
+            float modi = leftInv.rectTransform.rect.height;
+            modi /= 2;
+            card.transform.localPosition += new Vector3(0, (idx * listYPosModi) - modi);
+            //
+        }
+        private void SetInventorySize(int idx)
+        {
+            float w = leftInv.rectTransform.rect.width;
+            leftInv.rectTransform.sizeDelta = new Vector2(w, idx * listYPosModi);
         }
 
         public void OpenInventory()
@@ -49,7 +94,6 @@ namespace CardGame
             isOpenning = true;
 
             StartCoroutine(MoveToPosition(leftInv.rectTransform, -beforePos, -afterPos, duration));
-            StartCoroutine(MoveToPosition(rightInv.rectTransform, beforePos, afterPos, duration));
         }
 
         private IEnumerator MoveToPosition(RectTransform image, Vector3 startPos, Vector3 endPos, float time)

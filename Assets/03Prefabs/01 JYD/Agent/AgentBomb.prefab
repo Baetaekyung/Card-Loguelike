@@ -10462,6 +10462,7 @@ MonoBehaviour:
   - rid: 2285473603354100136
   - rid: 2285473603354100137
   - rid: 2285473606275695242
+  - rid: 2285473728941261735
   references:
     version: 2
     RefIds:
@@ -10529,6 +10530,14 @@ MonoBehaviour:
           m_Value1: 16149905308313853706
         Name: MoveSpeed
         m_Value: 4
+    - rid: 2285473728941261735
+      type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2327727918251664362
+          m_Value1: 1549107438798367884
+        Name: ChangeState
+        m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!195 &2087879342136471477
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10567,6 +10576,7 @@ MonoBehaviour:
   slashEffect: []
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
+  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   bombParticle: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!114 &3983043691098231280
 MonoBehaviour:

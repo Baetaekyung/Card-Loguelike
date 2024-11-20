@@ -5303,6 +5303,7 @@ MonoBehaviour:
   slashEffect: []
   _knockBackThreshold: 0.7
   _maxKnockBackTime: 0.5
+  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   firePos: {fileID: 2054278832826617358}
   firePower: 20
   arrow: {fileID: 3846083657428706976, guid: 45804eb2722b83845adbcf2d72da12dd, type: 3}

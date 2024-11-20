@@ -3407,6 +3407,7 @@ MonoBehaviour:
   - {fileID: 2484106182970852579}
   _knockBackThreshold: 0
   _maxKnockBackTime: 0
+  playerManagerSo: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
 --- !u!114 &7211924803783901780
 MonoBehaviour:
   m_ObjectHideFlags: 0
