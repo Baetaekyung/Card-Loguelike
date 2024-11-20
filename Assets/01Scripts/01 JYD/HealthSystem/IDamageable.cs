@@ -1,4 +1,5 @@
 using UnityEngine;
+using ActionData = CardGame.ActionData;
 
 namespace CardGame
 {
