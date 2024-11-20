@@ -13,8 +13,7 @@ public enum CardType
     Passive,
     Skill,
     Buff,
-    Debuff,
-    Normal
+    Debuff
 }
 public enum CardRarity
 {
@@ -27,7 +26,7 @@ public enum CardRarity
 public struct CardInfo
 {
     public string cardName;
-    [TextArea(1,5)]public string cardDescription;
+    public string cardDescription;
     public Sprite cardSprite;
     public int cost; //행동력
     public CardRarity cardRarity;
