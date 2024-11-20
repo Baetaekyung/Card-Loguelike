@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxName: Bow
   sfxType: 3
-  audioClip: {fileID: 8300000, guid: d1afd3f4d23c24f418ffc315afb04965, type: 3}
+  audioClip: {fileID: 8300000, guid: c458b6714dab015479d507b21fd2cead, type: 3}
