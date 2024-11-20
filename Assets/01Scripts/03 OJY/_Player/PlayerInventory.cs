@@ -9,13 +9,15 @@ namespace CardGame.Players
     public class PlayerInventory : MonoBehaviour, IPlayerComponent
     {
         [Header("Weapons")]
+        [Tooltip("Dont Edit this on inspector")]
         [SerializeField] private List<BaseWeapon> weapons;
         private int currentWeaponIndex;
         public BaseWeapon GetCurrentWeapon => weapons[currentWeaponIndex];
 
         [Header("Skills")]
+        [Tooltip("Dont Edit this on inspector")]
         [SerializeField] private List<BaseSkill> skills;
-        public IList GetSkills => skills;
+        public IList<BaseSkill> GetSkills => skills;
 
         public void Init(Player _player)
         {

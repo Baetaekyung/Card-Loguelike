@@ -7,6 +7,6 @@ namespace CardGame.Weapons
         [Header("General")]
         [SerializeField] private float delay;
         public float GetDelay => delay;
-        public abstract void OnEvent();
+        public abstract void OnEvent(BaseWeapon owner);
     }
 }

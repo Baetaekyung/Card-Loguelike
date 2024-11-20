@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6852c695cb92b4b45babccd27ff57906, type: 3}
   m_Name: New Enemy Spawn SO
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2065142009437742858, guid: 24b5d07798d13314bb6949e779cf7e7c, type: 3}
+  prefab: {fileID: 4130958997755988637, guid: e36a10b8d232dc341ae049036eaf5f43, type: 3}

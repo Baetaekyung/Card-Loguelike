@@ -2,8 +2,13 @@ using UnityEngine;
 using System.Reflection;
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
+    private static MonoSingletonFlags singletonFlag;
     protected static bool IsShuttingDown { get; private set; }
     private static T _instance = null;
+    /// <summary>
+    /// do not reference Instance in "Awake" or "OnEnable" 
+    /// please.
+    /// </summary>
     public static T Instance
     {
         get
@@ -11,6 +16,12 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             if (_instance is null)
             {
                 if (IsShuttingDown) return null;
+                if (singletonFlag.HasFlag(MonoSingletonFlags.DontRuntimeInitialize))
+                {
+                    if(!singletonFlag.HasFlag(MonoSingletonFlags.DontWarn))
+                        Debug.LogWarning("Singleton is runtime initializing and singleton have dontRuntimeInitialize flag");
+                    return null;
+                }
                 _instance = Initialize();
             }
             return _instance;
@@ -26,9 +37,10 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     }
     protected virtual void Awake()
     {
-        var attribute = typeof(T).GetCustomAttribute<MonoSingletonUsageAttribute>();
-        var flag = attribute != null ? attribute.Flag : MonoSingletonFlags.None;
-        if (flag.HasFlag(MonoSingletonFlags.DontDestroyOnLoad)) DontDestroyOnLoad(gameObject);
+        //custom attribute settings
+        var singletonAttribute = typeof(T).GetCustomAttribute<MonoSingletonUsageAttribute>();
+        singletonFlag = singletonAttribute != null ? singletonAttribute.Flag : MonoSingletonFlags.None;
+        if (singletonFlag.HasFlag(MonoSingletonFlags.DontDestroyOnLoad)) DontDestroyOnLoad(gameObject);
 
         if (_instance is not null)
         {

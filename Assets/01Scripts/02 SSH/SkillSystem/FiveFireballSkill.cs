@@ -3,32 +3,30 @@ using System.Collections;
 using CardGame.Players;
 using UnityEngine;
 
-namespace CardGame
+namespace CardGame.SSH
 {
     public class FiveFireballSkill : BaseSkill
     {
         private int damage;
         [SerializeField] private GameObject Fireball;
+        private Player _owner;
+        private float _lastUsedTime =0f;
+        private float _cooltime = 1f;
 
-        private void Start()
+        public override void ResetSkill()
         {
-            UseSkill(null);
+            Debug.Log($"lastusedtime resetted as {_lastUsedTime}");
+            _lastUsedTime =0f;
         }
 
         public override void UseSkill(Player owner)
         {
-            StartCoroutine(SpawnFireballs());
-        }
-
-        private IEnumerator SpawnFireballs()
-        {
-            int count = 5;
-            while (count-->0)
-            {
-                Instantiate(Fireball, transform.position + Vector3.up * 2, Quaternion.identity);
-                print("fireball generated");
-                yield return new WaitForSeconds(0.5f);
-            }
+            print("asdf");
+            _owner = owner;
+            if (_lastUsedTime + _cooltime > Time.time) return;
+            _lastUsedTime = Time.time;
+            print("used skill" + _owner.name);
+            Instantiate(Fireball, _owner.transform.GetChild(0).transform.position + Vector3.up * 5, Quaternion.identity);
         }
     }
 }

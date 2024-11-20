@@ -3389,6 +3389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4e86bf8b704c2da1ced75861d5f486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActionData:
+    knockBackPower: 0
+    damageAmount: 0
+    hitNormal: {x: 0, y: 0, z: 0}
+    hitPoint: {x: 0, y: 0, z: 0}
   maxHealth: 5
   currentHealth: 0
   isAlive: 0
@@ -3808,6 +3813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cbe3bb8060df941b35425672d4c479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigTransform: {fileID: 0}
 --- !u!114 &1302486799
 MonoBehaviour:
   m_ObjectHideFlags: 0
