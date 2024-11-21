@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CardGame
 {
@@ -16,6 +17,7 @@ namespace CardGame
         {
             _animator.Play("FadeIn");
             _nextSceneName = nextSceneName;
+            SceneManager.LoadScene(nextSceneName);
         }
 
         public void FadeOut()

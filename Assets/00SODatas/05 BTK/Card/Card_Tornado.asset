@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8bb4489ffb36b4faf9ce269abbd1c5, type: 3}
+  m_Name: Card_Tornado
+  m_EditorClassIdentifier: 
+  cardUI: {fileID: 3218535560560868212, guid: a7d265f0727647f43aee86b128ade2dd, type: 3}
+  cardObject: {fileID: 6349669213844082325, guid: 2e788582695f099469051f42992af6d5, type: 3}

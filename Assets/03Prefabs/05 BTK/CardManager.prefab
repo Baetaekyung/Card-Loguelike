@@ -53,7 +53,7 @@ MonoBehaviour:
   fieldCardList: []
   _verticalSpacing: 80
   _minVerticalSpacing: 30
-  _usedCardSortingPosition: {x: 780, y: 0}
+  _usedCardSortingPosition: {x: 750, y: 0}
   _usedCardOffset: {x: 0, y: 3}
 --- !u!114 &3043744946144762626
 MonoBehaviour:
@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterCardPack:
-  - {fileID: 11400000, guid: 1fb7e1445a7d5744b85a479e18d242e6, type: 2}
+  - {fileID: 11400000, guid: 79fd87e58a69d1d4c9ce0a31088e3031, type: 2}
   starterDeck:
-  - {fileID: 11400000, guid: 1fb7e1445a7d5744b85a479e18d242e6, type: 2}
+  - {fileID: 11400000, guid: 79fd87e58a69d1d4c9ce0a31088e3031, type: 2}
 --- !u!114 &5783848015018193163
 MonoBehaviour:
   m_ObjectHideFlags: 0

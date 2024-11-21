@@ -47,7 +47,9 @@ namespace CardGame
             switch (obj)
             {
                 case SceneEnum.SceneDeckSelect:
-
+                    UIManager.Instance.SetDeckSelectActive(true);
+                    UIManager.Instance.SetSettingPanelUIActive(false);
+                    UIManager.Instance.SetFadePanelActive(false);
                     break;
                 case SceneEnum.Scene3D:
                     OnScene3D();
