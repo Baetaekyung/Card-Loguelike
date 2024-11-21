@@ -26,6 +26,13 @@ namespace CardGame.FSM.States
         {
 
         }
+        protected override void HandleOnPlayerAttack()
+        {
+        }
+        protected override void HandleOnRoll()
+        {
+
+        }
         public override void Exit()
         {
             base.Exit();

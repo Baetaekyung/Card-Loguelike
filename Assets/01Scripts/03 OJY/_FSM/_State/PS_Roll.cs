@@ -13,6 +13,8 @@ namespace CardGame.FSM.States
         {
             base.Enter();
             OnRoll?.Invoke();
+            Vector3 dir = BaseOwner.GetInput.GetCameraRelativeInputRaw;
+            BaseOwner.GetPlayerRenderer.SetVisualDirection(dir.normalized);
             Debug.Log("rollin");
             BaseOwner.GetPlayerMovement.DoABarrelRoll(BaseOwner.GetInput.GetCameraRelativeInput, 6, 
                 () => 
@@ -22,6 +24,9 @@ namespace CardGame.FSM.States
             //
         }
         protected override void HandleOnDirectionLook(Vector3 input)
+        {
+        }
+        protected override void HandleOnPlayerAttack()
         {
         }
         public override void Exit()
