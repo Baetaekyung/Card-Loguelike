@@ -11,7 +11,8 @@ namespace CardGame
 
         protected override void UseSkill(Player owner)
         {
-            Instantiate(SkillObject, owner.transform.GetChild(0).transform.position, Quaternion.identity);
+            Instantiate(SkillObject, owner.transform.GetChild(0).transform.position, 
+                owner.transform.GetChild(0).rotation);
         }
     }
 }
