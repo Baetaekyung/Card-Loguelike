@@ -9,7 +9,7 @@ namespace CardGame.Weapons
         public Transform GetTransformEffect => transformEffect;
 
         private float currentDelayTime;
-        protected virtual bool CanAttack => currentDelayTime < Time.time;
+        protected bool CanAttack => currentDelayTime < Time.time;
 
         private void Awake()
         {
