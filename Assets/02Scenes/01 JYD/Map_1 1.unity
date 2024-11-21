@@ -22951,6 +22951,19 @@ MonoBehaviour:
     - enemySpawnSO: {fileID: 11400000, guid: 1fe292f3254909c43a37a9a2c4a9da32, type: 2}
       spawnPos:
       - {fileID: 2055032005}
+  - enemyInfos:
+    - enemySpawnSO: {fileID: 11400000, guid: 1fe292f3254909c43a37a9a2c4a9da32, type: 2}
+      spawnPos:
+      - {fileID: 337997200}
+    - enemySpawnSO: {fileID: 11400000, guid: af9ce0d7d569c4144a4ad02baa4054db, type: 2}
+      spawnPos:
+      - {fileID: 2055032005}
+    - enemySpawnSO: {fileID: 11400000, guid: dc1f8949ffd40554891bac7f21ffbeee, type: 2}
+      spawnPos:
+      - {fileID: 2055032005}
+    - enemySpawnSO: {fileID: 11400000, guid: 1fe292f3254909c43a37a9a2c4a9da32, type: 2}
+      spawnPos:
+      - {fileID: 2055032005}
 --- !u!4 &1828876135
 Transform:
   m_ObjectHideFlags: 0

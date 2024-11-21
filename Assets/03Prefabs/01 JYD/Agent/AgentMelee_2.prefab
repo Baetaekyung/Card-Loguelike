@@ -384,6 +384,10 @@ MonoBehaviour:
   - rid: 2285473934065533852
   - rid: 2285473934065533853
   - rid: 2285473935258288268
+  - rid: 2285473935466954933
+  - rid: 2285473935466954934
+  - rid: 2285473935466954935
+  - rid: 2285473935466954936
   references:
     version: 2
     RefIds:
@@ -411,6 +415,38 @@ MonoBehaviour:
           m_Value1: 13804683939307581226
         Name: AgentAnimator
         m_Value: {fileID: 368901171873197223}
+    - rid: 2285473935466954933
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11239627919779463691
+          m_Value1: 17536922204555419164
+        Name: Speed
+        m_Value: 3.45
+    - rid: 2285473935466954934
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1090297806262805484
+          m_Value1: 11003339325161431145
+        Name: ChaseSpeed
+        m_Value: 3.51
+    - rid: 2285473935466954935
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5513194394281948341
+          m_Value1: 16643009058973780617
+        Name: AttackRadius
+        m_Value: 4.19
+    - rid: 2285473935466954936
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6913836224369089000
+          m_Value1: 7521962314327256998
+        Name: ChaseRadius
+        m_Value: 14.85
 --- !u!54 &4917089003166368384
 Rigidbody:
   m_ObjectHideFlags: 0
