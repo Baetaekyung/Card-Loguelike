@@ -18,6 +18,7 @@ namespace CardGame.FSM.States
             {
                 var inp = BaseOwner.GetInput;
                 inp.EventPlayerRoll += HandleOnRoll;
+                BaseOwner.OnAttack += HandleOnPlayerAttack;
             }
         }
         public override void Update()
@@ -34,8 +35,12 @@ namespace CardGame.FSM.States
         {
             if (BaseOwner.GetInput.IsPressingAnyDirectionKey)
             {
-                BaseOwner.GetPlayerRenderer.SetVisualDirection(input);
+                BaseOwner.GetPlayerRenderer.SetVisulDirectionSmooth(input);
             }
+        }
+        protected virtual void HandleOnPlayerAttack()
+        {
+            StateMachine.ChangeState(PlayerStateEnum.Movement.Attack);
         }
         protected virtual void HandleOnMovement(Vector3 input)
         {
@@ -57,6 +62,7 @@ namespace CardGame.FSM.States
             {
                 var inp = BaseOwner.GetInput;
                 inp.EventPlayerRoll -= HandleOnRoll;
+                BaseOwner.OnAttack -= HandleOnPlayerAttack;
             }
             UnSubscribeEvent();
             base.Exit();

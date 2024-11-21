@@ -21,6 +21,12 @@ namespace CardGame.Players
         {
 
         }
+        public void SetVisulDirectionSmooth(Vector3 dir)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
+            float multiplier = Quaternion.Angle(targetRot, playerVisual.rotation);
+            playerVisual.rotation = Quaternion.RotateTowards(playerVisual.rotation, targetRot, Time.deltaTime * multiplier * 10);
+        }
         public void SetVisualDirection(Vector3 dir)
         {
             playerVisual.rotation = Quaternion.LookRotation(dir, Vector3.up);

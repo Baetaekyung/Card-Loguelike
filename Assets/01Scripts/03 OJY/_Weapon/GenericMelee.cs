@@ -13,9 +13,9 @@ namespace CardGame.Weapons
             print("cast");
             if (result)
             {
-                var evtCamera = Events<EventCameraShake>.Instance;
-                evtCamera.impulse = 1;
-                EventManager.Invoke(evtCamera);
+                //var evtCamera = Events<EventCameraShake>.Instance;
+                //evtCamera.impulse = 1;
+                //EventManager.Invoke(evtCamera);
                 EventManager.Invoke(Events<EventOnEnemyHit>.Instance);
             }
         }

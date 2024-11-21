@@ -33,10 +33,11 @@ namespace CardGame.Players
         public PlayerMovement GetPlayerMovement => GetPlayerComponent<PlayerMovement>();
         public PlayerRenderer GetPlayerRenderer => GetPlayerComponent<PlayerRenderer>();
         public PlayerInput GetInput => GetPlayerComponent<PlayerInput>();
+        public PlayerCamera GetPlayerCamera => GetPlayerComponent<PlayerCamera>();
         public PlayerAnimator GetPlayerAnimator => GetPlayerComponent<PlayerAnimator>();
         public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
         #endregion
-
+        public event Action OnAttack;
         private void Awake()
         {
             void Initialize()
@@ -128,14 +129,16 @@ namespace CardGame.Players
         {
             audioEmitterDash.PlayAudio();
         }
-
+        public void PlaySwingSound()
+        {
+            audioEmitterSwing.PlayAudio();
+        }
         private void HandleOnPlayerAttack()
         {
             bool result = GetInventory.GetCurrentWeapon.TryAttack();
             if (result)
             {
-                PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Attack);
-                audioEmitterSwing.PlayAudio();
+                OnAttack?.Invoke();
             }
         }
 
@@ -154,6 +157,19 @@ namespace CardGame.Players
                         var l = GetInventory.GetSkills;
                         l[0].TryUseSkill(this);
                     }
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        float y = Input.GetAxis("Mouse X");
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false;
+                        GetPlayerCamera.RotateCamera(y);
+                    }
+                    if (Input.GetKeyUp(KeyCode.Mouse1))
+                    {
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                    }
+
                     //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
                     UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;
                 }

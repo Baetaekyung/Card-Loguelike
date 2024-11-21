@@ -16,5 +16,9 @@ namespace CardGame
         {
             player.AnimationEndWeaponTrigger();
         }
+        private void AE_PlaySwingSound()
+        {
+            player.PlaySwingSound();
+        }
     }
 }

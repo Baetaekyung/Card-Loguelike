@@ -10,7 +10,7 @@ namespace CardGame
     [MonoSingletonUsage(MonoSingletonFlags.DontDestroyOnLoad)]
     public class SkillManager : MonoSingleton<SkillManager>
     {
-        public static SkillManager Instance;
+        //public static SkillManager Instance;
         public PlayerSingletonSO player;
         public List<BaseSkill> registerSkills = new();
         public SkillSlot[] inGameUIs;
@@ -20,14 +20,22 @@ namespace CardGame
         public event Action OnSkillRegisted;
 
         private int _idx = 0;
-        protected void Awake()
+        private void Start()
         {
-            //base.Awake();
-             DontDestroyOnLoad(this);
-             Instance = this;
-            OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-            }
-        
+            registerSkills.ForEach((skill) =>
+            {
+                skill.AWDlpawdakdpadoawkakwodpkdopwkdakWOdkowaijdiwadjiadwajdiwadwioajdaiodjawdjioajdiawdajddjnjdkjlkjngjjkjkgjkkbkcxkjkxfjkggjggkggkggjkggkgkggkgkgjgkgjxzlxkmbkcmkmvklcjbxklxjbjkjcixjbpokrjriyjeiitjgifdfgdkgjkdfglndhdfkd();
+                print("reseting");
+            });
+        }
+        //protected void Awake()
+        //{
+        //    //base.Awake();
+        //     DontDestroyOnLoad(this);
+        //     Instance = this;
+        //    //OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
+        //    }
+
 
         private void HandleOnSceneEnter(SceneEnum obj)
         {
@@ -39,15 +47,15 @@ namespace CardGame
             }
             registerSkills.ForEach((skill) =>
             {
-                skill.ResetSkill();
+                skill.AWDlpawdakdpadoawkakwodpkdopwkdakWOdkowaijdiwadjiadwajdiwadwioajdaiodjawdjioajdiawdajddjnjdkjlkjngjjkjkgjkkbkcxkjkxfjkggjggkggkggjkggkgkggkgkgjgkgjxzlxkmbkcmkmvklcjbxklxjbjkjcixjbpokrjriyjeiitjgifdfgdkgjkdfglndhdfkd();
                 print("reseting");
             });
         }
-        protected void OnDestroy()
-        {
-            //base.OnDestroy();
-            OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
-        }
+        //protected void OnDestroy()
+        //{
+        //    //base.OnDestroy();
+        //    //OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+        //}
 
         private void Update()
         {
@@ -86,7 +94,7 @@ namespace CardGame
         {
             //player = GameObject.Find("PlayerCategory").GetComponent<Player>();{
             Debug.Log(player.Instance);
-            _currentSkill.UseSkill(player.Instance);
+            _currentSkill.TryUseSkill(player.Instance);
         }
 
         private void ChangeCurrentSkill()
