@@ -6,6 +6,7 @@ namespace CardGame.Weapons
     public class GenericMelee : BaseMelee
     {
         [SerializeField] private float distance;
+        [Range(0, 2)] [SerializeField] private float shakeForce;
         public override void OnAnimatoinEventTrigger()
         {
             //put some generic stuff here
@@ -14,7 +15,7 @@ namespace CardGame.Weapons
             if (result)
             {
                 var evtCamera = Events<EventCameraShake>.Instance;
-                evtCamera.impulse = 1;
+                evtCamera.impulse = shakeForce;
                 EventManager.Invoke(evtCamera);
                 EventManager.Invoke(Events<EventOnEnemyHit>.Instance);
             }
