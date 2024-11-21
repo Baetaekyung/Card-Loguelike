@@ -1,4 +1,4 @@
-using CardGame.Events;
+using CardGame.GameEvent;
 using UnityEngine;
 
 namespace CardGame

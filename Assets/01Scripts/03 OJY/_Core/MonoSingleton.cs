@@ -1,9 +1,26 @@
 using UnityEngine;
 using System.Reflection;
+using System;
+
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    protected static bool IsShuttingDown { get; private set; }
+    /// <summary>
+    /// unfinished
+    /// </summary>
+    private static class SingletonPresetManager 
+    {
+        private static T preset = null;
+        public static T GetPreset => preset;
+    }
+
+    private static MonoSingletonFlags singletonFlag;
+    private static bool IsShuttingDown { get; set; }
     private static T _instance = null;
+
+    /// <summary>
+    /// do not reference Instance in "Awake" or "OnEnable" 
+    /// please.
+    /// </summary>
     public static T Instance
     {
         get
@@ -11,12 +28,22 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             if (_instance is null)
             {
                 if (IsShuttingDown) return null;
-                _instance = Initialize();
+                if (singletonFlag.HasFlag(MonoSingletonFlags.SingletonPreset)) _instance = GetPresetSingleton();
+                else _instance = RuntimeInitialize();
             }
             return _instance;
         }
     }
-    private static T Initialize()
+
+    /// <summary>
+    /// unfinished
+    /// </summary>
+    private static T GetPresetSingleton()
+    {
+        return null;
+    }
+
+    private static T RuntimeInitialize()
     {
         //CreateInstance
         GameObject gameObject = new(name:"Runtime_Singleton_" + typeof(T).Name);
@@ -26,9 +53,10 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     }
     protected virtual void Awake()
     {
-        var attribute = typeof(T).GetCustomAttribute<MonoSingletonUsageAttribute>();
-        var flag = attribute != null ? attribute.Flag : MonoSingletonFlags.None;
-        if (flag.HasFlag(MonoSingletonFlags.DontDestroyOnLoad)) DontDestroyOnLoad(gameObject);
+        //custom attribute settings
+        var singletonAttribute = typeof(T).GetCustomAttribute<MonoSingletonUsageAttribute>();
+        singletonFlag = singletonAttribute != null ? singletonAttribute.Flag : MonoSingletonFlags.None;
+        if (singletonFlag.HasFlag(MonoSingletonFlags.DontDestroyOnLoad)) DontDestroyOnLoad(gameObject);
 
         if (_instance is not null)
         {
@@ -36,15 +64,14 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             Destroy(gameObject);
             return;
         }
+
         print("-AwakeInit-" + typeof(T).Name);
-        _instance = this as T;
+        if (singletonFlag.HasFlag(MonoSingletonFlags.SingletonPreset)) _instance = this as T;//GetPresetSingleton();
+        else _instance = this as T;
     }
     protected virtual void OnDestroy()
     {
-        if(_instance == this)
-        {
-            _instance = null;
-        }
+        if(_instance == this) _instance = null;
     }
     protected virtual void OnApplicationQuit()
     {

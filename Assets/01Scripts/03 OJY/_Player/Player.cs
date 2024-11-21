@@ -1,7 +1,6 @@
 using CardGame.FSM;
 using CardGame.FSM.States;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,9 +9,25 @@ namespace CardGame.Players
 {
     public class Player : Entity
     {
+        [Header("Audio")]
+        [SerializeField] private AudioEmitter audioEmitterOnHurt;
+        [SerializeField] private AudioEmitter audioEmitterOnMeleeHit;
+        [SerializeField] private AudioEmitterRandom audioEmitterSwing;
+        [SerializeField] private AudioEmitterRandom audioEmitterDash;
+
+        [Header("Animation Param")]
+        [SerializeField] private AnimationParameterSO normalAttackParam;
+        [SerializeField] private AnimationParameterSO specialAttackParam;
+
+        [Space(10)]
+        [SerializeField] private AnimationParameterSO idleAnimationParam;
+        [SerializeField] private AnimationParameterSO runningAnimationParam;
+        [SerializeField] private AnimationParameterSO dashAnimationParam;
+        [SerializeField] private AnimationParameterSO deathAnimation;
+
         private readonly Dictionary<Type, IPlayerComponent> componentDictionary = new();
         public FiniteStateMachine<PlayerStateEnum.Movement, Player> PlayerFSM_Movement { get; private set; }
-        public FiniteStateMachine<PlayerStateEnum.Combat,   Player> PlayerFSM_Combat { get; private set; }
+        public FiniteStateMachine<PlayerStateEnum.Combat, Player> PlayerFSM_Combat { get; private set; }
         [SerializeField] private PlayerSingletonSO playerSingletonSO;
         #region GetPlayerComponent
         public PlayerMovement GetPlayerMovement => GetPlayerComponent<PlayerMovement>();
@@ -21,12 +36,11 @@ namespace CardGame.Players
         public PlayerAnimator GetPlayerAnimator => GetPlayerComponent<PlayerAnimator>();
         public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
         #endregion
+
         private void Awake()
         {
             void Initialize()
             {
-                playerSingletonSO.SetPlayer(this);
-
                 var componentList =
                 GetComponentsInChildren<IPlayerComponent>(true).
                     ToList();
@@ -40,47 +54,44 @@ namespace CardGame.Players
                 });
 
                 //FSM
-                PlayerFSM_Movement = new(this);
-                PlayerFSM_Combat = new(this);
+                PlayerFSM_Movement = new(this, GetPlayerAnimator);
+                PS_Base<PlayerStateEnum.Movement, Player>.StateMachine = PlayerFSM_Movement;
+                PS_Base<PlayerStateEnum.Movement, Player>.BaseOwner = this;
 
-                //manualinit
+                //PlayerFSM_Combat = new(this, GetPlayerAnimator);
+                //PS_Base<PlayerStateEnum.Combat, Player>.StateMachine = PlayerFSM_Combat;
+                //PS_Base<PlayerStateEnum.Combat, Player>.BaseOwner = this;
 
+                //states
                 //fsmmovement
-                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.None, new PS_None());
-                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Idle, new PS_Idle());
-                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Dash, new PS_Dash());
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Idle, new PS_Idle(idleAnimationParam));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Running, new PS_Running(runningAnimationParam));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(dashAnimationParam));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Attack, new PS_NormalAttack(normalAttackParam));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Death, new PS_Death(deathAnimation));
+
+                PlayerFSM_Movement.SetCurrentState(PlayerStateEnum.Movement.Idle);
 
                 //fsmcombat
-                PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.None, new PS_None());
-                PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.NormalAttack, new PS_NormalAttack());
-
-                PlayerFSM_Combat.SetCurrentState(PlayerStateEnum.Combat.None);
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.None, new PS_None(null));
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.NormalAttack, new PS_NormalAttack(normalAttackParam));
+                //PlayerFSM_Combat.AddState(PlayerStateEnum.Combat.SpecialAttack, new PS_SpecialAttack(specialAttackParam));
+                //
+                //PlayerFSM_Combat.SetCurrentState(PlayerStateEnum.Combat.None);
             }
             Initialize();
+            playerSingletonSO.SetPlayer(this, GetPlayerMovement.transform);
         }
         private void Start()
         {
-            void SetUpEvent()
+            void SubscribeEvent()
             {
-                OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-
-                var inp = GetPlayerComponent<PlayerInput>();
-                inp.EventPlayerRoll += HandleOnRoll;
+                PlayerHealth.OnHitEvent += HandleOnPlayerHit;
+                var inp = GetInput;
+                PS_Roll.OnRoll += HandleOnRoll;
                 inp.EventPlayerAttack += HandleOnPlayerAttack;
             }
-
-            SetUpEvent();
-            //SetUpInventory();
-        }
-
-        private void HandleOnSceneEnter(SceneEnum state)
-        {
-            switch (state)
-            {
-                case SceneEnum.Scene3D:
-                    SetUpInventory();
-                    break;
-            }
+            SubscribeEvent();
         }
         private void SetUpInventory()
         {
@@ -100,63 +111,78 @@ namespace CardGame.Players
         {
             void UnSubscribeEvent()
             {
-                OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-
-                var inp = GetPlayerComponent<PlayerInput>();
-                inp.EventPlayerRoll -= HandleOnRoll;
+                PlayerHealth.OnHitEvent -= HandleOnPlayerHit;
+                var inp = GetInput;
+                PS_Roll.OnRoll -= HandleOnRoll;
                 inp.EventPlayerAttack -= HandleOnPlayerAttack;
             }
-            void OnDispose()
+            void OnComponentDispose()
             {
                 var componentList = componentDictionary.ToList();
                 componentList.ForEach(x => x.Value?.Dispose(this));
             }
             UnSubscribeEvent();
-            OnDispose();
-        }
-        private void HandleOnPlayerAttack()
-        {
-            GetInventory.GetCurrentWeapon.TryAttack();
+            OnComponentDispose();
         }
         private void HandleOnRoll()
         {
-            bool isMoving = GetInput.KeyNotPressedTime < 0.2f;//0.25~ 0.3 is safe. if legnth of dir > 0
-            if (isMoving)
-                GetPlayerMovement.TryDoABarrelRoll(GetInput.GetCameraRelativeInput, 6);
+            audioEmitterDash.PlayAudio();
         }
 
+        private void HandleOnPlayerAttack()
+        {
+            bool result = GetInventory.GetCurrentWeapon.TryAttack();
+            if (result)
+            {
+                PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Attack);
+                audioEmitterSwing.PlayAudio();
+            }
+        }
+
+        private void HandleOnPlayerHit()
+        {
+            audioEmitterOnHurt.PlayAudio();
+        }
         private void Update()
         {
             void PlayerComponentUpdate()
             {
                 void DebugInput()
                 {
-                    if (Input.GetKeyDown(KeyCode.F1))
+                    if (Input.GetKeyDown(KeyCode.Q))
                     {
-                        WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
+                        var l = GetInventory.GetSkills;
+                        l[0].TryUseSkill(this);
                     }
+                    //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
+                    UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;
                 }
-                void PlayerMovement()
+                void PlayerUI()
                 {
-                    Vector3 result = GetInput.GetCameraRelativeInputRaw;
-                    GetPlayerComponent<PlayerMovement>().InputDirection = result;
-                    if (Input.GetKeyDown(KeyCode.O))
-                    {
-                        GetPlayerMovement.AddForce(Vector3.left, 2);
-                    }
-                }
-                void PlayerCamera()
-                {
+                    float maxStamina = GetPlayerMovement.GetMaxStamina;
+                    float currentStamina = GetPlayerMovement.GetCurrentStamina;
+                    UI_Player.Instance.GetList[0].text = $"STAMINA : {currentStamina:F1} | {maxStamina}";
 
+                    float maxHp = default;
+                    float currentHp = default;
+                    UI_Player.Instance.GetList[1].text = $"HP : {currentHp:F1} | {maxHp}";
                 }
                 DebugInput();
-                PlayerMovement();
-                PlayerCamera();
+                PlayerUI();
             }
             PlayerComponentUpdate();
-            PlayerFSM_Combat.UpdateState();
+            //PlayerFSM_Combat.UpdateState();
+            PlayerFSM_Movement.UpdateState();
         }
-
+        private void FixedUpdate()
+        {
+            //PlayerFSM_Combat.FixedUpdateState();
+            PlayerFSM_Movement.FixedUpdateState();
+        }
+        public void AnimationEndWeaponTrigger()
+        {
+            PlayerFSM_Movement.CurrentState.AnimationEndTrigger = true;
+        }
         private IPlayerComponent InitializePlayerComponent(IPlayerComponent component = null)
         {
             if (component == null)

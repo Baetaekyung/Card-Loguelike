@@ -11,7 +11,7 @@ namespace CardGame
         protected override void OnClick()
         {
             base.OnClick();
-            _canvasGroup.DOFade(0, 0.2f);
+            PopUpManager.Instance.SetSettingPanelFalse();
         }
     }
 }

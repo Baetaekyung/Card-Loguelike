@@ -6,9 +6,11 @@ namespace CardGame.Players
     public class PlayerSingletonSO : ScriptableObject
     {
         public Player Instance { get; private set; }
-        public void SetPlayer(Player player)
+        public Transform PlayerTransform { get; private set; }
+        public void SetPlayer(Player player, Transform pTransform)
         {
             Instance = player;
+            PlayerTransform = pTransform;
         }
     }
 }

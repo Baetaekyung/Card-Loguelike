@@ -11,9 +11,9 @@ public class MonoSingletonUsageAttribute : Attribute
 }
 
 [Flags]
-public enum MonoSingletonFlags : byte
+public enum MonoSingletonFlags : ushort
 {
-    None            	= 0,
-    DontDestroyOnLoad   = 1 << 0,
-    
+    None            	  = 0,
+    DontDestroyOnLoad     = 1 << 0,
+    SingletonPreset       = 1 << 1,
 }

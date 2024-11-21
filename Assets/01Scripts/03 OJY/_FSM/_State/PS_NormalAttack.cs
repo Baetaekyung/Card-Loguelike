@@ -1,23 +1,36 @@
+using CardGame.Players;
 using UnityEngine;
 
 namespace CardGame.FSM.States
 {
-    public class PS_NormalAttack : State
+    public class PS_NormalAttack : PS_Base_Movement
     {
+        public PS_NormalAttack(AnimationParameterSO animParam) : base(animParam)
+        {
+        }
+
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("attack start");
+            BaseOwner.GetPlayerMovement.AllowInputMoving = false;
+            //Debug.Log("attack start");
         }
         public override void Update()
         {
             base.Update();
-            Debug.Log("up");
+            if (AnimationEndTrigger)
+                StateMachine.ChangeState(PlayerStateEnum.Movement.Idle);
+            //Debug.Log("up");
+        }
+        protected override void HandleOnDirectionLook(Vector3 input)
+        {
+
         }
         public override void Exit()
         {
             base.Exit();
-            Debug.Log("exit");
+            BaseOwner.GetPlayerMovement.AllowInputMoving = true;
+            //Debug.Log("exit");
         }
     }
 }
