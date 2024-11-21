@@ -9,12 +9,7 @@ namespace CardGame
     {
         [SerializeField]private ActionData _data;
 
-       public override void ResetSkill()
-       {
-           
-       }
-
-       public override void UseSkill(Player owner)
+        protected override void UseSkill(Player owner)
         {
             
         }
