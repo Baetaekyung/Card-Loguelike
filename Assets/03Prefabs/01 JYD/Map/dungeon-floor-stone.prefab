@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33450808050079290}
   - component: {fileID: 23616966655988428}
   - component: {fileID: 65643836707441742}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: dungeon-floor-stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5134e9446a6cd814ebb5613bdc1a9720, type: 2}
+  - {fileID: 2100000, guid: b064f99cf70b44e47a02b3c08c5bafb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

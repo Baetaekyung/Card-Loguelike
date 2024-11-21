@@ -10,7 +10,7 @@ namespace CardGame
     public class SkillManager : MonoSingleton<SkillManager>
     {
         public PlayerSingletonSO playerSingletonSO;
-        public List<BaseSkill> registerSkills = new();
+        public List<BaseSkill> registerSkills = new(); //갖고온카드
         public SkillSlot[] inGameUIs;
         public IList<BaseSkill> GetSkills => registerSkills;
         private BaseSkill _currentSkill;
@@ -33,14 +33,16 @@ namespace CardGame
         {
             if (registerSkills.Count == 0)
             {
-                foreach(var item in inGameUIs)
+                ChangeCurrentSkill();
+                if(inGameUIs != null)
                 {
-                    item.cG.alpha = 0;
+                    foreach (var item in inGameUIs)
+                    {
+                        item.cG.alpha = 0;
+                    }
                 }
                 return;
             }
-
-            ChangeCurrentSkill();
         }
 
         public void RegistSkill(BaseSkill skill)
@@ -59,6 +61,8 @@ namespace CardGame
 
         private void RegisterCurrentSkill()
         {
+            if (registerSkills.Count == 0) return;
+
             _currentSkill = registerSkills[_idx];
         }
 
@@ -80,15 +84,20 @@ namespace CardGame
                 {
                     inGameUIs[i].cG.alpha = 0.5f;
                 }
+                Debug.Log(inGameUIs[i]);
                 inGameUIs[i].SetSkillImage(registerSkills[i].SkillImage);
                 
                 temp++;
             }
 
-            for(int j = temp; j < inGameUIs.Length; j++)
+            if (inGameUIs != null)
             {
-                inGameUIs[j].cG.alpha = 0f;
+                for (int j = temp; j < inGameUIs.Length; j++)
+                {
+                    inGameUIs[j].cG.alpha = 0f;
+                }
             }
+                
             
             float wheelInput = Mouse.current.scroll.y.ReadValue();
 

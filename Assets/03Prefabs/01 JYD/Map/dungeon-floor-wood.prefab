@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6338560216864804434}
   - component: {fileID: 6338560216865901714}
   - component: {fileID: 6338560216863610097}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dungeon-floor-wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

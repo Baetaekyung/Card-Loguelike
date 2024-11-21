@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
+    private List<CardSO> loadedCard = new();
+
     public void Roses_Favorite_RandomGame_RandomGame_GameStart_Button()
     {
         bool canStart = LobbyDeckCardManager.Instance.IsDeckCardExceed8();
@@ -30,7 +32,11 @@ public class LobbyManager : MonoBehaviour
 
     public void LoadCardsFromJson()
     {
-        List<CardSO> loadedCard = new();
+        //차있으면 안되게
+        if (LobbyDeckCardManager.Instance.visualDeckCard.Count > 0) return;
+        loadedCard.Clear();
+
+        CardManager.Instance.deckCardList.Clear();
 
         CardDataManager.Instance.LoadCurrentDeck();
 

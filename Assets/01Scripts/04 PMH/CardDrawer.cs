@@ -1,7 +1,8 @@
-using Newtonsoft.Json.Bson;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CardDrawer : MonoBehaviour, IPointerDownHandler
@@ -10,6 +11,11 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
     [SerializeField] private RectTransform spawnTrm;
     [SerializeField] private RectTransform cardUseArea;
     private RectTransform _drawer;
+
+    private void OnEnable()
+    {
+        AutoDrawCards();
+    }
 
     public void InitializeDeck(List<CardSO> deck)
     {
@@ -33,6 +39,10 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        DrawCard();
+    }
+    private void DrawCard()
+    {
         CardSO randomCard = GetCardFromDeck();
 
         if (randomCard == null) return;
@@ -44,7 +54,6 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
 
         CardManager.Instance.AddToFieldCard(cardObj);
     }
-
     private CardSO GetCardFromDeck()
     {
         if (_deck.Count == 0) return null;
@@ -54,5 +63,22 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         _deck.Add(card);
 
         return card;
+    }
+
+    private void AutoDrawCards()
+    {
+        StartCoroutine(AutoDrawCardsCoroutine());
+    }
+    private IEnumerator AutoDrawCardsCoroutine()
+    {
+        for(int i = 0; i <= 7; i++)
+        {
+            DrawCard();
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        yield return new WaitForSeconds(3.5f);
+
+        //SceneManager.LoadScene("Map_1 1"); //일단 비워놓음
     }
 }

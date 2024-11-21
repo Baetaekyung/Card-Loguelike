@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33769239310768770}
   - component: {fileID: 23650049742415014}
   - component: {fileID: 65042384956584014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dungeon-floor-dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
