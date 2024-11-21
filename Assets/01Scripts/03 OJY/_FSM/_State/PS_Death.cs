@@ -6,6 +6,7 @@ namespace CardGame.FSM.States
     {
         public PS_Death(AnimationParameterSO animParam) : base(animParam)
         {
+            
         }
         protected override void HandleOnMovement(Vector3 input)
         {
@@ -13,8 +14,17 @@ namespace CardGame.FSM.States
         protected override void HandleOnDirectionLook(Vector3 input)
         {
         }
+
         protected override void HandleOnRoll()
         {
+            
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            BaseOwner.GetPlayerMovement.AllowInputMoving = false;
+            
         }
     }
 }

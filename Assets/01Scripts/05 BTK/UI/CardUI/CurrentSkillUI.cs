@@ -13,8 +13,6 @@ namespace CardGame
         //}
         private void Start()
         {
-            print(SkillManager.Instance);
-            
             SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
             RegistSkillImage();
         }

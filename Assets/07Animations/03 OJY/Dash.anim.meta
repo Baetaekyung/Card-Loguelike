@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/02Scenes/01 JYD/Map_1 1.unity.meta
+guid: 668caa54bab980f4fb6218c5fd11952f
+DefaultImporter:
+========
 guid: ff01951e66cc2e249a25001256a93067
 NativeFormatImporter:
+>>>>>>>> 7e0d0915b7087e04e19251532ea7d31acce96823:Assets/07Animations/03 OJY/mixamo.com.anim.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 

@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/03Prefabs/01 JYD/Particle/Hit Impact Effects.meta
+guid: bd0572b546e655540ad7f29e523ee3da
+folderAsset: yes
+DefaultImporter:
+========
 guid: 370c75d19ff1f6b4b94329b27a735c6f
 NativeFormatImporter:
+>>>>>>>> 7e0d0915b7087e04e19251532ea7d31acce96823:Assets/01Scripts/03 OJY/_SOInstance(DEBUG)/Animation/dashAnimation.asset.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

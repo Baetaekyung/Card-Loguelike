@@ -37,6 +37,7 @@ namespace CardGame.Players
         public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
         #endregion
 
+        private bool isDead;
         private void Awake()
         {
             void Initialize()
@@ -58,6 +59,8 @@ namespace CardGame.Players
                 PS_Base<PlayerStateEnum.Movement, Player>.StateMachine = PlayerFSM_Movement;
                 PS_Base<PlayerStateEnum.Movement, Player>.BaseOwner = this;
 
+                PlayerHealth.OnDeadEvent += OndDeadEvent;
+                
                 //PlayerFSM_Combat = new(this, GetPlayerAnimator);
                 //PS_Base<PlayerStateEnum.Combat, Player>.StateMachine = PlayerFSM_Combat;
                 //PS_Base<PlayerStateEnum.Combat, Player>.BaseOwner = this;
@@ -82,6 +85,8 @@ namespace CardGame.Players
             Initialize();
             playerSingletonSO.SetPlayer(this, GetPlayerMovement.transform);
         }
+        
+        
         private void Start()
         {
             void SubscribeEvent()
@@ -92,6 +97,13 @@ namespace CardGame.Players
                 inp.EventPlayerAttack += HandleOnPlayerAttack;
             }
             SubscribeEvent();
+        }
+
+        private void OndDeadEvent()
+        {
+            PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Death);
+            isDead = true;
+
         }
         private void SetUpInventory()
         {
@@ -123,6 +135,8 @@ namespace CardGame.Players
             }
             UnSubscribeEvent();
             OnComponentDispose();
+            
+            PlayerHealth.OnDeadEvent -= OndDeadEvent;
         }
         private void HandleOnRoll()
         {
@@ -132,14 +146,14 @@ namespace CardGame.Players
         private void HandleOnPlayerAttack()
         {
             bool result = GetInventory.GetCurrentWeapon.TryAttack();
-            if (result)
+            if (result && !isDead)
             {
                 PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Attack);
                 audioEmitterSwing.PlayAudio();
             }
         }
 
-        private void HandleOnPlayerHit()
+        private void HandleOnPlayerHit(ActionData empty)
         {
             audioEmitterOnHurt.PlayAudio();
         }
@@ -152,7 +166,7 @@ namespace CardGame.Players
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
                         var l = GetInventory.GetSkills;
-                        l[0].TryUseSkill(this);
+                        l[SkillManager.Instance._idx].TryUseSkill(this);
                     }
                     //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
                     UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;

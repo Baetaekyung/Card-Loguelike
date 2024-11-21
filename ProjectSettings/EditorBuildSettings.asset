@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/02Scenes/05 BTK/CardUI Updated.unity
     guid: 8700ea9cedd88d54683816406c2c4bbc
+  - enabled: 1
+    path: Assets/02Scenes/01 JYD/Map_1 1.unity
+    guid: 4f23a75230a07cd40a76eb8318d9e461
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

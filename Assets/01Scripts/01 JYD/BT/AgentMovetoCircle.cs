@@ -12,6 +12,8 @@ public partial class AgentMovetoCircleAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<Transform> Target;
     [SerializeReference] public BlackboardVariable<float> AttackRadius;
+    [SerializeReference] public BlackboardVariable<float> MoveSpeed;
+    
     
     private NavMeshAgent _navMeshAgent;
     private Agent _agent;
@@ -37,6 +39,7 @@ public partial class AgentMovetoCircleAction : Action
             _agent = Agent.Value.GetComponent<Agent>();
         }
 
+        _navMeshAgent.speed = MoveSpeed.Value;
         #endregion
         
         return Status.Running;
@@ -63,7 +66,7 @@ public partial class AgentMovetoCircleAction : Action
             origin.y,
             origin.z + AttackRadius.Value /2 * Mathf.Sin(2 * Mathf.PI * agentIndex / agentCount)
         );
-
+        
         _navMeshAgent.SetDestination(newPosition);
         return Status.Running;
     }

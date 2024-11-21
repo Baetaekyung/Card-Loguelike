@@ -1,6 +1,8 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace CardGame
 {
@@ -76,7 +78,7 @@ namespace CardGame
         }
         private void On3DScene()
         {
-            LoadScene("3D");
+            LoadScene("Map_1 1");
         }
         private void LoadScene(string name)
         {

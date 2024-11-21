@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace CardGame
 {
@@ -19,9 +21,12 @@ namespace CardGame
     public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     {
         [SerializeField] private List<EnemySpawnStrcutList> listOfEnemySpawn;
+        [SerializeField] private List<GameObject> enemys;
+        
         public void SpawnEnemy(int currentWave)
         {
             int index = currentWave - 1;
+            index = Mathf.Max(index , 0);
             if (currentWave % 5 == 0)
             {
                 BossSpawn();
@@ -44,6 +49,7 @@ namespace CardGame
         {
             //print("normal Enemy");
         }
+
         private void SpawnEnemyByIndex(int index)
         {
             var ls = listOfEnemySpawn[index];
@@ -52,9 +58,20 @@ namespace CardGame
             {
                 foreach (var item2 in item.spawnPos)
                 {
-                    Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, AIManager.Instance.transform);
+                    GameObject newEnemy = Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, AIManager.Instance.transform);
+                    enemys.Add(newEnemy);
                 }
             }
+        }
+
+        public void RemoveEnemy(GameObject obj)
+        {
+            enemys.Remove(obj);
+            if (enemys.Count == 0)
+            {
+                WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
+            }
+            
         }
     }
 }

@@ -17,7 +17,7 @@ namespace CardGame.Players
 
         [Header("Roll Settings")]
         [SerializeField] private AnimationCurve rollCurve; // curve length should be 1.
-[SerializeField] private float db_stmod;
+        [SerializeField] private float db_stmod;
         private const float rollcost = 1f;
         private const float initialRollStamina = 3f;
         public float GetMaxStamina => initialRollStamina + db_stmod;

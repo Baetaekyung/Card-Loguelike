@@ -14,7 +14,7 @@ public class AgentStat
     public float AttackSpeed;
 
     private BehaviorGraphAgent BehaviorGraphAgent;
-
+    
     public AgentStat(BehaviorGraphAgent behaviorGraphAgent, float moveSpeed, float maxHealth,float defense, float damageAmount, float attackSpeed)
     {
         BehaviorGraphAgent = behaviorGraphAgent;
@@ -58,9 +58,7 @@ public class Agent : MonoBehaviour
     
     [Header("Hit info")]
     [SerializeField] private ParticleSystem[] slashEffect;
-    [SerializeField] private CameraShaker cameraShaker;
-    [SerializeField] private float shakePower;
-    
+        
     [Space]
     [Header("Knockback Info")]
     [SerializeField] private float _knockBackThreshold;
@@ -72,30 +70,37 @@ public class Agent : MonoBehaviour
     
     private void Awake()
     {
-       
-        
+           
     }
 
     private void Start()
     {
-        //target = playerManagerSo.Instance.transform;
-       // _behaviorGraphAgent.SetVariableValue("Target",target);
-        
         _navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         _rigidbody = GetComponent<Rigidbody>();
-        cameraShaker = GetComponent<CameraShaker>();
         
         _LastPosition = transform.position;
+        
+        if (target == null)
+        {
+            GameObject findTarget = GameObject.Find("Player");
+            target = findTarget.transform;
+            
+            _behaviorGraphAgent.SetVariableValue("Target",findTarget.transform);
+        }
+
+        enemyHealth.OnDeadEvent += OnDead;
     }
 
     private void Update()
     {
+        if(enemyHealth.IsAlive == false)return;
+        
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
-
+        
     }
         
     private void LateUpdate()
@@ -167,8 +172,7 @@ public class Agent : MonoBehaviour
     private IEnumerator ApplyKnockBack(Vector3 force)
     {
         Vector3 originDestination = _navMeshAgent.destination;
-        
-        
+                
         _navMeshAgent.enabled = false;
         _rigidbody.useGravity = true;
         _rigidbody.isKinematic = false;
@@ -211,10 +215,15 @@ public class Agent : MonoBehaviour
     #endregion
     
     #region AnimationEvents
-
-    private void CamShake()
+    
+    private void SetManualStop()
     {
-        cameraShaker.CameraShake(shakePower);
+        _navMeshAgent.isStopped = true;
+    }
+    
+    private void SetManualMove()
+    {
+        _navMeshAgent.isStopped = false;
     }
     
     private void SetManualRotate()
@@ -231,6 +240,7 @@ public class Agent : MonoBehaviour
     {
         _behaviorGraphAgent.SetVariableValue("AnimationEnd",true);
         animationEnd = true;
+        //print(animationEnd);
     }
     
     public void StopAnimationEnd()
@@ -249,6 +259,18 @@ public class Agent : MonoBehaviour
     }
     
     #endregion
+
+    private void OnDead()
+    {
+        _behaviorGraphAgent.SetVariableValue("State",State.Dead);
+        _navMeshAgent.isStopped = true;
+        _navMeshAgent.enabled = false;
+        animator.SetTrigger("Dead");
+        animator.SetBool("DeadBool",true);
+        EnemySpawnManager.Instance.RemoveEnemy(gameObject);
+        
+        Destroy(gameObject,3f);
+    }
     
     /*private void OnDrawGizmos()
     {

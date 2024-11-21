@@ -14,10 +14,9 @@ namespace CardGame
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
-
+    
         private Agent owner;
 
-        [SerializeField] private ChangeState ChangeState;
         
         public event Action OnDeadEvent;
         public event Action OnHitEvent;
@@ -33,32 +32,23 @@ namespace CardGame
             isAlive = true;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                ActionData actionData = new ActionData();
-                actionData.damageAmount = 10;
-            
-                TakeDamage(actionData);
-            }
-          
-        }
-
         public void TakeDamage(ActionData actionData)
         {
+            if(isAlive == false)return;
+            
             ActionData.knockBackPower = actionData.knockBackPower;
             ActionData.damageAmount = actionData.damageAmount;
             ActionData.hitNormal = actionData.hitNormal;
             ActionData.hitPoint = actionData.hitPoint;
             
             OnHitEvent?.Invoke();
-
+            
             currentHealth -= ActionData.damageAmount;
             
             if (currentHealth <= 0)
             {
                 OnDead();
+               
             }
 
             //owner.GetKnockBack(-owner.transform.forward * ActionData.knockBackPower);
@@ -73,7 +63,6 @@ namespace CardGame
         public void OnDead()
         {
             isAlive = false;
-            ChangeState.SendEventMessage(State.Dead);
             OnDeadEvent?.Invoke();
         }
 

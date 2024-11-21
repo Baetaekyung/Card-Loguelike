@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33116969018861408}
   - component: {fileID: 23556469304572882}
   - component: {fileID: 65082380292765668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dungeon-floor-hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

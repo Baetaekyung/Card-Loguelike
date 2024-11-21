@@ -79,6 +79,6 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
 
         yield return new WaitForSeconds(3.5f);
 
-        SceneManager.LoadScene(""); //일단 비워놓음
+        //SceneManager.LoadScene("Map_1 1"); //일단 비워놓음
     }
 }

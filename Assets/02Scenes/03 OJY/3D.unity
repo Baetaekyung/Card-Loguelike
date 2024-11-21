@@ -2344,9 +2344,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e7042fc37f7bc4eb78f841a41cc038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   registerSkills:
   - {fileID: 7335025266080446598, guid: 5dbc743adba3f9d44a32b7aa5bd0ad7f, type: 3}
+  - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
+  - {fileID: -7492951310616957314, guid: 10cdb66ecf869f646b60f9e4a082fd88, type: 3}
+  - {fileID: 7335025266080446598, guid: b491beaadf5ff5942b0f9423bb4ccd08, type: 3}
+  - {fileID: 7335025266080446598, guid: 79f606993d6cdd34c8cbf0c9b02120e9, type: 3}
+  - {fileID: 7335025266080446598, guid: 87ce429d1a1413b408166917e67b31b3, type: 3}
   inGameUIs: []
 --- !u!4 &485506878
 Transform:
@@ -6619,6 +6624,7 @@ MonoBehaviour:
   idleAnimationParam: {fileID: 11400000, guid: 90b7a24a9fd863c4a9692041e347cecc, type: 2}
   runningAnimationParam: {fileID: 11400000, guid: d6f994f0119a4c0469b4435c39c404ff, type: 2}
   dashAnimationParam: {fileID: 11400000, guid: 370c75d19ff1f6b4b94329b27a735c6f, type: 2}
+  deathAnimation: {fileID: 0}
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
 --- !u!114 &1302486796
 MonoBehaviour:

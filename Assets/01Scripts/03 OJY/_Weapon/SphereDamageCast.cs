@@ -15,16 +15,13 @@ namespace CardGame
             {
                 if (hit.transform.TryGetComponent(out IDamageable compo))
                 {
-                    int damage = 1;
-
                     ActionData actionData = new ActionData();
                     
                     actionData.hitPoint = hit.point;    
-                    actionData.hitPoint = hit.normal;   
-                    actionData.damageAmount = damage;       
-                    actionData.knockBackPower = damage;     
-                    
-                    
+                    actionData.hitNormal = hit.normal;   
+                    actionData.damageAmount = damageAmount;       
+                    actionData.knockBackPower = knockbackPower;     
+                                        
                     compo.TakeDamage(actionData);
                 }
             }
