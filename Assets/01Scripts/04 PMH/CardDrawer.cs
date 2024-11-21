@@ -78,6 +78,7 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         }
 
         yield return new WaitForSeconds(3.5f);
+
         SceneManager.LoadScene(""); //일단 비워놓음
     }
 }
