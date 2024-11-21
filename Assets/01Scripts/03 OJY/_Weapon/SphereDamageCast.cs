@@ -20,7 +20,7 @@ namespace CardGame
                     actionData.hitPoint = hit.point;    
                     actionData.hitNormal = hit.normal;   
                     actionData.damageAmount = damageAmount;       
-                    actionData.knockBackPower = damageAmount;     
+                    actionData.knockBackPower = knockbackPower;     
                                         
                     compo.TakeDamage(actionData);
                 }

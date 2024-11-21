@@ -89,12 +89,15 @@ public class Agent : MonoBehaviour
             target = findTarget.transform;
             
             _behaviorGraphAgent.SetVariableValue("Target",findTarget.transform);
-        } 
-        
+        }
+
+
     }
 
     private void Update()
     {
+        if(enemyHealth.IsAlive == false)return;
+        
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
 

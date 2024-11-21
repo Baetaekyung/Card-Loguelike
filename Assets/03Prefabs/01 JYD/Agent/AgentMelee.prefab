@@ -3194,6 +3194,7 @@ GameObject:
   - component: {fileID: 539269948758563185}
   - component: {fileID: 3949160338359219883}
   - component: {fileID: 2390685771772198606}
+  - component: {fileID: 8995243597678583350}
   - component: {fileID: 4856524359464760005}
   - component: {fileID: 4821907039836485114}
   - component: {fileID: 7211924803783901780}
@@ -3214,8 +3215,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2733381119269756295}
   - {fileID: 5382484011042886050}
@@ -3311,6 +3312,8 @@ MonoBehaviour:
   - rid: 2285473672413315418
   - rid: 2285473672413315419
   - rid: 2285473886719705222
+  - rid: 2285473932010586182
+  - rid: 2285473933544653064
   references:
     version: 2
     RefIds:
@@ -3381,7 +3384,50 @@ MonoBehaviour:
           m_Value0: 11239627919779463691
           m_Value1: 17536922204555419164
         Name: Speed
-        m_Value: 2.19
+        m_Value: 2.13
+    - rid: 2285473932010586182
+      type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2327727918251664362
+          m_Value1: 1549107438798367884
+        Name: ChangeState
+        m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
+    - rid: 2285473933544653064
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1090297806262805484
+          m_Value1: 11003339325161431145
+        Name: ChaseSpeed
+        m_Value: 5.74
+--- !u!54 &8995243597678583350
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640368068457094760}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 16
+  m_CollisionDetection: 0
 --- !u!114 &4856524359464760005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,10 +3460,8 @@ MonoBehaviour:
   slashEffect:
   - {fileID: 7291987545411511763}
   - {fileID: 2484106182970852579}
-  cameraShaker: {fileID: 0}
-  shakePower: 0
-  _knockBackThreshold: 0
-  _maxKnockBackTime: 0
+  _knockBackThreshold: 0.57
+  _maxKnockBackTime: 0.74
 --- !u!114 &7211924803783901780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3436,6 +3480,7 @@ MonoBehaviour:
   defaultDistance: 2.13
   _casterInterpolation: 0.81
   damageAmount: 30.7
+  knockbackPower: 0
   radius: 1.9
 --- !u!1 &4754603098802619782
 GameObject:

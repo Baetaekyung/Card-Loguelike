@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 2355630284404611267}
   - component: {fileID: 2518540260758037183}
   - component: {fileID: 6673769933629814261}
+  - component: {fileID: 5873247756300822732}
   - component: {fileID: 97872662469081444}
   - component: {fileID: 5543190214566746644}
   - component: {fileID: 5881142480532777827}
@@ -254,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111969818722777065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.00000037252897, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.386, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -330,6 +331,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!54 &5873247756300822732
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111969818722777065}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 16
+  m_CollisionDetection: 0
 --- !u!114 &97872662469081444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   currentHealth: 0
-  isAlive: 0
+  isAlive: 1
   ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &5881142480532777827
 MonoBehaviour:
@@ -500,10 +528,8 @@ MonoBehaviour:
   slashEffect:
   - {fileID: 4977276575851160711}
   - {fileID: 2625068457612825006}
-  cameraShaker: {fileID: 0}
-  shakePower: 0
-  _knockBackThreshold: 0
-  _maxKnockBackTime: 0
+  _knockBackThreshold: 0.23
+  _maxKnockBackTime: 0.97
 --- !u!114 &6190852180234304269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +547,7 @@ MonoBehaviour:
     m_Bits: 16
   defaultDistance: 2.63
   _casterInterpolation: 1.22
+  damageAmount: 4.72
   radius: 2.67
 --- !u!1 &1261999665381652755
 GameObject:

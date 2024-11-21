@@ -33,32 +33,23 @@ namespace CardGame
             isAlive = true;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                ActionData actionData = new ActionData();
-                actionData.damageAmount = 10;
-            
-                TakeDamage(actionData);
-            }
-          
-        }
-
         public void TakeDamage(ActionData actionData)
         {
+            if(isAlive == false)return;
+            
             ActionData.knockBackPower = actionData.knockBackPower;
             ActionData.damageAmount = actionData.damageAmount;
             ActionData.hitNormal = actionData.hitNormal;
             ActionData.hitPoint = actionData.hitPoint;
             
             OnHitEvent?.Invoke();
-
+            
             currentHealth -= ActionData.damageAmount;
             
             if (currentHealth <= 0)
             {
                 OnDead();
+               
             }
 
             //owner.GetKnockBack(-owner.transform.forward * ActionData.knockBackPower);
