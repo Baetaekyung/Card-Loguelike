@@ -13,6 +13,7 @@ namespace CardGame
         private void Start()
         {
             PlayerHealth.OnHitEvent += SetHealthBar;
+            PlayerHealth.OnHealEvent += SetHealthBar;
         }
 
         private void OnDestroy()
@@ -25,6 +26,12 @@ namespace CardGame
             float targetFillAmount = PlayerHealth.GetPercent();
             StartCoroutine(LerpHealthBar(targetFillAmount));
         }
+        private void SetHealthBar()
+        {
+            float targetFillAmount = PlayerHealth.GetPercent();
+            StartCoroutine(LerpHealthBar(targetFillAmount));
+        }
+        
 
         private IEnumerator LerpHealthBar(float targetFillAmount)
         {

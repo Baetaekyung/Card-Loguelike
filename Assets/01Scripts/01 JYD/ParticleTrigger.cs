@@ -1,18 +1,14 @@
 using System.Collections.Generic;
+using Unity.AppUI.Editor;
 using UnityEngine;
 
 namespace CardGame
 {
     public class ParticleTrigger : MonoBehaviour
     {
-        [SerializeField] private float damageAmount;
-
-        private void Awake()
-        {
-            
-        }
-
-        private void OnParticleCollision(GameObject other)
+        [SerializeField] protected float damageAmount;
+        
+        protected virtual void OnParticleCollision(GameObject other)
         {
             if (other.TryGetComponent(out IDamageable compo))
             {

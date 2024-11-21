@@ -14,5 +14,7 @@ namespace CardGame
             Instantiate(SkillObject, owner.transform.GetChild(0).transform.position, 
                 owner.transform.GetChild(0).rotation);
         }
+        
+        
     }
 }

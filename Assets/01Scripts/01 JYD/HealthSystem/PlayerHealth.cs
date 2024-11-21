@@ -17,6 +17,7 @@ namespace CardGame
 
         public static event Action OnDeadEvent;
         public static event Action<ActionData> OnHitEvent;
+        public static event Action OnHealEvent;
         [SerializeField] private float camShakePower;
         
 
@@ -55,6 +56,7 @@ namespace CardGame
         {
             currentHealth += amount;
             currentHealth = Mathf.Min(currentHealth , maxHealth);
+            OnHealEvent?.Invoke();
         }
 
         public void OnDead()

@@ -98,11 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _pushback: 3
-  _data:
-    knockBackPower: 0
-    damageAmount: 0
-    hitNormal: {x: 0, y: 0, z: 0}
-    hitPoint: {x: 0, y: 0, z: 0}
   removeTime: 5
 --- !u!1 &705465501475294769
 GameObject:
@@ -149,6 +144,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019357314554489468, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
       propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357314582329443, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357314805041341, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357315087364989, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8019357315309150545, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
@@ -199,11 +206,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019357315572525464, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357315572525467, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357315572525467, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357315572525467, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019357315572525467, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8019357315572525465, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6931020285357500330}
   m_SourcePrefab: {fileID: 100100000, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+--- !u!1 &4211182943452162197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8019357315572525465, guid: 9ffed2368353595408da89eccf2f2094, type: 3}
+  m_PrefabInstance: {fileID: 6141601946366574860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6931020285357500330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211182943452162197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0297b82c7ee6a744da94bd08f81a79bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!4 &4211182943656638001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8019357315374348093, guid: 9ffed2368353595408da89eccf2f2094, type: 3}

@@ -34,7 +34,7 @@ namespace CardGame
 
         private void OnDisable()
         {
-            SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+            //SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
         }
 
         //private void OnDestroy()

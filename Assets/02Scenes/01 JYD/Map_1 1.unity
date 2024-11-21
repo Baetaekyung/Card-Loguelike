@@ -6735,12 +6735,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   registerSkills:
-  - {fileID: 7335025266080446598, guid: 282c606fc3aee6448bf91ff01672919c, type: 3}
-  - {fileID: 7335025266080446598, guid: b491beaadf5ff5942b0f9423bb4ccd08, type: 3}
-  - {fileID: 7335025266080446598, guid: 79f606993d6cdd34c8cbf0c9b02120e9, type: 3}
-  - {fileID: 7335025266080446598, guid: 87ce429d1a1413b408166917e67b31b3, type: 3}
-  - {fileID: 7335025266080446598, guid: 075435dd1c503b048884eb37d905c7e4, type: 3}
-  - {fileID: 7335025266080446598, guid: 3a9ea67cb6ed3584289627595250fbea, type: 3}
+  - {fileID: 7335025266080446598, guid: dcd076a8700316143a0f5b19a4a9cddc, type: 3}
+  - {fileID: 7335025266080446598, guid: ae044ffcd03336a4d830e9aafb015957, type: 3}
+  - {fileID: 7335025266080446598, guid: 56b323c75e428a241834d64aa9abd50c, type: 3}
+  - {fileID: 7335025266080446598, guid: 93e67daec26b4ce40a166dd407bb5b6c, type: 3}
   inGameUIs:
   - {fileID: 2141745478}
   - {fileID: 2141745476}
@@ -19467,7 +19465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c5de861b3b8fc4896994fc106c3069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100000
+  maxHealth: 100
   currentHealth: 0
   isAlive: 1
   camShakePower: 0.3
