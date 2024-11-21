@@ -8,6 +8,14 @@ namespace CardGame.FSM.States
         {
             
         }
+        protected override void HandleOnMovement(Vector3 input)
+        {
+        }
+        protected override void HandleOnDirectionLook(Vector3 input)
+        {
+        }
+        protected override void HandleOnRoll()
+        {
 
         public override void Enter()
         {
