@@ -7052,7 +7052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSingletonSO: {fileID: 11400000, guid: d38b01711c28fd047b3140019a1689a7, type: 2}
   registerSkills:
-  - {fileID: -7492951310616957314, guid: 10cdb66ecf869f646b60f9e4a082fd88, type: 3}
+  - {fileID: 8572143239952763345, guid: 67bd1ec93574fbb419ad366daf451e67, type: 3}
   inGameUIs:
   - {fileID: 2141745478}
   - {fileID: 2141745476}
@@ -7060,6 +7060,7 @@ MonoBehaviour:
   - {fileID: 1115929005}
   - {fileID: 1280916586}
   - {fileID: 57249642}
+  _idx: 0
 --- !u!4 &602351541
 Transform:
   m_ObjectHideFlags: 0
@@ -8843,11 +8844,11 @@ MonoBehaviour:
   includeLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  defaultDistance: 2.58
-  _casterInterpolation: 1.13
+  defaultDistance: 3.63
+  _casterInterpolation: 1.35
   damageAmount: 50
   knockbackPower: 0
-  radius: 2.4
+  radius: 2.8
 --- !u!1 &758830405
 GameObject:
   m_ObjectHideFlags: 0
@@ -22964,6 +22965,7 @@ MonoBehaviour:
     - enemySpawnSO: {fileID: 11400000, guid: 1fe292f3254909c43a37a9a2c4a9da32, type: 2}
       spawnPos:
       - {fileID: 2055032005}
+  enemys: []
 --- !u!4 &1828876135
 Transform:
   m_ObjectHideFlags: 0

@@ -166,7 +166,7 @@ namespace CardGame.Players
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
                         var l = GetInventory.GetSkills;
-                        l[0].TryUseSkill(this);
+                        l[SkillManager.Instance._idx].TryUseSkill(this);
                     }
                     //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
                     UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;

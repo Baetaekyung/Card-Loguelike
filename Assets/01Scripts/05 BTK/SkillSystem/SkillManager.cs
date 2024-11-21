@@ -17,7 +17,7 @@ namespace CardGame
 
         public event Action OnSkillRegisted;
 
-        private int _idx = 0;
+        public int _idx = 0;
 
         private GameObject game;
         private void Start()
@@ -40,10 +40,6 @@ namespace CardGame
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                UseSkill();
-            }
             ChangeCurrentSkill();
         }
 

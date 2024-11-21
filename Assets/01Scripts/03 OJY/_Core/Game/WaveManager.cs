@@ -25,7 +25,7 @@ namespace CardGame
         private void Start()
         {
             EnemySpawnManager.Instance.SpawnEnemy(CurrentWave);
-
+            
         }
 
         protected override void OnDestroy()

@@ -267,6 +267,7 @@ public class Agent : MonoBehaviour
         _navMeshAgent.enabled = false;
         animator.SetTrigger("Dead");
         animator.SetBool("DeadBool",true);
+        EnemySpawnManager.Instance.RemoveEnemy(gameObject);
         
         Destroy(gameObject,3f);
     }

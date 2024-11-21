@@ -21,6 +21,8 @@ namespace CardGame
     public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     {
         [SerializeField] private List<EnemySpawnStrcutList> listOfEnemySpawn;
+        [SerializeField] private List<GameObject> enemys;
+        
         public void SpawnEnemy(int currentWave)
         {
             int index = currentWave - 1;
@@ -56,9 +58,20 @@ namespace CardGame
             {
                 foreach (var item2 in item.spawnPos)
                 {
-                    Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, AIManager.Instance.transform);
+                    GameObject newEnemy = Instantiate(item.enemySpawnSO.GetPrefab, item2.position, item2.rotation, AIManager.Instance.transform);
+                    enemys.Add(newEnemy);
                 }
             }
+        }
+
+        public void RemoveEnemy(GameObject obj)
+        {
+            enemys.Remove(obj);
+            if (enemys.Count == 0)
+            {
+                WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
+            }
+            
         }
     }
 }
