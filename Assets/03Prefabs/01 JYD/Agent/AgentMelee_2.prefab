@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 2743649780727416776}
   - component: {fileID: 7220888471162747898}
   - component: {fileID: 4848043805124301248}
+  - component: {fileID: 6601649297382752077}
   m_Layer: 4
   m_Name: AgentMelee_2
   m_TagString: Untagged
@@ -378,19 +379,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 230497018120798215, guid: c24da22e0e163e94694c02fd9e2397dc, type: 2}
+  m_Graph: {fileID: 230497018120798215, guid: 6026c11d0338e164dbde104db5e96864, type: 2}
   m_BlackboardVariableOverridesList:
-  - rid: 2285473921065550242
-  - rid: 2285473921065550685
-  - rid: 2285473921065550686
-  - rid: 2285473923304521859
-  - rid: 2285473923304521860
-  - rid: 2285473923304521861
-  - rid: 2285473923304522060
+  - rid: 2285473934065533852
+  - rid: 2285473934065533853
+  - rid: 2285473934065533854
+  - rid: 2285473934065533855
+  - rid: 2285473934065533856
+  - rid: 2285473934065533857
+  - rid: 2285473934065533858
   references:
     version: 2
     RefIds:
-    - rid: 2285473921065550242
+    - rid: 2285473934065533852
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -398,7 +399,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 3545843176320849507}
-    - rid: 2285473921065550685
+    - rid: 2285473934065533853
       type: {class: 'BlackboardVariable`1[[ChangeState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -406,7 +407,7 @@ MonoBehaviour:
           m_Value1: 1549107438798367884
         Name: ChangeState
         m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
-    - rid: 2285473921065550686
+    - rid: 2285473934065533854
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -414,7 +415,7 @@ MonoBehaviour:
           m_Value1: 13804683939307581226
         Name: AgentAnimator
         m_Value: {fileID: 368901171873197223}
-    - rid: 2285473923304521859
+    - rid: 2285473934065533855
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -422,7 +423,7 @@ MonoBehaviour:
           m_Value1: 2615480703659678095
         Name: ChaseWaitTime
         m_Value: 1.03
-    - rid: 2285473923304521860
+    - rid: 2285473934065533856
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -430,7 +431,7 @@ MonoBehaviour:
           m_Value1: 16643009058973780617
         Name: AttackRadius
         m_Value: 4.23
-    - rid: 2285473923304521861
+    - rid: 2285473934065533857
       type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -438,7 +439,7 @@ MonoBehaviour:
           m_Value1: 3851797496361970712
         Name: AttackCount
         m_Value: 0
-    - rid: 2285473923304522060
+    - rid: 2285473934065533858
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -525,7 +526,25 @@ MonoBehaviour:
   defaultDistance: 3.56
   _casterInterpolation: 0.99
   damageAmount: 11
+  knockbackPower: 0
   radius: 2.92
+--- !u!114 &6601649297382752077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545843176320849507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351da3a26b9bf8498938b0a24a83ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHealth: {fileID: 2743649780727416776}
+  enemyMesh:
+  - {fileID: 8651863061513073161}
+  flashMat: {fileID: 2100000, guid: fe50613e7127a8245a5a18384f40349b, type: 2}
+  flashTime: 0.15
 --- !u!1 &3764692938652563486
 GameObject:
   m_ObjectHideFlags: 0

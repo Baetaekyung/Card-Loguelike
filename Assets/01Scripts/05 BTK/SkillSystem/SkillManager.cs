@@ -111,7 +111,7 @@ namespace CardGame
             {
                 inGameUIs[j].cG.alpha = 0f;
             }
-
+            
             float wheelInput = Mouse.current.scroll.y.ReadValue();
 
             if (wheelInput < 0)

@@ -3198,6 +3198,7 @@ GameObject:
   - component: {fileID: 4856524359464760005}
   - component: {fileID: 4821907039836485114}
   - component: {fileID: 7211924803783901780}
+  - component: {fileID: 2279340352277219180}
   m_Layer: 0
   m_Name: AgentMelee
   m_TagString: Untagged
@@ -3215,7 +3216,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2733381119269756295}
@@ -3482,6 +3483,23 @@ MonoBehaviour:
   damageAmount: 30.7
   knockbackPower: 0
   radius: 1.9
+--- !u!114 &2279340352277219180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640368068457094760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351da3a26b9bf8498938b0a24a83ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHealth: {fileID: 4856524359464760005}
+  enemyMesh:
+  - {fileID: 4853873624878663113}
+  flashMat: {fileID: 2100000, guid: fe50613e7127a8245a5a18384f40349b, type: 2}
+  flashTime: 0.15
 --- !u!1 &4754603098802619782
 GameObject:
   m_ObjectHideFlags: 0

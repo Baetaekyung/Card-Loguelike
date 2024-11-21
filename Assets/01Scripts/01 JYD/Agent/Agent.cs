@@ -91,7 +91,7 @@ public class Agent : MonoBehaviour
             _behaviorGraphAgent.SetVariableValue("Target",findTarget.transform);
         }
 
-
+        enemyHealth.OnDeadEvent += OnDead;
     }
 
     private void Update()
@@ -100,7 +100,7 @@ public class Agent : MonoBehaviour
         
         Vector3 lookDir = canManualRotate? target.transform.position : GetNextPathPoint();
         FaceToTarget(lookDir);
-
+        
     }
         
     private void LateUpdate()
@@ -259,6 +259,16 @@ public class Agent : MonoBehaviour
     }
     
     #endregion
+
+    private void OnDead()
+    {
+        _behaviorGraphAgent.SetVariableValue("State",State.Dead);
+        _navMeshAgent.isStopped = true;
+        _navMeshAgent.enabled = false;
+        animator.SetTrigger("Dead");
+        
+        Destroy(gameObject,3f);
+    }
     
     /*private void OnDrawGizmos()
     {

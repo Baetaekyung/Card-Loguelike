@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 5543190214566746644}
   - component: {fileID: 5881142480532777827}
   - component: {fileID: 6190852180234304269}
+  - component: {fileID: 5442077586728047730}
   m_Layer: 0
   m_Name: AgentTanker
   m_TagString: Untagged
@@ -548,7 +549,27 @@ MonoBehaviour:
   defaultDistance: 2.63
   _casterInterpolation: 1.22
   damageAmount: 4.72
+  knockbackPower: 0
   radius: 2.67
+--- !u!114 &5442077586728047730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111969818722777065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351da3a26b9bf8498938b0a24a83ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHealth: {fileID: 5543190214566746644}
+  enemyMesh:
+  - {fileID: 3008804253129918458}
+  - {fileID: 4852320217314418964}
+  - {fileID: 1791132657070914098}
+  flashMat: {fileID: 2100000, guid: fe50613e7127a8245a5a18384f40349b, type: 2}
+  flashTime: 0.15
 --- !u!1 &1261999665381652755
 GameObject:
   m_ObjectHideFlags: 0

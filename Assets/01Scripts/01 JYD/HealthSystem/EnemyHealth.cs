@@ -14,10 +14,9 @@ namespace CardGame
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
-
+    
         private Agent owner;
 
-        [SerializeField] private ChangeState ChangeState;
         
         public event Action OnDeadEvent;
         public event Action OnHitEvent;
@@ -64,7 +63,6 @@ namespace CardGame
         public void OnDead()
         {
             isAlive = false;
-            ChangeState.SendEventMessage(State.Dead);
             OnDeadEvent?.Invoke();
         }
 
