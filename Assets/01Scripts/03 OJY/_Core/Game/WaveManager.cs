@@ -1,6 +1,8 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace CardGame
 {
@@ -14,6 +16,10 @@ namespace CardGame
     public class WaveManager : MonoSingleton<WaveManager>
     {
         public int CurrentWave { get; private set; }
+        [SerializeField] private TextMeshProUGUI waveText;
+        [SerializeField] private float yPos;
+        [SerializeField] private float originYPos;
+        
         public event Action<SceneEnum> OnWaveChanged;
         protected override void Awake()
         {
@@ -25,7 +31,7 @@ namespace CardGame
         private void Start()
         {
             EnemySpawnManager.Instance.SpawnEnemy(CurrentWave);
-            
+            OnWaveChanged?.Invoke(SceneEnum.Scene3D);
         }
 
         protected override void OnDestroy()
@@ -76,8 +82,29 @@ namespace CardGame
         }
         private void On3DScene()
         {
+            waveText.SetText($"WAVE{CurrentWave}");
+            
+            waveText.DOFade(1, 0.2f);
+            waveText.rectTransform.anchoredPosition =
+                new Vector2(waveText.rectTransform.anchoredPosition.x, originYPos);
+            
+            waveText.rectTransform.DOMoveY(yPos , 1f).OnComplete(() =>
+            {
+                waveText.DOFade(0, 0.3f);
+            });
+            
+            
             LoadScene("3D");
         }
+
+        private void Update()
+        {
+            /*if (Input.GetKeyDown(KeyCode.P))
+            {
+                OnWaveChanged?.Invoke(SceneEnum.Scene3D);
+            }*/
+        }
+
         private void LoadScene(string name)
         {
             //SceneManager.LoadScene(name);
