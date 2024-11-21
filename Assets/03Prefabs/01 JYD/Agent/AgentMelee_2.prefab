@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8990041171987613531}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Index_Proximal_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2575124111014124758}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Lower_Arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3054424813524486885}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8261968035002868996}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5539105448689470252}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Armor_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806182209773274729}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6053149431004471313}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Armor_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8062034278945166283}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Index_Proximal_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 7220888471162747898}
   - component: {fileID: 4848043805124301248}
   - component: {fileID: 6601649297382752077}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: AgentMelee_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &5132250721302470923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,15 +379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: 230497018120798215, guid: 6026c11d0338e164dbde104db5e96864, type: 2}
+  m_Graph: {fileID: 230497018120798215, guid: c24da22e0e163e94694c02fd9e2397dc, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 2285473934065533852
   - rid: 2285473934065533853
-  - rid: 2285473934065533854
-  - rid: 2285473934065533855
-  - rid: 2285473934065533856
-  - rid: 2285473934065533857
-  - rid: 2285473934065533858
+  - rid: 2285473935258288268
   references:
     version: 2
     RefIds:
@@ -407,7 +403,7 @@ MonoBehaviour:
           m_Value1: 1549107438798367884
         Name: ChangeState
         m_Value: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
-    - rid: 2285473934065533854
+    - rid: 2285473935258288268
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -415,38 +411,6 @@ MonoBehaviour:
           m_Value1: 13804683939307581226
         Name: AgentAnimator
         m_Value: {fileID: 368901171873197223}
-    - rid: 2285473934065533855
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13406704783390741570
-          m_Value1: 2615480703659678095
-        Name: ChaseWaitTime
-        m_Value: 1.03
-    - rid: 2285473934065533856
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 5513194394281948341
-          m_Value1: 16643009058973780617
-        Name: AttackRadius
-        m_Value: 4.23
-    - rid: 2285473934065533857
-      type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 8346800409043086849
-          m_Value1: 3851797496361970712
-        Name: AttackCount
-        m_Value: 0
-    - rid: 2285473934065533858
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 6913836224369089000
-          m_Value1: 7521962314327256998
-        Name: ChaseRadius
-        m_Value: 11.27
 --- !u!54 &4917089003166368384
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -489,7 +453,6 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isAlive: 1
-  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &7220888471162747898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16
   defaultDistance: 3.56
   _casterInterpolation: 0.99
   damageAmount: 11
@@ -554,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6258075998527863831}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5646474795340631587}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Upper_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041881471062019242}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Lower_Arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333370297836465282}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Upper_Arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691154830735009734}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7416294580484987635}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Upper_Reg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763952913381484866}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Lower_Reg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2409924869504317849}
   - component: {fileID: 8651863061513073161}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: GruntMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7072547386308868383}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8529321714534294909}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Toes_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 65811457094941809}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2423486278375598447}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Lower_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6220782747509288616}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6912359338857965160}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Toes_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5413285098035954108}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Upper_Arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2758409866125938533}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1201,7 +1164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2770844391965283145, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2770844392977183787, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: looping
@@ -1213,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2770844392977183789, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9119976867986936918, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Name
@@ -1221,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9119976867986936918, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1304,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2770844391965283145, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2770844392977183784, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1336,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2770844392977183789, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9119976867986936918, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Name
@@ -1344,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9119976867986936918, guid: 2b14d1fb2830ae7468b59f5a8e85345f, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

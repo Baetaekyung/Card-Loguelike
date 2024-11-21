@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111969818722777065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000037252897, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.386, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -310,7 +310,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!65 &6673769933629814261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
           m_Value0: 5513194394281948341
           m_Value1: 16643009058973780617
         Name: AttackRadius
-        m_Value: 3.2
+        m_Value: 3.5
     - rid: 2285473669194973801
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -428,7 +428,7 @@ MonoBehaviour:
           m_Value0: 13406704783390741570
           m_Value1: 2615480703659678095
         Name: ChaseWaitTime
-        m_Value: 0.5
+        m_Value: 0.7
     - rid: 2285473669194973802
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -456,7 +456,7 @@ MonoBehaviour:
           m_Value0: 11239627919779463691
           m_Value1: 17536922204555419164
         Name: Speed
-        m_Value: 1.01
+        m_Value: 2.06
     - rid: 2285473669590287127
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -480,7 +480,7 @@ MonoBehaviour:
           m_Value0: 4536293008267613211
           m_Value1: 2567633627969079318
         Name: JumpRadius
-        m_Value: 12.63
+        m_Value: 10
     - rid: 2285473752042176851
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -496,7 +496,7 @@ MonoBehaviour:
           m_Value0: 6913836224369089000
           m_Value1: 7521962314327256998
         Name: ChaseRadius
-        m_Value: 26.2
+        m_Value: 30
 --- !u!114 &5543190214566746644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +512,6 @@ MonoBehaviour:
   maxHealth: 300
   currentHealth: 0
   isAlive: 1
-  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &5881142480532777827
 MonoBehaviour:
   m_ObjectHideFlags: 0

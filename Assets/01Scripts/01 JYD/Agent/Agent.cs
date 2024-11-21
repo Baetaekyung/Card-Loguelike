@@ -266,6 +266,7 @@ public class Agent : MonoBehaviour
         _navMeshAgent.isStopped = true;
         _navMeshAgent.enabled = false;
         animator.SetTrigger("Dead");
+        animator.SetBool("DeadBool",true);
         
         Destroy(gameObject,3f);
     }

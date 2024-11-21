@@ -58,6 +58,8 @@ namespace CardGame.Players
                 PS_Base<PlayerStateEnum.Movement, Player>.StateMachine = PlayerFSM_Movement;
                 PS_Base<PlayerStateEnum.Movement, Player>.BaseOwner = this;
 
+                PlayerHealth.OnDeadEvent += OndDeadEvent;
+                
                 //PlayerFSM_Combat = new(this, GetPlayerAnimator);
                 //PS_Base<PlayerStateEnum.Combat, Player>.StateMachine = PlayerFSM_Combat;
                 //PS_Base<PlayerStateEnum.Combat, Player>.BaseOwner = this;
@@ -82,6 +84,8 @@ namespace CardGame.Players
             Initialize();
             playerSingletonSO.SetPlayer(this, GetPlayerMovement.transform);
         }
+        
+        
         private void Start()
         {
             void SubscribeEvent()
@@ -92,6 +96,12 @@ namespace CardGame.Players
                 inp.EventPlayerAttack += HandleOnPlayerAttack;
             }
             SubscribeEvent();
+        }
+
+        private void OndDeadEvent()
+        {
+            PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Death);
+                        
         }
         private void SetUpInventory()
         {
@@ -123,6 +133,8 @@ namespace CardGame.Players
             }
             UnSubscribeEvent();
             OnComponentDispose();
+            
+            PlayerHealth.OnDeadEvent -= OndDeadEvent;
         }
         private void HandleOnRoll()
         {

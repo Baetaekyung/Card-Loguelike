@@ -6,7 +6,14 @@ namespace CardGame.FSM.States
     {
         public PS_Death(AnimationParameterSO animParam) : base(animParam)
         {
+            
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            BaseOwner.GetPlayerMovement.AllowInputMoving = false;
+            
+        }
     }
 }

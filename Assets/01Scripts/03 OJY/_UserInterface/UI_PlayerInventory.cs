@@ -11,7 +11,7 @@ namespace CardGame
         public List<TextMeshProUGUI> GetList => list;
         private void Start()
         {
-            gameObject.SetActive(false);
+            
         }
     }
 }

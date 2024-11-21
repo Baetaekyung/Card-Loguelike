@@ -3290,7 +3290,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &2390685771772198606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,6 +3315,8 @@ MonoBehaviour:
   - rid: 2285473886719705222
   - rid: 2285473932010586182
   - rid: 2285473933544653064
+  - rid: 2285473934856160124
+  - rid: 2285473934856160125
   references:
     version: 2
     RefIds:
@@ -3349,7 +3351,7 @@ MonoBehaviour:
           m_Value0: 6913836224369089000
           m_Value1: 7521962314327256998
         Name: ChaseRadius
-        m_Value: 7
+        m_Value: 30
     - rid: 2285473672413315417
       type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -3402,6 +3404,22 @@ MonoBehaviour:
           m_Value1: 11003339325161431145
         Name: ChaseSpeed
         m_Value: 5.74
+    - rid: 2285473934856160124
+      type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8346800409043086849
+          m_Value1: 3851797496361970712
+        Name: AttackCount
+        m_Value: 2
+    - rid: 2285473934856160125
+      type: {class: 'BlackboardVariable`1[[State, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18152787512321689670
+          m_Value1: 983495221352976131
+        Name: State
+        m_Value: 1
 --- !u!54 &8995243597678583350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3444,7 +3462,6 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isAlive: 1
-  ChangeState: {fileID: 11400000, guid: cbce9d2c1fcfb0d4eb3831c9f8419d27, type: 2}
 --- !u!114 &4821907039836485114
 MonoBehaviour:
   m_ObjectHideFlags: 0

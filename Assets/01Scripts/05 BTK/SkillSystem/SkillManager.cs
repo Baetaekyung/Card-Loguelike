@@ -20,31 +20,13 @@ namespace CardGame
         private int _idx = 0;
 
         private GameObject game;
-        protected override void Awake()
+        private void Start()
         {
-            base.Awake();
-             
-            //if(GameObject.Find("Player")!= null)
-            //    player = GameObject.Find("Player").GetComponent<Player>();
-            //OnSceneEnter.OnSceneEnterEvent += HandleOnSceneEnter;
-            //print("Cleared");
-            //registerSkills.Clear();
-        }
-        
-        private void HandleOnSceneEnter(SceneEnum obj)
-        {
-            switch (obj)
+            registerSkills.ForEach((skill) =>
             {
-                case SceneEnum.SceneDeckSelect:
-                    print("Cleared");
-                    registerSkills.Clear();
-                    break;
-            }
-        }
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            //OnSceneEnter.OnSceneEnterEvent -= HandleOnSceneEnter;
+                skill.AWDlpawdakdpadoawkakwodpkdopwkdakWOdkowaijdiwadjiadwajdiwadwioajdaiodjawdjioajdiawdajddjnjdkjlkjngjjkjkgjkkbkcxkjkxfjkggjggkggkggjkggkgkggkgkgjgkgjxzlxkmbkcmkmvklcjbxklxjbjkjcixjbpokrjriyjeiitjgifdfgdkgjkdfglndhdfkd();
+                print("reseting");
+            });
         }
 
         private void Update()
@@ -86,7 +68,7 @@ namespace CardGame
 
         public void UseSkill()
         {
-            _currentSkill.UseSkill(playerSingletonSO.Instance);
+            _currentSkill.TryUseSkill(playerSingletonSO.Instance);
         }
 
         private void ChangeCurrentSkill()
