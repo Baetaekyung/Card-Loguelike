@@ -69,7 +69,7 @@ namespace CardGame
             enemys.Remove(obj);
             if (enemys.Count == 0)
             {
-                WaveManager.Instance.ChangeWave(SceneEnum.SceneDeckSelect);
+                SceneManagerEx.Instance.ChangeScene(SceneEnum.SceneDeckSelect);
             }
             
         }

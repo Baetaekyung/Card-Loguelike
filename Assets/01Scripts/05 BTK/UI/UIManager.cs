@@ -8,6 +8,7 @@ namespace CardGame
     {
         public static UIManager Instance;
 
+        public GameObject titleUI;
         public GameObject inGameBattleUI;
         public GameObject deckSelectUI;
         public GameObject settingPanelUI;
@@ -21,6 +22,11 @@ namespace CardGame
             {
                 Destroy(gameObject);
             }
+        }
+
+        public void SetTitleUIActive(bool isActive)
+        {
+            titleUI.SetActive(isActive);
         }
 
         public void SetInGameBattleUIActive(bool isActive)
@@ -40,7 +46,14 @@ namespace CardGame
 
         public void SetSettingPanelUIActive(bool isActive)
         {
-            settingPanelUI.SetActive(isActive);
+            if(isActive)
+            {
+                PopUpManager.Instance.SetSettingPanelTrue();
+            }
+            else
+            {
+                PopUpManager.Instance.SetSettingPanelFalse();
+            }
         }
     }
 }

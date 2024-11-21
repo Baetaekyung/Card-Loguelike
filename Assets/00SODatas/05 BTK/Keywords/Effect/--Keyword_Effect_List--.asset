@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818bcc8461314af42befe0b6560c5a12, type: 3}
   m_Name: --Keyword_Effect_List--
   m_EditorClassIdentifier: 
-  keywordEffects:
-  - {fileID: 11400000, guid: 511065a4c75c5be42b171d8ae2585944, type: 2}
+  keywordEffects: []

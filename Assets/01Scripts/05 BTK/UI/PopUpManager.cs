@@ -8,7 +8,7 @@ namespace CardGame
     {
         public static PopUpManager Instance { get; private set; }
 
-        private CanvasGroup _settingPanel;
+        [SerializeField] private CanvasGroup _settingPanel;
         public bool IsSetting { get; set; }
 
         private void Awake()
@@ -26,7 +26,6 @@ namespace CardGame
         private void Start()
         {
             IsSetting = false;
-            _settingPanel = FindAnyObjectByType<SettingPanel>().GetComponent<CanvasGroup>();
             _settingPanel.alpha = 0f;
         }
 
@@ -48,6 +47,12 @@ namespace CardGame
         {
             IsSetting = false;
             SetActivePanel(false);
+        }
+
+        public void SetSettingPanelTrue()
+        {
+            IsSetting = true;
+            SetActivePanel(true);
         }
     }
 }
