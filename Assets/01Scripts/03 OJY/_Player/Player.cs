@@ -37,6 +37,7 @@ namespace CardGame.Players
         public PlayerInventory GetInventory => GetPlayerComponent<PlayerInventory>();
         #endregion
 
+        private bool isDead;
         private void Awake()
         {
             void Initialize()
@@ -101,7 +102,8 @@ namespace CardGame.Players
         private void OndDeadEvent()
         {
             PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Death);
-                        
+            isDead = true;
+
         }
         private void SetUpInventory()
         {
@@ -144,7 +146,7 @@ namespace CardGame.Players
         private void HandleOnPlayerAttack()
         {
             bool result = GetInventory.GetCurrentWeapon.TryAttack();
-            if (result)
+            if (result && !isDead)
             {
                 PlayerFSM_Movement.ChangeState(PlayerStateEnum.Movement.Attack);
                 audioEmitterSwing.PlayAudio();
