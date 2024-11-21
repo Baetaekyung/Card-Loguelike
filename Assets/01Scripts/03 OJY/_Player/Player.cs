@@ -23,6 +23,7 @@ namespace CardGame.Players
         [SerializeField] private AnimationParameterSO idleAnimationParam;
         [SerializeField] private AnimationParameterSO runningAnimationParam;
         [SerializeField] private AnimationParameterSO dashAnimationParam;
+        [SerializeField] private AnimationParameterSO deathAnimation;
 
         private readonly Dictionary<Type, IPlayerComponent> componentDictionary = new();
         public FiniteStateMachine<PlayerStateEnum.Movement, Player> PlayerFSM_Movement { get; private set; }
@@ -65,8 +66,9 @@ namespace CardGame.Players
                 //fsmmovement
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Idle, new PS_Idle(idleAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Running, new PS_Running(runningAnimationParam));
-                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(null));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(dashAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Attack, new PS_NormalAttack(normalAttackParam));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Death, new PS_Death(deathAnimation));
 
                 PlayerFSM_Movement.SetCurrentState(PlayerStateEnum.Movement.Idle);
 
@@ -150,7 +152,7 @@ namespace CardGame.Players
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
                         var l = GetInventory.GetSkills;
-                        l[0].UseSkill(this);
+                        l[0].TryUseSkill(this);
                     }
                     //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
                     UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;

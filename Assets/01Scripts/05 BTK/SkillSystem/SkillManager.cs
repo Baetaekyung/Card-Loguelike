@@ -39,7 +39,6 @@ namespace CardGame
             }
             registerSkills.ForEach((skill) =>
             {
-                skill.ResetSkill();
                 print("reseting");
             });
         }
@@ -86,7 +85,7 @@ namespace CardGame
         {
             //player = GameObject.Find("PlayerCategory").GetComponent<Player>();{
             Debug.Log(player.Instance);
-            _currentSkill.UseSkill(player.Instance);
+            _currentSkill.TryUseSkill(player.Instance);
         }
 
         private void ChangeCurrentSkill()

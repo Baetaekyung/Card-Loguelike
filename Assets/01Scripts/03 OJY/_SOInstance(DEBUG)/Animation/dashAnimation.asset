@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c705a347a0a4c41a473af6b7c4ef5d, type: 3}
   m_Name: dashAnimation
   m_EditorClassIdentifier: 
-  parameterName: NormalAttack
-  hashValue: -1614611405
+  parameterName: Dash
+  hashValue: 995914302

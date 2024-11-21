@@ -12,6 +12,7 @@ namespace CardGame.FSM.States
         public override void Enter()
         {
             base.Enter();
+            BaseOwner.GetPlayerMovement.AllowInputMoving = false;
             //Debug.Log("attack start");
         }
         public override void Update()
@@ -21,9 +22,14 @@ namespace CardGame.FSM.States
                 StateMachine.ChangeState(PlayerStateEnum.Movement.Idle);
             //Debug.Log("up");
         }
+        protected override void HandleOnDirectionLook(Vector3 input)
+        {
+
+        }
         public override void Exit()
         {
             base.Exit();
+            BaseOwner.GetPlayerMovement.AllowInputMoving = true;
             //Debug.Log("exit");
         }
     }

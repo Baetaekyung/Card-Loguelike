@@ -9,7 +9,8 @@ namespace CardGame.FSM
             Idle,
             Running,
             Roll,
-            Attack
+            Attack,
+            Death
         }
         public enum Combat
         {
