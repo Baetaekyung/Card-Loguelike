@@ -19467,7 +19467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c5de861b3b8fc4896994fc106c3069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 100000
   currentHealth: 0
   isAlive: 1
   camShakePower: 0.3

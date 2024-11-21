@@ -80,6 +80,20 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 4
       events:
+      - time: 0.036000002
+        functionName: SetManualStop
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.116
+        functionName: SetManualMove
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.38616487
         functionName: SetManualStop
         data: 
@@ -89,13 +103,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.68533593
         functionName: SetAnimationEnd
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.116
-        functionName: SetManualMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

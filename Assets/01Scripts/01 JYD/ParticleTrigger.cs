@@ -9,7 +9,7 @@ namespace CardGame
 
         private void Awake()
         {
-                        
+            
         }
 
         private void OnParticleCollision(GameObject other)
@@ -30,7 +30,7 @@ namespace CardGame
                     actionData.hitNormal = hitNormal;
                     
                     actionData.damageAmount = damageAmount;
-                    actionData.knockBackPower = 5;
+                    actionData.knockBackPower = 0;
                     
                     
                     compo.TakeDamage(actionData);
