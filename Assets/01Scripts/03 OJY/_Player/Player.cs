@@ -65,7 +65,7 @@ namespace CardGame.Players
                 //fsmmovement
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Idle, new PS_Idle(idleAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Running, new PS_Running(runningAnimationParam));
-                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(null));
+                PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Roll, new PS_Roll(dashAnimationParam));
                 PlayerFSM_Movement.AddState(PlayerStateEnum.Movement.Attack, new PS_NormalAttack(normalAttackParam));
 
                 PlayerFSM_Movement.SetCurrentState(PlayerStateEnum.Movement.Idle);
