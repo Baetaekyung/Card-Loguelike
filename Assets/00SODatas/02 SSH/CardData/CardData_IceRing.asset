@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: IceRing
     cardDescription: IceRing
-    cardSprite: {fileID: 21300000, guid: 4ebd6606f414f044da1090cf8eacbb4f, type: 3}
+    cardSprite: {fileID: 21300000, guid: 69d6320e0abc869458bbd410f0009206, type: 3}
     cost: 6
     cardRarity: 0

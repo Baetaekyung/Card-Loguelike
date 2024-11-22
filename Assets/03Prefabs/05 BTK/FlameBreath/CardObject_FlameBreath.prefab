@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardTrm: {fileID: 6058536210833103846}
-  _cardData: {fileID: 11400000, guid: 682f289ce26c9ed42a94d0f9ac936f07, type: 2}
+  _cardData: {fileID: 11400000, guid: 9b774cf7180c4dc4182432e5071429da, type: 2}
   _costText: {fileID: 8366684879924867169}
   _cardNameText: {fileID: 1596137110592725958}
   _cardDescription: {fileID: 1272386677280744505}

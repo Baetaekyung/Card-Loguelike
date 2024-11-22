@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: WindBlast
     cardDescription: WindBlast
-    cardSprite: {fileID: 21300000, guid: 4ebd6606f414f044da1090cf8eacbb4f, type: 3}
+    cardSprite: {fileID: 21300000, guid: 0f5e49671ad9b9041afd594f145cc514, type: 3}
     cost: 3
     cardRarity: 0

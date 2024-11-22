@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 1
   cardInfo:
-    cardName: "\uB0B4\uC7A5\uD3ED\uBC1C"
-    cardDescription: "\uC0B0\uC131 \uD53C\uAC00 \uB2F4\uAE34 \uB0B4\uC7A5\uC744 \uD130\uB728\uB824
-      \uC801\uC5D0\uAC8C \uACF5\uACA9\uD569\uB2C8\uB2E4."
-    cardSprite: {fileID: 21300000, guid: 0faa3fe3d9369cd4885e4c7e079eeb7a, type: 3}
-    cost: 1
+    cardName: BloodExplosion
+    cardDescription: Use 2 Cost and do Damage to enemy
+    cardSprite: {fileID: 21300000, guid: 10b3cac05f0f92644bd7104d4b1aaf02, type: 3}
+    cost: 2
     cardRarity: 0

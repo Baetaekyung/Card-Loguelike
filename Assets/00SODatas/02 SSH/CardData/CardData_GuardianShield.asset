@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: GuardianShield
     cardDescription: GuardianShield
-    cardSprite: {fileID: 21300000, guid: 4ebd6606f414f044da1090cf8eacbb4f, type: 3}
+    cardSprite: {fileID: 21300000, guid: 4bb1e6cbed3f6f042afd3a4871d6d415, type: 3}
     cost: 6
     cardRarity: 0

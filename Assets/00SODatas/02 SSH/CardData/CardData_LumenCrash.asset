@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: LumenCrash
     cardDescription: LumenCrash
-    cardSprite: {fileID: 21300000, guid: 4ebd6606f414f044da1090cf8eacbb4f, type: 3}
+    cardSprite: {fileID: 21300000, guid: 4c02648eed175a242b07e061d524c31d, type: 3}
     cost: 8
     cardRarity: 0

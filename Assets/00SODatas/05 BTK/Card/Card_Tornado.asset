@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8bb4489ffb36b4faf9ce269abbd1c5, type: 3}
   m_Name: Card_Tornado
   m_EditorClassIdentifier: 
-  cardUI: {fileID: 3218535560560868212, guid: a7d265f0727647f43aee86b128ade2dd, type: 3}
+  cardUI: {fileID: 3218535560560868212, guid: a2f05199e187c294bb6df330a4500d2e, type: 3}
   cardObject: {fileID: 6349669213844082325, guid: 2e788582695f099469051f42992af6d5, type: 3}

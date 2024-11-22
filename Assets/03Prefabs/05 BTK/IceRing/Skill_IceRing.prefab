@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillEffect: {fileID: 272037486834534077, guid: c2a74c297134681479cdef6305578158, type: 3}
-  _skillImage: {fileID: 21300000, guid: 8b4ce980f9989554082c3bc1b5ee713d, type: 3}
+  _skillImage: {fileID: 21300000, guid: 69d6320e0abc869458bbd410f0009206, type: 3}
   SkillObject: {fileID: 272037486834534077, guid: c2a74c297134681479cdef6305578158, type: 3}
