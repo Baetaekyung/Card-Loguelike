@@ -26,7 +26,8 @@ namespace CardGame
         public void SpawnEnemy(int currentWave)
         {
             int index = currentWave - 1;
-            index = Mathf.Max(index , 0);
+            int max = listOfEnemySpawn.Count - 1;
+            index = Mathf.Clamp(index, 0, max);
             if (currentWave % 5 == 0)
             {
                 BossSpawn();

@@ -28,6 +28,8 @@ namespace CardGame
                     uiManager.SetDeckSelectActive(true);
                     uiManager.SetFadePanelActive(false);
                     uiManager.SetInGameBattleUIActive(false);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                     SceneManager.LoadScene("CardUI Updated");
                     break;
                 case SceneEnum.Scene3D:
@@ -37,8 +39,6 @@ namespace CardGame
                     uiManager.SetFadePanelActive(false);
                     uiManager.SetInGameBattleUIActive(true);
                     SceneManager.LoadScene("Map_1 1");
-
-                    
                     break;
             }
         }

@@ -20,7 +20,7 @@ namespace CardGame
         public int _idx = 0;
 
         private GameObject game;
-        private void Start()
+        public void SkillResetInitializeMakeSureCallthisAfter3DSceneIfYouDotThanWeAreSoRuined()
         {
             registerSkills.ForEach((skill) =>
             {
@@ -28,7 +28,6 @@ namespace CardGame
                 print("reseting");
             });
         }
-
         private void Update()
         {
             if (registerSkills.Count != 0)
@@ -42,6 +41,7 @@ namespace CardGame
         public void RegistSkill(BaseSkill skill)
         {
             print("register skill");
+            SkillResetInitializeMakeSureCallthisAfter3DSceneIfYouDotThanWeAreSoRuined();
             if (registerSkills.Count == 6)
             {
                 Debug.Log("Skill is full");
