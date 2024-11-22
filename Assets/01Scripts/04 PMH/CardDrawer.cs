@@ -17,7 +17,14 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
     private void OnEnable()
     {
         Debug.Log("밍하하하");
-        ResetComplete();
+
+        if (CardManager.Instance.fieldCardList.Count > 0)
+        {
+            Debug.Log("애안대 애안ㄷ내이기");
+            CurrentSkillUI.Instance.RemoveSkillImage();
+            SkillManager.Instance.RemoveRegisterSkill();
+        }
+
         AutoDrawCards();
     }
 
@@ -84,7 +91,8 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
     }
     private IEnumerator AutoDrawCardsCoroutine()
     {
-        for(int i = 0; i <= 6; i++)
+        int a = CardManager.Instance.fieldCardList.Count;
+        for (int i = 0; i <= 6 - a; i++)
         {
             DrawCard();
             yield return new WaitForSeconds(0.3f);

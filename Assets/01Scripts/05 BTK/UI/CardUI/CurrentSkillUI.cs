@@ -3,14 +3,19 @@ using UnityEngine.UI;
 
 namespace CardGame
 {
-    public class CurrentSkillUI : MonoBehaviour
+    public class CurrentSkillUI : MonoSingleton<CurrentSkillUI>
     {
         [SerializeField] private Image[] _skillImages;
-        [SerializeField] private Sprite defaultSpirte;
+        [SerializeField] private Sprite defaultSpirte = default;
 
         //private void OnEnable()
         //{
         //}
+        protected override void Awake()
+        {
+            base.Awake();
+            DontDestroyOnLoad(this.gameObject);
+        }
         private void Start()
         {
             SkillManager.Instance.RemoveRegisterSkill();
@@ -33,7 +38,7 @@ namespace CardGame
                 _skillImages[i].sprite = SkillManager.Instance.registerSkills[i].SkillImage;
             }
         }
-        private void RemoveSkillImage()
+        public void RemoveSkillImage()
         {
             foreach (var item in _skillImages)
             {
