@@ -25,6 +25,7 @@ namespace CardGame
         {
             currentHealth = maxHealth;
 
+            OnDeadEvent += GoToTitleScene;
             OnHitEvent += HitStop;
         }
 
@@ -74,6 +75,11 @@ namespace CardGame
             Time.timeScale = 0.24f;
             yield return new WaitForSecondsRealtime(0.15f);
             Time.timeScale = 1;
+        }
+
+        private void GoToTitleScene()
+        {
+            SceneManagerEx.Instance.ChangeScene(SceneEnum.TitleScene);
         }
     }
 }
