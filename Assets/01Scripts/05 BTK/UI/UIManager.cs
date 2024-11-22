@@ -14,14 +14,20 @@ namespace CardGame
         public GameObject settingPanelUI;
         [FormerlySerializedAs("FadePanelUI")] public GameObject fadePanelUI;
 
+        public HealthBar HealthBar;
+        public StaminaBar StaminaBar;
+        
         private void Awake()
         {
             if (Instance == null)
+            {
                 Instance = this;
+            }
             else
             {
                 Destroy(gameObject);
             }
+            DontDestroyOnLoad(gameObject);
         }
 
         public void SetTitleUIActive(bool isActive)

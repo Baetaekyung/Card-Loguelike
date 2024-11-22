@@ -1,3 +1,4 @@
+using CardGame.Players;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,8 @@ namespace CardGame
     public class SceneManagerEx : MonoSingleton<SceneManagerEx>
     {
         private UIManager uiManager => UIManager.Instance;
-
+        public PlayerSingletonSO PlayerSingletonSo;
+                
         public void ChangeScene(SceneEnum sceneEnum)
         {
             switch (sceneEnum)
@@ -35,6 +37,8 @@ namespace CardGame
                     uiManager.SetFadePanelActive(false);
                     uiManager.SetInGameBattleUIActive(true);
                     SceneManager.LoadScene("Map_1 1");
+
+                    
                     break;
             }
         }

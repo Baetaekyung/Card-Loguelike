@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CardGame.Players;
 using UnityEngine;
 
 namespace CardGame
@@ -15,12 +16,10 @@ namespace CardGame
         [SerializeField] private float currentHealth;
         [SerializeField] private bool isAlive;
 
+        
         public static event Action OnDeadEvent;
         public static event Action<ActionData> OnHitEvent;
         public static event Action OnHealEvent;
-        [SerializeField] private float camShakePower;
-        
-
 
         private void Start()
         {
