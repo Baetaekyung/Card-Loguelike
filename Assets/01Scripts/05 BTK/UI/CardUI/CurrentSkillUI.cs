@@ -13,8 +13,10 @@ namespace CardGame
         //}
         private void Start()
         {
+            SkillManager.Instance.RemoveRegisterSkill();
             SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
-            RegistSkillImage();
+            SkillManager.Instance.OnSkillResetRegisted += RemoveSkillImage;
+            //RegistSkillImage();
         }
 
         private void RegistSkillImage()
@@ -31,10 +33,26 @@ namespace CardGame
                 _skillImages[i].sprite = SkillManager.Instance.registerSkills[i].SkillImage;
             }
         }
-
+        private void RemoveSkillImage()
+        {
+            foreach (var item in _skillImages)
+            {
+                item.sprite = defaultSpirte;
+            }
+        }
         private void OnDisable()
         {
-            SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+            if(SkillManager.Instance != null)
+            {
+                SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+            }
+        }
+        private void OnDestroy()
+        {
+            if (SkillManager.Instance != null)
+            {
+                SkillManager.Instance.OnSkillRegisted -= RegistSkillImage;
+            }
         }
 
         //private void OnDestroy()

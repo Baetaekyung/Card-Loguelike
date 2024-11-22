@@ -16,12 +16,14 @@ namespace CardGame
         private BaseSkill _currentSkill;
 
         public event Action OnSkillRegisted;
+        public event Action OnSkillResetRegisted;
 
         public int _idx = 0;
 
         private GameObject game;
         private void Start()
         {
+            OnSkillResetRegisted?.Invoke();
             registerSkills.ForEach((skill) =>
             {
                 skill.AWDlpawdakdpadoawkakwodpkdopwkdakWOdkowaijdiwadjiadwajdiwadwioajdaiodjawdjioajdiawdajddjnjdkjlkjngjjkjkgjkkbkcxkjkxfjkggjggkggkggjkggkgkggkgkgjgkgjxzlxkmbkcmkmvklcjbxklxjbjkjcixjbpokrjriyjeiitjgifdfgdkgjkdfglndhdfkd();
@@ -44,11 +46,12 @@ namespace CardGame
                 return;
             }
         }
-
+        public bool CheckRegisterSkillsCoundIsFull() => registerSkills.Count >= 6;
+        public void RemoveRegisterSkill() => registerSkills.Clear();
         public void RegistSkill(BaseSkill skill)
         {
             print("register skill");
-            if (registerSkills.Count == 6)
+            if (CheckRegisterSkillsCoundIsFull())
             {
                 Debug.Log("Skill is full");
                 return;

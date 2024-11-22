@@ -103,6 +103,8 @@ public class CardManager : MonoBehaviour
 
     public void AddToFieldCard(BaseCard cardToAdd) => fieldCardList.Add(cardToAdd as CardObject);
 
+    public void ClearToFieldCard() => fieldCardList.Clear();
+
     public void AddToDeckCard(CardSO cardToAdd) => deckCardList.Add(cardToAdd);
 
     public void SetUsedCard(BaseCard card) => _usedCardList.Add(card as CardObject);
