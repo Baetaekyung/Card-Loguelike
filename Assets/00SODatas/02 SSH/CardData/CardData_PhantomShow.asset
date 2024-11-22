@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: PhantomShow
     cardDescription: PhantomShow
-    cardSprite: {fileID: 21300000, guid: 8b4ce980f9989554082c3bc1b5ee713d, type: 3}
+    cardSprite: {fileID: 21300000, guid: a0b292d7c78cfa6459b493af4aacc272, type: 3}
     cost: 7
     cardRarity: 0

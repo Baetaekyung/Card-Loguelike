@@ -8,6 +8,7 @@ namespace CardGame
 {
     public enum SceneEnum
     {
+        TitleScene,
         SceneDeckSelect,
         Scene3D
     }
@@ -76,11 +77,11 @@ namespace CardGame
 
         private void OnDeckSelectScene()
         {
-            LoadScene("CardUI Updated");
+            SceneManagerEx.Instance.ChangeScene(SceneEnum.SceneDeckSelect);
         }
         private void On3DScene()
         {
-            LoadScene("Map_1 1");
+            SceneManagerEx.Instance.ChangeScene(SceneEnum.Scene3D);
         }
         private void LoadScene(string name)
         {

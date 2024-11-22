@@ -63,8 +63,8 @@ MonoBehaviour:
   _cardUseArea: {fileID: 3295227866271163175}
   _usedCardAnimationSpeed: 3
   _keywordPanel: {fileID: 6889149074163023885}
-  keywords: 0000000001000000
-  _keywordCount: 2
+  keywords: 
+  _keywordCount: 0
   _skillEffects:
     m_PersistentCalls:
       m_Calls:

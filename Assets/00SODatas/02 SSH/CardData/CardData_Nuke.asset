@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: Nuke
     cardDescription: Nuke
-    cardSprite: {fileID: 21300000, guid: 6a4f9b7082fcead43b1c4c50fd1c5c93, type: 3}
+    cardSprite: {fileID: 21300000, guid: 4c0488efb034a204295208c9c478ba8d, type: 3}
     cost: 9
     cardRarity: 0

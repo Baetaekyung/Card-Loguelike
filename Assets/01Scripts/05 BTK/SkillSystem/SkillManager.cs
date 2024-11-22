@@ -31,16 +31,10 @@ namespace CardGame
 
         private void Update()
         {
-            if (registerSkills.Count == 0)
+            if (registerSkills.Count != 0)
             {
                 ChangeCurrentSkill();
-                if(inGameUIs != null)
-                {
-                    foreach (var item in inGameUIs)
-                    {
-                        item.cG.alpha = 0;
-                    }
-                }
+                
                 return;
             }
         }
@@ -90,15 +84,12 @@ namespace CardGame
                 temp++;
             }
 
-            if (inGameUIs != null)
+            for (int j = temp; j < inGameUIs.Length; j++)
             {
-                for (int j = temp; j < inGameUIs.Length; j++)
-                {
-                    inGameUIs[j].cG.alpha = 0f;
-                }
+                inGameUIs[j].cG.alpha = 0f;
             }
-                
-            
+
+
             float wheelInput = Mouse.current.scroll.y.ReadValue();
 
             if (wheelInput < 0)

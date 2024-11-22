@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5624961091500055230}
   - component: {fileID: 3043744946144762626}
   - component: {fileID: 5783848015018193163}
+  - component: {fileID: 5386083959558048836}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -84,3 +85,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectList: {fileID: 11400000, guid: ffb75517124005c4195783151c2a0e79, type: 2}
+--- !u!114 &5386083959558048836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5936428249149029669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912c38c712f6f0498ecd33141ee6444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

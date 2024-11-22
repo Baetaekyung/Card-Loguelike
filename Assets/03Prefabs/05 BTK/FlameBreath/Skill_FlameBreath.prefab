@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4627114222577509076}
   - component: {fileID: 7335025266080446598}
   m_Layer: 0
-  m_Name: Skill_BloodExplosion
+  m_Name: Skill_FlameBreath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillEffect: {fileID: 272037486834534077, guid: 0a1dbd16fd4e2694aac717dbef01e714, type: 3}
-  _skillImage: {fileID: 21300000, guid: 0faa3fe3d9369cd4885e4c7e079eeb7a, type: 3}
+  _skillImage: {fileID: 21300000, guid: 825e14a6c4b6d78479dffa9aa6a7f4e5, type: 3}
   SkillObject: {fileID: 272037486834534077, guid: 0a1dbd16fd4e2694aac717dbef01e714, type: 3}
-  _cooltime: 10

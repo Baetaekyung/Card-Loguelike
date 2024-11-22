@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a8bb4489ffb36b4faf9ce269abbd1c5, type: 3}
-  m_Name: Card_Test
+  m_Name: Card_IceRing
   m_EditorClassIdentifier: 
-  cardUI: {fileID: 3218535560560868212, guid: a7d265f0727647f43aee86b128ade2dd, type: 3}
-  cardObject: {fileID: 6349669213844082325, guid: 28ad95ad77bbfad42a6857ea96e43db8, type: 3}
+  cardUI: {fileID: 3218535560560868212, guid: 69f04fadbeee54643b70cbb31885d1bd, type: 3}
+  cardObject: {fileID: 6349669213844082325, guid: f56f3cad2bf8dac429ffa0578bdc5e17, type: 3}

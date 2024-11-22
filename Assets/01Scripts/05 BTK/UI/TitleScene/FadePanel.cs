@@ -17,7 +17,7 @@ namespace CardGame
         {
             _animator.Play("FadeIn");
             _nextSceneName = nextSceneName;
-            SceneManager.LoadScene(nextSceneName);
+            SceneManagerEx.Instance.ChangeScene(SceneEnum.SceneDeckSelect);
         }
 
         public void FadeOut()

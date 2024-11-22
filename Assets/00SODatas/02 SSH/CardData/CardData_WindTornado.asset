@@ -16,6 +16,6 @@ MonoBehaviour:
   cardInfo:
     cardName: WindTornado
     cardDescription: WindTornado
-    cardSprite: {fileID: 21300000, guid: 4ebd6606f414f044da1090cf8eacbb4f, type: 3}
+    cardSprite: {fileID: 21300000, guid: e736c6e8c2b8c4144a2d65b2db268e12, type: 3}
     cost: 8
     cardRarity: 0
