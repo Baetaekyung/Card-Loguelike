@@ -10,18 +10,20 @@ namespace CardGame
     public class SkillManager : MonoSingleton<SkillManager>
     {
         public PlayerSingletonSO playerSingletonSO;
-        public List<BaseSkill> registerSkills = new(); //°®°í¿ÂÄ«µå
+        public List<BaseSkill> registerSkills = new(); //ï¿½ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½
         public SkillSlot[] inGameUIs;
         public IList<BaseSkill> GetSkills => registerSkills;
         private BaseSkill _currentSkill;
 
         public event Action OnSkillRegisted;
+        public event Action OnSkillResetRegisted;
 
         public int _idx = 0;
 
         private GameObject game;
         public void SkillResetInitializeMakeSureCallthisAfter3DSceneIfYouDotThanWeAreSoRuined()
         {
+            OnSkillResetRegisted?.Invoke();
             registerSkills.ForEach((skill) =>
             {
                 skill.AWDlpawdakdpadoawkakwodpkdopwkdakWOdkowaijdiwadjiadwajdiwadwioajdaiodjawdjioajdiawdajddjnjdkjlkjngjjkjkgjkkbkcxkjkxfjkggjggkggkggjkggkgkggkgkgjgkgjxzlxkmbkcmkmvklcjbxklxjbjkjcixjbpokrjriyjeiitjgifdfgdkgjkdfglndhdfkd();
@@ -37,12 +39,13 @@ namespace CardGame
                 return;
             }
         }
-
+        public bool CheckRegisterSkillsCoundIsFull() => registerSkills.Count >= 6;
+        public void RemoveRegisterSkill() => registerSkills.Clear();
         public void RegistSkill(BaseSkill skill)
         {
             print("register skill");
             SkillResetInitializeMakeSureCallthisAfter3DSceneIfYouDotThanWeAreSoRuined();
-            if (registerSkills.Count == 6)
+            if (CheckRegisterSkillsCoundIsFull())
             {
                 Debug.Log("Skill is full");
                 return;

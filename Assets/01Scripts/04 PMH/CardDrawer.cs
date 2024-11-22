@@ -1,3 +1,4 @@
+using CardGame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,15 @@ using UnityEngine.UI;
 public class CardDrawer : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private List<CardSO> _deck = new();
+    [SerializeField] private List<CardObject> _visualCard = new();
     [SerializeField] private RectTransform spawnTrm;
     [SerializeField] private RectTransform cardUseArea;
     private RectTransform _drawer;
 
     private void OnEnable()
     {
+        Debug.Log("밍하하하");
+        ResetComplete();
         AutoDrawCards();
     }
 
@@ -41,14 +45,23 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
     {
         DrawCard();
     }
+
+    private void ResetComplete()
+    {
+        _deck.Clear();
+        CardManager.Instance.ClearToFieldCard();
+    }
     private void DrawCard()
     {
+        if (SkillManager.Instance.CheckRegisterSkillsCoundIsFull()) return;
+
         CardSO randomCard = GetCardFromDeck();
 
         if (randomCard == null) return;
 
         CardObject cardObj = Instantiate(
             randomCard.cardObject, spawnTrm);
+        _visualCard.Add(cardObj);
         cardObj.transform.SetLocalPositionAndRotation(_drawer.localPosition, Quaternion.identity);
         cardObj.SetCardUseArea(cardUseArea);
 
@@ -71,7 +84,7 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
     }
     private IEnumerator AutoDrawCardsCoroutine()
     {
-        for(int i = 0; i <= 7; i++)
+        for(int i = 0; i <= 6; i++)
         {
             DrawCard();
             yield return new WaitForSeconds(0.3f);
