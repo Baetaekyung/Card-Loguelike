@@ -40,7 +40,20 @@ namespace CardGame
             }
         }
         public bool CheckRegisterSkillsCoundIsFull() => registerSkills.Count >= 6;
-        public void RemoveRegisterSkill() => registerSkills.Clear();
+        public void RemoveRegisterSkill()
+        {
+            GameObject cardContainer = GameObject.Find("CardContainer");
+            if(cardContainer != null )
+            {
+                int n = cardContainer.transform.childCount;
+                for (int i = 0; i < n; i++)
+                {
+                    GameObject card = cardContainer.transform.GetChild(i).gameObject;
+                    //Destroy(card);
+                }
+            }
+            registerSkills.Clear();
+        }
         public void RegistSkill(BaseSkill skill)
         {
             print("register skill");
@@ -53,6 +66,7 @@ namespace CardGame
 
             registerSkills.Add(skill);
 
+            
             OnSkillRegisted?.Invoke();
         }
 

@@ -73,6 +73,8 @@ public class CardDrawer : MonoBehaviour, IPointerDownHandler
         cardObj.SetCardUseArea(cardUseArea);
 
         CardManager.Instance.AddToFieldCard(cardObj);
+
+        //CurrentSkillUI.Instance.SetRegisterCardImage();
     }
     private CardSO GetCardFromDeck()
     {

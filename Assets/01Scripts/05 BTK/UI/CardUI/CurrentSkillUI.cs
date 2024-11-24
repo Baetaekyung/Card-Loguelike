@@ -18,14 +18,39 @@ namespace CardGame
         }
         private void Start()
         {
+            //Debug.LogError("커런트스킬유아이스크립트스타트함수");
             SkillManager.Instance.RemoveRegisterSkill();
             SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
-            SkillManager.Instance.OnSkillResetRegisted += RemoveSkillImage;
+            //SkillManager.Instance.OnSkillResetRegisted += RemoveSkillImage;
             //RegistSkillImage();
+        }
+
+        private void OnEnable()
+        {
+            //Debug.LogError("커런트스킬유아이스크립트온이너블함수");
+            SkillManager.Instance.OnSkillRegisted += RegistSkillImage;
+            GameObject cardContainer = GameObject.Find("CardContainer");
+            if (cardContainer != null)
+            {
+                int n = cardContainer.transform.childCount;
+                for (int i = 0; i < n; i++)
+                {
+                    GameObject card = cardContainer.transform.GetChild(i).gameObject;
+                    int k = card.transform.childCount;
+                    for(int j = 0; j < k; j++)
+                    {
+                        if(card.transform.GetChild(j).TryGetComponent(out Image cardimage))
+                        {
+                            cardimage.enabled = false;
+                        }
+                    }
+                }
+            }
         }
 
         private void RegistSkillImage()
         {
+            Debug.LogError("See you tomorrow");
             //print(_skillImages.Length);
             foreach (var item in _skillImages)
             {
@@ -43,6 +68,14 @@ namespace CardGame
             foreach (var item in _skillImages)
             {
                 item.sprite = defaultSpirte;
+            }
+        }
+        public void SetRegisterCardImage()
+        {
+            for (int i = 0; i < SkillManager.Instance.registerSkills.Count; i++)
+            {
+                print(SkillManager.Instance.registerSkills[i].SkillImage);
+                _skillImages[i].sprite = SkillManager.Instance.registerSkills[i].SkillImage;
             }
         }
         private void OnDisable()
