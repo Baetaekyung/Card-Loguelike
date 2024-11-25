@@ -30,7 +30,7 @@ public abstract class BaseButton : MonoBehaviour
         {
             _isHovering = true;
             transform.DOScale(Vector3.one * _hoverSize, 1 / _hoverAnimationSpeed)
-                .SetEase(Ease.OutBounce);
+                .SetEase(Ease.InSine);
         }
     }
     public virtual void OnPointerExit(PointerEventData eventData)
@@ -39,7 +39,7 @@ public abstract class BaseButton : MonoBehaviour
         {
             _isHovering = false;
             transform.DOScale(Vector3.one, 1 / _hoverAnimationSpeed)
-                .SetEase(Ease.InBounce);
+                .SetEase(Ease.InSine);
         }
     }
 }

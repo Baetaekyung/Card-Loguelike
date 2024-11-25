@@ -20,6 +20,8 @@ namespace CardGame
         public static event Action OnDeadEvent;
         public static event Action<ActionData> OnHitEvent;
         public static event Action OnHealEvent;
+        private bool isHit;
+        
 
         private void Start()
         {
@@ -31,6 +33,8 @@ namespace CardGame
 
         public void TakeDamage(ActionData actiondata)
         {
+            if(isHit)return;
+            
             ActionData.knockBackPower = actiondata.knockBackPower;
             ActionData.damageAmount = actiondata.damageAmount;
             ActionData.hitNormal = actiondata.hitNormal;
@@ -40,6 +44,8 @@ namespace CardGame
             currentHealth -= ActionData.damageAmount;
             
             OnHitEvent?.Invoke(actiondata);
+           
+            
             
             if (currentHealth <= 0)
             {
@@ -72,8 +78,10 @@ namespace CardGame
 
         private IEnumerator HitStopRoutine()
         {
+            isHit = true;
             Time.timeScale = 0.24f;
             yield return new WaitForSecondsRealtime(0.15f);
+            isHit = false;
             Time.timeScale = 1;
         }
 

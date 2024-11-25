@@ -99,7 +99,13 @@ public class CardObject : BaseCard
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        if (_isUsed) return; //이미 버려졌으면 실행 안되게
+        if (_isUsed) return; 
+
+        if (SkillManager.Instance.registerSkills.Count > 6)
+        {
+            Debug.LogError("꽉차서 안대여");
+            return;
+        }
 
         if (_isHovering)
         {

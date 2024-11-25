@@ -38,7 +38,7 @@ namespace CardGame
                     uiManager.SetDeckSelectActive(false);
                     uiManager.SetFadePanelActive(false);
                     uiManager.SetInGameBattleUIActive(true);
-                    SceneManager.LoadScene("Map_1 1");
+                    SceneManager.LoadScene("NadoMap");
                     break;
             }
         }

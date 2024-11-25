@@ -50,7 +50,7 @@ namespace CardGame
 
         private void RegistSkillImage()
         {
-            Debug.LogError("See you tomorrow");
+            //Debug.LogError("See you tomorrow");
             //print(_skillImages.Length);
             foreach (var item in _skillImages)
             {

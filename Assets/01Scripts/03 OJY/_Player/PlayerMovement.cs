@@ -81,8 +81,8 @@ namespace CardGame.Players
             ApplyAnimator();
 
             //uidebug
-            UI_DEBUG.Instance.GetList[2].text = nameof(IsMoving) + IsMoving.ToString();
-            UI_DEBUG.Instance.GetList[3].text = nameof(rollStamina) + rollStamina.ToString();
+            //UI_DEBUG.Instance.GetList[2].text = nameof(IsMoving) + IsMoving.ToString();
+            //UI_DEBUG.Instance.GetList[3].text = nameof(rollStamina) + rollStamina.ToString();
         }
         private void FixedUpdate()
         {

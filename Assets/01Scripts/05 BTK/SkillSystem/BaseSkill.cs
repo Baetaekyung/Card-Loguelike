@@ -17,7 +17,7 @@ namespace CardGame
         public bool TryUseSkill(Player owner)
         {
             bool canAttack = CanAttack;
-            UI_DEBUG.Instance.GetList[4].text = currentDelayTime.ToString() + " " + Time.time;
+            //UI_DEBUG.Instance.GetList[4].text = currentDelayTime.ToString() + " " + Time.time;
             if (canAttack)
             {
                 float delay = 1;

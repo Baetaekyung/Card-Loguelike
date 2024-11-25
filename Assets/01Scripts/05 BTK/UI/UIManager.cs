@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,10 +13,12 @@ namespace CardGame
         public GameObject inGameBattleUI;
         public GameObject deckSelectUI;
         public GameObject settingPanelUI;
-        [FormerlySerializedAs("FadePanelUI")] public GameObject fadePanelUI;
+         public GameObject fadePanelUI;
 
         public HealthBar HealthBar;
         public StaminaBar StaminaBar;
+
+        public TextMeshProUGUI waveText;
         
         private void Awake()
         {

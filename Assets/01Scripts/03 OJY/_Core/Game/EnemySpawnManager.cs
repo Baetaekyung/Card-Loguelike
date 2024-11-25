@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace CardGame
 {
@@ -64,15 +63,36 @@ namespace CardGame
                 }
             }
         }
-
+        
         public void RemoveEnemy(GameObject obj)
         {
             enemys.Remove(obj);
             if (enemys.Count == 0)
             {
-                SceneManagerEx.Instance.ChangeScene(SceneEnum.SceneDeckSelect);
+                var waveText = UIManager.Instance.waveText;
+                var waveTextTransform = waveText.rectTransform;
+                waveText.SetText($"-Wave {WaveManager.CurrentWave} End-");
+                waveText.gameObject.SetActive(true);
+                waveText.color = new Color(waveText.color.r, waveText.color.g, waveText.color.b, 0); 
+                waveTextTransform.anchoredPosition = new Vector2(waveTextTransform.anchoredPosition.x, waveTextTransform.anchoredPosition.y - 100); // 아래로 이동
+
+                waveText.DOFade(1, 0.4f)
+                    .OnComplete(() =>
+                    {
+                        waveTextTransform.DOMoveY(waveTextTransform.anchoredPosition.y + 100, 0.6f) 
+                            .SetEase(Ease.InOutQuad)
+                            .OnComplete(() =>
+                            {
+                                waveText.DOFade(0, 0.4f);
+                                waveTextTransform.DOMoveY(waveTextTransform.anchoredPosition.y - 100, 0.6f)
+                                    .SetEase(Ease.InOutQuad)
+                                    .OnComplete(() =>
+                                    {
+                                        SceneManagerEx.Instance.ChangeScene(SceneEnum.SceneDeckSelect);
+                                    });
+                            });
+                    });
             }
-            
         }
     }
 }

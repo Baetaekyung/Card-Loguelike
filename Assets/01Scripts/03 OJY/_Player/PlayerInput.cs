@@ -39,8 +39,8 @@ namespace CardGame.Players
             {
                 InputMovementRaw = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
                 InputMovement    = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-                UI_DEBUG.Instance.GetList[0].text = nameof(InputMovementRaw) + InputMovementRaw.ToString();
-                UI_DEBUG.Instance.GetList[1].text = nameof(KeyNotPressedTime) +  KeyNotPressedTime.ToString("F2");
+                //UI_DEBUG.Instance.GetList[0].text = nameof(InputMovementRaw) + InputMovementRaw.ToString();
+                //UI_DEBUG.Instance.GetList[1].text = nameof(KeyNotPressedTime) +  KeyNotPressedTime.ToString("F2");
                 if (Input.GetKeyUp(KeyCode.Space)) EventPlayerRoll?.Invoke();
                 if (Input.GetKeyDown(KeyCode.Mouse0)) EventPlayerAttack?.Invoke();
             }

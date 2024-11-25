@@ -186,17 +186,17 @@ namespace CardGame.Players
                     }
 
                     //UI_DEBUG.Instance.GetList[4].text = nameof(PlayerFSM_Combat) + PlayerFSM_Combat.CurrentState;
-                    UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;
+                    //UI_DEBUG.Instance.GetList[5].text = nameof(PlayerFSM_Movement) + PlayerFSM_Movement.CurrentState;
                 }
                 void PlayerUI()
                 {
                     float maxStamina = GetPlayerMovement.GetMaxStamina;
                     float currentStamina = GetPlayerMovement.GetCurrentStamina;
-                    UI_Player.Instance.GetList[0].text = $"STAMINA : {currentStamina:F1} | {maxStamina}";
+                    //UI_Player.Instance.GetList[0].text = $"STAMINA : {currentStamina:F1} | {maxStamina}";
 
                     float maxHp = default;
                     float currentHp = default;
-                    UI_Player.Instance.GetList[1].text = $"HP : {currentHp:F1} | {maxHp}";
+                    //UI_Player.Instance.GetList[1].text = $"HP : {currentHp:F1} | {maxHp}";
                 }
                 DebugInput();
                 PlayerUI();
